@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block 7",
+        "aliases": "B7,Block Seven",
+        "rooms": "201,202,203,204"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [38.8091, 8.8876],
+          [38.8098, 8.8876],
+          [38.8098, 8.8871],
+          [38.8091, 8.8871],
+          [38.8091, 8.8876]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block 9",
+        "aliases": "B9,Block Nine"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [38.8106, 8.8878],
+          [38.8113, 8.8878],
+          [38.8113, 8.8873],
+          [38.8106, 8.8873],
+          [38.8106, 8.8878]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "walkway",
+        "type": "junction"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [38.80945, 8.8871],
+          [38.81005, 8.8871],
+          [38.81005, 8.8873]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Main Gate",
+        "type": "gate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [38.81005, 8.8873]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block 7 entrance",
+        "type": "entrance:block-7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [38.80945, 8.8871]
+      }
+    }
+  ]
+}
