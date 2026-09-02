@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ASTU Campus Navigator",
-  description: "Find your way around Addis Ababa Science & Technology University campus.",
+  title: "ASTU Campus Navigator | Adama Science & Technology University",
+  description: "Interactive campus navigation map for Adama Science and Technology University (ASTU), Adama, Ethiopia.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
