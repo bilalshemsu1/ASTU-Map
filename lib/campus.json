@@ -271,25 +271,50 @@
       }
     },
     {
+      "id": "kt_tennis_court",
+      "code": "KTTC",
+      "name": "KT Tennis Court",
+      "aliases": ["KT Tennis Court", "Tennis Court", "KT Tennis", "ASTU Tennis Court", "KTTC"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.565850, "lng": 39.293320 },
+        { "lat": 8.565850, "lng": 39.293570 },
+        { "lat": 8.565640, "lng": 39.293570 },
+        { "lat": 8.565640, "lng": 39.293320 }
+      ],
+      "center": { "lat": 8.565747, "lng": 39.293447 },
+      "rooms": [
+        { "id": "kttc_court", "name": "KT Outdoor Tennis Arena", "floor": 0, "type": "Outdoor Sports Facility", "workDescription": "Outdoor hard court tennis facility for student and staff athletics." }
+      ],
+      "entranceNodeId": "n_kt_tennis",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEzfhacsISBybjA9QP92NCeFrSsQlwFMBVd2SUtwwsebX9uCdLWU6fmP_QE695ZT1Z0M3G1_tCzwMk5x50cQlJ-JWmDfHhHHaxXfMLsVW4fhbOzd4A0olfeOyqTVPCi6zJry2JsA=w417-h240-k-no"],
+        "description": "KT Outdoor Tennis Court located at exact coordinates 8.565747, 39.293447.",
+        "department": "Sports & Youth Development Directorate",
+        "verified": true
+      }
+    },
+    {
       "id": "sace",
       "code": "SACE",
-      "name": "ASTU School Of Architecture and Civil Engineering",
-      "aliases": ["SACE", "School of Architecture", "Civil Engineering", "Architecture School"],
+      "name": "Architecture Department (SACE)",
+      "aliases": ["Architecture Department", "School of Architecture", "SACE", "Civil Engineering", "Architecture School"],
       "category": "academic",
       "polygon": [
-        { "lat": 8.563850, "lng": 39.291730 },
-        { "lat": 8.563850, "lng": 39.291860 },
-        { "lat": 8.563710, "lng": 39.291860 },
-        { "lat": 8.563710, "lng": 39.291730 }
+        { "lat": 8.563720, "lng": 39.291610 },
+        { "lat": 8.563720, "lng": 39.291840 },
+        { "lat": 8.563530, "lng": 39.291840 },
+        { "lat": 8.563530, "lng": 39.291610 }
       ],
-      "center": { "lat": 8.563778, "lng": 39.291795 },
+      "center": { "lat": 8.563625, "lng": 39.291728 },
       "rooms": [
-        { "id": "sace_dean", "name": "Dean's Office", "floor": 1, "type": "Administrative Office", "workDescription": "School of Architecture Dean & Dept Offices." }
+        { "id": "sace_design", "name": "Architecture Design Studios & Workshops", "floor": 1, "type": "Design Studio", "workDescription": "Architecture drafting, 3D modeling, and civil engineering design laboratories." },
+        { "id": "sace_dean", "name": "Dean's Office", "floor": 1, "type": "Administrative Office", "workDescription": "School of Architecture Dean & Department Offices." }
       ],
       "entranceNodeId": "n_sace",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
-        "description": "School of Architecture and Civil Engineering located at 8°33'49.6\"N 39°17'31.0\"E.",
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmVTgydc-gV6uCHFC8VWiaHjN_YDMx6tHX8WrCrQf4ubV7sOsbeTMXbwd3q8RvIihDiAK5ulgojoSkmEXwyyD2G52LNClHCCoXDNb63DnA_-MHMwd_lY84qamL1Nwwz7cSHCp6-_A=w408-h240-k-no-pi-0-ya259-ro0-fo100"],
+        "description": "ASTU Architecture Department (School of Architecture & Civil Engineering) located at exact coordinates 8.563625, 39.291728.",
         "department": "School of Architecture & Civil Engineering",
         "verified": true
       }
@@ -608,9 +633,11 @@
     { "id": "n_vac", "lat": 8.564861, "lng": 39.292316, "label": "Visual Arts Society Gate" },
     { "id": "n_ecb", "lat": 8.565049, "lng": 39.29326, "label": "East Campus Block Gate" },
     { "id": "n_fac1", "lat": 8.565506, "lng": 39.291304, "label": "Campus Block Gate" },
+    { "id": "n_kt_tennis", "lat": 8.565747, "lng": 39.293447, "label": "KT Tennis Court Entrance" },
     { "id": "n_central_hub", "lat": 8.563778, "lng": 39.291944, "label": "ASTU 8°33'49.6\"N 39°17'31.0\"E Hub" }
   ],
   "edges": [
+    { "id": "eg_kt_tennis", "source": "n_kt_tennis", "target": "n_stadium" },
     { "id": "eg_fac1", "source": "n_fac1", "target": "n_central_hub" },
     { "id": "eg_vac", "source": "n_vac", "target": "n_central_hub" },
     { "id": "eg_ecb", "source": "n_ecb", "target": "n_stadium" },
