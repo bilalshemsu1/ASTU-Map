@@ -1035,7 +1035,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       {/* Floating Target GPS Button & Map Type Toggle Switch with z-[1000] */}
       <div
         style={{ zIndex: 1000 }}
-        className="absolute bottom-28 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 pointer-events-auto"
+        className="absolute bottom-32 sm:bottom-28 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 pointer-events-auto"
       >
         <button
           onClick={() => setMapType(mapType === 'roadmap' ? 'satellite' : 'roadmap')}

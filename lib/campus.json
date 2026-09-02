@@ -6,6 +6,174 @@
   },
   "buildings": [
     {
+      "id": "astu_facility_8565506",
+      "code": "FAC1",
+      "name": "ASTU Campus Block (8.565506, 39.291304)",
+      "aliases": ["ASTU Campus Facility", "FAC1", "North West Block"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.565620, "lng": 39.291200 },
+        { "lat": 8.565620, "lng": 39.291410 },
+        { "lat": 8.565390, "lng": 39.291410 },
+        { "lat": 8.565390, "lng": 39.291200 }
+      ],
+      "center": { "lat": 8.565506, "lng": 39.291304 },
+      "rooms": [
+        { "id": "fac1_rooms", "name": "Campus Facility Rooms", "floor": 1, "type": "Academic Block", "workDescription": "ASTU campus facility." }
+      ],
+      "entranceNodeId": "n_fac1",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU campus location at exact coordinates 8.565506, 39.291304.",
+        "department": "Academic / Administrative",
+        "verified": true
+      }
+    },
+    {
+      "id": "astu_visual_arts_club",
+      "code": "VAC",
+      "name": "ASTU Visual Arts Society Club",
+      "aliases": ["ASTU Visual Arts Society Club", "Visual Arts Club", "ASTU Art Club", "VAC"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.564950, "lng": 39.292200 },
+        { "lat": 8.564950, "lng": 39.292430 },
+        { "lat": 8.564770, "lng": 39.292430 },
+        { "lat": 8.564770, "lng": 39.292200 }
+      ],
+      "center": { "lat": 8.564861, "lng": 39.292316 },
+      "rooms": [
+        { "id": "vac_studio", "name": "Visual Arts & Graphics Studio", "floor": 1, "type": "Student Club Studio", "workDescription": "Creative workspace for student fine arts, design, digital media, and exhibitions." }
+      ],
+      "entranceNodeId": "n_vac",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Visual Arts Society Club studio located at exact coordinates 8.564861, 39.292316.",
+        "department": "Student Union & Creative Arts Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "astu_east_campus_point",
+      "code": "ECB",
+      "name": "ASTU East Campus Block",
+      "aliases": ["ASTU East Campus Block", "East Campus Building", "ECB"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.565150, "lng": 39.293150 },
+        { "lat": 8.565150, "lng": 39.293370 },
+        { "lat": 8.564950, "lng": 39.293370 },
+        { "lat": 8.564950, "lng": 39.293150 }
+      ],
+      "center": { "lat": 8.565049, "lng": 39.29326 },
+      "rooms": [
+        { "id": "ecb_hall", "name": "East Campus Study & Seminar Rooms", "floor": 1, "type": "Academic Block", "workDescription": "East campus academic facility." }
+      ],
+      "entranceNodeId": "n_ecb",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU East Campus Block located at exact coordinates 8.565049, 39.29326.",
+        "department": "Academic Affairs",
+        "verified": true
+      }
+    },
+    {
+      "id": "female_dormitory",
+      "code": "FDORM",
+      "name": "ASTU Female Dormitory",
+      "aliases": ["Female Dormitory", "Female Dorms", "Girls Dormitory", "FDORM"],
+      "category": "dormitory",
+      "polygon": [
+        { "lat": 8.566700, "lng": 39.292350 },
+        { "lat": 8.566700, "lng": 39.292800 },
+        { "lat": 8.566350, "lng": 39.292800 },
+        { "lat": 8.566350, "lng": 39.292350 }
+      ],
+      "center": { "lat": 8.566519, "lng": 39.292576 },
+      "rooms": [
+        { "id": "fdorm_blocks", "name": "Female Housing Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Residential dormitory housing blocks for female undergraduate students." }
+      ],
+      "entranceNodeId": "n_female_dorm",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Female Dormitory located at exact coordinates 8.566519, 39.292576.",
+        "department": "Student Housing Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "oda_nebe_dorm",
+      "code": "ONAB",
+      "name": "Oda Nebe Hall (Adarash)",
+      "aliases": ["Oda Nebe Hall", "Oda Nebe Adarash", "Oda Nebe Conference Hall", "Oda Nabe Hall", "ONAB"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.564750, "lng": 39.291100 },
+        { "lat": 8.564750, "lng": 39.291330 },
+        { "lat": 8.564500, "lng": 39.291330 },
+        { "lat": 8.564500, "lng": 39.291100 }
+      ],
+      "center": { "lat": 8.564625, "lng": 39.291216 },
+      "rooms": [
+        { "id": "onab_main", "name": "Oda Nebe Main Conference & Orientation Hall (Adarash)", "floor": 1, "type": "Assembly Hall", "workDescription": "University central assembly hall for orientation, conferences, workshops, and official ceremonies." }
+      ],
+      "entranceNodeId": "n_oda_nebe",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80"],
+        "description": "Oda Nebe Main Conference & Orientation Hall (Adarash) located at exact coordinates 8.564625, 39.291216. Primary venue for student orientation, academic conferences, and university ceremonies.",
+        "department": "University Events & Student Union Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "freshman_male_dorm",
+      "code": "FMDORM",
+      "name": "ASTU Freshman Male Dormitory",
+      "aliases": ["Freshman Male Dorm", "Freshman Male Dormitory", "Freshman Boys Dorm", "FMDORM"],
+      "category": "dormitory",
+      "polygon": [
+        { "lat": 8.567900, "lng": 39.294350 },
+        { "lat": 8.567900, "lng": 39.294800 },
+        { "lat": 8.567550, "lng": 39.294800 },
+        { "lat": 8.567550, "lng": 39.294350 }
+      ],
+      "center": { "lat": 8.567734, "lng": 39.294574 },
+      "rooms": [
+        { "id": "fmdorm_blocks", "name": "Freshman Male Housing Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Primary residential housing blocks for first-year male undergraduate students managed by the Division of Freshman Programs (FDP)." }
+      ],
+      "entranceNodeId": "n_freshman_male_dorm",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Freshman Male Dormitory located at exact coordinates 8.567734, 39.294574. Provides dedicated housing for first-year male students managed by ASTU Division of Freshman Programs (FDP).",
+        "department": "Student Housing & Freshman Programs Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "astu_stadium",
+      "code": "STAD",
+      "name": "ASTU Stadium",
+      "aliases": ["ASTU Stadium", "Stadium", "Asti Stagim", "Sports Field", "Main Stadium", "Football Pitch"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.565650, "lng": 39.294400 },
+        { "lat": 8.565650, "lng": 39.294800 },
+        { "lat": 8.565250, "lng": 39.294800 },
+        { "lat": 8.565250, "lng": 39.294400 }
+      ],
+      "center": { "lat": 8.565458, "lng": 39.294614 },
+      "rooms": [
+        { "id": "stad_field", "name": "Main Football Pitch & Athletics Track", "floor": 0, "type": "Outdoor Sports Facility", "workDescription": "Outdoor sports stadium, football pitch, and running track arena." }
+      ],
+      "entranceNodeId": "n_stadium",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnnso_BEja19V87inKc15fygTcgY6AT5px_ppmEDyPEgI5JsRqR8YItvAhEJt9ALn4ZU5b4_pmcxTj5t3zDW5RQ63_vo4Shesnrl7NcKTdVi7CNaBe7vO_2aKKS8lmCnoG2Lpoo3hHClGc=w408-h306-k-no"],
+        "description": "ASTU Main Outdoor Football Stadium & Athletics Sports Facility located at exact coordinates 8.565458, 39.294614.",
+        "department": "Sports & Youth Development Directorate",
+        "verified": true
+      }
+    },
+    {
       "id": "female_lib",
       "code": "FLIB",
       "name": "ASTU Female Library",
@@ -33,8 +201,8 @@
       "id": "amphitheatre",
       "code": "AMPHI",
       "name": "ASTU Amphitheatre",
-      "aliases": ["Amphitheatre", "ASTU Amphitheatre", "AMPHI"],
-      "category": "academic",
+      "aliases": ["Amphitheatre", "ASTU Amphitheatre", "AMPHI", "Open Air Stage"],
+      "category": "services",
       "polygon": [
         { "lat": 8.563920, "lng": 39.291880 },
         { "lat": 8.563920, "lng": 39.292010 },
@@ -43,13 +211,13 @@
       ],
       "center": { "lat": 8.563885, "lng": 39.291944 },
       "rooms": [
-        { "id": "amphi_main", "name": "Open-air Stage & Seating Arena", "floor": 1, "type": "Event Stage", "workDescription": "University gatherings, graduation, and cultural events." }
+        { "id": "amphi_main", "name": "Open-air Stage & Seating Arena", "floor": 0, "type": "Open-Air Event Venue", "workDescription": "Outdoor open-air amphitheatre stage and seating arena for student gatherings, cultural performances, and graduation events." }
       ],
       "entranceNodeId": "n_amphi",
       "details": {
         "images": ["https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Amphitheatre located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Student Affairs",
+        "description": "ASTU Open-Air Amphitheatre located at 8°33'49.6\"N 39°17'31.0\"E.",
+        "department": "Student Affairs Directorate",
         "verified": true
       }
     },
@@ -154,23 +322,23 @@
       "id": "students_cafe",
       "code": "SCAFE",
       "name": "Students Cafe",
-      "aliases": ["Students Cafe", "Student Lounge", "SCAFE"],
+      "aliases": ["Students Cafe", "Student Lounge", "SCAFE", "Main Students Cafe"],
       "category": "services",
       "polygon": [
-        { "lat": 8.563570, "lng": 39.291880 },
-        { "lat": 8.563570, "lng": 39.292010 },
-        { "lat": 8.563450, "lng": 39.292010 },
-        { "lat": 8.563450, "lng": 39.291880 }
+        { "lat": 8.565850, "lng": 39.290050 },
+        { "lat": 8.565850, "lng": 39.290300 },
+        { "lat": 8.565580, "lng": 39.290300 },
+        { "lat": 8.565580, "lng": 39.290050 }
       ],
-      "center": { "lat": 8.563510, "lng": 39.291944 },
+      "center": { "lat": 8.565718, "lng": 39.290178 },
       "rooms": [
-        { "id": "scafe_hall", "name": "Student Main Dining Hall", "floor": 1, "type": "Cafeteria", "workDescription": "Main undergraduate cafeteria." }
+        { "id": "scafe_hall", "name": "Student Main Dining Hall", "floor": 1, "type": "Cafeteria", "workDescription": "Main undergraduate dining cafeteria serving student meals." }
       ],
       "entranceNodeId": "n_students_cafe",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Students Cafe located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Student Services",
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkpviQowWuEojHDOpI4Fn8nXu2ejbG-D2kPunMvTtoocCdW_I7s3YJNQz-TjDj_IcwctadZ3zhomUMZwD4pwnvrsiNqwbg0GxkL1rJeInvQ_0A3KEpOf8CVbjaNmKCPPULd9qMe=w426-h240-k-no"],
+        "description": "ASTU Students Main Dining Hall & Cafeteria located at exact coordinates 8.565718, 39.290178.",
+        "department": "Campus Food & Student Services Directorate",
         "verified": true
       }
     },
@@ -422,7 +590,7 @@
     { "id": "n_ict", "lat": 8.563778, "lng": 39.292085, "label": "ICT Center Entrance" },
     { "id": "n_sace", "lat": 8.563778, "lng": 39.291795, "label": "SACE Main Gate" },
     { "id": "n_app_sci_lib", "lat": 8.563640, "lng": 39.292085, "label": "Applied Science Library Entrance" },
-    { "id": "n_students_cafe", "lat": 8.563510, "lng": 39.291944, "label": "Students Cafe Entrance" },
+    { "id": "n_students_cafe", "lat": 8.565718, "lng": 39.290178, "label": "Students Cafe Entrance" },
     { "id": "n_b510", "lat": 8.563380, "lng": 39.291944, "label": "B510 Python Lab Gate" },
     { "id": "n_sti", "lat": 8.563640, "lng": 39.291795, "label": "STI Main Entrance" },
     { "id": "n_kamara", "lat": 8.563510, "lng": 39.291795, "label": "Kamara School Entrance" },
@@ -433,9 +601,23 @@
     { "id": "n_pglib_new", "lat": 8.563778, "lng": 39.291650, "label": "PG Library Gate" },
     { "id": "n_liberal_lib", "lat": 8.563640, "lng": 39.291650, "label": "Liberal Library Gate" },
     { "id": "n_staff_lounge", "lat": 8.562998, "lng": 39.292284, "label": "Staff Lounge Entrance" },
+    { "id": "n_stadium", "lat": 8.565458, "lng": 39.294614, "label": "ASTU Stadium Gate" },
+    { "id": "n_freshman_male_dorm", "lat": 8.567734, "lng": 39.294574, "label": "Freshman Male Dorm Entrance" },
+    { "id": "n_oda_nebe", "lat": 8.564625, "lng": 39.291216, "label": "Oda Nebe Entrance" },
+    { "id": "n_female_dorm", "lat": 8.566519, "lng": 39.292576, "label": "Female Dormitory Gate" },
+    { "id": "n_vac", "lat": 8.564861, "lng": 39.292316, "label": "Visual Arts Society Gate" },
+    { "id": "n_ecb", "lat": 8.565049, "lng": 39.29326, "label": "East Campus Block Gate" },
+    { "id": "n_fac1", "lat": 8.565506, "lng": 39.291304, "label": "Campus Block Gate" },
     { "id": "n_central_hub", "lat": 8.563778, "lng": 39.291944, "label": "ASTU 8°33'49.6\"N 39°17'31.0\"E Hub" }
   ],
   "edges": [
+    { "id": "eg_fac1", "source": "n_fac1", "target": "n_central_hub" },
+    { "id": "eg_vac", "source": "n_vac", "target": "n_central_hub" },
+    { "id": "eg_ecb", "source": "n_ecb", "target": "n_stadium" },
+    { "id": "eg_fdorm", "source": "n_female_dorm", "target": "n_stadium" },
+    { "id": "eg_oda_nebe", "source": "n_oda_nebe", "target": "n_central_hub" },
+    { "id": "eg_fmdorm", "source": "n_freshman_male_dorm", "target": "n_stadium" },
+    { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" },
     { "id": "eg1", "source": "n_female_lib", "target": "n_central_hub" },
     { "id": "eg2", "source": "n_amphi", "target": "n_female_lib" },
     { "id": "eg3", "source": "n_prof_cafe", "target": "n_central_hub" },

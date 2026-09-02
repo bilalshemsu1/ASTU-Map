@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker, useMap } from 'react-leaflet';
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, Copy, Check, MapPin } from 'lucide-react';
 import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/types/map';
 
 const googleMarkerIcon = L.icon({
@@ -12,6 +12,15 @@ const googleMarkerIcon = L.icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const clickedPinIcon = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [28, 45],
+  iconAnchor: [14, 45],
+  popupAnchor: [1, -38],
   shadowSize: [41, 41],
 });
 
@@ -45,6 +54,22 @@ interface GoogleMapCanvasClientProps {
   liveUserLocation?: LatLng | null;
   onUpdateLiveLocation?: (coords: LatLng) => void;
   recenterTrigger?: number;
+}
+
+function MapClickHandler({
+  onMapClick,
+}: {
+  onMapClick: (coords: { lat: number; lng: number }) => void;
+}) {
+  useMapEvents({
+    click: (e) => {
+      onMapClick({
+        lat: Number(e.latlng.lat.toFixed(6)),
+        lng: Number(e.latlng.lng.toFixed(6)),
+      });
+    },
+  });
+  return null;
 }
 
 function MapController({
@@ -89,7 +114,7 @@ function ZoomControls() {
   return (
     <div
       style={{ zIndex: 1000 }}
-      className="absolute bottom-52 md:bottom-36 right-4 md:right-6 flex flex-col bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden divide-y divide-gray-200 pointer-events-auto"
+      className="absolute bottom-60 sm:bottom-52 md:bottom-32 right-4 md:right-6 flex flex-col bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden divide-y divide-gray-200 pointer-events-auto"
     >
       <button
         onClick={() => map.zoomIn()}
@@ -133,6 +158,22 @@ export default function GoogleMapCanvasClient({
 
   const mapZoom = currentNavNode ? 19 : selectedBuilding ? 18 : liveUserLocation ? 18 : meta.zoom || 17;
 
+  const [clickedPoint, setClickedPoint] = useState<{ lat: number; lng: number } | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [copiedSuccess, setCopiedSuccess] = useState<boolean>(false);
+
+  const handleMapClick = (coords: { lat: number; lng: number }) => {
+    setClickedPoint(coords);
+    const jsonCoords = `"lat": ${coords.lat}, "lng": ${coords.lng}`;
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(jsonCoords).catch(() => {});
+    }
+    setCopiedSuccess(true);
+    setToastMessage(`Copied: { ${jsonCoords} }`);
+    setTimeout(() => setCopiedSuccess(false), 2000);
+    setTimeout(() => setToastMessage(null), 4000);
+  };
+
   const routePositions: [number, number][] = routeResult
     ? routeResult.path.map((n) => [n.lat, n.lng])
     : [];
@@ -148,6 +189,23 @@ export default function GoogleMapCanvasClient({
 
   return (
     <div className="w-full h-full relative z-0">
+      {/* Toast Notification Banner for Copied Lat/Lng */}
+      {toastMessage && (
+        <div
+          style={{ zIndex: 9999 }}
+          className="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900/95 text-white px-5 py-3 rounded-2xl shadow-2xl border border-emerald-500/50 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-200 pointer-events-auto"
+        >
+          <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
+          <div className="font-mono text-xs text-emerald-300 font-semibold">{toastMessage}</div>
+          <button
+            onClick={() => setToastMessage(null)}
+            className="ml-2 text-gray-400 hover:text-white text-xs font-bold"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
         zoom={meta.zoom || 17}
@@ -156,6 +214,7 @@ export default function GoogleMapCanvasClient({
         className="w-full h-full"
       >
         <MapController center={mapCenter} zoom={mapZoom} recenterTrigger={recenterTrigger} />
+        <MapClickHandler onMapClick={handleMapClick} />
         <ZoomControls />
 
         {/* Esri World Imagery Pure Satellite Tiles without external map labels */}
@@ -165,6 +224,47 @@ export default function GoogleMapCanvasClient({
           maxZoom={22}
           maxNativeZoom={18}
         />
+
+        {/* Digitizer Clicked Point Marker & Popup */}
+        {clickedPoint && (
+          <Marker position={[clickedPoint.lat, clickedPoint.lng]} icon={clickedPinIcon}>
+            <Popup>
+              <div className="p-2 font-sans w-64">
+                <div className="flex items-center gap-1.5 text-violet-700 font-bold text-xs mb-1">
+                  <MapPin className="w-4 h-4" />
+                  <span>Clicked Coordinates</span>
+                </div>
+                <div className="font-mono bg-slate-900 text-emerald-400 p-2 rounded-lg text-[11px] mb-2 select-all break-all">
+                  "lat": {clickedPoint.lat}, "lng": {clickedPoint.lng}
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => {
+                      const text = `"lat": ${clickedPoint.lat}, "lng": ${clickedPoint.lng}`;
+                      navigator.clipboard?.writeText(text);
+                      setToastMessage(`Copied: { ${text} }`);
+                    }}
+                    className="flex-1 flex items-center justify-center gap-1 bg-violet-600 hover:bg-violet-700 text-white py-1.5 px-2 rounded-lg text-[11px] font-semibold transition-colors"
+                  >
+                    <Copy className="w-3 h-3" />
+                    <span>Copy JSON</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      const text = `${clickedPoint.lat}, ${clickedPoint.lng}`;
+                      navigator.clipboard?.writeText(text);
+                      setToastMessage(`Copied: ${text}`);
+                    }}
+                    className="flex-1 flex items-center justify-center gap-1 bg-slate-700 hover:bg-slate-800 text-white py-1.5 px-2 rounded-lg text-[11px] font-semibold transition-colors"
+                  >
+                    <Copy className="w-3 h-3" />
+                    <span>Copy Raw</span>
+                  </button>
+                </div>
+              </div>
+            </Popup>
+          </Marker>
+        )}
 
         {/* Building Pins */}
         {buildings.map((b) => (
