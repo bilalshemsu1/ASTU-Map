@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "ASTU Campus Map",
-    "center": { "lat": 8.5614914, "lng": 39.2893567 },
+    "center": { "lat": 8.56149, "lng": 39.28936 },
     "zoom": 18
   },
   "buildings": [
@@ -17,21 +17,21 @@
         { "lat": 8.56135, "lng": 39.28950 },
         { "lat": 8.56135, "lng": 39.28920 }
       ],
-      "center": { "lat": 8.5614914, "lng": 39.2893567 },
+      "center": { "lat": 8.56149, "lng": 39.28936 },
       "rooms": [
         {
           "id": "b501_r1",
           "name": "B501 Classroom 1",
           "floor": 1,
           "type": "Lecture Classroom",
-          "workDescription": "Used by Architecture students (Arc Studio). Females Library area."
+          "workDescription": "Used by Architecture students (Arc Studio). Located near Females Library."
         },
         {
           "id": "b501_r2",
           "name": "B501 Classroom 2",
           "floor": 1,
           "type": "Lecture Classroom",
-          "workDescription": "Used by Architecture students (Arc Studio). Females Library area."
+          "workDescription": "Used by Architecture students (Arc Studio). Located near Females Library."
         }
       ],
       "entranceNodeId": "n_b501",
@@ -46,56 +46,242 @@
       }
     },
     {
-      "id": "b1",
-      "code": "B1",
-      "name": "Block 1 - Administration Building",
-      "aliases": ["Admin", "Main Office", "Registrar"],
-      "category": "administrative",
+      "id": "b503",
+      "code": "B503",
+      "name": "B503 Arc Studio 1, 2, 3",
+      "aliases": ["B503", "Studio 1", "Studio 2", "Studio 3", "Arc Studio"],
+      "category": "academic",
       "polygon": [
-        { "lat": 8.8865, "lng": 38.8100 },
-        { "lat": 8.8865, "lng": 38.8110 },
-        { "lat": 8.8860, "lng": 38.8110 },
-        { "lat": 8.8860, "lng": 38.8100 }
+        { "lat": 8.56205, "lng": 39.28960 },
+        { "lat": 8.56205, "lng": 39.28990 },
+        { "lat": 8.56180, "lng": 39.28990 },
+        { "lat": 8.56180, "lng": 39.28960 }
       ],
-      "center": { "lat": 8.88625, "lng": 38.8105 },
+      "center": { "lat": 8.56192, "lng": 39.28975 },
       "rooms": [
         {
-          "id": "r101",
-          "name": "Room 101 - President Office",
+          "id": "b503_r1",
+          "name": "Studio 1",
           "floor": 1,
-          "type": "Executive Office",
-          "workDescription": "Executive leadership, strategic university planning, international partnerships, and institutional governance."
+          "type": "Architecture Studio",
+          "workDescription": "Architecture design studio 1."
         },
         {
-          "id": "r102",
-          "name": "Room 102 - Registrar Office",
+          "id": "b503_r2",
+          "name": "Studio 2",
           "floor": 1,
-          "type": "Student Service",
-          "workDescription": "Student course registration, official transcript requests, degree verifications, and student ID card issuing."
+          "type": "Architecture Studio",
+          "workDescription": "Architecture design studio 2."
+        },
+        {
+          "id": "b503_r3",
+          "name": "Studio 3",
+          "floor": 1,
+          "type": "Architecture Studio",
+          "workDescription": "Architecture design studio 3 (located deeper inside)."
         }
       ],
-      "entranceNodeId": "n1",
+      "entranceNodeId": "n_b503",
       "details": {
         "images": [
-          "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80"
+          "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
         ],
-        "description": "Block 1 serves as the central administrative nervous system of the university.",
-        "email": "registrar@astu.edu.et",
-        "department": "Administrative Directorate",
+        "description": "Females library ከፍ ብሎ ያለው Arc Studio ነው ይሄም ምናልባት ብሎኩ ቁጥሩ ከጠፋባችሁ ነው አንጂ ታዋቂ ነው ...Room 3ን ለማግኘት ወደ ውስጥ ገባ በሉ",
+        "department": "Architecture & Urban Planning",
+        "verified": true
+      }
+    },
+    {
+      "id": "b528",
+      "code": "B528",
+      "name": "B528 Chemical Engineering Library",
+      "aliases": ["B528", "Chemical Engineering", "Chem Eng Library"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.56080, "lng": 39.28900 },
+        { "lat": 8.56080, "lng": 39.28925 },
+        { "lat": 8.56050, "lng": 39.28925 },
+        { "lat": 8.56050, "lng": 39.28900 }
+      ],
+      "center": { "lat": 8.56064, "lng": 39.28912 },
+      "rooms": [
+        {
+          "id": "b528_lib",
+          "name": "Chemical Engineering Department Library",
+          "floor": 3,
+          "type": "Department Library",
+          "workDescription": "Located on the 3rd (top) floor via the rear staircase. Quiet study & technical literature."
+        }
+      ],
+      "entranceNodeId": "n_b528",
+      "details": {
+        "images": [
+          "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
+        ],
+        "description": "የ Chemical Engineering Department 🏬 ፎቅ ነው. Atm ኦች ያሉበት(Posta ቤት) ያለበት ቦታ ተሻግሮ ነው ሚገኘው. ላይብረሪውን ለማግኘት በመግቢያው በር ሳይሆን በተቃራኒው ባለው ደረጃ የመጨረሻው Floor(3rd) ላይ ታገኙታላችሁ",
+        "department": "Chemical Engineering Department",
+        "verified": true
+      }
+    },
+    {
+      "id": "b532",
+      "code": "B532",
+      "name": "B532 Materials Science Building",
+      "aliases": ["B532", "Materials Science", "R-204", "R-206", "R-210", "R-212"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56155, "lng": 39.28925 },
+        { "lat": 8.56155, "lng": 39.28945 },
+        { "lat": 8.56130, "lng": 39.28945 },
+        { "lat": 8.56130, "lng": 39.28925 }
+      ],
+      "center": { "lat": 8.56142, "lng": 39.28935 },
+      "rooms": [
+        {
+          "id": "b532_204",
+          "name": "Room R-204",
+          "floor": 2,
+          "type": "Lecture Hall",
+          "workDescription": "Located on the opposite rear wing stairs."
+        },
+        {
+          "id": "b532_206",
+          "name": "Room R-206",
+          "floor": 3,
+          "type": "Lecture Hall",
+          "workDescription": "Located on the 3rd (top) floor via the main entrance staircase."
+        },
+        {
+          "id": "b532_210",
+          "name": "Room R-210",
+          "floor": 3,
+          "type": "Lecture Hall",
+          "workDescription": "Located on the 3rd (top) floor via the main entrance staircase."
+        },
+        {
+          "id": "b532_212",
+          "name": "Room R-212",
+          "floor": 2,
+          "type": "Lecture Hall",
+          "workDescription": "Located on the opposite rear wing stairs."
+        }
+      ],
+      "entranceNodeId": "n_b532",
+      "details": {
+        "images": [
+          "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+        ],
+        "description": "Materials science and engineering department ይባላል ከቦርጫሙ (ከአስተዳደር) ህንፃ ጀርባ የሚገኘውን መናፈሻ ተሻግሮ ነው የሚገኘው. R-206 እና R-210 የሚገኙት በበሩ በኩል እንደተገባ በምታገኙት ደረጃ እንደተለመደው የመጨረሻው Floor (3rd)",
+        "department": "Materials Science & Engineering Department",
+        "verified": true
+      }
+    },
+    {
+      "id": "b530",
+      "code": "B530",
+      "name": "B530 Water Resources Engineering (WRE)",
+      "aliases": ["B530", "WRE", "Water Resources", "WRE-R1", "WRE-R2", "WRE-R3", "WRE-R4"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56110, "lng": 39.28965 },
+        { "lat": 8.56110, "lng": 39.28995 },
+        { "lat": 8.56080, "lng": 39.28995 },
+        { "lat": 8.56080, "lng": 39.28965 }
+      ],
+      "center": { "lat": 8.56095, "lng": 39.28980 },
+      "rooms": [
+        {
+          "id": "wre_r4",
+          "name": "Room WRE-R4",
+          "floor": 1,
+          "type": "Lecture Room",
+          "workDescription": "Located on the 1st floor."
+        },
+        {
+          "id": "wre_r1",
+          "name": "Room WRE-R1",
+          "floor": 3,
+          "type": "Lecture Room",
+          "workDescription": "Located on the top 3rd floor."
+        },
+        {
+          "id": "wre_r2",
+          "name": "Room WRE-R2",
+          "floor": 3,
+          "type": "Lecture Room",
+          "workDescription": "Located on the top 3rd floor."
+        },
+        {
+          "id": "wre_r3",
+          "name": "Room WRE-R3",
+          "floor": 3,
+          "type": "Lecture Room",
+          "workDescription": "Located on the top 3rd floor."
+        }
+      ],
+      "entranceNodeId": "n_b530",
+      "details": {
+        "images": [
+          "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
+        ],
+        "description": "Water Resources Engineering Department ነው ከ Materials Department ጀርባ ነው የሚገኘው. R-4 የመጀመሪያ ፎቅ ላይ ነው የሚገኘው. R-1, R-2 & R-3 የመጨረሻው ፎቅ ላይ ይገኛሉ",
+        "department": "Water Resources Engineering Department",
+        "verified": true
+      }
+    },
+    {
+      "id": "pg_lib",
+      "code": "PGL",
+      "name": "ASTU Postgraduate (PG) Library",
+      "aliases": ["PG Library", "Postgraduate Library", "PGL"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.56225, "lng": 39.28880 },
+        { "lat": 8.56225, "lng": 39.28910 },
+        { "lat": 8.56195, "lng": 39.28910 },
+        { "lat": 8.56195, "lng": 39.28880 }
+      ],
+      "center": { "lat": 8.56210, "lng": 39.28895 },
+      "rooms": [
+        {
+          "id": "pg_lib_main",
+          "name": "PG Main Reading Room & Digital Catalog",
+          "floor": 1,
+          "type": "Library Study Space",
+          "workDescription": "Dedicated quiet research space for Masters and PhD students."
+        }
+      ],
+      "entranceNodeId": "n_pg_lib",
+      "details": {
+        "images": [
+          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80"
+        ],
+        "description": "ASTU Main Postgraduate Library. Serves postgraduate, MSc, and PhD researchers across all science & engineering faculties.",
+        "department": "University Library Directorate",
         "verified": true
       }
     }
   ],
   "nodes": [
-    { "id": "n_b501", "lat": 8.5614914, "lng": 39.2893567, "label": "B501 Entrance Gate" },
-    { "id": "n_b501_path1", "lat": 8.56170, "lng": 39.28935, "label": "B501 North Path Junction" },
-    { "id": "n_b501_path2", "lat": 8.56130, "lng": 39.28935, "label": "B501 South Path Junction" },
-    { "id": "n_gate", "lat": 8.8872, "lng": 38.8105, "label": "Main Gate Entrance" },
-    { "id": "n1", "lat": 8.8860, "lng": 38.8105, "label": "Admin Plaza" }
+    { "id": "n_b501", "lat": 8.56149, "lng": 39.28936, "label": "B501 Entrance" },
+    { "id": "n_b503", "lat": 8.56192, "lng": 39.28975, "label": "B503 Arc Studio Entrance" },
+    { "id": "n_b528", "lat": 8.56064, "lng": 39.28912, "label": "B528 Chem Eng Library Gate" },
+    { "id": "n_b532", "lat": 8.56142, "lng": 39.28935, "label": "B532 Materials Gate" },
+    { "id": "n_b530", "lat": 8.56095, "lng": 39.28980, "label": "B530 Water Resources Entrance" },
+    { "id": "n_pg_lib", "lat": 8.56210, "lng": 39.28895, "label": "PG Library Gate" },
+    { "id": "n_central_cross", "lat": 8.56140, "lng": 39.28940, "label": "Central Academic Junction" },
+    { "id": "n_north_cross", "lat": 8.56200, "lng": 39.28930, "label": "North Library Walkway" },
+    { "id": "n_south_cross", "lat": 8.56080, "lng": 39.28940, "label": "South Department Walkway" }
   ],
   "edges": [
-    { "id": "e_b501_1", "source": "n_b501", "target": "n_b501_path1" },
-    { "id": "e_b501_2", "source": "n_b501", "target": "n_b501_path2" },
-    { "id": "e1", "source": "n_gate", "target": "n1" }
+    { "id": "e1", "source": "n_b501", "target": "n_central_cross" },
+    { "id": "e2", "source": "n_b532", "target": "n_central_cross" },
+    { "id": "e3", "source": "n_central_cross", "target": "n_b503" },
+    { "id": "e4", "source": "n_central_cross", "target": "n_south_cross" },
+    { "id": "e5", "source": "n_south_cross", "target": "n_b528" },
+    { "id": "e6", "source": "n_south_cross", "target": "n_b530" },
+    { "id": "e7", "source": "n_central_cross", "target": "n_north_cross" },
+    { "id": "e8", "source": "n_north_cross", "target": "n_pg_lib" }
   ]
 }
