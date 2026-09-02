@@ -151,24 +151,27 @@ export default function GoogleMapCanvasClient({
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
         zoom={meta.zoom || 17}
+        maxZoom={22}
         zoomControl={false}
         className="w-full h-full"
       >
         <MapController center={mapCenter} zoom={mapZoom} recenterTrigger={recenterTrigger} />
         <ZoomControls />
 
-        {/* Esri World Imagery Satellite Tiles */}
+        {/* Esri World Imagery Satellite Tiles with smooth over-zooming */}
         <TileLayer
           url={getTileUrl()}
           attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-          maxZoom={19}
+          maxZoom={22}
+          maxNativeZoom={18}
         />
 
         {mapType === 'satellite' && (
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png"
-            maxZoom={19}
-            opacity={0.8}
+            maxZoom={22}
+            maxNativeZoom={18}
+            opacity={0.85}
           />
         )}
 
