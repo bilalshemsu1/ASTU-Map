@@ -1,10 +1,50 @@
 {
   "meta": {
-    "name": "ASTU Main Campus",
-    "center": { "lat": 8.8853, "lng": 38.8105 },
-    "zoom": 17
+    "name": "ASTU Campus Map",
+    "center": { "lat": 8.5614914, "lng": 39.2893567 },
+    "zoom": 18
   },
   "buildings": [
+    {
+      "id": "b501",
+      "code": "B501",
+      "name": "B501 Classrooms 1 & 2",
+      "aliases": ["B501", "Classroom 1", "Classroom 2", "Arc Classrooms", "Arc Studio"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56165, "lng": 39.28920 },
+        { "lat": 8.56165, "lng": 39.28950 },
+        { "lat": 8.56135, "lng": 39.28950 },
+        { "lat": 8.56135, "lng": 39.28920 }
+      ],
+      "center": { "lat": 8.5614914, "lng": 39.2893567 },
+      "rooms": [
+        {
+          "id": "b501_r1",
+          "name": "B501 Classroom 1",
+          "floor": 1,
+          "type": "Lecture Classroom",
+          "workDescription": "Used by Architecture students (Arc Studio). Females Library area."
+        },
+        {
+          "id": "b501_r2",
+          "name": "B501 Classroom 2",
+          "floor": 1,
+          "type": "Lecture Classroom",
+          "workDescription": "Used by Architecture students (Arc Studio). Females Library area."
+        }
+      ],
+      "entranceNodeId": "n_b501",
+      "details": {
+        "images": [
+          "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+        ],
+        "description": "Females Library አካባቢ ነው የሚገኘው.. ከ Arc Studio በተቃራኒው በኩል ሌላ Arc ኦች የሚጠቀሙበት class ኦች ናቸው",
+        "department": "Architecture & Urban Planning",
+        "verified": true
+      }
+    },
     {
       "id": "b1",
       "code": "B1",
@@ -32,298 +72,30 @@
           "floor": 1,
           "type": "Student Service",
           "workDescription": "Student course registration, official transcript requests, degree verifications, and student ID card issuing."
-        },
-        {
-          "id": "r201",
-          "name": "Room 201 - Finance & Payroll",
-          "floor": 2,
-          "type": "Finance Office",
-          "workDescription": "Tuition fee processing, staff payroll management, research grant disbursements, and budget auditing."
-        },
-        {
-          "id": "r202",
-          "name": "Room 202 - Human Resources",
-          "floor": 2,
-          "type": "HR Office",
-          "workDescription": "Faculty recruitment, academic staff accreditation, employee benefits, and staff welfare."
         }
       ],
       "entranceNodeId": "n1",
       "details": {
         "images": [
-          "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+          "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80"
         ],
-        "description": "Block 1 serves as the central administrative nervous system of Addis Ababa Science and Technology University (ASTU). Established to coordinate institutional operations, it houses the Office of the University President, Academic Vice President, Student Affairs Registrar, and Financial Directorate. All official university documentation, student admissions, graduation clearances, and international academic collaborations are managed in this building.",
-        "history": "Constructed during the initial phase of ASTU's campus expansion in 2011, Block 1 stands at the central north plaza directly facing the Main Gate.",
+        "description": "Block 1 serves as the central administrative nervous system of the university.",
         "email": "registrar@astu.edu.et",
-        "phone": "+251 11 896 1478",
-        "website": "https://www.astu.edu.et/admin",
-        "hours": "Mon - Fri: 8:00 AM - 5:00 PM (Lunch Break: 12:30 PM - 1:30 PM)",
-        "department": "University Executive Administration & Student Services",
-        "headOfDepartment": "Dr. Dereje Engida (University President)",
-        "totalCapacity": 250,
-        "features": ["Wheelchair Accessible Ramp", "High-Speed Wi-Fi Zone", "Student Help Desk", "CBE ATM Machine", "Security Checkpoint"],
-        "verified": true
-      }
-    },
-    {
-      "id": "b7",
-      "code": "B7",
-      "name": "Block 7 - Electrical & Computer Engineering",
-      "aliases": ["Electrical Eng", "ECE", "Block 7", "Computer Lab"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.8855, "lng": 38.8090 },
-        { "lat": 8.8855, "lng": 38.8098 },
-        { "lat": 8.8848, "lng": 38.8098 },
-        { "lat": 8.8848, "lng": 38.8090 }
-      ],
-      "center": { "lat": 8.88515, "lng": 38.8094 },
-      "rooms": [
-        {
-          "id": "r001",
-          "name": "Room G-01 - Power Systems & High Voltage Lab",
-          "floor": 0,
-          "type": "Specialized Lab",
-          "capacity": 45,
-          "workDescription": "Testing high voltage transformers, electrical power grid simulation, motor control drives, and renewable energy grid integration.",
-          "equipment": ["3-Phase Power Trainers", "Digital Storage Oscilloscopes", "High Voltage Generators"]
-        },
-        {
-          "id": "r105",
-          "name": "Room 105 - Embedded Systems & Hardware Lab",
-          "floor": 1,
-          "type": "Computer Lab",
-          "capacity": 40,
-          "workDescription": "Microcontroller programming (ARM, AVR, ESP32), FPGA logic synthesis, PCB circuit design, and Internet of Things (IoT) hardware debugging.",
-          "equipment": ["Xilinx FPGA Kits", "Soldering Stations", "Logic Analyzers", "3D Printers"]
-        },
-        {
-          "id": "r204",
-          "name": "Room 204 - Advanced Computer Engineering Lab",
-          "floor": 2,
-          "type": "Lecture & Lab",
-          "capacity": 60,
-          "workDescription": "Undergraduate & postgraduate lectures in Computer Architecture, VLSI Design, Digital Signal Processing, and Embedded Operating Systems.",
-          "equipment": ["High-Spec Workstations", "HD Overhead Projector", "Smart Interactive Board"]
-        },
-        {
-          "id": "r301",
-          "name": "Room 301 - Telecommunications & Microwave Antenna Lab",
-          "floor": 3,
-          "type": "Research Lab",
-          "capacity": 35,
-          "workDescription": "Wireless signal propagation modeling, RF antenna design, fiber optic communication testing, and 5G network research.",
-          "equipment": ["Spectrum Analyzers", "RF Signal Generators", "Splicing Machines"]
-        }
-      ],
-      "entranceNodeId": "n3",
-      "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "Block 7 is the dedicated academic building for the Department of Electrical and Computer Engineering (ECE). The building spans 4 floors equipped with cutting-edge engineering research laboratories, high-voltage test bays, embedded systems development hardware, and telecommunications research equipment.",
-        "history": "Upgraded in 2018 under the Ethiopian National Center of Excellence Initiative to provide state-of-the-art STEM hardware design facilities.",
-        "email": "ece@astu.edu.et",
-        "phone": "+251 11 896 2200",
-        "website": "https://www.astu.edu.et/ece",
-        "hours": "Mon - Sat: 7:30 AM - 8:30 PM",
-        "department": "School of Electrical Engineering & Computing",
-        "headOfDepartment": "Dr. Worku G. (Department Head)",
-        "totalCapacity": 450,
-        "features": ["1Gbps Fiber Optic Network", "Hardware Synth Lab", "Solar Power Backup", "Projector Classrooms", "Wheelchair Accessible"],
-        "verified": true
-      }
-    },
-    {
-      "id": "b8",
-      "code": "B8",
-      "name": "Block 8 - Software & Civil Engineering",
-      "aliases": ["Software Eng", "Civil Eng", "Block 8"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.8855, "lng": 38.8102 },
-        { "lat": 8.8855, "lng": 38.8110 },
-        { "lat": 8.8848, "lng": 38.8110 },
-        { "lat": 8.8848, "lng": 38.8102 }
-      ],
-      "center": { "lat": 8.88515, "lng": 38.8106 },
-      "rooms": [
-        {
-          "id": "r101",
-          "name": "Room 101 - Materials & Concrete Testing Lab",
-          "floor": 0,
-          "type": "Civil Engineering Lab",
-          "capacity": 40,
-          "workDescription": "Stress-strain testing of concrete cubes, soil mechanics analysis, structural beam loading tests, and asphalt quality verification."
-        },
-        {
-          "id": "r201",
-          "name": "Room 201 - Software Development Studio",
-          "floor": 2,
-          "type": "Software Studio",
-          "capacity": 55,
-          "workDescription": "Full-stack web application development, mobile app lab, Agile sprint team practice, and cloud computing workshops."
-        },
-        {
-          "id": "r301",
-          "name": "Room 301 - Artificial Intelligence & Computer Vision Hub",
-          "floor": 3,
-          "type": "AI Research Lab",
-          "capacity": 30,
-          "workDescription": "Deep learning model training, natural language processing for Amharic/Oromo languages, computer vision for drone navigation, and robotics control."
-        }
-      ],
-      "entranceNodeId": "n4",
-      "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "Block 8 houses the dual disciplines of Software Engineering and Civil Engineering. It features software innovation incubators on the upper floors and heavy civil structural testing equipment on the ground floor.",
-        "email": "se@astu.edu.et",
-        "phone": "+251 11 896 2310",
-        "website": "https://www.astu.edu.et/se",
-        "hours": "Mon - Fri: 8:00 AM - 7:00 PM",
-        "department": "School of Civil & Software Engineering",
-        "headOfDepartment": "Dr. Solomon T. (School Dean)",
-        "totalCapacity": 380,
-        "features": ["GPU AI Server Rack", "Civil CAD Station", "Wi-Fi Zone", "Projector Rooms"],
-        "verified": true
-      }
-    },
-    {
-      "id": "lib",
-      "code": "LIB",
-      "name": "Central Library & Digital Knowledge Hub",
-      "aliases": ["Library", "Main Library", "Digital Library"],
-      "category": "library",
-      "polygon": [
-        { "lat": 8.8858, "lng": 38.8115 },
-        { "lat": 8.8858, "lng": 38.8125 },
-        { "lat": 8.8850, "lng": 38.8125 },
-        { "lat": 8.8850, "lng": 38.8115 }
-      ],
-      "center": { "lat": 8.8854, "lng": 38.8120 },
-      "rooms": [
-        {
-          "id": "lib-g",
-          "name": "Ground Floor - Silent Main Reading Hall",
-          "floor": 0,
-          "type": "Reading Hall",
-          "capacity": 350,
-          "workDescription": "Strict silent self-study area for undergraduate and graduate students with individual study cubicles and reference textbook stacks."
-        },
-        {
-          "id": "lib-1",
-          "name": "1st Floor - E-Learning Center & IEEE Digital Hub",
-          "floor": 1,
-          "type": "Digital Lab",
-          "capacity": 150,
-          "workDescription": "200+ desktop PCs providing direct online access to IEEE Xplore, ScienceDirect, Springer, digital theses repository, and fast research printing."
-        },
-        {
-          "id": "lib-2",
-          "name": "2nd Floor - Postgraduate Research & Collaborative Study Rooms",
-          "floor": 2,
-          "type": "Discussion Rooms",
-          "capacity": 80,
-          "workDescription": "Group discussion rooms for senior capstone project teams, Master's degree thesis preparation, and faculty research meetings."
-        }
-      ],
-      "entranceNodeId": "n6",
-      "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "The ASTU Central Library is a 3-story landmark knowledge center holding over 60,000 printed engineering and natural science textbooks alongside subscriptions to global digital academic journals. It offers quiet study environments, desktop computer suites, high-speed campus internet, and digital archival services.",
-        "email": "library@astu.edu.et",
-        "phone": "+251 11 896 3000",
-        "website": "https://library.astu.edu.et",
-        "hours": "Mon - Sun: 7:00 AM - 10:00 PM",
-        "department": "University Library & Information Services",
-        "headOfDepartment": "Ato Biruk M. (Director of Library Services)",
-        "totalCapacity": 600,
-        "features": ["Silent Study Cubicles", "200+ PC E-Library", "IEEE Xplore Access", "High-Speed Wi-Fi", "Printing & Binding Station", "Wheelchair Elevator"],
-        "verified": true
-      }
-    },
-    {
-      "id": "cafeteria",
-      "code": "CAF",
-      "name": "Student Dining Hall (Cafeteria)",
-      "aliases": ["Cafeteria", "Cafe", "Dining Hall"],
-      "category": "dining",
-      "polygon": [
-        { "lat": 8.8842, "lng": 38.8095 },
-        { "lat": 8.8842, "lng": 38.8105 },
-        { "lat": 8.8836, "lng": 38.8105 },
-        { "lat": 8.8836, "lng": 38.8095 }
-      ],
-      "center": { "lat": 8.8839, "lng": 38.8100 },
-      "rooms": [
-        {
-          "id": "caf-1",
-          "name": "Ground Floor - Main Student Dining Hall",
-          "floor": 0,
-          "type": "Dining Area",
-          "capacity": 800,
-          "workDescription": "Serving fresh daily traditional Ethiopian meals (Injera, Wot) and international dishes to regular campus students."
-        },
-        {
-          "id": "caf-2",
-          "name": "1st Floor - Staff & Faculty Lounge & Coffee Bar",
-          "floor": 1,
-          "type": "Staff Cafe",
-          "capacity": 150,
-          "workDescription": "Dedicated dining room and traditional Ethiopian coffee ceremony bar for ASTU academic faculty and administrative staff."
-        }
-      ],
-      "entranceNodeId": "n8",
-      "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "The main campus dining facility capable of catering for over 4,000 students daily across scheduled breakfast, lunch, and dinner shifts.",
-        "email": "catering@astu.edu.et",
-        "phone": "+251 11 896 4100",
-        "hours": "Daily: 6:30 AM - 8:30 PM (Breakfast: 6:30-8:00 AM, Lunch: 11:30 AM-1:30 PM, Dinner: 5:30-7:30 PM)",
-        "department": "Student Welfare & Food Services",
-        "totalCapacity": 950,
-        "features": ["Fresh Hot Meals", "Staff Coffee Lounge", "Sanitized Dining Tables"],
+        "department": "Administrative Directorate",
         "verified": true
       }
     }
   ],
   "nodes": [
+    { "id": "n_b501", "lat": 8.5614914, "lng": 39.2893567, "label": "B501 Entrance Gate" },
+    { "id": "n_b501_path1", "lat": 8.56170, "lng": 39.28935, "label": "B501 North Path Junction" },
+    { "id": "n_b501_path2", "lat": 8.56130, "lng": 39.28935, "label": "B501 South Path Junction" },
     { "id": "n_gate", "lat": 8.8872, "lng": 38.8105, "label": "Main Gate Entrance" },
-    { "id": "n1", "lat": 8.8860, "lng": 38.8105, "label": "Admin Plaza" },
-    { "id": "n2", "lat": 8.8860, "lng": 38.8094, "label": "West Walkway Junction" },
-    { "id": "n3", "lat": 8.8855, "lng": 38.8094, "label": "Block 7 Entrance" },
-    { "id": "n4", "lat": 8.8855, "lng": 38.8106, "label": "Block 8 Entrance" },
-    { "id": "n5", "lat": 8.8855, "lng": 38.8112, "label": "Central Quad" },
-    { "id": "n6", "lat": 8.8855, "lng": 38.8115, "label": "Library Plaza" },
-    { "id": "n7", "lat": 8.8844, "lng": 38.8100, "label": "South Campus Avenue" },
-    { "id": "n8", "lat": 8.8842, "lng": 38.8100, "label": "Cafeteria Gate" }
+    { "id": "n1", "lat": 8.8860, "lng": 38.8105, "label": "Admin Plaza" }
   ],
   "edges": [
-    { "id": "e1", "source": "n_gate", "target": "n1" },
-    { "id": "e2", "source": "n1", "target": "n2" },
-    { "id": "e3", "source": "n2", "target": "n3" },
-    { "id": "e4", "source": "n2", "target": "n4" },
-    { "id": "e5", "source": "n1", "target": "n5" },
-    { "id": "e6", "source": "n5", "target": "n4" },
-    { "id": "e7", "source": "n5", "target": "n6" },
-    { "id": "e8", "source": "n4", "target": "n7" },
-    { "id": "e9", "source": "n7", "target": "n8" }
+    { "id": "e_b501_1", "source": "n_b501", "target": "n_b501_path1" },
+    { "id": "e_b501_2", "source": "n_b501", "target": "n_b501_path2" },
+    { "id": "e1", "source": "n_gate", "target": "n1" }
   ]
 }
