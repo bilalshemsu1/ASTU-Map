@@ -1,287 +1,457 @@
 {
   "meta": {
     "name": "ASTU Campus Map",
-    "center": { "lat": 8.56149, "lng": 39.28936 },
-    "zoom": 18
+    "center": { "lat": 8.56300, "lng": 39.29200 },
+    "zoom": 17
   },
   "buildings": [
     {
-      "id": "b501",
-      "code": "B501",
-      "name": "B501 Classrooms 1 & 2",
-      "aliases": ["B501", "Classroom 1", "Classroom 2", "Arc Classrooms", "Arc Studio"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.56165, "lng": 39.28920 },
-        { "lat": 8.56165, "lng": 39.28950 },
-        { "lat": 8.56135, "lng": 39.28950 },
-        { "lat": 8.56135, "lng": 39.28920 }
-      ],
-      "center": { "lat": 8.56149, "lng": 39.28936 },
-      "rooms": [
-        {
-          "id": "b501_r1",
-          "name": "B501 Classroom 1",
-          "floor": 1,
-          "type": "Lecture Classroom",
-          "workDescription": "Used by Architecture students (Arc Studio). Located near Females Library."
-        },
-        {
-          "id": "b501_r2",
-          "name": "B501 Classroom 2",
-          "floor": 1,
-          "type": "Lecture Classroom",
-          "workDescription": "Used by Architecture students (Arc Studio). Located near Females Library."
-        }
-      ],
-      "entranceNodeId": "n_b501",
-      "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "Females Library አካባቢ ነው የሚገኘው.. ከ Arc Studio በተቃራኒው በኩል ሌላ Arc ኦች የሚጠቀሙበት class ኦች ናቸው",
-        "department": "Architecture & Urban Planning",
-        "verified": true
-      }
-    },
-    {
-      "id": "b503",
-      "code": "B503",
-      "name": "B503 Arc Studio 1, 2, 3",
-      "aliases": ["B503", "Studio 1", "Studio 2", "Studio 3", "Arc Studio"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.56205, "lng": 39.28960 },
-        { "lat": 8.56205, "lng": 39.28990 },
-        { "lat": 8.56180, "lng": 39.28990 },
-        { "lat": 8.56180, "lng": 39.28960 }
-      ],
-      "center": { "lat": 8.56192, "lng": 39.28975 },
-      "rooms": [
-        {
-          "id": "b503_r1",
-          "name": "Studio 1",
-          "floor": 1,
-          "type": "Architecture Studio",
-          "workDescription": "Architecture design studio 1."
-        },
-        {
-          "id": "b503_r2",
-          "name": "Studio 2",
-          "floor": 1,
-          "type": "Architecture Studio",
-          "workDescription": "Architecture design studio 2."
-        },
-        {
-          "id": "b503_r3",
-          "name": "Studio 3",
-          "floor": 1,
-          "type": "Architecture Studio",
-          "workDescription": "Architecture design studio 3 (located deeper inside)."
-        }
-      ],
-      "entranceNodeId": "n_b503",
-      "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "Females library ከፍ ብሎ ያለው Arc Studio ነው ይሄም ምናልባት ብሎኩ ቁጥሩ ከጠፋባችሁ ነው አንጂ ታዋቂ ነው ...Room 3ን ለማግኘት ወደ ውስጥ ገባ በሉ",
-        "department": "Architecture & Urban Planning",
-        "verified": true
-      }
-    },
-    {
-      "id": "b528",
-      "code": "B528",
-      "name": "B528 Chemical Engineering Library",
-      "aliases": ["B528", "Chemical Engineering", "Chem Eng Library"],
+      "id": "female_lib",
+      "code": "FLIB",
+      "name": "ASTU Female Library",
+      "aliases": ["Female Library", "Females Library", "FLIB"],
       "category": "library",
       "polygon": [
-        { "lat": 8.56080, "lng": 39.28900 },
-        { "lat": 8.56080, "lng": 39.28925 },
-        { "lat": 8.56050, "lng": 39.28925 },
-        { "lat": 8.56050, "lng": 39.28900 }
+        { "lat": 8.56385, "lng": 39.29185 },
+        { "lat": 8.56385, "lng": 39.29210 },
+        { "lat": 8.56365, "lng": 39.29210 },
+        { "lat": 8.56365, "lng": 39.29185 }
       ],
-      "center": { "lat": 8.56064, "lng": 39.28912 },
+      "center": { "lat": 8.563778, "lng": 39.291944 },
       "rooms": [
-        {
-          "id": "b528_lib",
-          "name": "Chemical Engineering Department Library",
-          "floor": 3,
-          "type": "Department Library",
-          "workDescription": "Located on the 3rd (top) floor via the rear staircase. Quiet study & technical literature."
-        }
+        { "id": "flib_r1", "name": "Female Library Main Reading Room", "floor": 1, "type": "Quiet Study Area", "workDescription": "Dedicated quiet study space for female students." }
       ],
-      "entranceNodeId": "n_b528",
+      "entranceNodeId": "n_female_lib",
       "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "የ Chemical Engineering Department 🏬 ፎቅ ነው. Atm ኦች ያሉበት(Posta ቤት) ያለበት ቦታ ተሻግሮ ነው ሚገኘው. ላይብረሪውን ለማግኘት በመግቢያው በር ሳይሆን በተቃራኒው ባለው ደረጃ የመጨረሻው Floor(3rd) ላይ ታገኙታላችሁ",
-        "department": "Chemical Engineering Department",
+        "images": ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Female Library located near Arc Studios.",
+        "department": "Library Directorate",
         "verified": true
       }
     },
     {
-      "id": "b532",
-      "code": "B532",
-      "name": "B532 Materials Science Building",
-      "aliases": ["B532", "Materials Science", "R-204", "R-206", "R-210", "R-212"],
+      "id": "amphitheatre",
+      "code": "AMPHI",
+      "name": "ASTU Amphitheatre",
+      "aliases": ["Amphitheatre", "ASTU Amphitheatre", "AMPHI"],
       "category": "academic",
       "polygon": [
-        { "lat": 8.56155, "lng": 39.28925 },
-        { "lat": 8.56155, "lng": 39.28945 },
-        { "lat": 8.56130, "lng": 39.28945 },
-        { "lat": 8.56130, "lng": 39.28925 }
+        { "lat": 8.56410, "lng": 39.29150 },
+        { "lat": 8.56410, "lng": 39.29180 },
+        { "lat": 8.56390, "lng": 39.29180 },
+        { "lat": 8.56390, "lng": 39.29150 }
       ],
-      "center": { "lat": 8.56142, "lng": 39.28935 },
+      "center": { "lat": 8.56400, "lng": 39.29165 },
       "rooms": [
-        {
-          "id": "b532_204",
-          "name": "Room R-204",
-          "floor": 2,
-          "type": "Lecture Hall",
-          "workDescription": "Located on the opposite rear wing stairs."
-        },
-        {
-          "id": "b532_206",
-          "name": "Room R-206",
-          "floor": 3,
-          "type": "Lecture Hall",
-          "workDescription": "Located on the 3rd (top) floor via the main entrance staircase."
-        },
-        {
-          "id": "b532_210",
-          "name": "Room R-210",
-          "floor": 3,
-          "type": "Lecture Hall",
-          "workDescription": "Located on the 3rd (top) floor via the main entrance staircase."
-        },
-        {
-          "id": "b532_212",
-          "name": "Room R-212",
-          "floor": 2,
-          "type": "Lecture Hall",
-          "workDescription": "Located on the opposite rear wing stairs."
-        }
+        { "id": "amphi_main", "name": "Open-air Stage & Seating Arena", "floor": 1, "type": "Event Stage", "workDescription": "University gatherings, graduation, and cultural events." }
       ],
-      "entranceNodeId": "n_b532",
+      "entranceNodeId": "n_amphi",
       "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "Materials science and engineering department ይባላል ከቦርጫሙ (ከአስተዳደር) ህንፃ ጀርባ የሚገኘውን መናፈሻ ተሻግሮ ነው የሚገኘው. R-206 እና R-210 የሚገኙት በበሩ በኩል እንደተገባ በምታገኙት ደረጃ እንደተለመደው የመጨረሻው Floor (3rd)",
-        "department": "Materials Science & Engineering Department",
+        "images": ["https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Open Outdoor Amphitheatre for large events and assemblies.",
+        "department": "Student Affairs",
         "verified": true
       }
     },
     {
-      "id": "b530",
-      "code": "B530",
-      "name": "B530 Water Resources Engineering (WRE)",
-      "aliases": ["B530", "WRE", "Water Resources", "WRE-R1", "WRE-R2", "WRE-R3", "WRE-R4"],
+      "id": "prof_cafe",
+      "code": "PCAFE",
+      "name": "ASTU Cafe (Professor)",
+      "aliases": ["Professor Cafe", "Staff Cafe", "Prof Cafe"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.56350, "lng": 39.29150 },
+        { "lat": 8.56350, "lng": 39.29175 },
+        { "lat": 8.56335, "lng": 39.29175 },
+        { "lat": 8.56335, "lng": 39.29150 }
+      ],
+      "center": { "lat": 8.56342, "lng": 39.29162 },
+      "rooms": [
+        { "id": "pcafe_main", "name": "Dining Hall & Coffee Lounge", "floor": 1, "type": "Cafeteria", "workDescription": "Dining service for ASTU professors and staff." }
+      ],
+      "entranceNodeId": "n_prof_cafe",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"],
+        "description": "Professor and Academic Staff Cafeteria.",
+        "department": "Campus Food Services",
+        "verified": true
+      }
+    },
+    {
+      "id": "ict_center",
+      "code": "ICT",
+      "name": "ICT Center ASTU",
+      "aliases": ["ICT Center", "ASTU ICT", "ICT"],
       "category": "academic",
       "polygon": [
-        { "lat": 8.56110, "lng": 39.28965 },
-        { "lat": 8.56110, "lng": 39.28995 },
-        { "lat": 8.56080, "lng": 39.28995 },
-        { "lat": 8.56080, "lng": 39.28965 }
+        { "lat": 8.56360, "lng": 39.29220 },
+        { "lat": 8.56360, "lng": 39.29250 },
+        { "lat": 8.56340, "lng": 39.29250 },
+        { "lat": 8.56340, "lng": 39.29220 }
       ],
-      "center": { "lat": 8.56095, "lng": 39.28980 },
+      "center": { "lat": 8.56350, "lng": 39.29235 },
       "rooms": [
-        {
-          "id": "wre_r4",
-          "name": "Room WRE-R4",
-          "floor": 1,
-          "type": "Lecture Room",
-          "workDescription": "Located on the 1st floor."
-        },
-        {
-          "id": "wre_r1",
-          "name": "Room WRE-R1",
-          "floor": 3,
-          "type": "Lecture Room",
-          "workDescription": "Located on the top 3rd floor."
-        },
-        {
-          "id": "wre_r2",
-          "name": "Room WRE-R2",
-          "floor": 3,
-          "type": "Lecture Room",
-          "workDescription": "Located on the top 3rd floor."
-        },
-        {
-          "id": "wre_r3",
-          "name": "Room WRE-R3",
-          "floor": 3,
-          "type": "Lecture Room",
-          "workDescription": "Located on the top 3rd floor."
-        }
+        { "id": "ict_server", "name": "Central Server Room", "floor": 1, "type": "Data Center", "workDescription": "Core university network infrastructure." },
+        { "id": "ict_lab", "name": "ICT Training Lab", "floor": 2, "type": "Computer Lab", "workDescription": "High speed network computer lab." }
       ],
-      "entranceNodeId": "n_b530",
+      "entranceNodeId": "n_ict",
       "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "Water Resources Engineering Department ነው ከ Materials Department ጀርባ ነው የሚገኘው. R-4 የመጀመሪያ ፎቅ ላይ ነው የሚገኘው. R-1, R-2 & R-3 የመጨረሻው ፎቅ ላይ ይገኛሉ",
-        "department": "Water Resources Engineering Department",
+        "images": ["https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80"],
+        "description": "ICT Center ASTU - Information & Communication Technology Directorate.",
+        "department": "ICT Directorate",
         "verified": true
       }
     },
     {
-      "id": "pg_lib",
-      "code": "PGL",
-      "name": "ASTU Postgraduate (PG) Library",
-      "aliases": ["PG Library", "Postgraduate Library", "PGL"],
+      "id": "sace",
+      "code": "SACE",
+      "name": "ASTU School of Architecture and Civil Engineering",
+      "aliases": ["SACE", "School of Architecture", "Civil Engineering", "Architecture School"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56330, "lng": 39.29260 },
+        { "lat": 8.56330, "lng": 39.29295 },
+        { "lat": 8.56305, "lng": 39.29295 },
+        { "lat": 8.56305, "lng": 39.29260 }
+      ],
+      "center": { "lat": 8.56318, "lng": 39.29278 },
+      "rooms": [
+        { "id": "sace_dean", "name": "Dean's Office", "floor": 1, "type": "Administrative Office", "workDescription": "School of Architecture Dean & Dept Offices." }
+      ],
+      "entranceNodeId": "n_sace",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU School of Architecture and Civil Engineering (SACE).",
+        "department": "School of Architecture & Civil Engineering",
+        "verified": true
+      }
+    },
+    {
+      "id": "app_sci_lib",
+      "code": "APSL",
+      "name": "Applied Science Library",
+      "aliases": ["Applied Science Library", "APSL"],
       "category": "library",
       "polygon": [
-        { "lat": 8.56225, "lng": 39.28880 },
-        { "lat": 8.56225, "lng": 39.28910 },
-        { "lat": 8.56195, "lng": 39.28910 },
-        { "lat": 8.56195, "lng": 39.28880 }
+        { "lat": 8.56380, "lng": 39.29260 },
+        { "lat": 8.56380, "lng": 39.29285 },
+        { "lat": 8.56365, "lng": 39.29285 },
+        { "lat": 8.56365, "lng": 39.29260 }
       ],
-      "center": { "lat": 8.56210, "lng": 39.28895 },
+      "center": { "lat": 8.56372, "lng": 39.29272 },
       "rooms": [
-        {
-          "id": "pg_lib_main",
-          "name": "PG Main Reading Room & Digital Catalog",
-          "floor": 1,
-          "type": "Library Study Space",
-          "workDescription": "Dedicated quiet research space for Masters and PhD students."
-        }
+        { "id": "apsl_main", "name": "Applied Science Reading Hall", "floor": 1, "type": "Library", "workDescription": "Books & digital resources for Applied Natural Science students." }
       ],
-      "entranceNodeId": "n_pg_lib",
+      "entranceNodeId": "n_app_sci_lib",
       "details": {
-        "images": [
-          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80"
-        ],
-        "description": "ASTU Main Postgraduate Library. Serves postgraduate, MSc, and PhD researchers across all science & engineering faculties.",
-        "department": "University Library Directorate",
+        "images": ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"],
+        "description": "Applied Science Library at ASTU.",
+        "department": "Library Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "students_cafe",
+      "code": "SCAFE",
+      "name": "ASTU Students Cafe",
+      "aliases": ["Students Cafe", "Student Lounge", "SCAFE"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.56270, "lng": 39.29150 },
+        { "lat": 8.56270, "lng": 39.29185 },
+        { "lat": 8.56245, "lng": 39.29185 },
+        { "lat": 8.56245, "lng": 39.29150 }
+      ],
+      "center": { "lat": 8.56258, "lng": 39.29168 },
+      "rooms": [
+        { "id": "scafe_hall", "name": "Student Main Dining Hall", "floor": 1, "type": "Cafeteria", "workDescription": "Main undergraduate cafeteria." }
+      ],
+      "entranceNodeId": "n_students_cafe",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Main Students Cafeteria.",
+        "department": "Student Services",
+        "verified": true
+      }
+    },
+    {
+      "id": "b510",
+      "code": "B510",
+      "name": "ASTU Block 510 (Python Lab)",
+      "aliases": ["Block 510", "B510", "Python Lab"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56270, "lng": 39.29200 },
+        { "lat": 8.56270, "lng": 39.29230 },
+        { "lat": 8.56250, "lng": 39.29230 },
+        { "lat": 8.56250, "lng": 39.29200 }
+      ],
+      "center": { "lat": 8.56260, "lng": 39.29215 },
+      "rooms": [
+        { "id": "b510_python", "name": "Python Programming Lab", "floor": 2, "type": "Computer Lab", "workDescription": "High specs Linux & Python coding lab." }
+      ],
+      "entranceNodeId": "n_b510",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Block 510 - Python & Software Engineering Computer Labs.",
+        "department": "CSE Department",
+        "verified": true
+      }
+    },
+    {
+      "id": "sti",
+      "code": "STI",
+      "name": "Space Technology Institute (STI)",
+      "aliases": ["STI", "Space Technology Institute", "Space Tech"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56230, "lng": 39.29240 },
+        { "lat": 8.56230, "lng": 39.29275 },
+        { "lat": 8.56205, "lng": 39.29275 },
+        { "lat": 8.56205, "lng": 39.29240 }
+      ],
+      "center": { "lat": 8.56218, "lng": 39.29258 },
+      "rooms": [
+        { "id": "sti_research", "name": "Satellite Communications Lab", "floor": 1, "type": "Research Lab", "workDescription": "Aerospace & satellite systems research." }
+      ],
+      "entranceNodeId": "n_sti",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Space Technology Institute (STI).",
+        "department": "Aerospace Engineering",
+        "verified": true
+      }
+    },
+    {
+      "id": "kamara_school",
+      "code": "KSCH",
+      "name": "Kamara School ASTU",
+      "aliases": ["Kamara School", "Kamara"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56300, "lng": 39.29110 },
+        { "lat": 8.56300, "lng": 39.29140 },
+        { "lat": 8.56280, "lng": 39.29140 },
+        { "lat": 8.56280, "lng": 39.29110 }
+      ],
+      "center": { "lat": 8.56290, "lng": 39.29125 },
+      "rooms": [
+        { "id": "ksch_r1", "name": "Kamara Lecture Hall 1", "floor": 1, "type": "Lecture Hall", "workDescription": "Specialized lecture classroom." }
+      ],
+      "entranceNodeId": "n_kamara",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80"],
+        "description": "Kamara School at ASTU.",
+        "department": "Academic Affairs",
+        "verified": true
+      }
+    },
+    {
+      "id": "b517",
+      "code": "B517",
+      "name": "Building 517 (B517)",
+      "aliases": ["B517", "Building 517", "Block 517"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56210, "lng": 39.29190 },
+        { "lat": 8.56210, "lng": 39.29220 },
+        { "lat": 8.56190, "lng": 39.29220 },
+        { "lat": 8.56190, "lng": 39.29190 }
+      ],
+      "center": { "lat": 8.56200, "lng": 39.29205 },
+      "rooms": [
+        { "id": "b517_r1", "name": "B517 Room 101", "floor": 1, "type": "Lecture Room", "workDescription": "General engineering classroom." }
+      ],
+      "entranceNodeId": "n_b517",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Building 517 (B517).",
+        "department": "Engineering Faculty",
+        "verified": true
+      }
+    },
+    {
+      "id": "b522",
+      "code": "B522",
+      "name": "B522 Freshman Dev",
+      "aliases": ["B522", "Freshman Dev", "B522 Freshman"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56170, "lng": 39.29200 },
+        { "lat": 8.56170, "lng": 39.29230 },
+        { "lat": 8.56150, "lng": 39.29230 },
+        { "lat": 8.56150, "lng": 39.29200 }
+      ],
+      "center": { "lat": 8.56160, "lng": 39.29215 },
+      "rooms": [
+        { "id": "b522_fresh", "name": "Freshman Development Center", "floor": 1, "type": "Academic Center", "workDescription": "Freshman program classrooms & office." }
+      ],
+      "entranceNodeId": "n_b522",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
+        "description": "B522 Freshman Development Block.",
+        "department": "Freshman Program Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "cans",
+      "code": "CANS",
+      "name": "College of Applied Natural Science",
+      "aliases": ["CANS", "Applied Natural Science", "College of Natural Science"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.56170, "lng": 39.29250 },
+        { "lat": 8.56170, "lng": 39.29285 },
+        { "lat": 8.56145, "lng": 39.29285 },
+        { "lat": 8.56145, "lng": 39.29250 }
+      ],
+      "center": { "lat": 8.56158, "lng": 39.29268 },
+      "rooms": [
+        { "id": "cans_dean", "name": "College Dean Office", "floor": 1, "type": "Administrative Office", "workDescription": "CANS College Administration." }
+      ],
+      "entranceNodeId": "n_cans",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"],
+        "description": "College of Applied Natural Science (CANS) ASTU.",
+        "department": "Applied Natural Science",
+        "verified": true
+      }
+    },
+    {
+      "id": "kereyu_dorm",
+      "code": "KDORM",
+      "name": "Kereyu Dormitories",
+      "aliases": ["Kereyu Dorms", "Kereyu Dormitories", "Kereyu"],
+      "category": "dormitory",
+      "polygon": [
+        { "lat": 8.56120, "lng": 39.29170 },
+        { "lat": 8.56120, "lng": 39.29210 },
+        { "lat": 8.56095, "lng": 39.29210 },
+        { "lat": 8.56095, "lng": 39.29170 }
+      ],
+      "center": { "lat": 8.56108, "lng": 39.29190 },
+      "rooms": [
+        { "id": "kereyu_blocks", "name": "Kereyu Student Dorm Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Student residential dormitories." }
+      ],
+      "entranceNodeId": "n_kereyu",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
+        "description": "Kereyu Student Residential Dormitories.",
+        "department": "Student Housing Services",
+        "verified": true
+      }
+    },
+    {
+      "id": "pg_lib_new",
+      "code": "PGLIB",
+      "name": "ASTU Postgraduate Library",
+      "aliases": ["ASTU Postgraduate Library", "PG Library", "PGLIB"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.56385, "lng": 39.29120 },
+        { "lat": 8.56385, "lng": 39.29145 },
+        { "lat": 8.56365, "lng": 39.29145 },
+        { "lat": 8.56365, "lng": 39.29120 }
+      ],
+      "center": { "lat": 8.56375, "lng": 39.29132 },
+      "rooms": [
+        { "id": "pglib_hall", "name": "Postgraduate Reading Hall", "floor": 1, "type": "Research Library", "workDescription": "Masters & PhD thesis reading hall." }
+      ],
+      "entranceNodeId": "n_pglib_new",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Postgraduate Library.",
+        "department": "Library Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "liberal_lib",
+      "code": "LIBLIB",
+      "name": "Liberal Library",
+      "aliases": ["Liberal Library", "LIBLIB"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.56340, "lng": 39.29110 },
+        { "lat": 8.56340, "lng": 39.29135 },
+        { "lat": 8.56320, "lng": 39.29135 },
+        { "lat": 8.56320, "lng": 39.29110 }
+      ],
+      "center": { "lat": 8.56330, "lng": 39.29122 },
+      "rooms": [
+        { "id": "liblib_hall", "name": "Liberal Arts & Humanities Library", "floor": 1, "type": "Library", "workDescription": "Liberal arts and general reference collection." }
+      ],
+      "entranceNodeId": "n_liberal_lib",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Liberal Library.",
+        "department": "Library Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "staff_lounge",
+      "code": "SLOUNGE",
+      "name": "ASTU Staff Lounge",
+      "aliases": ["ASTU Staff Lounge", "Staff Lounge", "SLOUNGE"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.56312, "lng": 39.29215 },
+        { "lat": 8.56312, "lng": 39.29242 },
+        { "lat": 8.56287, "lng": 39.29242 },
+        { "lat": 8.56287, "lng": 39.29215 }
+      ],
+      "center": { "lat": 8.562997871885793, "lng": 39.29228402675161 },
+      "rooms": [
+        { "id": "slounge_main", "name": "Staff Refreshment & Meeting Lounge", "floor": 1, "type": "Lounge", "workDescription": "University academic & administrative staff lounge." }
+      ],
+      "entranceNodeId": "n_staff_lounge",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Staff Lounge located at coordinates 8.562997871885793, 39.29228402675161.",
+        "department": "Staff Association Directorate",
         "verified": true
       }
     }
   ],
   "nodes": [
-    { "id": "n_b501", "lat": 8.56149, "lng": 39.28936, "label": "B501 Entrance" },
-    { "id": "n_b503", "lat": 8.56192, "lng": 39.28975, "label": "B503 Arc Studio Entrance" },
-    { "id": "n_b528", "lat": 8.56064, "lng": 39.28912, "label": "B528 Chem Eng Library Gate" },
-    { "id": "n_b532", "lat": 8.56142, "lng": 39.28935, "label": "B532 Materials Gate" },
-    { "id": "n_b530", "lat": 8.56095, "lng": 39.28980, "label": "B530 Water Resources Entrance" },
-    { "id": "n_pg_lib", "lat": 8.56210, "lng": 39.28895, "label": "PG Library Gate" },
-    { "id": "n_central_cross", "lat": 8.56140, "lng": 39.28940, "label": "Central Academic Junction" },
-    { "id": "n_north_cross", "lat": 8.56200, "lng": 39.28930, "label": "North Library Walkway" },
-    { "id": "n_south_cross", "lat": 8.56080, "lng": 39.28940, "label": "South Department Walkway" }
+    { "id": "n_female_lib", "lat": 8.563778, "lng": 39.291944, "label": "Female Library Entrance" },
+    { "id": "n_amphi", "lat": 8.56400, "lng": 39.29165, "label": "Amphitheatre Entrance" },
+    { "id": "n_prof_cafe", "lat": 8.56342, "lng": 39.29162, "label": "Professor Cafe Gate" },
+    { "id": "n_ict", "lat": 8.56350, "lng": 39.29235, "label": "ICT Center Entrance" },
+    { "id": "n_sace", "lat": 8.56318, "lng": 39.29278, "label": "SACE Main Gate" },
+    { "id": "n_app_sci_lib", "lat": 8.56372, "lng": 39.29272, "label": "Applied Science Library Entrance" },
+    { "id": "n_students_cafe", "lat": 8.56258, "lng": 39.29168, "label": "Students Cafe Entrance" },
+    { "id": "n_b510", "lat": 8.56260, "lng": 39.29215, "label": "B510 Python Lab Gate" },
+    { "id": "n_sti", "lat": 8.56218, "lng": 39.29258, "label": "STI Main Entrance" },
+    { "id": "n_kamara", "lat": 8.56290, "lng": 39.29125, "label": "Kamara School Entrance" },
+    { "id": "n_b517", "lat": 8.56200, "lng": 39.29205, "label": "B517 Entrance" },
+    { "id": "n_b522", "lat": 8.56160, "lng": 39.29215, "label": "B522 Freshman Dev Gate" },
+    { "id": "n_cans", "lat": 8.56158, "lng": 39.29268, "label": "CANS Gate" },
+    { "id": "n_kereyu", "lat": 8.56108, "lng": 39.29190, "label": "Kereyu Dorm Entrance" },
+    { "id": "n_pglib_new", "lat": 8.56375, "lng": 39.29132, "label": "PG Library Gate" },
+    { "id": "n_liberal_lib", "lat": 8.56330, "lng": 39.29122, "label": "Liberal Library Gate" },
+    { "id": "n_staff_lounge", "lat": 8.562998, "lng": 39.292284, "label": "Staff Lounge Entrance" },
+    { "id": "n_central_hub", "lat": 8.56280, "lng": 39.29190, "label": "ASTU Central Square" }
   ],
   "edges": [
-    { "id": "e1", "source": "n_b501", "target": "n_central_cross" },
-    { "id": "e2", "source": "n_b532", "target": "n_central_cross" },
-    { "id": "e3", "source": "n_central_cross", "target": "n_b503" },
-    { "id": "e4", "source": "n_central_cross", "target": "n_south_cross" },
-    { "id": "e5", "source": "n_south_cross", "target": "n_b528" },
-    { "id": "e6", "source": "n_south_cross", "target": "n_b530" },
-    { "id": "e7", "source": "n_central_cross", "target": "n_north_cross" },
-    { "id": "e8", "source": "n_north_cross", "target": "n_pg_lib" }
+    { "id": "eg1", "source": "n_female_lib", "target": "n_central_hub" },
+    { "id": "eg2", "source": "n_amphi", "target": "n_female_lib" },
+    { "id": "eg3", "source": "n_prof_cafe", "target": "n_central_hub" },
+    { "id": "eg4", "source": "n_ict", "target": "n_central_hub" },
+    { "id": "eg5", "source": "n_sace", "target": "n_ict" },
+    { "id": "eg6", "source": "n_app_sci_lib", "target": "n_ict" },
+    { "id": "eg7", "source": "n_students_cafe", "target": "n_central_hub" },
+    { "id": "eg8", "source": "n_b510", "target": "n_central_hub" },
+    { "id": "eg9", "source": "n_staff_lounge", "target": "n_b510" },
+    { "id": "eg10", "source": "n_sti", "target": "n_b510" },
+    { "id": "eg11", "source": "n_kamara", "target": "n_liberal_lib" },
+    { "id": "eg12", "source": "n_b517", "target": "n_b522" },
+    { "id": "eg13", "source": "n_b522", "target": "n_central_hub" },
+    { "id": "eg14", "source": "n_cans", "target": "n_b522" },
+    { "id": "eg15", "source": "n_kereyu", "target": "n_b522" },
+    { "id": "eg16", "source": "n_pglib_new", "target": "n_female_lib" },
+    { "id": "eg17", "source": "n_liberal_lib", "target": "n_central_hub" }
   ]
 }
