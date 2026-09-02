@@ -42,7 +42,8 @@ interface GoogleMapsUIProps {
 }
 
 export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
-  const mapType = 'satellite';
+  // Map Type State (Esri World Imagery Satellite as primary default)
+  const [mapType, setMapType] = useState<'roadmap' | 'satellite'>('satellite');
 
   // UI Modes
   const [isDirectionsMode, setIsDirectionsMode] = useState<boolean>(false);
@@ -161,7 +162,6 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
         setIsLocating(false);
 
-        // Always use exact raw hardware GPS coordinates
         setStartCoords(rawCoords);
         setLiveUserLocation(rawCoords);
 
@@ -180,7 +180,6 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         setStartLabel(`Your Live GPS Location (${userLat.toFixed(4)}, ${userLng.toFixed(4)})`);
         setActiveInput(null);
 
-        // Force Leaflet map camera to fly directly to user's exact coordinates
         setRecenterTrigger((prev) => prev + 1);
 
         setLocationToast(`🎯 Live GPS Position Locked (±${accuracy}m accuracy)!`);
@@ -217,7 +216,6 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       setDestLabel(
         res.matchingRoom ? `${res.building.code} — ${res.matchingRoom.name}` : res.building.name
       );
-      // Trigger camera to fly directly to the searched building pin!
       setRecenterTrigger((prev) => prev + 1);
     } else if (activeInput === 'dest') {
       setDestBuilding(res.building);
@@ -361,7 +359,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-slate-100 font-sans text-slate-800">
-      {/* Fullscreen Satellite Map */}
+      {/* Fullscreen Interactive Canvas */}
       <GoogleMapCanvas
         campusData={campusData}
         selectedBuilding={selectedPlace}
@@ -490,7 +488,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               </div>
             )}
 
-            {/* Dropdown Results (Floats over all card content with high z-index) */}
+            {/* Dropdown Results */}
             {activeInput && (
               <div className="max-h-64 overflow-y-auto custom-scrollbar divide-y divide-gray-100 border-t border-gray-100 bg-white shadow-2xl">
                 {activeInput === 'start' && (
@@ -572,7 +570,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </div>
       )}
 
-      {/* RICH PLACE DETAILS SHEET (LOWER Z-INDEX z-20 TO SIT UNDERNEATH SEARCH DROPDOWN) */}
+      {/* RICH PLACE DETAILS SHEET */}
       {selectedPlace && !isNavigating && !isDirectionsMode && (
         <div className="absolute bottom-0 left-0 right-0 md:top-[92px] md:left-4 md:right-auto md:bottom-auto z-20 w-full md:w-[420px] pointer-events-auto transition-all duration-300">
           <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300">
@@ -1034,11 +1032,19 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </div>
       )}
 
-      {/* Floating Target GPS Button with z-[1000] */}
+      {/* Floating Target GPS Button & Map Type Toggle Switch with z-[1000] */}
       <div
         style={{ zIndex: 1000 }}
         className="absolute bottom-28 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 pointer-events-auto"
       >
+        <button
+          onClick={() => setMapType(mapType === 'roadmap' ? 'satellite' : 'roadmap')}
+          className="w-11 h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer"
+          title={`Switch to ${mapType === 'roadmap' ? 'Satellite' : 'Default Map'} View`}
+        >
+          <Layers className="w-5 h-5 text-blue-600" />
+        </button>
+
         <button
           onClick={handleUseCurrentLocation}
           disabled={isLocating}

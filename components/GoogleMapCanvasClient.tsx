@@ -123,7 +123,6 @@ export default function GoogleMapCanvasClient({
 }: GoogleMapCanvasClientProps) {
   const { meta, buildings, nodes } = campusData;
 
-  // FIX CAMERA PRIORITY: Explicitly selected building MUST take precedence over liveUserLocation
   const mapCenter: [number, number] = currentNavNode
     ? [currentNavNode.lat, currentNavNode.lng]
     : selectedBuilding
@@ -141,13 +140,10 @@ export default function GoogleMapCanvasClient({
   const startNode = nodes.find((n) => n.id === startNodeId);
 
   const getTileUrl = () => {
-    if (mapType === 'satellite') {
-      return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+    if (mapType === 'roadmap') {
+      return 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
     }
-    if (mapType === 'terrain') {
-      return 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
-    }
-    return 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+    return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
   };
 
   return (
@@ -161,9 +157,10 @@ export default function GoogleMapCanvasClient({
         <MapController center={mapCenter} zoom={mapZoom} recenterTrigger={recenterTrigger} />
         <ZoomControls />
 
+        {/* Esri World Imagery Satellite Tiles */}
         <TileLayer
           url={getTileUrl()}
-          attribution="&copy; OpenStreetMap contributors &copy; CARTO &copy; Esri"
+          attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
           maxZoom={19}
         />
 
