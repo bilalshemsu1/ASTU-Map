@@ -34,7 +34,7 @@ import {
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
 import { fetchRealWalkingRoute } from '../lib/utils/routing';
-import { calculateHaversineDistance } from '../lib/utils/graph';
+import { calculateHaversineDistance, formatDistance, formatTime } from '../lib/utils/graph';
 import GoogleMapCanvas from './GoogleMapCanvas';
 
 interface GoogleMapsUIProps {
@@ -898,10 +898,10 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               <div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-black text-emerald-600">
-                    {routeResult.estimatedTimeMinutes} min
+                    {formatTime(routeResult.estimatedTimeMinutes)}
                   </span>
                   <span className="text-sm font-bold text-gray-500">
-                    ({routeResult.totalDistanceMeters} m)
+                    ({formatDistance(routeResult.totalDistanceMeters)})
                   </span>
                 </div>
                 <div className="text-xs text-gray-500 font-medium mt-0.5">
@@ -955,7 +955,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                       <div className="flex-1">
                         <p className="font-bold text-gray-900">{step.instruction}</p>
                         <p className="text-[11px] text-gray-500 font-medium mt-0.5">
-                          {step.distanceMeters} meters
+                          {formatDistance(step.distanceMeters)}
                         </p>
                       </div>
                     </div>

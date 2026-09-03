@@ -98,6 +98,7 @@ export function findShortestPath(
   }
 
   const totalDistanceMeters = Math.round(distances.get(targetNodeId) || 0);
+  // Standard human walking speed: ~80 meters per minute (4.8 km/h)
   const estimatedTimeMinutes = Math.max(1, Math.ceil(totalDistanceMeters / 80));
 
   // Generate step-by-step instructions
@@ -138,3 +139,20 @@ export function findShortestPath(
     steps,
   };
 }
+
+export function formatDistance(meters: number): string {
+  if (meters < 1000) {
+    return `${meters} m`;
+  }
+  return `${(meters / 1000).toFixed(1)} km`;
+}
+
+export function formatTime(minutes: number): string {
+  if (minutes < 60) {
+    return `${minutes} min`;
+  }
+  const hrs = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return mins > 0 ? `${hrs} hr ${mins} min` : `${hrs} hr`;
+}
+

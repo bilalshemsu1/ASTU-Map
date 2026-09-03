@@ -30,7 +30,8 @@ export async function fetchRealWalkingRoute(
     }));
 
     const totalDistanceMeters = Math.round(route.distance);
-    const estimatedTimeMinutes = Math.max(1, Math.ceil(route.duration / 60));
+    // Enforce realistic human walking speed: 80 meters/min (4.8 km/h)
+    const estimatedTimeMinutes = Math.max(1, Math.ceil(totalDistanceMeters / 80));
 
     const steps: RouteStep[] = [];
     if (route.legs && route.legs[0] && route.legs[0].steps && route.legs[0].steps.length > 0) {
