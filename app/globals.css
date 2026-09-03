@@ -19,6 +19,11 @@ body {
   background-color: #0f172a;
 }
 
+/* Hide Leaflet attribution text overlay */
+.leaflet-control-attribution {
+  display: none !important;
+}
+
 /* Enforce Pointer Cursor on All Clickable & Interactive Elements */
 button,
 a,

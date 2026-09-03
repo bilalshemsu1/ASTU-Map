@@ -211,6 +211,7 @@ export default function GoogleMapCanvasClient({
         zoom={meta.zoom || 17}
         maxZoom={22}
         zoomControl={false}
+        attributionControl={false}
         className="w-full h-full"
       >
         <MapController center={mapCenter} zoom={mapZoom} recenterTrigger={recenterTrigger} />
@@ -220,7 +221,6 @@ export default function GoogleMapCanvasClient({
         {/* Esri World Imagery Pure Satellite Tiles without external map labels */}
         <TileLayer
           url={getTileUrl()}
-          attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
           maxZoom={22}
           maxNativeZoom={18}
         />
