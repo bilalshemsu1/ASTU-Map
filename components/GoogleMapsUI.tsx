@@ -30,6 +30,7 @@ import {
   Wrench,
   Layers,
   Loader2,
+  Share2,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
@@ -61,6 +62,49 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     setActiveImageIndex(0);
     setIsPlaceSheetExpanded(false);
   }, [selectedPlace]);
+
+  // Handle URL Location Deep Linking (?place=building_id)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const placeId = params.get('place') || params.get('building');
+    if (placeId) {
+      const targetBuilding = campusData.buildings.find(
+        (b) =>
+          b.id.toLowerCase() === placeId.toLowerCase() ||
+          b.code.toLowerCase() === placeId.toLowerCase()
+      );
+      if (targetBuilding) {
+        setSelectedPlace(targetBuilding);
+        setRecenterTrigger((prev) => prev + 1);
+        setLocationToast(`📍 Loaded shared location: ${targetBuilding.name}`);
+        setTimeout(() => setLocationToast(null), 4000);
+      }
+    }
+  }, [campusData]);
+
+  // Share Place Handler via Web Share API or Clipboard Link Copy
+  const handleSharePlace = (building: Building) => {
+    if (typeof window === 'undefined') return;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?place=${building.id}`;
+    const shareData = {
+      title: `${building.name} | ASTU Campus Map`,
+      text: `Check out ${building.name} on the Adama Science & Technology University (ASTU) Campus Map!`,
+      url: shareUrl,
+    };
+
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      navigator.share(shareData).catch(() => {
+        navigator.clipboard?.writeText(shareUrl);
+        setLocationToast('🔗 Location link copied to clipboard!');
+        setTimeout(() => setLocationToast(null), 3500);
+      });
+    } else {
+      navigator.clipboard?.writeText(shareUrl);
+      setLocationToast('🔗 Location link copied to clipboard!');
+      setTimeout(() => setLocationToast(null), 3500);
+    }
+  };
 
   // Search state
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -621,6 +665,13 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   <span>Directions</span>
                 </button>
                 <button
+                  onClick={() => handleSharePlace(selectedPlace)}
+                  className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                  title="Share Location"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
+                <button
                   onClick={() => setSelectedPlace(null)}
                   className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg transition-colors cursor-pointer"
                 >
@@ -696,6 +747,15 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   >
                     <Navigation className="w-4 h-4 fill-white" />
                     <span>Directions</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleSharePlace(selectedPlace)}
+                    className="py-2.5 px-3 bg-gray-100 hover:bg-blue-50 text-gray-700 hover:text-blue-600 font-bold text-xs rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                    title="Share Location Link"
+                  >
+                    <Share2 className="w-4 h-4 text-blue-600" />
+                    <span>Share</span>
                   </button>
                   {selectedPlace.details?.phone && (
                     <a
