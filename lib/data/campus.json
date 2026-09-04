@@ -407,8 +407,103 @@
       "entranceNodeId": "n_oda_gate",
       "details": {
         "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlUoWdcR7-b2o1sPYQQGwgPleTpJUW9GAB2FDYtXhXuWaCA8bjOFnIKFyGjZB9MjQ_Ljd17vH8Iy6KXsKMtltXjBlqmTUtY4Pe2LfvdowyVKGxrdNNlCXjyi0EXSdD833Xnxuc9=w426-h240-k-no"],
-        "description": "Oda Gateway Entrance located at exact coordinates 8.557049, 39.290984.",
         "department": "University Security & Safety Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "wabe_street",
+      "code": "WABE_ST",
+      "name": "DAANDII WAABEE / ዋቤ መንገድ / WABE STREET",
+      "aliases": ["DAANDII WAABEE/ዋቤ መንገድ/WABE STREET", "DAANDII WAABEE", "ዋቤ መንገድ", "WABE STREET", "Wabe Road", "WABE_ST"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.558300, "lng": 39.290900 },
+        { "lat": 8.558300, "lng": 39.291200 },
+        { "lat": 8.558000, "lng": 39.291200 },
+        { "lat": 8.558000, "lng": 39.290900 }
+      ],
+      "center": { "lat": 8.558173, "lng": 39.291056 },
+      "rooms": [
+        { "id": "wabe_st_info", "name": "Wabe Street Promenade & Access Road", "floor": 0, "type": "Campus Access Road & Promenade", "workDescription": "Primary avenue connecting Oda Gateway and central academic campus blocks." }
+      ],
+      "entranceNodeId": "n_wabe_street",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnzcFh0QPlMCCG8q-8l5JV0KsrKAVoVUCJI9P9BbkeXfIpBUeEoRRjciULPVDfBI0MHxrdF3K51iCug_ue5-tAZSIk-QevwEu1K-PMpzx-MY28ZMkJ4BGcbXmi_cFQG-Locp2uAmA=w426-h240-k-no"],
+        "description": "DAANDII WAABEE / ዋቤ መንገድ / WABE STREET located at exact coordinates 8.558173, 39.291056.",
+        "department": "Campus Infrastructure & Road Network",
+        "verified": true
+      }
+    },
+    {
+      "id": "astu_ict",
+      "code": "ICT",
+      "name": "Adama University ICT",
+      "aliases": ["Adama University ICT", "ASTU ICT Center", "ICT Center", "ICT Directorate", "ICT"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.559400, "lng": 39.291100 },
+        { "lat": 8.559400, "lng": 39.291350 },
+        { "lat": 8.559150, "lng": 39.291350 },
+        { "lat": 8.559150, "lng": 39.291100 }
+      ],
+      "center": { "lat": 8.559277, "lng": 39.291225 },
+      "rooms": [
+        { "id": "ict_center_labs", "name": "Central Data Center & Network Support Labs", "floor": 1, "type": "Data Center & Computer Labs", "workDescription": "University central server room, cloud infrastructure, network operations center, and digital services support." }
+      ],
+      "entranceNodeId": "n_astu_ict",
+      "details": {
+        "images": ["https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"],
+        "description": "Adama University ICT Center located at exact coordinates 8.559277, 39.291225.",
+        "department": "ICT Center Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "central_library",
+      "code": "CLIB",
+      "name": "ASTU Central Library",
+      "aliases": ["ASTU Central Library", "Central Library", "Main Library", "CLIB"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.561230, "lng": 39.291220 },
+        { "lat": 8.561230, "lng": 39.291520 },
+        { "lat": 8.560930, "lng": 39.291520 },
+        { "lat": 8.560930, "lng": 39.291220 }
+      ],
+      "center": { "lat": 8.561082, "lng": 39.291370 },
+      "rooms": [
+        { "id": "clib_main_hall", "name": "Central Library Reading Hall & Reference Collection", "floor": 1, "type": "Academic Library", "workDescription": "Main university central library housing academic books, research journals, reference material, and general student study halls." }
+      ],
+      "entranceNodeId": "n_central_library",
+      "details": {
+        "images": ["https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"],
+        "description": "ASTU Central Library located at exact coordinates 8.561082, 39.291370.",
+        "department": "Library Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "admin_building",
+      "code": "ADMIN",
+      "name": "New Administrative Building",
+      "aliases": ["New Administrative Building", "ASTU Admin Building", "Administrative Building", "President Office", "Registrar", "ADMIN"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.561480, "lng": 39.290100 },
+        { "lat": 8.561480, "lng": 39.290410 },
+        { "lat": 8.561170, "lng": 39.290410 },
+        { "lat": 8.561170, "lng": 39.290100 }
+      ],
+      "center": { "lat": 8.561326, "lng": 39.290258 },
+      "rooms": [
+        { "id": "admin_main_offices", "name": "University Administration & Registrar Offices", "floor": 1, "type": "Administrative Offices", "workDescription": "Central administration block housing university executive offices, registrar, finance, human resources, and student affairs." }
+      ],
+      "entranceNodeId": "n_admin_building",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk8R_3AweUmhBMsxgqIXj8eTtfrGDEfekytMZqYcT9OqllrhDuqEM7vJdQhZFznC5z2vjEcQQdSO2lLuc69Au6mDaRsnVhmiTD5kbXZPxXWiIJBNIFGZhJN--GAtxemuBcJWrXX=w426-h240-k-no"],
+        "description": "ASTU New Administrative Building located at exact coordinates 8.561326, 39.290258.",
+        "department": "University Administration & Registrar",
         "verified": true
       }
     }
@@ -431,6 +526,10 @@
     { "id": "n_sace", "lat": 8.562105, "lng": 39.287619, "label": "SACE Entrance" },
     { "id": "n_main_gate", "lat": 8.559177, "lng": 39.285693, "label": "ASTU Main Gate" },
     { "id": "n_oda_gate", "lat": 8.557049, "lng": 39.290984, "label": "Oda Gateway" },
+    { "id": "n_wabe_street", "lat": 8.558173, "lng": 39.291056, "label": "Wabe Street Entrance" },
+    { "id": "n_astu_ict", "lat": 8.559277, "lng": 39.291225, "label": "Adama University ICT Entrance" },
+    { "id": "n_central_library", "lat": 8.561082, "lng": 39.291370, "label": "Central Library Entrance" },
+    { "id": "n_admin_building", "lat": 8.561326, "lng": 39.290258, "label": "Administrative Building Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -450,6 +549,10 @@
     { "id": "eg_sace", "source": "n_sace", "target": "n_app_sci_lib" },
     { "id": "eg_main_gate", "source": "n_main_gate", "target": "n_sace" },
     { "id": "eg_oda_gate", "source": "n_oda_gate", "target": "n_oda_nebe" },
+    { "id": "eg_wabe_street", "source": "n_wabe_street", "target": "n_oda_gate" },
+    { "id": "eg_astu_ict", "source": "n_astu_ict", "target": "n_wabe_street" },
+    { "id": "eg_central_library", "source": "n_central_library", "target": "n_female_library" },
+    { "id": "eg_admin_building", "source": "n_admin_building", "target": "n_pg_library" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
