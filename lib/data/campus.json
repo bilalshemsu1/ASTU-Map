@@ -1,10 +1,34 @@
 {
   "meta": {
     "name": "ASTU Campus Map",
-    "center": { "lat": 8.563778, "lng": 39.291944 },
-    "zoom": 19
+    "center": { "lat": 8.565458, "lng": 39.292500 },
+    "zoom": 17
   },
   "buildings": [
+    {
+      "id": "students_cafe",
+      "code": "SCAFE",
+      "name": "Students Cafe",
+      "aliases": ["Students Cafe", "Student Lounge", "SCAFE", "Main Students Cafe"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.565850, "lng": 39.290050 },
+        { "lat": 8.565850, "lng": 39.290300 },
+        { "lat": 8.565580, "lng": 39.290300 },
+        { "lat": 8.565580, "lng": 39.290050 }
+      ],
+      "center": { "lat": 8.565718, "lng": 39.290178 },
+      "rooms": [
+        { "id": "scafe_hall", "name": "Student Main Dining Hall", "floor": 1, "type": "Cafeteria", "workDescription": "Main undergraduate dining cafeteria serving student meals." }
+      ],
+      "entranceNodeId": "n_students_cafe",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkpviQowWuEojHDOpI4Fn8nXu2ejbG-D2kPunMvTtoocCdW_I7s3YJNQz-TjDj_IcwctadZ3zhomUMZwD4pwnvrsiNqwbg0GxkL1rJeInvQ_0A3KEpOf8CVbjaNmKCPPULd9qMe=w426-h240-k-no"],
+        "description": "ASTU Students Main Dining Hall & Cafeteria located at exact coordinates 8.565718, 39.290178.",
+        "department": "Campus Food & Student Services Directorate",
+        "verified": true
+      }
+    },
     {
       "id": "astu_facility_8565506",
       "code": "FAC1",
@@ -26,6 +50,30 @@
         "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
         "description": "ASTU campus location at exact coordinates 8.565506, 39.291304.",
         "department": "Academic / Administrative",
+        "verified": true
+      }
+    },
+    {
+      "id": "oda_nebe_dorm",
+      "code": "ONAB",
+      "name": "Oda Nebe Hall (Adarash)",
+      "aliases": ["Oda Nebe Hall", "Oda Nebe Adarash", "Oda Nebe Conference Hall", "Oda Nabe Hall", "ONAB"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.564750, "lng": 39.291100 },
+        { "lat": 8.564750, "lng": 39.291330 },
+        { "lat": 8.564500, "lng": 39.291330 },
+        { "lat": 8.564500, "lng": 39.291100 }
+      ],
+      "center": { "lat": 8.564625, "lng": 39.291216 },
+      "rooms": [
+        { "id": "onab_main", "name": "Oda Nebe Main Conference & Orientation Hall (Adarash)", "floor": 1, "type": "Assembly Hall", "workDescription": "University central assembly hall for orientation, conferences, workshops, and official ceremonies." }
+      ],
+      "entranceNodeId": "n_oda_nebe",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80"],
+        "description": "Oda Nebe Main Conference & Orientation Hall (Adarash) located at exact coordinates 8.564625, 39.291216. Primary venue for student orientation, academic conferences, and university ceremonies.",
+        "department": "University Events & Student Union Directorate",
         "verified": true
       }
     },
@@ -102,50 +150,26 @@
       }
     },
     {
-      "id": "oda_nebe_dorm",
-      "code": "ONAB",
-      "name": "Oda Nebe Hall (Adarash)",
-      "aliases": ["Oda Nebe Hall", "Oda Nebe Adarash", "Oda Nebe Conference Hall", "Oda Nabe Hall", "ONAB"],
+      "id": "kt_tennis_court",
+      "code": "KTTC",
+      "name": "KT Tennis Court",
+      "aliases": ["KT Tennis Court", "Tennis Court", "KT Tennis", "ASTU Tennis Court", "KTTC"],
       "category": "services",
       "polygon": [
-        { "lat": 8.564750, "lng": 39.291100 },
-        { "lat": 8.564750, "lng": 39.291330 },
-        { "lat": 8.564500, "lng": 39.291330 },
-        { "lat": 8.564500, "lng": 39.291100 }
+        { "lat": 8.565850, "lng": 39.293320 },
+        { "lat": 8.565850, "lng": 39.293570 },
+        { "lat": 8.565640, "lng": 39.293570 },
+        { "lat": 8.565640, "lng": 39.293320 }
       ],
-      "center": { "lat": 8.564625, "lng": 39.291216 },
+      "center": { "lat": 8.565747, "lng": 39.293447 },
       "rooms": [
-        { "id": "onab_main", "name": "Oda Nebe Main Conference & Orientation Hall (Adarash)", "floor": 1, "type": "Assembly Hall", "workDescription": "University central assembly hall for orientation, conferences, workshops, and official ceremonies." }
+        { "id": "kttc_court", "name": "KT Outdoor Tennis Arena", "floor": 0, "type": "Outdoor Sports Facility", "workDescription": "Outdoor hard court tennis facility for student and staff athletics." }
       ],
-      "entranceNodeId": "n_oda_nebe",
+      "entranceNodeId": "n_kt_tennis",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80"],
-        "description": "Oda Nebe Main Conference & Orientation Hall (Adarash) located at exact coordinates 8.564625, 39.291216. Primary venue for student orientation, academic conferences, and university ceremonies.",
-        "department": "University Events & Student Union Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "freshman_male_dorm",
-      "code": "FMDORM",
-      "name": "ASTU Freshman Male Dormitory",
-      "aliases": ["Freshman Male Dorm", "Freshman Male Dormitory", "Freshman Boys Dorm", "FMDORM"],
-      "category": "dormitory",
-      "polygon": [
-        { "lat": 8.567900, "lng": 39.294350 },
-        { "lat": 8.567900, "lng": 39.294800 },
-        { "lat": 8.567550, "lng": 39.294800 },
-        { "lat": 8.567550, "lng": 39.294350 }
-      ],
-      "center": { "lat": 8.567734, "lng": 39.294574 },
-      "rooms": [
-        { "id": "fmdorm_blocks", "name": "Freshman Male Housing Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Primary residential housing blocks for first-year male undergraduate students managed by the Division of Freshman Programs (FDP)." }
-      ],
-      "entranceNodeId": "n_freshman_male_dorm",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Freshman Male Dormitory located at exact coordinates 8.567734, 39.294574. Provides dedicated housing for first-year male students managed by ASTU Division of Freshman Programs (FDP).",
-        "department": "Student Housing & Freshman Programs Directorate",
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEzfhacsISBybjA9QP92NCeFrSsQlwFMBVd2SUtwwsebX9uCdLWU6fmP_QE695ZT1Z0M3G1_tCzwMk5x50cQlJ-JWmDfHhHHaxXfMLsVW4fhbOzd4A0olfeOyqTVPCi6zJry2JsA=w417-h240-k-no"],
+        "description": "KT Outdoor Tennis Court located at exact coordinates 8.565747, 39.293447.",
+        "department": "Sports & Youth Development Directorate",
         "verified": true
       }
     },
@@ -172,495 +196,27 @@
         "department": "Sports & Youth Development Directorate",
         "verified": true
       }
-    },
-    {
-      "id": "female_lib",
-      "code": "FLIB",
-      "name": "ASTU Female Library",
-      "aliases": ["Female Library", "Females Library", "FLIB"],
-      "category": "library",
-      "polygon": [
-        { "lat": 8.563850, "lng": 39.291880 },
-        { "lat": 8.563850, "lng": 39.292010 },
-        { "lat": 8.563710, "lng": 39.292010 },
-        { "lat": 8.563710, "lng": 39.291880 }
-      ],
-      "center": { "lat": 8.563778, "lng": 39.291944 },
-      "rooms": [
-        { "id": "flib_r1", "name": "Female Library Main Reading Room", "floor": 1, "type": "Quiet Study Area", "workDescription": "Dedicated quiet study space for female students." }
-      ],
-      "entranceNodeId": "n_female_lib",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Female Library located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Library Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "amphitheatre",
-      "code": "AMPHI",
-      "name": "ASTU Amphitheatre",
-      "aliases": ["Amphitheatre", "ASTU Amphitheatre", "AMPHI", "Open Air Stage"],
-      "category": "services",
-      "polygon": [
-        { "lat": 8.563920, "lng": 39.291880 },
-        { "lat": 8.563920, "lng": 39.292010 },
-        { "lat": 8.563850, "lng": 39.292010 },
-        { "lat": 8.563850, "lng": 39.291880 }
-      ],
-      "center": { "lat": 8.563885, "lng": 39.291944 },
-      "rooms": [
-        { "id": "amphi_main", "name": "Open-air Stage & Seating Arena", "floor": 0, "type": "Open-Air Event Venue", "workDescription": "Outdoor open-air amphitheatre stage and seating arena for student gatherings, cultural performances, and graduation events." }
-      ],
-      "entranceNodeId": "n_amphi",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Open-Air Amphitheatre located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Student Affairs Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "prof_cafe",
-      "code": "PCAFE",
-      "name": "Astu cafe (Professor)",
-      "aliases": ["Professor Cafe", "Staff Cafe", "Prof Cafe"],
-      "category": "services",
-      "polygon": [
-        { "lat": 8.563710, "lng": 39.291880 },
-        { "lat": 8.563710, "lng": 39.292010 },
-        { "lat": 8.563630, "lng": 39.292010 },
-        { "lat": 8.563630, "lng": 39.291880 }
-      ],
-      "center": { "lat": 8.563670, "lng": 39.291944 },
-      "rooms": [
-        { "id": "pcafe_main", "name": "Dining Hall & Coffee Lounge", "floor": 1, "type": "Cafeteria", "workDescription": "Dining service for ASTU professors and staff." }
-      ],
-      "entranceNodeId": "n_prof_cafe",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"],
-        "description": "Professor Cafeteria located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Campus Food Services",
-        "verified": true
-      }
-    },
-    {
-      "id": "ict_center",
-      "code": "ICT",
-      "name": "ICT Center, ASTU",
-      "aliases": ["ICT Center", "ASTU ICT", "ICT"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563850, "lng": 39.292020 },
-        { "lat": 8.563850, "lng": 39.292150 },
-        { "lat": 8.563710, "lng": 39.292150 },
-        { "lat": 8.563710, "lng": 39.292020 }
-      ],
-      "center": { "lat": 8.563778, "lng": 39.292085 },
-      "rooms": [
-        { "id": "ict_server", "name": "Central Server Room", "floor": 1, "type": "Data Center", "workDescription": "Core university network infrastructure." },
-        { "id": "ict_lab", "name": "ICT Training Lab", "floor": 2, "type": "Computer Lab", "workDescription": "High speed network computer lab." }
-      ],
-      "entranceNodeId": "n_ict",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80"],
-        "description": "ICT Center ASTU located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "ICT Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "kt_tennis_court",
-      "code": "KTTC",
-      "name": "KT Tennis Court",
-      "aliases": ["KT Tennis Court", "Tennis Court", "KT Tennis", "ASTU Tennis Court", "KTTC"],
-      "category": "services",
-      "polygon": [
-        { "lat": 8.565850, "lng": 39.293320 },
-        { "lat": 8.565850, "lng": 39.293570 },
-        { "lat": 8.565640, "lng": 39.293570 },
-        { "lat": 8.565640, "lng": 39.293320 }
-      ],
-      "center": { "lat": 8.565747, "lng": 39.293447 },
-      "rooms": [
-        { "id": "kttc_court", "name": "KT Outdoor Tennis Arena", "floor": 0, "type": "Outdoor Sports Facility", "workDescription": "Outdoor hard court tennis facility for student and staff athletics." }
-      ],
-      "entranceNodeId": "n_kt_tennis",
-      "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEzfhacsISBybjA9QP92NCeFrSsQlwFMBVd2SUtwwsebX9uCdLWU6fmP_QE695ZT1Z0M3G1_tCzwMk5x50cQlJ-JWmDfHhHHaxXfMLsVW4fhbOzd4A0olfeOyqTVPCi6zJry2JsA=w417-h240-k-no"],
-        "description": "KT Outdoor Tennis Court located at exact coordinates 8.565747, 39.293447.",
-        "department": "Sports & Youth Development Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "sace",
-      "code": "SACE",
-      "name": "Architecture Department (SACE)",
-      "aliases": ["Architecture Department", "School of Architecture", "SACE", "Civil Engineering", "Architecture School"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563720, "lng": 39.291610 },
-        { "lat": 8.563720, "lng": 39.291840 },
-        { "lat": 8.563530, "lng": 39.291840 },
-        { "lat": 8.563530, "lng": 39.291610 }
-      ],
-      "center": { "lat": 8.563625, "lng": 39.291728 },
-      "rooms": [
-        { "id": "sace_design", "name": "Architecture Design Studios & Workshops", "floor": 1, "type": "Design Studio", "workDescription": "Architecture drafting, 3D modeling, and civil engineering design laboratories." },
-        { "id": "sace_dean", "name": "Dean's Office", "floor": 1, "type": "Administrative Office", "workDescription": "School of Architecture Dean & Department Offices." }
-      ],
-      "entranceNodeId": "n_sace",
-      "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmVTgydc-gV6uCHFC8VWiaHjN_YDMx6tHX8WrCrQf4ubV7sOsbeTMXbwd3q8RvIihDiAK5ulgojoSkmEXwyyD2G52LNClHCCoXDNb63DnA_-MHMwd_lY84qamL1Nwwz7cSHCp6-_A=w408-h240-k-no-pi-0-ya259-ro0-fo100"],
-        "description": "ASTU Architecture Department (School of Architecture & Civil Engineering) located at exact coordinates 8.563625, 39.291728.",
-        "department": "School of Architecture & Civil Engineering",
-        "verified": true
-      }
-    },
-    {
-      "id": "app_sci_lib",
-      "code": "APSL",
-      "name": "Applied Science Library",
-      "aliases": ["Applied Science Library", "APSL"],
-      "category": "library",
-      "polygon": [
-        { "lat": 8.563700, "lng": 39.292020 },
-        { "lat": 8.563700, "lng": 39.292150 },
-        { "lat": 8.563580, "lng": 39.292150 },
-        { "lat": 8.563580, "lng": 39.292020 }
-      ],
-      "center": { "lat": 8.563640, "lng": 39.292085 },
-      "rooms": [
-        { "id": "apsl_main", "name": "Applied Science Reading Hall", "floor": 1, "type": "Library", "workDescription": "Books & digital resources for Applied Natural Science students." }
-      ],
-      "entranceNodeId": "n_app_sci_lib",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"],
-        "description": "Applied Science Library located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Library Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "students_cafe",
-      "code": "SCAFE",
-      "name": "Students Cafe",
-      "aliases": ["Students Cafe", "Student Lounge", "SCAFE", "Main Students Cafe"],
-      "category": "services",
-      "polygon": [
-        { "lat": 8.565850, "lng": 39.290050 },
-        { "lat": 8.565850, "lng": 39.290300 },
-        { "lat": 8.565580, "lng": 39.290300 },
-        { "lat": 8.565580, "lng": 39.290050 }
-      ],
-      "center": { "lat": 8.565718, "lng": 39.290178 },
-      "rooms": [
-        { "id": "scafe_hall", "name": "Student Main Dining Hall", "floor": 1, "type": "Cafeteria", "workDescription": "Main undergraduate dining cafeteria serving student meals." }
-      ],
-      "entranceNodeId": "n_students_cafe",
-      "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkpviQowWuEojHDOpI4Fn8nXu2ejbG-D2kPunMvTtoocCdW_I7s3YJNQz-TjDj_IcwctadZ3zhomUMZwD4pwnvrsiNqwbg0GxkL1rJeInvQ_0A3KEpOf8CVbjaNmKCPPULd9qMe=w426-h240-k-no"],
-        "description": "ASTU Students Main Dining Hall & Cafeteria located at exact coordinates 8.565718, 39.290178.",
-        "department": "Campus Food & Student Services Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "b510",
-      "code": "B510",
-      "name": "astu block 510 (Python Lab)",
-      "aliases": ["astu block 510", "Block 510", "B510", "Python Lab"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563440, "lng": 39.291880 },
-        { "lat": 8.563440, "lng": 39.292010 },
-        { "lat": 8.563320, "lng": 39.292010 },
-        { "lat": 8.563320, "lng": 39.291880 }
-      ],
-      "center": { "lat": 8.563380, "lng": 39.291944 },
-      "rooms": [
-        { "id": "b510_python", "name": "Python Programming Lab", "floor": 2, "type": "Computer Lab", "workDescription": "High specs Linux & Python coding lab." }
-      ],
-      "entranceNodeId": "n_b510",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Block 510 (Python Lab) located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "CSE Department",
-        "verified": true
-      }
-    },
-    {
-      "id": "sti",
-      "code": "STI",
-      "name": "Space Technology Institute (STI)",
-      "aliases": ["STI", "Space Technology Institute", "Space Tech"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563700, "lng": 39.291730 },
-        { "lat": 8.563700, "lng": 39.291860 },
-        { "lat": 8.563580, "lng": 39.291860 },
-        { "lat": 8.563580, "lng": 39.291730 }
-      ],
-      "center": { "lat": 8.563640, "lng": 39.291795 },
-      "rooms": [
-        { "id": "sti_research", "name": "Satellite Communications Lab", "floor": 1, "type": "Research Lab", "workDescription": "Aerospace & satellite systems research." }
-      ],
-      "entranceNodeId": "n_sti",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=800&q=80"],
-        "description": "Space Technology Institute (STI) located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Aerospace Engineering",
-        "verified": true
-      }
-    },
-    {
-      "id": "kamara_school",
-      "code": "KSCH",
-      "name": "Kamara School",
-      "aliases": ["Kamara School", "Kamara"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563570, "lng": 39.291730 },
-        { "lat": 8.563570, "lng": 39.291860 },
-        { "lat": 8.563450, "lng": 39.291860 },
-        { "lat": 8.563450, "lng": 39.291730 }
-      ],
-      "center": { "lat": 8.563510, "lng": 39.291795 },
-      "rooms": [
-        { "id": "ksch_r1", "name": "Kamara Lecture Hall 1", "floor": 1, "type": "Lecture Hall", "workDescription": "Specialized lecture classroom." }
-      ],
-      "entranceNodeId": "n_kamara",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80"],
-        "description": "Kamara School located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Academic Affairs",
-        "verified": true
-      }
-    },
-    {
-      "id": "b517",
-      "code": "B517",
-      "name": "Building 517 (B517)",
-      "aliases": ["B517", "Building 517", "B517 Block"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563440, "lng": 39.291730 },
-        { "lat": 8.563440, "lng": 39.291860 },
-        { "lat": 8.563320, "lng": 39.291860 },
-        { "lat": 8.563320, "lng": 39.291730 }
-      ],
-      "center": { "lat": 8.563380, "lng": 39.291795 },
-      "rooms": [
-        { "id": "b517_r1", "name": "B517 Room 101", "floor": 1, "type": "Lecture Room", "workDescription": "General engineering classroom." }
-      ],
-      "entranceNodeId": "n_b517",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"],
-        "description": "Building 517 (B517) located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Engineering Faculty",
-        "verified": true
-      }
-    },
-    {
-      "id": "b522",
-      "code": "B522",
-      "name": "B522 freshman dev",
-      "aliases": ["B522", "B522 freshman dev", "Freshman Dev"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563310, "lng": 39.291730 },
-        { "lat": 8.563310, "lng": 39.291860 },
-        { "lat": 8.563190, "lng": 39.291860 },
-        { "lat": 8.563190, "lng": 39.291730 }
-      ],
-      "center": { "lat": 8.563250, "lng": 39.291795 },
-      "rooms": [
-        { "id": "b522_fresh", "name": "Freshman Development Center", "floor": 1, "type": "Academic Center", "workDescription": "Freshman program classrooms & office." }
-      ],
-      "entranceNodeId": "n_b522",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
-        "description": "B522 Freshman Dev located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Freshman Program Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "cans",
-      "code": "CANS",
-      "name": "College of Applied Natural Science",
-      "aliases": ["CANS", "Applied Natural Science", "College of Natural Science"],
-      "category": "academic",
-      "polygon": [
-        { "lat": 8.563850, "lng": 39.292160 },
-        { "lat": 8.563850, "lng": 39.292300 },
-        { "lat": 8.563710, "lng": 39.292300 },
-        { "lat": 8.563710, "lng": 39.292160 }
-      ],
-      "center": { "lat": 8.563778, "lng": 39.292230 },
-      "rooms": [
-        { "id": "cans_dean", "name": "College Dean Office", "floor": 1, "type": "Administrative Office", "workDescription": "CANS College Administration." }
-      ],
-      "entranceNodeId": "n_cans",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"],
-        "description": "College of Applied Natural Science located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Applied Natural Science",
-        "verified": true
-      }
-    },
-    {
-      "id": "kereyu_dorm",
-      "code": "KDORM",
-      "name": "Kereyu Dormitories",
-      "aliases": ["Kereyu Dorms", "Kereyu Dormitories", "Kereyu"],
-      "category": "dormitory",
-      "polygon": [
-        { "lat": 8.563180, "lng": 39.291730 },
-        { "lat": 8.563180, "lng": 39.291860 },
-        { "lat": 8.563050, "lng": 39.291860 },
-        { "lat": 8.563050, "lng": 39.291730 }
-      ],
-      "center": { "lat": 8.563115, "lng": 39.291795 },
-      "rooms": [
-        { "id": "kereyu_blocks", "name": "Kereyu Student Dorm Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Student residential dormitories." }
-      ],
-      "entranceNodeId": "n_kereyu",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
-        "description": "Kereyu Dormitories located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Student Housing Services",
-        "verified": true
-      }
-    },
-    {
-      "id": "pg_lib_new",
-      "code": "PGLIB",
-      "name": "Astu Postgraduate Library",
-      "aliases": ["Astu Postgraduate Library", "Postgraduate Library", "PGLIB"],
-      "category": "library",
-      "polygon": [
-        { "lat": 8.563850, "lng": 39.291580 },
-        { "lat": 8.563850, "lng": 39.291720 },
-        { "lat": 8.563710, "lng": 39.291720 },
-        { "lat": 8.563710, "lng": 39.291580 }
-      ],
-      "center": { "lat": 8.563778, "lng": 39.291650 },
-      "rooms": [
-        { "id": "pglib_hall", "name": "Postgraduate Reading Hall", "floor": 1, "type": "Research Library", "workDescription": "Masters & PhD thesis reading hall." }
-      ],
-      "entranceNodeId": "n_pglib_new",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80"],
-        "description": "Astu Postgraduate Library located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Library Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "liberal_lib",
-      "code": "LIBLIB",
-      "name": "Liberal library",
-      "aliases": ["Liberal library", "LIBLIB"],
-      "category": "library",
-      "polygon": [
-        { "lat": 8.563700, "lng": 39.291580 },
-        { "lat": 8.563700, "lng": 39.291720 },
-        { "lat": 8.563580, "lng": 39.291720 },
-        { "lat": 8.563580, "lng": 39.291580 }
-      ],
-      "center": { "lat": 8.563640, "lng": 39.291650 },
-      "rooms": [
-        { "id": "liblib_hall", "name": "Liberal Arts & Humanities Library", "floor": 1, "type": "Library", "workDescription": "Liberal arts and general reference collection." }
-      ],
-      "entranceNodeId": "n_liberal_lib",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80"],
-        "description": "Liberal library located at 8°33'49.6\"N 39°17'31.0\"E.",
-        "department": "Library Directorate",
-        "verified": true
-      }
-    },
-    {
-      "id": "staff_lounge",
-      "code": "SLOUNGE",
-      "name": "ASTU staff lounge",
-      "aliases": ["ASTU staff lounge", "Staff Lounge", "SLOUNGE"],
-      "category": "services",
-      "polygon": [
-        { "lat": 8.563060, "lng": 39.292210 },
-        { "lat": 8.563060, "lng": 39.292350 },
-        { "lat": 8.562930, "lng": 39.292350 },
-        { "lat": 8.562930, "lng": 39.292210 }
-      ],
-      "center": { "lat": 8.562997871885793, "lng": 39.29228402675161 },
-      "rooms": [
-        { "id": "slounge_main", "name": "Staff Refreshment & Meeting Lounge", "floor": 1, "type": "Lounge", "workDescription": "University academic & administrative staff lounge." }
-      ],
-      "entranceNodeId": "n_staff_lounge",
-      "details": {
-        "images": ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU staff lounge located at exact coordinates 8.562997871885793, 39.29228402675161.",
-        "department": "Staff Association Directorate",
-        "verified": true
-      }
     }
   ],
   "nodes": [
-    { "id": "n_female_lib", "lat": 8.563778, "lng": 39.291944, "label": "Female Library Entrance" },
-    { "id": "n_amphi", "lat": 8.563885, "lng": 39.291944, "label": "Amphitheatre Entrance" },
-    { "id": "n_prof_cafe", "lat": 8.563670, "lng": 39.291944, "label": "Professor Cafe Gate" },
-    { "id": "n_ict", "lat": 8.563778, "lng": 39.292085, "label": "ICT Center Entrance" },
-    { "id": "n_sace", "lat": 8.563778, "lng": 39.291795, "label": "SACE Main Gate" },
-    { "id": "n_app_sci_lib", "lat": 8.563640, "lng": 39.292085, "label": "Applied Science Library Entrance" },
     { "id": "n_students_cafe", "lat": 8.565718, "lng": 39.290178, "label": "Students Cafe Entrance" },
-    { "id": "n_b510", "lat": 8.563380, "lng": 39.291944, "label": "B510 Python Lab Gate" },
-    { "id": "n_sti", "lat": 8.563640, "lng": 39.291795, "label": "STI Main Entrance" },
-    { "id": "n_kamara", "lat": 8.563510, "lng": 39.291795, "label": "Kamara School Entrance" },
-    { "id": "n_b517", "lat": 8.563380, "lng": 39.291795, "label": "B517 Entrance" },
-    { "id": "n_b522", "lat": 8.563250, "lng": 39.291795, "label": "B522 Freshman Dev Gate" },
-    { "id": "n_cans", "lat": 8.563778, "lng": 39.292230, "label": "CANS Gate" },
-    { "id": "n_kereyu", "lat": 8.563115, "lng": 39.291795, "label": "Kereyu Dorm Entrance" },
-    { "id": "n_pglib_new", "lat": 8.563778, "lng": 39.291650, "label": "PG Library Gate" },
-    { "id": "n_liberal_lib", "lat": 8.563640, "lng": 39.291650, "label": "Liberal Library Gate" },
-    { "id": "n_staff_lounge", "lat": 8.562998, "lng": 39.292284, "label": "Staff Lounge Entrance" },
-    { "id": "n_stadium", "lat": 8.565458, "lng": 39.294614, "label": "ASTU Stadium Gate" },
-    { "id": "n_freshman_male_dorm", "lat": 8.567734, "lng": 39.294574, "label": "Freshman Male Dorm Entrance" },
+    { "id": "n_fac1", "lat": 8.565506, "lng": 39.291304, "label": "Campus Block Gate" },
     { "id": "n_oda_nebe", "lat": 8.564625, "lng": 39.291216, "label": "Oda Nebe Entrance" },
-    { "id": "n_female_dorm", "lat": 8.566519, "lng": 39.292576, "label": "Female Dormitory Gate" },
     { "id": "n_vac", "lat": 8.564861, "lng": 39.292316, "label": "Visual Arts Society Gate" },
     { "id": "n_ecb", "lat": 8.565049, "lng": 39.29326, "label": "East Campus Block Gate" },
-    { "id": "n_fac1", "lat": 8.565506, "lng": 39.291304, "label": "Campus Block Gate" },
+    { "id": "n_female_dorm", "lat": 8.566519, "lng": 39.292576, "label": "Female Dormitory Gate" },
     { "id": "n_kt_tennis", "lat": 8.565747, "lng": 39.293447, "label": "KT Tennis Court Entrance" },
-    { "id": "n_central_hub", "lat": 8.563778, "lng": 39.291944, "label": "ASTU 8°33'49.6\"N 39°17'31.0\"E Hub" }
+    { "id": "n_stadium", "lat": 8.565458, "lng": 39.294614, "label": "ASTU Stadium Gate" },
+    { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
-    { "id": "eg_kt_tennis", "source": "n_kt_tennis", "target": "n_stadium" },
+    { "id": "eg_students_cafe", "source": "n_students_cafe", "target": "n_central_hub" },
     { "id": "eg_fac1", "source": "n_fac1", "target": "n_central_hub" },
+    { "id": "eg_oda_nebe", "source": "n_oda_nebe", "target": "n_central_hub" },
     { "id": "eg_vac", "source": "n_vac", "target": "n_central_hub" },
     { "id": "eg_ecb", "source": "n_ecb", "target": "n_stadium" },
-    { "id": "eg_fdorm", "source": "n_female_dorm", "target": "n_stadium" },
-    { "id": "eg_oda_nebe", "source": "n_oda_nebe", "target": "n_central_hub" },
-    { "id": "eg_fmdorm", "source": "n_freshman_male_dorm", "target": "n_stadium" },
-    { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" },
-    { "id": "eg1", "source": "n_female_lib", "target": "n_central_hub" },
-    { "id": "eg2", "source": "n_amphi", "target": "n_female_lib" },
-    { "id": "eg3", "source": "n_prof_cafe", "target": "n_central_hub" },
-    { "id": "eg4", "source": "n_ict", "target": "n_central_hub" },
-    { "id": "eg5", "source": "n_sace", "target": "n_central_hub" },
-    { "id": "eg6", "source": "n_app_sci_lib", "target": "n_ict" },
-    { "id": "eg7", "source": "n_students_cafe", "target": "n_central_hub" },
-    { "id": "eg8", "source": "n_b510", "target": "n_central_hub" },
-    { "id": "eg9", "source": "n_staff_lounge", "target": "n_central_hub" },
-    { "id": "eg10", "source": "n_sti", "target": "n_sace" },
-    { "id": "eg11", "source": "n_kamara", "target": "n_sti" },
-    { "id": "eg12", "source": "n_b517", "target": "n_kamara" },
-    { "id": "eg13", "source": "n_b522", "target": "n_b517" },
-    { "id": "eg14", "source": "n_cans", "target": "n_ict" },
-    { "id": "eg15", "source": "n_kereyu", "target": "n_b522" },
-    { "id": "eg16", "source": "n_pglib_new", "target": "n_sace" },
-    { "id": "eg17", "source": "n_liberal_lib", "target": "n_pglib_new" }
+    { "id": "eg_female_dorm", "source": "n_female_dorm", "target": "n_stadium" },
+    { "id": "eg_kt_tennis", "source": "n_kt_tennis", "target": "n_stadium" },
+    { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
