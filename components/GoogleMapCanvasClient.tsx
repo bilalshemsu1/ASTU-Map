@@ -212,6 +212,7 @@ export default function GoogleMapCanvasClient({
         maxZoom={22}
         zoomControl={false}
         attributionControl={false}
+        preferCanvas={true}
         className="w-full h-full"
       >
         <MapController center={mapCenter} zoom={mapZoom} recenterTrigger={recenterTrigger} />
