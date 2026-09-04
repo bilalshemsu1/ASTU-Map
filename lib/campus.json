@@ -216,7 +216,6 @@
       "entranceNodeId": "n_freshman_dorm",
       "details": {
         "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Freshman Dormitory located at exact coordinates 8.567993, 39.294577. Dedicated housing for first-year students.",
         "department": "Student Housing & Freshman Programs Directorate",
         "verified": true
       }
@@ -268,6 +267,30 @@
         "department": "Library & Post-Graduate Directorate",
         "verified": true
       }
+    },
+    {
+      "id": "soeec",
+      "code": "SOEEC",
+      "name": "ASTU School of Electrical Engineering and Computing",
+      "aliases": ["ASTU School of Electrical Engineering and Computing", "School of Electrical Engineering and Computing", "SOEEC", "SEEC", "Electrical & Computing Dept", "ECE"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.563950, "lng": 39.289350 },
+        { "lat": 8.563950, "lng": 39.289600 },
+        { "lat": 8.563650, "lng": 39.289600 },
+        { "lat": 8.563650, "lng": 39.289350 }
+      ],
+      "center": { "lat": 8.563803, "lng": 39.289464 },
+      "rooms": [
+        { "id": "soeec_labs", "name": "Electrical & Computer Engineering Laboratories", "floor": 1, "type": "Academic & Research Labs", "workDescription": "Software engineering, hardware, microelectronics, embedded systems, and telecommunication laboratories." }
+      ],
+      "entranceNodeId": "n_soeec",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnNpJXfQLERESgYe8CkU8bndgLSkifzba9nP16tzRN7O3W50wPgI5ZTJTKEVyUVkapnvHumBg7-NcQXt208dhLESTyz_xCFrhR_DKJYCueJjynvk3TwJ8yx-PWxuz7NWc3omccPrg=w408-h544-k-no"],
+        "description": "ASTU School of Electrical Engineering and Computing (SOEEC) located at exact coordinates 8.563803, 39.289464.",
+        "department": "School of Electrical Engineering and Computing",
+        "verified": true
+      }
     }
   ],
   "nodes": [
@@ -282,6 +305,7 @@
     { "id": "n_freshman_dorm", "lat": 8.567993, "lng": 39.294577, "label": "Freshman Dorm Entrance" },
     { "id": "n_female_library", "lat": 8.563461, "lng": 39.291966, "label": "Female Library Entrance" },
     { "id": "n_pg_library", "lat": 8.564068, "lng": 39.29051, "label": "Postgraduate Library Entrance" },
+    { "id": "n_soeec", "lat": 8.563803, "lng": 39.289464, "label": "SOEEC Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -295,6 +319,7 @@
     { "id": "eg_freshman_dorm", "source": "n_freshman_dorm", "target": "n_stadium" },
     { "id": "eg_female_library", "source": "n_female_library", "target": "n_central_hub" },
     { "id": "eg_pg_library", "source": "n_pg_library", "target": "n_central_hub" },
+    { "id": "eg_soeec", "source": "n_soeec", "target": "n_central_hub" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
