@@ -216,8 +216,31 @@
       "entranceNodeId": "n_freshman_dorm",
       "details": {
         "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
-        "description": "ASTU Freshman Dormitory located at exact coordinates 8.567993, 39.294577. Dedicated housing for first-year students.",
         "department": "Student Housing & Freshman Programs Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "female_library",
+      "code": "FLIB",
+      "name": "ASTU Female Library",
+      "aliases": ["ASTU Female Library", "Female Library", "Females Library", "FLIB"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.563580, "lng": 39.291880 },
+        { "lat": 8.563580, "lng": 39.292050 },
+        { "lat": 8.563340, "lng": 39.292050 },
+        { "lat": 8.563340, "lng": 39.291880 }
+      ],
+      "center": { "lat": 8.563461, "lng": 39.291966 },
+      "rooms": [
+        { "id": "flib_r1", "name": "Female Library Main Reading Room", "floor": 1, "type": "Quiet Study Area", "workDescription": "Dedicated quiet study space & academic library for female students." }
+      ],
+      "entranceNodeId": "n_female_library",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Female Library located at exact coordinates 8.563461, 39.291966.",
+        "department": "Library Directorate",
         "verified": true
       }
     }
@@ -232,6 +255,7 @@
     { "id": "n_kt_tennis", "lat": 8.565747, "lng": 39.293447, "label": "KT Tennis Court Entrance" },
     { "id": "n_stadium", "lat": 8.565458, "lng": 39.294614, "label": "ASTU Stadium Gate" },
     { "id": "n_freshman_dorm", "lat": 8.567993, "lng": 39.294577, "label": "Freshman Dorm Entrance" },
+    { "id": "n_female_library", "lat": 8.563461, "lng": 39.291966, "label": "Female Library Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -243,6 +267,7 @@
     { "id": "eg_female_dorm", "source": "n_female_dorm", "target": "n_stadium" },
     { "id": "eg_kt_tennis", "source": "n_kt_tennis", "target": "n_stadium" },
     { "id": "eg_freshman_dorm", "source": "n_freshman_dorm", "target": "n_stadium" },
+    { "id": "eg_female_library", "source": "n_female_library", "target": "n_central_hub" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
