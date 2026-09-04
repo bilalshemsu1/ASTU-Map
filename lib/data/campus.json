@@ -196,6 +196,30 @@
         "department": "Sports & Youth Development Directorate",
         "verified": true
       }
+    },
+    {
+      "id": "freshman_dorm",
+      "code": "FMDORM",
+      "name": "ASTU Freshman Dormitory",
+      "aliases": ["ASTU Freshman Dormitory", "Freshman Dorm", "Freshman Male Dorm", "Freshman Dormitory", "FMDORM"],
+      "category": "dormitory",
+      "polygon": [
+        { "lat": 8.568150, "lng": 39.294350 },
+        { "lat": 8.568150, "lng": 39.294800 },
+        { "lat": 8.567800, "lng": 39.294800 },
+        { "lat": 8.567800, "lng": 39.294350 }
+      ],
+      "center": { "lat": 8.567993, "lng": 39.294577 },
+      "rooms": [
+        { "id": "fmdorm_blocks", "name": "Freshman Housing Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Primary residential housing blocks for first-year undergraduate students managed by Division of Freshman Programs (FDP)." }
+      ],
+      "entranceNodeId": "n_freshman_dorm",
+      "details": {
+        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
+        "description": "ASTU Freshman Dormitory located at exact coordinates 8.567993, 39.294577. Dedicated housing for first-year students.",
+        "department": "Student Housing & Freshman Programs Directorate",
+        "verified": true
+      }
     }
   ],
   "nodes": [
@@ -207,6 +231,7 @@
     { "id": "n_female_dorm", "lat": 8.566519, "lng": 39.292576, "label": "Female Dormitory Gate" },
     { "id": "n_kt_tennis", "lat": 8.565747, "lng": 39.293447, "label": "KT Tennis Court Entrance" },
     { "id": "n_stadium", "lat": 8.565458, "lng": 39.294614, "label": "ASTU Stadium Gate" },
+    { "id": "n_freshman_dorm", "lat": 8.567993, "lng": 39.294577, "label": "Freshman Dorm Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -217,6 +242,7 @@
     { "id": "eg_ecb", "source": "n_ecb", "target": "n_stadium" },
     { "id": "eg_female_dorm", "source": "n_female_dorm", "target": "n_stadium" },
     { "id": "eg_kt_tennis", "source": "n_kt_tennis", "target": "n_stadium" },
+    { "id": "eg_freshman_dorm", "source": "n_freshman_dorm", "target": "n_stadium" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
