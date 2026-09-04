@@ -315,6 +315,54 @@
         "department": "Division of STEM Programs & Youth Innovation Directorate",
         "verified": true
       }
+    },
+    {
+      "id": "app_sci_lib",
+      "code": "ASLIB",
+      "name": "Applied Science Library",
+      "aliases": ["Applied Science Library", "ASTU Applied Science Library", "Applied Science Lib", "ASLIB"],
+      "category": "library",
+      "polygon": [
+        { "lat": 8.562630, "lng": 39.287550 },
+        { "lat": 8.562630, "lng": 39.287780 },
+        { "lat": 8.562380, "lng": 39.287780 },
+        { "lat": 8.562380, "lng": 39.287550 }
+      ],
+      "center": { "lat": 8.562505, "lng": 39.287669 },
+      "rooms": [
+        { "id": "aslib_r1", "name": "Applied Sciences Reading Hall", "floor": 1, "type": "Academic Library", "workDescription": "Dedicated quiet reading rooms, academic journals, and study halls for School of Applied Natural Sciences." }
+      ],
+      "entranceNodeId": "n_app_sci_lib",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkRUnLwmAJ8Mgbr_YtrWK6P_pYAoVT0DzsFC_eXLbZ0SfHKEysV_01SL8Zn_kkJ4sK71C6iTLWt5Uo0O0AC__IgNi0h-GIeS_YpxSzMkjHtF8LiNFQHoMLN3JoIeEfeh6bRpIyM=w408-h306-k-no"],
+        "description": "ASTU Applied Science Library located at exact coordinates 8.562505, 39.287669.",
+        "department": "Library Directorate & Applied Natural Sciences",
+        "verified": true
+      }
+    },
+    {
+      "id": "sace",
+      "code": "SACE",
+      "name": "ASTU School Of Architecture and Civil Engineering",
+      "aliases": ["ASTU School Of Architecture and Civil Engineering", "School Of Architecture and Civil Engineering", "SACE", "Architecture Department", "Civil Engineering Dept"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.562250, "lng": 39.287500 },
+        { "lat": 8.562250, "lng": 39.287740 },
+        { "lat": 8.561960, "lng": 39.287740 },
+        { "lat": 8.561960, "lng": 39.287500 }
+      ],
+      "center": { "lat": 8.562105, "lng": 39.287619 },
+      "rooms": [
+        { "id": "sace_studios", "name": "Architecture Drafting Studios & Structural Labs", "floor": 1, "type": "Design Studios & Engineering Labs", "workDescription": "Architectural design studios, drafting halls, structural testing labs, and surveying equipment rooms." }
+      ],
+      "entranceNodeId": "n_sace",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkVF_ADMeeUqS-exI61krUX-15o2qD-iVuNuCiswVDjMLu3_9SotpGEUGYGJwrLGMYyN40XOEmplX4QcFi-V7u6axy0yvU3RgpRUL8GY4-Npp_Zfah5hKIGXfF0AxymQtW6stDS=w408-h306-k-no"],
+        "description": "ASTU School Of Architecture and Civil Engineering (SACE) located at exact coordinates 8.562105, 39.287619.",
+        "department": "School of Civil Engineering and Architecture",
+        "verified": true
+      }
     }
   ],
   "nodes": [
@@ -331,6 +379,8 @@
     { "id": "n_pg_library", "lat": 8.564068, "lng": 39.29051, "label": "Postgraduate Library Entrance" },
     { "id": "n_soeec", "lat": 8.563803, "lng": 39.289464, "label": "SOEEC Entrance" },
     { "id": "n_stem_center", "lat": 8.563971, "lng": 39.288712, "label": "STEM Center Entrance" },
+    { "id": "n_app_sci_lib", "lat": 8.562505, "lng": 39.287669, "label": "Applied Science Library Entrance" },
+    { "id": "n_sace", "lat": 8.562105, "lng": 39.287619, "label": "SACE Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -346,6 +396,8 @@
     { "id": "eg_pg_library", "source": "n_pg_library", "target": "n_central_hub" },
     { "id": "eg_soeec", "source": "n_soeec", "target": "n_central_hub" },
     { "id": "eg_stem_center", "source": "n_stem_center", "target": "n_soeec" },
+    { "id": "eg_app_sci_lib", "source": "n_app_sci_lib", "target": "n_stem_center" },
+    { "id": "eg_sace", "source": "n_sace", "target": "n_app_sci_lib" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
