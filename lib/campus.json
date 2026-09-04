@@ -506,6 +506,78 @@
         "department": "University Administration & Registrar",
         "verified": true
       }
+    },
+    {
+      "id": "ict_building",
+      "code": "ICTCTR",
+      "name": "ICT Center",
+      "aliases": ["ICT Center", "ASTU ICT Building", "Information Communication Technology Center", "ICT Directorate"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.561650, "lng": 39.288350 },
+        { "lat": 8.561650, "lng": 39.288580 },
+        { "lat": 8.561350, "lng": 39.288580 },
+        { "lat": 8.561350, "lng": 39.288350 }
+      ],
+      "center": { "lat": 8.561501, "lng": 39.288465 },
+      "rooms": [
+        { "id": "ict_labs", "name": "ICT Computer Laboratories & Technical Hub", "floor": 1, "type": "Computer Lab", "workDescription": "Central computing facilities, network support labs, and ICT training classrooms." }
+      ],
+      "entranceNodeId": "n_ict_building",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkly-wQzfX-qQagwCDlQUo4UzJWQhXNQG-k6vE0ud0sV8mojjG8EWvXUeMXkMNFJEQ41-ogISMmyM60T5pN0FhjDaEn0bNzWuaJ8NWUU4T-2Sq1JsmnsX5XgLdaSMU2xCBbBAhDg5jgikA=w408-h306-k-no"],
+        "description": "ICT Center located at exact coordinates 8.561501, 39.288465.",
+        "department": "ICT Center Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "chem_eng",
+      "code": "CHEMENG",
+      "name": "ASTU Chemical Engineering",
+      "aliases": ["ASTU Chemical Engineering", "Chemical Engineering Department", "School of Chemical Engineering", "Chem Eng"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.562150, "lng": 39.288380 },
+        { "lat": 8.562150, "lng": 39.288620 },
+        { "lat": 8.561840, "lng": 39.288620 },
+        { "lat": 8.561840, "lng": 39.288380 }
+      ],
+      "center": { "lat": 8.561998, "lng": 39.288499 },
+      "rooms": [
+        { "id": "chem_labs", "name": "Chemical Process & Reaction Labs", "floor": 1, "type": "Engineering Laboratory", "workDescription": "Departmental laboratories, chemical process research units, and lecture halls for Chemical Engineering." }
+      ],
+      "entranceNodeId": "n_chem_eng",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmle8uFZeJLB-kFyOrq2wQKtL4XK9k1gISGE8VNbXGij3MdoXbCUrucy_-E2YWZjbxTR9Jkp_n5vROrRhQfpQeEx-3BdkswF1rybkCH-z0jBzJgR7ntKpDrK0pdQvL4d9AGddw9iQ=w408-h306-k-no"],
+        "description": "ASTU Chemical Engineering Department located at exact coordinates 8.561998, 39.288499.",
+        "department": "School of Chemical Engineering",
+        "verified": true
+      }
+    },
+    {
+      "id": "freshman_programs",
+      "code": "FDP",
+      "name": "ASTU Freshman Programs",
+      "aliases": ["ASTU Freshman Programs", "Freshman Programs Directorate", "Division of Freshman Programs", "FDP"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.562100, "lng": 39.286100 },
+        { "lat": 8.562100, "lng": 39.286330 },
+        { "lat": 8.561800, "lng": 39.286330 },
+        { "lat": 8.561800, "lng": 39.286100 }
+      ],
+      "center": { "lat": 8.561950, "lng": 39.286213 },
+      "rooms": [
+        { "id": "fdp_offices", "name": "Freshman Programs Administration & Advising Offices", "floor": 1, "type": "Administrative & Academic", "workDescription": "Administrative headquarters, academic counseling, and foundational program coordination for first-year students." }
+      ],
+      "entranceNodeId": "n_freshman_programs",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljXjXxWncKv1nVgkACSTnsLbSlAhxwVLfX1y0o-G-c6j007MNaNm_A7ksgVNHhRUviqLNDnEwKOyv9TZUP5aK_D1YBhwt0GtakMtChvAFRsTEjWRcy7avmT-dZhhJONom7R4EU=w408-h306-k-no"],
+        "description": "ASTU Freshman Programs Directorate located at exact coordinates 8.561950, 39.286213.",
+        "department": "Freshman Programs Directorate",
+        "verified": true
+      }
     }
   ],
   "nodes": [
@@ -530,6 +602,9 @@
     { "id": "n_astu_ict", "lat": 8.559277, "lng": 39.291225, "label": "Adama University ICT Entrance" },
     { "id": "n_central_library", "lat": 8.561082, "lng": 39.291370, "label": "Central Library Entrance" },
     { "id": "n_admin_building", "lat": 8.561326, "lng": 39.290258, "label": "Administrative Building Entrance" },
+    { "id": "n_ict_building", "lat": 8.561501, "lng": 39.288465, "label": "ICT Center Entrance" },
+    { "id": "n_chem_eng", "lat": 8.561998, "lng": 39.288499, "label": "Chemical Engineering Entrance" },
+    { "id": "n_freshman_programs", "lat": 8.561950, "lng": 39.286213, "label": "Freshman Programs Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -553,6 +628,9 @@
     { "id": "eg_astu_ict", "source": "n_astu_ict", "target": "n_wabe_street" },
     { "id": "eg_central_library", "source": "n_central_library", "target": "n_female_library" },
     { "id": "eg_admin_building", "source": "n_admin_building", "target": "n_pg_library" },
+    { "id": "eg_ict_building", "source": "n_ict_building", "target": "n_chem_eng" },
+    { "id": "eg_chem_eng", "source": "n_chem_eng", "target": "n_stem_center" },
+    { "id": "eg_freshman_programs", "source": "n_freshman_programs", "target": "n_main_gate" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
