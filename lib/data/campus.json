@@ -363,6 +363,54 @@
         "department": "School of Civil Engineering and Architecture",
         "verified": true
       }
+    },
+    {
+      "id": "astu_main_gate",
+      "code": "GATE1",
+      "name": "ASTU MAIN GATE",
+      "aliases": ["ASTU MAIN GATE", "Main Gate", "ASTU Main Gate Entrance", "Main Entrance", "GATE1"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.559300, "lng": 39.285550 },
+        { "lat": 8.559300, "lng": 39.285830 },
+        { "lat": 8.559050, "lng": 39.285830 },
+        { "lat": 8.559050, "lng": 39.285550 }
+      ],
+      "center": { "lat": 8.559177, "lng": 39.285693 },
+      "rooms": [
+        { "id": "gate1_security", "name": "Main Gate Security & Visitor Control Post", "floor": 1, "type": "Security Checkpoint", "workDescription": "Primary vehicular and pedestrian campus entrance security control post and visitor verification booth." }
+      ],
+      "entranceNodeId": "n_main_gate",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm4XRv-6cY3nl-rVGv6YbL2OxDblPQ9FesZBjtfaG8rwfrixPX-NejFY1TIj0N_BQYaPRFW0wjufuMNSQdZZjLgZVAcLMT7gIllAbfOpdFe92O_WgXR5m_a580VlcX4rQk5cLQ9Px9ubFVH=w408-h408-k-no"],
+        "description": "ASTU Main Gate Entrance located at exact coordinates 8.559177, 39.285693.",
+        "department": "University Security & Safety Directorate",
+        "verified": true
+      }
+    },
+    {
+      "id": "oda_gateway",
+      "code": "GATE2",
+      "name": "Oda Gateway",
+      "aliases": ["Oda gateway", "Oda Gate", "Oda Gateway Entrance", "East Gate", "GATE2"],
+      "category": "services",
+      "polygon": [
+        { "lat": 8.557200, "lng": 39.290850 },
+        { "lat": 8.557200, "lng": 39.291120 },
+        { "lat": 8.556900, "lng": 39.291120 },
+        { "lat": 8.556900, "lng": 39.290850 }
+      ],
+      "center": { "lat": 8.557049, "lng": 39.290984 },
+      "rooms": [
+        { "id": "gate2_security", "name": "Oda Gate Security Post", "floor": 1, "type": "Security Checkpoint", "workDescription": "East perimeter campus gate and security checkpoint." }
+      ],
+      "entranceNodeId": "n_oda_gate",
+      "details": {
+        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlUoWdcR7-b2o1sPYQQGwgPleTpJUW9GAB2FDYtXhXuWaCA8bjOFnIKFyGjZB9MjQ_Ljd17vH8Iy6KXsKMtltXjBlqmTUtY4Pe2LfvdowyVKGxrdNNlCXjyi0EXSdD833Xnxuc9=w426-h240-k-no"],
+        "description": "Oda Gateway Entrance located at exact coordinates 8.557049, 39.290984.",
+        "department": "University Security & Safety Directorate",
+        "verified": true
+      }
     }
   ],
   "nodes": [
@@ -381,6 +429,8 @@
     { "id": "n_stem_center", "lat": 8.563971, "lng": 39.288712, "label": "STEM Center Entrance" },
     { "id": "n_app_sci_lib", "lat": 8.562505, "lng": 39.287669, "label": "Applied Science Library Entrance" },
     { "id": "n_sace", "lat": 8.562105, "lng": 39.287619, "label": "SACE Entrance" },
+    { "id": "n_main_gate", "lat": 8.559177, "lng": 39.285693, "label": "ASTU Main Gate" },
+    { "id": "n_oda_gate", "lat": 8.557049, "lng": 39.290984, "label": "Oda Gateway" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -398,6 +448,8 @@
     { "id": "eg_stem_center", "source": "n_stem_center", "target": "n_soeec" },
     { "id": "eg_app_sci_lib", "source": "n_app_sci_lib", "target": "n_stem_center" },
     { "id": "eg_sace", "source": "n_sace", "target": "n_app_sci_lib" },
+    { "id": "eg_main_gate", "source": "n_main_gate", "target": "n_sace" },
+    { "id": "eg_oda_gate", "source": "n_oda_gate", "target": "n_oda_nebe" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
