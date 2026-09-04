@@ -291,6 +291,30 @@
         "department": "School of Electrical Engineering and Computing",
         "verified": true
       }
+    },
+    {
+      "id": "stem_center",
+      "code": "STEM",
+      "name": "STEM Center, Adama Science & Technology University",
+      "aliases": ["STEM Center, Adama Science & Technology University", "STEM Center", "ASTU STEM Center", "STEM Expo Hall", "STEM"],
+      "category": "academic",
+      "polygon": [
+        { "lat": 8.564100, "lng": 39.288600 },
+        { "lat": 8.564100, "lng": 39.288850 },
+        { "lat": 8.563850, "lng": 39.288850 },
+        { "lat": 8.563850, "lng": 39.288600 }
+      ],
+      "center": { "lat": 8.563971, "lng": 39.288712 },
+      "rooms": [
+        { "id": "stem_labs", "name": "STEM Innovation & Robotics Laboratories", "floor": 1, "type": "Research & Exhibition Labs", "workDescription": "Science, Technology, Engineering, and Mathematics innovation labs, robotics workshops, and annual STEM Expo exhibition hall." }
+      ],
+      "entranceNodeId": "n_stem_center",
+      "details": {
+        "images": ["https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"],
+        "description": "ASTU STEM Center located at exact coordinates 8.563971, 39.288712. Main venue for STEM Expo presentations and innovation workshops.",
+        "department": "Division of STEM Programs & Youth Innovation Directorate",
+        "verified": true
+      }
     }
   ],
   "nodes": [
@@ -306,6 +330,7 @@
     { "id": "n_female_library", "lat": 8.563461, "lng": 39.291966, "label": "Female Library Entrance" },
     { "id": "n_pg_library", "lat": 8.564068, "lng": 39.29051, "label": "Postgraduate Library Entrance" },
     { "id": "n_soeec", "lat": 8.563803, "lng": 39.289464, "label": "SOEEC Entrance" },
+    { "id": "n_stem_center", "lat": 8.563971, "lng": 39.288712, "label": "STEM Center Entrance" },
     { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" }
   ],
   "edges": [
@@ -320,6 +345,7 @@
     { "id": "eg_female_library", "source": "n_female_library", "target": "n_central_hub" },
     { "id": "eg_pg_library", "source": "n_pg_library", "target": "n_central_hub" },
     { "id": "eg_soeec", "source": "n_soeec", "target": "n_central_hub" },
+    { "id": "eg_stem_center", "source": "n_stem_center", "target": "n_soeec" },
     { "id": "eg_stadium", "source": "n_stadium", "target": "n_central_hub" }
   ]
 }
