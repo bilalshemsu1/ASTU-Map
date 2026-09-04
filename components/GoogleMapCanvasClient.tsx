@@ -280,7 +280,7 @@ export default function GoogleMapCanvasClient({
             <Popup>
               <div className="p-1 font-sans">
                 <h4 className="font-bold text-sm text-gray-900">{b.name}</h4>
-                <p className="text-xs text-blue-600 font-semibold mt-0.5">Code: {b.code}</p>
+                <p className="text-xs text-blue-600 font-semibold mt-0.5">Block Code: {b.code}</p>
                 {b.rooms.length > 0 && (
                   <p className="text-xs text-gray-500 mt-1">
                     Rooms: {b.rooms.map((r) => r.name).join(', ')}
