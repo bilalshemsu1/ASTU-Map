@@ -39,6 +39,13 @@ export default function DigitizeMapClient({
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
         zoom={meta.zoom || 17}
+        minZoom={15}
+        maxZoom={22}
+        maxBounds={[
+          [8.5530, 39.2820],
+          [8.5720, 39.3000]
+        ]}
+        maxBoundsViscosity={1.0}
         className="w-full h-full"
       >
         <MapClickHandler onClick={onAddMapClick} />

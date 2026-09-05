@@ -210,7 +210,13 @@ export default function GoogleMapCanvasClient({
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
         zoom={meta.zoom || 17}
+        minZoom={15}
         maxZoom={22}
+        maxBounds={[
+          [8.5530, 39.2820], // South-West corner of ASTU boundary
+          [8.5720, 39.3000]  // North-East corner of ASTU boundary
+        ]}
+        maxBoundsViscosity={1.0}
         zoomControl={false}
         attributionControl={false}
         preferCanvas={true}
