@@ -1,6 +1,6 @@
 # 🗺️ ASTU Campus Map & Navigation Web Application
 
-An interactive, high-precision campus navigation web application for **Addis Ababa Science and Technology University (ASTU)** built with Next.js, TypeScript, Tailwind CSS, and Leaflet.
+An interactive, high-precision campus navigation web application for **Adama Science and Technology University (ASTU)** built with Next.js, TypeScript, Tailwind CSS, and Leaflet.
 
 ![ASTU Campus Map Banner](https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png)
 

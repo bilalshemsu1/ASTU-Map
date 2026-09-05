@@ -1296,12 +1296,6 @@
       "label": "Visual Arts Society Gate"
     },
     {
-      "id": "n_ecb",
-      "lat": 8.565049,
-      "lng": 39.29326,
-      "label": "East Campus Block Gate"
-    },
-    {
       "id": "n_female_dorm",
       "lat": 8.566519,
       "lng": 39.292576,
@@ -1414,12 +1408,6 @@
       "lat": 8.56195,
       "lng": 39.286213,
       "label": "Freshman Programs Entrance"
-    },
-    {
-      "id": "n_central_hub",
-      "lat": 8.565458,
-      "lng": 39.2925,
-      "label": "ASTU Central Campus Hub"
     },
     {
       "id": "r_336303",
@@ -2289,6 +2277,1164 @@
       "id": "r_173492",
       "lat": 8.566395,
       "lng": 39.293882,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_476758",
+      "lat": 8.563922,
+      "lng": 39.288951,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_479090",
+      "lat": 8.56405,
+      "lng": 39.289264,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_481071",
+      "lat": 8.5643,
+      "lng": 39.289217,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_553954",
+      "lat": 8.56488,
+      "lng": 39.286765,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_555530",
+      "lat": 8.56489,
+      "lng": 39.286306,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_564270",
+      "lat": 8.564463,
+      "lng": 39.286263,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_567332",
+      "lat": 8.563986,
+      "lng": 39.286258,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_571557",
+      "lat": 8.563418,
+      "lng": 39.286245,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_574880",
+      "lat": 8.562267,
+      "lng": 39.286199,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_597422",
+      "lat": 8.566381,
+      "lng": 39.286961,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_605873",
+      "lat": 8.565293,
+      "lng": 39.286481,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_607677",
+      "lat": 8.56524,
+      "lng": 39.286947,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_616750",
+      "lat": 8.56541,
+      "lng": 39.287371,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_629436",
+      "lat": 8.563866,
+      "lng": 39.286752,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_635884",
+      "lat": 8.56323,
+      "lng": 39.286741,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_637577",
+      "lat": 8.563227,
+      "lng": 39.287334,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_645561",
+      "lat": 8.562705,
+      "lng": 39.286733,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_652691",
+      "lat": 8.563572,
+      "lng": 39.28651,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_655286",
+      "lat": 8.563566,
+      "lng": 39.286746,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_660083",
+      "lat": 8.56411,
+      "lng": 39.286255,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_662255",
+      "lat": 8.564086,
+      "lng": 39.286526,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_665714",
+      "lat": 8.563996,
+      "lng": 39.286749,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_677102",
+      "lat": 8.564527,
+      "lng": 39.286762,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_685662",
+      "lat": 8.561323,
+      "lng": 39.287312,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_698546",
+      "lat": 8.562596,
+      "lng": 39.28812,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_703343",
+      "lat": 8.562607,
+      "lng": 39.287828,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_710777",
+      "lat": 8.562856,
+      "lng": 39.288117,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_712328",
+      "lat": 8.562829,
+      "lng": 39.288579,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_718153",
+      "lat": 8.562249,
+      "lng": 39.289231,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_721849",
+      "lat": 8.562641,
+      "lng": 39.289236,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_724952",
+      "lat": 8.562949,
+      "lng": 39.289223,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_728187",
+      "lat": 8.563259,
+      "lng": 39.289212,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_733082",
+      "lat": 8.5638,
+      "lng": 39.289204,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_738320",
+      "lat": 8.562241,
+      "lng": 39.289764,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_742309",
+      "lat": 8.562633,
+      "lng": 39.289724,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_744956",
+      "lat": 8.562954,
+      "lng": 39.289689,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_749242",
+      "lat": 8.563257,
+      "lng": 39.289663,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_751724",
+      "lat": 8.563493,
+      "lng": 39.289668,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_755557",
+      "lat": 8.563514,
+      "lng": 39.290784,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_759864",
+      "lat": 8.563501,
+      "lng": 39.289209,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_781941",
+      "lat": 8.562273,
+      "lng": 39.291982,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_784648",
+      "lat": 8.562559,
+      "lng": 39.292089,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_785722",
+      "lat": 8.562654,
+      "lng": 39.292277,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_788132",
+      "lat": 8.563089,
+      "lng": 39.29225,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_789538",
+      "lat": 8.56323,
+      "lng": 39.292081,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_797402",
+      "lat": 8.563442,
+      "lng": 39.291856,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_810077",
+      "lat": 8.564814,
+      "lng": 39.291883,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_820789",
+      "lat": 8.564501,
+      "lng": 39.291494,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_829436",
+      "lat": 8.564389,
+      "lng": 39.291448,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_833406",
+      "lat": 8.564302,
+      "lng": 39.291376,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_835333",
+      "lat": 8.564198,
+      "lng": 39.291344,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_837084",
+      "lat": 8.564081,
+      "lng": 39.291268,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_838832",
+      "lat": 8.564002,
+      "lng": 39.291137,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_839756",
+      "lat": 8.563946,
+      "lng": 39.291008,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_840561",
+      "lat": 8.56389,
+      "lng": 39.290917,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_846230",
+      "lat": 8.563877,
+      "lng": 39.29078,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_858434",
+      "lat": 8.56362,
+      "lng": 39.29078,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_860388",
+      "lat": 8.563676,
+      "lng": 39.291861,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_869711",
+      "lat": 8.562827,
+      "lng": 39.290799,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_871546",
+      "lat": 8.562885,
+      "lng": 39.290947,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_872989",
+      "lat": 8.562989,
+      "lng": 39.291113,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_873888",
+      "lat": 8.563089,
+      "lng": 39.291204,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_874775",
+      "lat": 8.563164,
+      "lng": 39.291306,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_875508",
+      "lat": 8.563201,
+      "lng": 39.291432,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_876209",
+      "lat": 8.563219,
+      "lng": 39.291545,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_877707",
+      "lat": 8.563259,
+      "lng": 39.291738,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_878806",
+      "lat": 8.56327,
+      "lng": 39.291867,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_888878",
+      "lat": 8.562339,
+      "lng": 39.293632,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_891201",
+      "lat": 8.563752,
+      "lng": 39.293597,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_893982",
+      "lat": 8.564331,
+      "lng": 39.293954,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_911634",
+      "lat": 8.56233,
+      "lng": 39.294761,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_918853",
+      "lat": 8.56237,
+      "lng": 39.29562,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_939457",
+      "lat": 8.567208,
+      "lng": 39.295481,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_944091",
+      "lat": 8.567174,
+      "lng": 39.295164,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_946858",
+      "lat": 8.569121,
+      "lng": 39.295177,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_949776",
+      "lat": 8.569073,
+      "lng": 39.293447,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_952430",
+      "lat": 8.570484,
+      "lng": 39.29389,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_962628",
+      "lat": 8.569115,
+      "lng": 39.295048,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_963963",
+      "lat": 8.569362,
+      "lng": 39.295021,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_967236",
+      "lat": 8.569736,
+      "lng": 39.293653,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_974567",
+      "lat": 8.570017,
+      "lng": 39.294839,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_993657",
+      "lat": 8.568919,
+      "lng": 39.294647,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_998614",
+      "lat": 8.568963,
+      "lng": 39.294749,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_001024",
+      "lat": 8.568964,
+      "lng": 39.294883,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_002708",
+      "lat": 8.568991,
+      "lng": 39.294983,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_015721",
+      "lat": 8.568194,
+      "lng": 39.29459,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_018400",
+      "lat": 8.568192,
+      "lng": 39.295169,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_024582",
+      "lat": 8.567149,
+      "lng": 39.294258,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_049568",
+      "lat": 8.565959,
+      "lng": 39.290768,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_050755",
+      "lat": 8.566036,
+      "lng": 39.291198,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_051594",
+      "lat": 8.566043,
+      "lng": 39.291382,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_052458",
+      "lat": 8.566037,
+      "lng": 39.291501,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_053325",
+      "lat": 8.566014,
+      "lng": 39.291606,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_054845",
+      "lat": 8.565966,
+      "lng": 39.291782,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_056169",
+      "lat": 8.565917,
+      "lng": 39.291885,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_057366",
+      "lat": 8.565857,
+      "lng": 39.292014,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_059503",
+      "lat": 8.565785,
+      "lng": 39.292145,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_060705",
+      "lat": 8.565724,
+      "lng": 39.292275,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_061755",
+      "lat": 8.565652,
+      "lng": 39.292405,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_062644",
+      "lat": 8.5656,
+      "lng": 39.292519,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_063659",
+      "lat": 8.565557,
+      "lng": 39.292619,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_078575",
+      "lat": 8.566091,
+      "lng": 39.291678,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_079532",
+      "lat": 8.566129,
+      "lng": 39.291778,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_083965",
+      "lat": 8.566191,
+      "lng": 39.291857,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_085548",
+      "lat": 8.566296,
+      "lng": 39.291889,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_097561",
+      "lat": 8.566675,
+      "lng": 39.292949,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_099513",
+      "lat": 8.566624,
+      "lng": 39.292608,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_103874",
+      "lat": 8.566587,
+      "lng": 39.292332,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_105371",
+      "lat": 8.56656,
+      "lng": 39.292202,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_132093",
+      "lat": 8.56671,
+      "lng": 39.293241,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_136629",
+      "lat": 8.566746,
+      "lng": 39.293393,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_146529",
+      "lat": 8.567195,
+      "lng": 39.29359,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_163932",
+      "lat": 8.565485,
+      "lng": 39.293159,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_166067",
+      "lat": 8.565658,
+      "lng": 39.29324,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_167003",
+      "lat": 8.565787,
+      "lng": 39.293234,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_167796",
+      "lat": 8.565945,
+      "lng": 39.293249,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_172568",
+      "lat": 8.566038,
+      "lng": 39.2933,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_181124",
+      "lat": 8.566071,
+      "lng": 39.293399,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_188786",
+      "lat": 8.566226,
+      "lng": 39.293334,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_211095",
+      "lat": 8.564166,
+      "lng": 39.293855,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_212395",
+      "lat": 8.564625,
+      "lng": 39.293441,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_213405",
+      "lat": 8.564691,
+      "lng": 39.293323,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_215035",
+      "lat": 8.564734,
+      "lng": 39.293154,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_216136",
+      "lat": 8.564752,
+      "lng": 39.29305,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_219005",
+      "lat": 8.564673,
+      "lng": 39.292921,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_231762",
+      "lat": 8.564784,
+      "lng": 39.292836,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_244370",
+      "lat": 8.560614,
+      "lng": 39.292011,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_248204",
+      "lat": 8.56054,
+      "lng": 39.294828,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_256794",
+      "lat": 8.560566,
+      "lng": 39.293637,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_268314",
+      "lat": 8.558159,
+      "lng": 39.292049,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_275126",
+      "lat": 8.55819,
+      "lng": 39.293465,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_276422",
+      "lat": 8.559798,
+      "lng": 39.293374,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_280321",
+      "lat": 8.56028,
+      "lng": 39.293433,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_288479",
+      "lat": 8.559447,
+      "lng": 39.294828,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_290616",
+      "lat": 8.559426,
+      "lng": 39.295038,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_291483",
+      "lat": 8.559166,
+      "lng": 39.295059,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_293273",
+      "lat": 8.55906,
+      "lng": 39.295011,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_308489",
+      "lat": 8.558031,
+      "lng": 39.289339,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_309528",
+      "lat": 8.558047,
+      "lng": 39.289098,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_310345",
+      "lat": 8.558089,
+      "lng": 39.288958,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_311519",
+      "lat": 8.558206,
+      "lng": 39.288856,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_312395",
+      "lat": 8.558344,
+      "lng": 39.288781,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_313706",
+      "lat": 8.558588,
+      "lng": 39.288711,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_316142",
+      "lat": 8.559469,
+      "lng": 39.288727,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_325301",
+      "lat": 8.558307,
+      "lng": 39.287623,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_327873",
+      "lat": 8.559819,
+      "lng": 39.288197,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_329800",
+      "lat": 8.560254,
+      "lng": 39.287091,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_335426",
+      "lat": 8.55862,
+      "lng": 39.286383,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_342695",
+      "lat": 8.558148,
+      "lng": 39.287515,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_356784",
+      "lat": 8.562286,
+      "lng": 39.285718,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_359051",
+      "lat": 8.563967,
+      "lng": 39.285707,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_395624",
+      "lat": 8.564644,
+      "lng": 39.290323,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_398146",
+      "lat": 8.564609,
+      "lng": 39.28985,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_401841",
+      "lat": 8.564699,
+      "lng": 39.289773,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_415856",
+      "lat": 8.564661,
+      "lng": 39.290498,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_434839",
+      "lat": 8.564049,
+      "lng": 39.28815,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_436544",
+      "lat": 8.564052,
+      "lng": 39.288507,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_458780",
+      "lat": 8.562015,
+      "lng": 39.289424,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_460096",
+      "lat": 8.561922,
+      "lng": 39.289599,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_460981",
+      "lat": 8.561851,
+      "lng": 39.289701,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_461985",
+      "lat": 8.561776,
+      "lng": 39.289778,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_464109",
+      "lat": 8.561665,
+      "lng": 39.289875,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_466853",
+      "lat": 8.561556,
+      "lng": 39.289945,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_472737",
+      "lat": 8.56131,
+      "lng": 39.289389,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_473899",
+      "lat": 8.561426,
+      "lng": 39.289486,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_495569",
+      "lat": 8.561678,
+      "lng": 39.290819,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_500821",
+      "lat": 8.561408,
+      "lng": 39.29083,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_502626",
+      "lat": 8.561437,
+      "lng": 39.291995,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_507372",
+      "lat": 8.561421,
+      "lng": 39.293636,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_515777",
+      "lat": 8.561416,
+      "lng": 39.291251,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_555719",
+      "lat": 8.564914,
+      "lng": 39.290774,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_557211",
+      "lat": 8.564941,
+      "lng": 39.291348,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_563911",
+      "lat": 8.564946,
+      "lng": 39.291616,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_565434",
+      "lat": 8.564941,
+      "lng": 39.291868,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_569819",
+      "lat": 8.564895,
+      "lng": 39.292172,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_573129",
+      "lat": 8.565121,
+      "lng": 39.292558,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_608539",
+      "lat": 8.56536,
+      "lng": 39.293339,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_613469",
+      "lat": 8.564864,
+      "lng": 39.293525,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_698652",
+      "lat": 8.567834,
+      "lng": 39.29243,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_700147",
+      "lat": 8.568259,
+      "lng": 39.292929,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_702339",
+      "lat": 8.568678,
+      "lng": 39.293278,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_710427",
+      "lat": 8.569052,
+      "lng": 39.292355,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_727607",
+      "lat": 8.566758,
+      "lng": 39.289057,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_729435",
+      "lat": 8.567386,
+      "lng": 39.289409,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_731907",
+      "lat": 8.568702,
+      "lng": 39.290184,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_734193",
+      "lat": 8.568882,
+      "lng": 39.290678,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_735651",
+      "lat": 8.568983,
+      "lng": 39.291129,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_737948",
+      "lat": 8.568994,
+      "lng": 39.291247,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_740371",
+      "lat": 8.568906,
+      "lng": 39.291319,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_742569",
+      "lat": 8.568734,
+      "lng": 39.291249,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_743816",
+      "lat": 8.568553,
+      "lng": 39.291137,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_746012",
+      "lat": 8.568086,
+      "lng": 39.290852,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_807719",
+      "lat": 8.564261,
+      "lng": 39.288158,
       "label": "Road Point"
     }
   ],
@@ -3174,38 +4320,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_auto_n_ecb_r_365359",
-      "source": "n_ecb",
-      "target": "r_365359",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_auto_n_female_dorm_r_362708",
-      "source": "n_female_dorm",
-      "target": "r_362708",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_auto_n_kt_tennis_r_365359",
-      "source": "n_kt_tennis",
-      "target": "r_365359",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_auto_n_stadium_r_369618",
-      "source": "n_stadium",
-      "target": "r_369618",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_auto_n_female_library_r_792373",
       "source": "n_female_library",
       "target": "r_792373",
@@ -3305,14 +4419,6 @@
       "id": "e_auto_n_freshman_programs_r_637396",
       "source": "n_freshman_programs",
       "target": "r_637396",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_auto_n_central_hub_r_352916",
-      "source": "n_central_hub",
-      "target": "r_352916",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -3697,6 +4803,1606 @@
       "id": "e_r_173492_r_094233",
       "source": "r_173492",
       "target": "r_094233",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_993222_r_476758",
+      "source": "r_993222",
+      "target": "r_476758",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_476758_r_479090",
+      "source": "r_476758",
+      "target": "r_479090",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_479090_r_481071",
+      "source": "r_479090",
+      "target": "r_481071",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_399352_r_553954",
+      "source": "r_399352",
+      "target": "r_553954",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_553954_r_555530",
+      "source": "r_553954",
+      "target": "r_555530",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_555530_r_564270",
+      "source": "r_555530",
+      "target": "r_564270",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_564270_r_567332",
+      "source": "r_564270",
+      "target": "r_567332",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_567332_r_571557",
+      "source": "r_567332",
+      "target": "r_571557",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_571557_r_574880",
+      "source": "r_571557",
+      "target": "r_574880",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_553954_r_679941",
+      "source": "r_553954",
+      "target": "r_679941",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_555530_r_597422",
+      "source": "r_555530",
+      "target": "r_597422",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_605873_r_607677",
+      "source": "r_605873",
+      "target": "r_607677",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_607677_r_399352",
+      "source": "r_607677",
+      "target": "r_399352",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_607677_r_616750",
+      "source": "r_607677",
+      "target": "r_616750",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_629436_r_988594",
+      "source": "r_629436",
+      "target": "r_988594",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_635884_r_637577",
+      "source": "r_635884",
+      "target": "r_637577",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_645561_r_421961",
+      "source": "r_645561",
+      "target": "r_421961",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_571557_r_652691",
+      "source": "r_571557",
+      "target": "r_652691",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_652691_r_655286",
+      "source": "r_652691",
+      "target": "r_655286",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_660083_r_662255",
+      "source": "r_660083",
+      "target": "r_662255",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_662255_r_665714",
+      "source": "r_662255",
+      "target": "r_665714",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_564270_r_677102",
+      "source": "r_564270",
+      "target": "r_677102",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_685662_r_640585",
+      "source": "r_685662",
+      "target": "r_640585",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_698546_r_703343",
+      "source": "r_698546",
+      "target": "r_703343",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_703343_r_423699",
+      "source": "r_703343",
+      "target": "r_423699",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_710777_r_712328",
+      "source": "r_710777",
+      "target": "r_712328",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_718153_r_721849",
+      "source": "r_718153",
+      "target": "r_721849",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_721849_r_724952",
+      "source": "r_721849",
+      "target": "r_724952",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_724952_r_728187",
+      "source": "r_724952",
+      "target": "r_728187",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_728187_r_733082",
+      "source": "r_728187",
+      "target": "r_733082",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_738320_r_742309",
+      "source": "r_738320",
+      "target": "r_742309",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_742309_r_744956",
+      "source": "r_742309",
+      "target": "r_744956",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_744956_r_749242",
+      "source": "r_744956",
+      "target": "r_749242",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_749242_r_751724",
+      "source": "r_749242",
+      "target": "r_751724",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_751724_r_755557",
+      "source": "r_751724",
+      "target": "r_755557",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_759864_r_751724",
+      "source": "r_759864",
+      "target": "r_751724",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_797263_r_759864",
+      "source": "r_797263",
+      "target": "r_759864",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_781941_r_784648",
+      "source": "r_781941",
+      "target": "r_784648",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_784648_r_785722",
+      "source": "r_784648",
+      "target": "r_785722",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_785722_r_788132",
+      "source": "r_785722",
+      "target": "r_788132",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_788132_r_789538",
+      "source": "r_788132",
+      "target": "r_789538",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_789538_r_797402",
+      "source": "r_789538",
+      "target": "r_797402",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_797402_r_810077",
+      "source": "r_797402",
+      "target": "r_810077",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_810077_r_820789",
+      "source": "r_810077",
+      "target": "r_820789",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_820789_r_829436",
+      "source": "r_820789",
+      "target": "r_829436",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_829436_r_833406",
+      "source": "r_829436",
+      "target": "r_833406",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_833406_r_835333",
+      "source": "r_833406",
+      "target": "r_835333",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_835333_r_837084",
+      "source": "r_835333",
+      "target": "r_837084",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_837084_r_838832",
+      "source": "r_837084",
+      "target": "r_838832",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_838832_r_839756",
+      "source": "r_838832",
+      "target": "r_839756",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_839756_r_840561",
+      "source": "r_839756",
+      "target": "r_840561",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_840561_r_846230",
+      "source": "r_840561",
+      "target": "r_846230",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_858434_r_860388",
+      "source": "r_858434",
+      "target": "r_860388",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_869711_r_871546",
+      "source": "r_869711",
+      "target": "r_871546",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_871546_r_872989",
+      "source": "r_871546",
+      "target": "r_872989",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_872989_r_873888",
+      "source": "r_872989",
+      "target": "r_873888",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_873888_r_874775",
+      "source": "r_873888",
+      "target": "r_874775",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_874775_r_875508",
+      "source": "r_874775",
+      "target": "r_875508",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_875508_r_876209",
+      "source": "r_875508",
+      "target": "r_876209",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_876209_r_877707",
+      "source": "r_876209",
+      "target": "r_877707",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_877707_r_878806",
+      "source": "r_877707",
+      "target": "r_878806",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_878806_r_797402",
+      "source": "r_878806",
+      "target": "r_797402",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_042862_r_888878",
+      "source": "r_042862",
+      "target": "r_888878",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_888878_r_891201",
+      "source": "r_888878",
+      "target": "r_891201",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_891201_r_893982",
+      "source": "r_891201",
+      "target": "r_893982",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_893982_r_134378",
+      "source": "r_893982",
+      "target": "r_134378",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_893982_r_135367",
+      "source": "r_893982",
+      "target": "r_135367",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_136888_r_911634",
+      "source": "r_136888",
+      "target": "r_911634",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_911634_r_888878",
+      "source": "r_911634",
+      "target": "r_888878",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_911634_r_918853",
+      "source": "r_911634",
+      "target": "r_918853",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_auto_n_stadium_r_117343",
+      "source": "n_stadium",
+      "target": "r_117343",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_369618_r_939457",
+      "source": "r_369618",
+      "target": "r_939457",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_944091_r_946858",
+      "source": "r_944091",
+      "target": "r_946858",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_946858_r_949776",
+      "source": "r_946858",
+      "target": "r_949776",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_949776_r_952430",
+      "source": "r_949776",
+      "target": "r_952430",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_962628_r_963963",
+      "source": "r_962628",
+      "target": "r_963963",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_963963_r_967236",
+      "source": "r_963963",
+      "target": "r_967236",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_963963_r_974567",
+      "source": "r_963963",
+      "target": "r_974567",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_freshman_dorm_r_993657",
+      "source": "n_freshman_dorm",
+      "target": "r_993657",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_993657_r_998614",
+      "source": "r_993657",
+      "target": "r_998614",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_998614_r_001024",
+      "source": "r_998614",
+      "target": "r_001024",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_001024_r_002708",
+      "source": "r_001024",
+      "target": "r_002708",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_002708_r_962628",
+      "source": "r_002708",
+      "target": "r_962628",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_002708_r_946858",
+      "source": "r_002708",
+      "target": "r_946858",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_015721_r_018400",
+      "source": "r_015721",
+      "target": "r_018400",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_024582_n_freshman_dorm",
+      "source": "r_024582",
+      "target": "n_freshman_dorm",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_049568_r_050755",
+      "source": "r_049568",
+      "target": "r_050755",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_050755_r_051594",
+      "source": "r_050755",
+      "target": "r_051594",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_051594_r_052458",
+      "source": "r_051594",
+      "target": "r_052458",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_052458_r_053325",
+      "source": "r_052458",
+      "target": "r_053325",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_053325_r_054845",
+      "source": "r_053325",
+      "target": "r_054845",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_054845_r_056169",
+      "source": "r_054845",
+      "target": "r_056169",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_056169_r_057366",
+      "source": "r_056169",
+      "target": "r_057366",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_057366_r_059503",
+      "source": "r_057366",
+      "target": "r_059503",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_059503_r_060705",
+      "source": "r_059503",
+      "target": "r_060705",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_060705_r_061755",
+      "source": "r_060705",
+      "target": "r_061755",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_061755_r_062644",
+      "source": "r_061755",
+      "target": "r_062644",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_062644_r_063659",
+      "source": "r_062644",
+      "target": "r_063659",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_063659_r_048813",
+      "source": "r_063659",
+      "target": "r_048813",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_052458_r_078575",
+      "source": "r_052458",
+      "target": "r_078575",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_078575_r_079532",
+      "source": "r_078575",
+      "target": "r_079532",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_079532_r_083965",
+      "source": "r_079532",
+      "target": "r_083965",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_083965_r_085548",
+      "source": "r_083965",
+      "target": "r_085548",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_097561_r_099513",
+      "source": "r_097561",
+      "target": "r_099513",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_099513_r_103874",
+      "source": "r_099513",
+      "target": "r_103874",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_103874_r_105371",
+      "source": "r_103874",
+      "target": "r_105371",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_auto_n_female_dorm_r_099513",
+      "source": "n_female_dorm",
+      "target": "r_099513",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_097561_r_132093",
+      "source": "r_097561",
+      "target": "r_132093",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_132093_r_136629",
+      "source": "r_132093",
+      "target": "r_136629",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_136629_r_079258",
+      "source": "r_136629",
+      "target": "r_079258",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_146529_r_079258",
+      "source": "r_146529",
+      "target": "r_079258",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_113713_r_163932",
+      "source": "r_113713",
+      "target": "r_163932",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_163932_r_166067",
+      "source": "r_163932",
+      "target": "r_166067",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_166067_r_167003",
+      "source": "r_166067",
+      "target": "r_167003",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_167003_r_167796",
+      "source": "r_167003",
+      "target": "r_167796",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_167796_r_172568",
+      "source": "r_167796",
+      "target": "r_172568",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_172568_r_181124",
+      "source": "r_172568",
+      "target": "r_181124",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_181124_r_188786",
+      "source": "r_181124",
+      "target": "r_188786",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_auto_n_kt_tennis_r_167003",
+      "source": "n_kt_tennis",
+      "target": "r_167003",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_211095_r_212395",
+      "source": "r_211095",
+      "target": "r_212395",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_212395_r_213405",
+      "source": "r_212395",
+      "target": "r_213405",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_213405_r_215035",
+      "source": "r_213405",
+      "target": "r_215035",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_215035_r_216136",
+      "source": "r_215035",
+      "target": "r_216136",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_216136_r_219005",
+      "source": "r_216136",
+      "target": "r_219005",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_219005_r_231762",
+      "source": "r_219005",
+      "target": "r_231762",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_781941_r_244370",
+      "source": "r_781941",
+      "target": "r_244370",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_244370_r_248204",
+      "source": "r_244370",
+      "target": "r_248204",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_248204_r_911634",
+      "source": "r_248204",
+      "target": "r_911634",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_888878_r_256794",
+      "source": "r_888878",
+      "target": "r_256794",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_338905_r_244370",
+      "source": "r_338905",
+      "target": "r_244370",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_268314_r_244370",
+      "source": "r_268314",
+      "target": "r_244370",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_275126_r_276422",
+      "source": "r_275126",
+      "target": "r_276422",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_276422_r_280321",
+      "source": "r_276422",
+      "target": "r_280321",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_280321_r_256794",
+      "source": "r_280321",
+      "target": "r_256794",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_248204_r_288479",
+      "source": "r_248204",
+      "target": "r_288479",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_288479_r_290616",
+      "source": "r_288479",
+      "target": "r_290616",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_290616_r_291483",
+      "source": "r_290616",
+      "target": "r_291483",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_291483_r_293273",
+      "source": "r_291483",
+      "target": "r_293273",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_293273_r_558660",
+      "source": "r_293273",
+      "target": "r_558660",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_336303_r_308489",
+      "source": "r_336303",
+      "target": "r_308489",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_308489_r_309528",
+      "source": "r_308489",
+      "target": "r_309528",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_309528_r_310345",
+      "source": "r_309528",
+      "target": "r_310345",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_310345_r_311519",
+      "source": "r_310345",
+      "target": "r_311519",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_311519_r_312395",
+      "source": "r_311519",
+      "target": "r_312395",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_312395_r_313706",
+      "source": "r_312395",
+      "target": "r_313706",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_313706_r_316142",
+      "source": "r_313706",
+      "target": "r_316142",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_316142_r_571144",
+      "source": "r_316142",
+      "target": "r_571144",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_325301_r_327873",
+      "source": "r_325301",
+      "target": "r_327873",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_327873_r_329800",
+      "source": "r_327873",
+      "target": "r_329800",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_329800_r_404932",
+      "source": "r_329800",
+      "target": "r_404932",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_335426_r_329800",
+      "source": "r_335426",
+      "target": "r_329800",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_335426_r_342695",
+      "source": "r_335426",
+      "target": "r_342695",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_342695_r_325301",
+      "source": "r_342695",
+      "target": "r_325301",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_356784_r_359051",
+      "source": "r_356784",
+      "target": "r_359051",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_351311_r_395624",
+      "source": "r_351311",
+      "target": "r_395624",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_395624_r_398146",
+      "source": "r_395624",
+      "target": "r_398146",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_398146_r_401841",
+      "source": "r_398146",
+      "target": "r_401841",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_401841_r_922663",
+      "source": "r_401841",
+      "target": "r_922663",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_401841_r_828318",
+      "source": "r_401841",
+      "target": "r_828318",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_415856_r_849223",
+      "source": "r_415856",
+      "target": "r_849223",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_990610_r_434839",
+      "source": "r_990610",
+      "target": "r_434839",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_434839_r_436544",
+      "source": "r_434839",
+      "target": "r_436544",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_005397_r_990610",
+      "source": "r_005397",
+      "target": "r_990610",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_458780_r_460096",
+      "source": "r_458780",
+      "target": "r_460096",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_460096_r_460981",
+      "source": "r_460096",
+      "target": "r_460981",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_460981_r_461985",
+      "source": "r_460981",
+      "target": "r_461985",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_461985_r_464109",
+      "source": "r_461985",
+      "target": "r_464109",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_464109_r_466853",
+      "source": "r_464109",
+      "target": "r_466853",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_472737_r_473899",
+      "source": "r_472737",
+      "target": "r_473899",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_473899_r_732225",
+      "source": "r_473899",
+      "target": "r_732225",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_719381_r_705341",
+      "source": "r_719381",
+      "target": "r_705341",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_461985_r_495569",
+      "source": "r_461985",
+      "target": "r_495569",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_500821_r_502626",
+      "source": "r_500821",
+      "target": "r_502626",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_502626_r_507372",
+      "source": "r_502626",
+      "target": "r_507372",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_515777_r_781941",
+      "source": "r_515777",
+      "target": "r_781941",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_555719_r_557211",
+      "source": "r_555719",
+      "target": "r_557211",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_557211_r_563911",
+      "source": "r_557211",
+      "target": "r_563911",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_563911_r_565434",
+      "source": "r_563911",
+      "target": "r_565434",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_565434_r_569819",
+      "source": "r_565434",
+      "target": "r_569819",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_569819_r_573129",
+      "source": "r_569819",
+      "target": "r_573129",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_573129_r_048813",
+      "source": "r_573129",
+      "target": "r_048813",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_608539_r_613469",
+      "source": "r_608539",
+      "target": "r_613469",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_939457_r_141431",
+      "source": "r_939457",
+      "target": "r_141431",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_360275_r_698652",
+      "source": "r_360275",
+      "target": "r_698652",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_698652_r_700147",
+      "source": "r_698652",
+      "target": "r_700147",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_700147_r_702339",
+      "source": "r_700147",
+      "target": "r_702339",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_702339_r_949776",
+      "source": "r_702339",
+      "target": "r_949776",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_949776_r_710427",
+      "source": "r_949776",
+      "target": "r_710427",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_387314_r_727607",
+      "source": "r_387314",
+      "target": "r_727607",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_727607_r_729435",
+      "source": "r_727607",
+      "target": "r_729435",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_729435_r_731907",
+      "source": "r_729435",
+      "target": "r_731907",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_731907_r_734193",
+      "source": "r_731907",
+      "target": "r_734193",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_734193_r_735651",
+      "source": "r_734193",
+      "target": "r_735651",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_735651_r_737948",
+      "source": "r_735651",
+      "target": "r_737948",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_737948_r_740371",
+      "source": "r_737948",
+      "target": "r_740371",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_740371_r_742569",
+      "source": "r_740371",
+      "target": "r_742569",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_742569_r_743816",
+      "source": "r_742569",
+      "target": "r_743816",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_743816_r_746012",
+      "source": "r_743816",
+      "target": "r_746012",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_434839_r_807719",
+      "source": "r_434839",
+      "target": "r_807719",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_427783_r_710777",
+      "source": "r_427783",
+      "target": "r_710777",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true

@@ -237,8 +237,8 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       },
       {
         enableHighAccuracy: true,
-        timeout: 15000,
-        maximumAge: 0,
+        timeout: 30000,
+        maximumAge: 10000,
       }
     );
   };
