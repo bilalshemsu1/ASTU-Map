@@ -112,11 +112,12 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const [activeInput, setActiveInput] = useState<'search' | 'start' | 'dest' | null>(null);
 
   // Routing State
-  const [startNodeId, setStartNodeId] = useState<string>('n_gate');
-  const [startLabel, setStartLabel] = useState<string>('Main Gate Entrance');
+  const mainGateNode = campusData.nodes.find((n) => n.id === 'n_main_gate') || campusData.nodes[0];
+  const [startNodeId, setStartNodeId] = useState<string>(mainGateNode.id);
+  const [startLabel, setStartLabel] = useState<string>('ASTU MAIN GATE');
   const [startCoords, setStartCoords] = useState<LatLng>({
-    lat: campusData.nodes[0].lat,
-    lng: campusData.nodes[0].lng,
+    lat: mainGateNode.lat,
+    lng: mainGateNode.lng,
   });
 
   const [destBuilding, setDestBuilding] = useState<Building | null>(null);
