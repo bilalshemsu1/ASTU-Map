@@ -8,31 +8,26 @@ export async function fetchRealWalkingRoute(
   targetNodeId: string,
   campusData: CampusData
 ): Promise<RouteResult> {
-  // Find closest campus nodes to start and target coordinates
+  // Snap start and target coordinates to the nearest nodes in the road graph network
   let actualStartNodeId = startNodeId;
+  let minStartDist = Infinity;
+  campusData.nodes.forEach((n) => {
+    const d = calculateHaversineDistance(start, n);
+    if (d < minStartDist) {
+      minStartDist = d;
+      actualStartNodeId = n.id;
+    }
+  });
+
   let actualTargetNodeId = targetNodeId;
-
-  if (!actualStartNodeId || actualStartNodeId === 'n_gate') {
-    let minStartDist = Infinity;
-    campusData.nodes.forEach((n) => {
-      const d = calculateHaversineDistance(start, n);
-      if (d < minStartDist) {
-        minStartDist = d;
-        actualStartNodeId = n.id;
-      }
-    });
-  }
-
-  if (!actualTargetNodeId) {
-    let minTargetDist = Infinity;
-    campusData.nodes.forEach((n) => {
-      const d = calculateHaversineDistance(target, n);
-      if (d < minTargetDist) {
-        minTargetDist = d;
-        actualTargetNodeId = n.id;
-      }
-    });
-  }
+  let minTargetDist = Infinity;
+  campusData.nodes.forEach((n) => {
+    const d = calculateHaversineDistance(target, n);
+    if (d < minTargetDist) {
+      minTargetDist = d;
+      actualTargetNodeId = n.id;
+    }
+  });
 
   // 1. Primary ASTU Internal Campus Graph Route (Accurate Foot Paths)
   const localResult = findShortestPath(actualStartNodeId, actualTargetNodeId, campusData);
