@@ -47,6 +47,8 @@ export default function DigitizeMapClient({
         <TileLayer
           url="https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
           subdomains={['0', '1', '2', '3']}
+          tileSize={256}
+          zoomOffset={0}
           attribution="&copy; Google Maps Satellite"
           maxZoom={22}
           maxNativeZoom={20}

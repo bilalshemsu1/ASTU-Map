@@ -224,6 +224,8 @@ export default function GoogleMapCanvasClient({
         <TileLayer
           url={getTileUrl()}
           subdomains={mapType === 'satellite' ? ['0', '1', '2', '3'] : ['a', 'b', 'c', 'd']}
+          tileSize={256}
+          zoomOffset={0}
           maxZoom={22}
           maxNativeZoom={mapType === 'satellite' ? 20 : 19}
         />
