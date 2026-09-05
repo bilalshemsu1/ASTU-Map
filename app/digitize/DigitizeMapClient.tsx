@@ -43,17 +43,13 @@ export default function DigitizeMapClient({
       >
         <MapClickHandler onClick={onAddMapClick} />
 
-        {/* Real World Satellite Tiles */}
+        {/* Google Maps High-Resolution Satellite Tiles */}
         <TileLayer
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-          attribution="&copy; Esri &mdash; World Imagery Satellite"
-          maxZoom={19}
-        />
-
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png"
-          maxZoom={19}
-          opacity={0.7}
+          url="https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
+          subdomains={['0', '1', '2', '3']}
+          attribution="&copy; Google Maps Satellite"
+          maxZoom={22}
+          maxNativeZoom={20}
         />
 
         {/* Path Edges */}

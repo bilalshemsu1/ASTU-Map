@@ -184,7 +184,8 @@ export default function GoogleMapCanvasClient({
     if (mapType === 'roadmap') {
       return 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
     }
-    return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+    // High-resolution Google Maps Hybrid Satellite tile server (s=Galileo)
+    return 'https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}';
   };
 
   return (
@@ -219,11 +220,12 @@ export default function GoogleMapCanvasClient({
         <MapClickHandler onMapClick={handleMapClick} />
         <ZoomControls />
 
-        {/* Esri World Imagery Pure Satellite Tiles without external map labels */}
+        {/* Google Maps High-Resolution Hybrid Satellite Tiles */}
         <TileLayer
           url={getTileUrl()}
+          subdomains={mapType === 'satellite' ? ['0', '1', '2', '3'] : ['a', 'b', 'c', 'd']}
           maxZoom={22}
-          maxNativeZoom={18}
+          maxNativeZoom={mapType === 'satellite' ? 20 : 19}
         />
 
         {/* Digitizer Clicked Point Marker & Popup */}
