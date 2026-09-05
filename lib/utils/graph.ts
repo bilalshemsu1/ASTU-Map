@@ -148,11 +148,88 @@ export function findShortestPath(
     });
   }
 
+  // Multi-pass alternative path finder (finds up to 3 distinct alternate walkways)
+  const alternativePaths: PathNode[][] = [];
+  const bannedEdges = new Set<string>();
+
+  for (let pass = 0; pass < 3; pass++) {
+    // Record edges of previously found paths
+    const currentPathToBan = pass === 0 ? path : alternativePaths[pass - 1];
+    if (!currentPathToBan) break;
+
+    for (let i = 0; i < currentPathToBan.length - 1; i++) {
+      bannedEdges.add(`${currentPathToBan[i].id}-${currentPathToBan[i + 1].id}`);
+      bannedEdges.add(`${currentPathToBan[i + 1].id}-${currentPathToBan[i].id}`);
+    }
+
+    const dists = new Map<string, number>();
+    const prevs = new Map<string, string | null>();
+    const unvis = new Set<string>();
+
+    nodes.forEach((node) => {
+      dists.set(node.id, Infinity);
+      prevs.set(node.id, null);
+      unvis.add(node.id);
+    });
+    dists.set(startNodeId, 0);
+
+    while (unvis.size > 0) {
+      let currentId: string | null = null;
+      let minDistance = Infinity;
+
+      for (const nodeId of unvis) {
+        const d = dists.get(nodeId) ?? Infinity;
+        if (d < minDistance) {
+          minDistance = d;
+          currentId = nodeId;
+        }
+      }
+
+      if (currentId === null || minDistance === Infinity) break;
+      if (currentId === targetNodeId) break;
+
+      unvis.delete(currentId);
+
+      const neighbors = adj.get(currentId) || [];
+      for (const { neighborId, weight } of neighbors) {
+        if (!unvis.has(neighborId)) continue;
+        const isBanned = bannedEdges.has(`${currentId}-${neighborId}`);
+        // Apply heavy penalty to previously used edges so Dijkstra finds completely different streets/walkways
+        const altWeight = isBanned ? weight * 4.0 : weight;
+        const alt = dists.get(currentId)! + altWeight;
+        if (alt < dists.get(neighborId)!) {
+          dists.set(neighborId, alt);
+          prevs.set(neighborId, currentId);
+        }
+      }
+    }
+
+    if (dists.get(targetNodeId) !== Infinity) {
+      const altPath: PathNode[] = [];
+      let currAlt: string | null = targetNodeId;
+      while (currAlt) {
+        const node = nodeMap.get(currAlt);
+        if (node) altPath.unshift(node);
+        currAlt = prevs.get(currAlt) || null;
+      }
+
+      const altKey = altPath.map((n) => n.id).join(',');
+      const primaryKey = path.map((n) => n.id).join(',');
+      const isDuplicate =
+        altKey === primaryKey || alternativePaths.some((p) => p.map((n) => n.id).join(',') === altKey);
+
+      if (altPath.length > 1 && !isDuplicate) {
+        alternativePaths.push(altPath);
+      }
+    }
+  }
+
   return {
     path,
     totalDistanceMeters,
     estimatedTimeMinutes,
     steps,
+    alternativePaths,
   };
 }
 

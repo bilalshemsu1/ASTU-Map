@@ -82,4 +82,5 @@ export interface RouteResult {
   totalDistanceMeters: number;
   estimatedTimeMinutes: number;
   steps: RouteStep[];
+  alternativePaths?: PathNode[][];
 }

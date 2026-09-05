@@ -355,15 +355,31 @@ export default function GoogleMapCanvasClient({
           </CircleMarker>
         )}
 
-        {/* Google Route Line */}
+        {/* Alternative Routes (Subtle Grey Lines) */}
+        {routeResult?.alternativePaths?.map((altPath, idx) => (
+          <Polyline
+            key={`alt-path-${idx}`}
+            positions={altPath.map((n) => [n.lat, n.lng])}
+            pathOptions={{
+              color: '#94a3b8',
+              weight: 4,
+              opacity: 0.55,
+              dashArray: '6, 8',
+              lineCap: 'round',
+              lineJoin: 'round',
+            }}
+          />
+        ))}
+
+        {/* Fastest / Best Route Line (Bold Vivid Blue) */}
         {routePositions.length > 1 && (
           <>
             <Polyline
               positions={routePositions}
               pathOptions={{
                 color: '#1a73e8',
-                weight: 9,
-                opacity: 0.3,
+                weight: 12,
+                opacity: 0.35,
                 lineCap: 'round',
                 lineJoin: 'round',
               }}
@@ -371,9 +387,9 @@ export default function GoogleMapCanvasClient({
             <Polyline
               positions={routePositions}
               pathOptions={{
-                color: '#1a73e8',
-                weight: 6,
-                opacity: 0.95,
+                color: '#2563eb',
+                weight: 7,
+                opacity: 0.98,
                 lineCap: 'round',
                 lineJoin: 'round',
               }}
