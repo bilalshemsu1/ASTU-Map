@@ -184,8 +184,8 @@ export default function GoogleMapCanvasClient({
     if (mapType === 'roadmap') {
       return 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
     }
-    // High-resolution Google Maps Hybrid Satellite tile server (s=Galileo)
-    return 'https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}';
+    // High-resolution Google Maps Pure Satellite tile server (without Google labels)
+    return 'https://mt{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
   };
 
   return (

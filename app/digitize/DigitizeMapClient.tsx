@@ -43,9 +43,9 @@ export default function DigitizeMapClient({
       >
         <MapClickHandler onClick={onAddMapClick} />
 
-        {/* Google Maps High-Resolution Satellite Tiles */}
+        {/* Google Maps High-Resolution Pure Satellite Tiles (No Labels) */}
         <TileLayer
-          url="https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
+          url="https://mt{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
           subdomains={['0', '1', '2', '3']}
           tileSize={256}
           zoomOffset={0}
