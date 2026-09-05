@@ -31,20 +31,41 @@ export default function DigitizePage() {
   // Edge creation state
   const [selectedSourceNode, setSelectedSourceNode] = useState<string | null>(null);
 
+  // Continuous Road Tracing state
+  const [lastRoadNodeId, setLastRoadNodeId] = useState<string | null>(null);
+
   const handleAddMapClick = (latlng: LatLng) => {
     if (mode === 'building') {
       setCurrPolygon((prev) => [...prev, latlng]);
     } else if (mode === 'node') {
+      const newNodeId = `r_${Date.now().toString().slice(-6)}`;
       const newNode: PathNode = {
-        id: `n_${Date.now().toString().slice(-5)}`,
+        id: newNodeId,
         lat: Number(latlng.lat.toFixed(6)),
         lng: Number(latlng.lng.toFixed(6)),
-        label: `Point (${latlng.lat.toFixed(4)}, ${latlng.lng.toFixed(4)})`,
+        label: `Road Point`,
       };
-      setCampus((prev) => ({
-        ...prev,
-        nodes: [...prev.nodes, newNode],
-      }));
+
+      setCampus((prev) => {
+        const nextNodes = [...prev.nodes, newNode];
+        let nextEdges = [...prev.edges];
+
+        // Auto-connect consecutive clicked points into a continuous road segment!
+        if (lastRoadNodeId) {
+          nextEdges.push({
+            id: `e_${lastRoadNodeId}_${newNodeId}`,
+            source: lastRoadNodeId,
+            target: newNodeId,
+          });
+        }
+        return {
+          ...prev,
+          nodes: nextNodes,
+          edges: nextEdges,
+        };
+      });
+
+      setLastRoadNodeId(newNodeId);
     }
   };
 
@@ -176,22 +197,34 @@ export default function DigitizePage() {
         <div className="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-5 shadow-2xl">
           {/* Step Guidance Card */}
           <div className="bg-sky-950/60 border border-sky-800/80 rounded-xl p-3.5 text-xs text-sky-200 leading-relaxed">
-            <strong className="text-sky-300 block font-bold mb-1">💡 Interactive Mode Guide:</strong>
-            {mode === 'view' && 'Select an action mode below. Zoom in on satellite roads to start placing waypoints.'}
-            {mode === 'node' && '📍 Click anywhere on satellite roads to drop road waypoints.'}
-            {mode === 'edge' && '🔗 Click Node A (start) then Node B (end) to link them into a walkable road segment.'}
-            {mode === 'building' && '🏢 Click 3 or more corners on the satellite map to outline a building.'}
+            <strong className="text-sky-300 block font-bold mb-1">🚗 Continuous Road Drawing:</strong>
+            {mode === 'node' && (
+              <div>
+                <span>Simply click along any campus road on the satellite map. The system automatically connects consecutive points into a continuous road path!</span>
+                {lastRoadNodeId && (
+                  <button
+                    onClick={() => setLastRoadNodeId(null)}
+                    className="mt-2 text-[11px] bg-amber-600/90 hover:bg-amber-500 text-white px-2.5 py-1 rounded-lg font-bold block cursor-pointer"
+                  >
+                    Start New Separate Road Segment ✂️
+                  </button>
+                )}
+              </div>
+            )}
+            {mode === 'view' && 'Select "Draw Campus Roads" below to start tracing campus roads.'}
+            {mode === 'edge' && 'Click Node A then Node B to link two existing road waypoints.'}
+            {mode === 'building' && 'Click 3 or more corners on the satellite map to outline a building.'}
           </div>
 
           <div>
             <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2.5">
-              1. Choose Action Tool
+              Choose Action Tool
             </label>
             <div className="grid grid-cols-2 gap-2.5">
               {[
+                { id: 'node', label: '🛣️ Draw Campus Roads', desc: 'Auto-connect line' },
+                { id: 'edge', label: '🔗 Connect Nodes', desc: 'Link 2 points' },
                 { id: 'view', label: '👀 View Map', desc: 'Inspect' },
-                { id: 'node', label: '📍 Add Road Nodes', desc: 'Drop waypoints' },
-                { id: 'edge', label: '🔗 Connect Roads', desc: 'Link nodes' },
                 { id: 'building', label: '🏢 Trace Building', desc: 'Outline block' },
               ].map((m) => (
                 <button
@@ -199,6 +232,7 @@ export default function DigitizePage() {
                   onClick={() => {
                     setMode(m.id as any);
                     setSelectedSourceNode(null);
+                    setLastRoadNodeId(null);
                   }}
                   className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
                     mode === m.id

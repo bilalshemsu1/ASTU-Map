@@ -1,7 +1,10 @@
 {
   "meta": {
     "name": "ASTU Campus Map",
-    "center": { "lat": 8.565458, "lng": 39.292500 },
+    "center": {
+      "lat": 8.565458,
+      "lng": 39.2925
+    },
     "zoom": 17
   },
   "buildings": [
@@ -9,21 +12,49 @@
       "id": "students_cafe",
       "code": "SCAFE",
       "name": "Students Cafe",
-      "aliases": ["Students Cafe", "Student Lounge", "SCAFE", "Main Students Cafe"],
+      "aliases": [
+        "Students Cafe",
+        "Student Lounge",
+        "SCAFE",
+        "Main Students Cafe"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.565850, "lng": 39.290050 },
-        { "lat": 8.565850, "lng": 39.290300 },
-        { "lat": 8.565580, "lng": 39.290300 },
-        { "lat": 8.565580, "lng": 39.290050 }
+        {
+          "lat": 8.56585,
+          "lng": 39.29005
+        },
+        {
+          "lat": 8.56585,
+          "lng": 39.2903
+        },
+        {
+          "lat": 8.56558,
+          "lng": 39.2903
+        },
+        {
+          "lat": 8.56558,
+          "lng": 39.29005
+        }
       ],
-      "center": { "lat": 8.565718, "lng": 39.290178 },
+      "center": {
+        "lat": 8.565718,
+        "lng": 39.290178
+      },
       "rooms": [
-        { "id": "scafe_hall", "name": "Student Main Dining Hall", "floor": 1, "type": "Cafeteria", "workDescription": "Main undergraduate dining cafeteria serving student meals." }
+        {
+          "id": "scafe_hall",
+          "name": "Student Main Dining Hall",
+          "floor": 1,
+          "type": "Cafeteria",
+          "workDescription": "Main undergraduate dining cafeteria serving student meals."
+        }
       ],
       "entranceNodeId": "n_students_cafe",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkpviQowWuEojHDOpI4Fn8nXu2ejbG-D2kPunMvTtoocCdW_I7s3YJNQz-TjDj_IcwctadZ3zhomUMZwD4pwnvrsiNqwbg0GxkL1rJeInvQ_0A3KEpOf8CVbjaNmKCPPULd9qMe=w426-h240-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkpviQowWuEojHDOpI4Fn8nXu2ejbG-D2kPunMvTtoocCdW_I7s3YJNQz-TjDj_IcwctadZ3zhomUMZwD4pwnvrsiNqwbg0GxkL1rJeInvQ_0A3KEpOf8CVbjaNmKCPPULd9qMe=w426-h240-k-no"
+        ],
         "description": "ASTU Students Main Dining Hall & Cafeteria located at exact coordinates 8.565718, 39.290178.",
         "department": "Campus Food & Student Services Directorate",
         "verified": true
@@ -33,21 +64,48 @@
       "id": "astu_facility_8565506",
       "code": "FAC1",
       "name": "ASTU Campus Block (8.565506, 39.291304)",
-      "aliases": ["ASTU Campus Facility", "FAC1", "North West Block"],
+      "aliases": [
+        "ASTU Campus Facility",
+        "FAC1",
+        "North West Block"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.565620, "lng": 39.291200 },
-        { "lat": 8.565620, "lng": 39.291410 },
-        { "lat": 8.565390, "lng": 39.291410 },
-        { "lat": 8.565390, "lng": 39.291200 }
+        {
+          "lat": 8.56562,
+          "lng": 39.2912
+        },
+        {
+          "lat": 8.56562,
+          "lng": 39.29141
+        },
+        {
+          "lat": 8.56539,
+          "lng": 39.29141
+        },
+        {
+          "lat": 8.56539,
+          "lng": 39.2912
+        }
       ],
-      "center": { "lat": 8.565506, "lng": 39.291304 },
+      "center": {
+        "lat": 8.565506,
+        "lng": 39.291304
+      },
       "rooms": [
-        { "id": "fac1_rooms", "name": "Campus Facility Rooms", "floor": 1, "type": "Academic Block", "workDescription": "ASTU campus facility." }
+        {
+          "id": "fac1_rooms",
+          "name": "Campus Facility Rooms",
+          "floor": 1,
+          "type": "Academic Block",
+          "workDescription": "ASTU campus facility."
+        }
       ],
       "entranceNodeId": "n_fac1",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"
+        ],
         "description": "ASTU campus location at exact coordinates 8.565506, 39.291304.",
         "department": "Academic / Administrative",
         "verified": true
@@ -57,21 +115,50 @@
       "id": "oda_nebe_dorm",
       "code": "ONAB",
       "name": "Oda Nebe Hall (Adarash)",
-      "aliases": ["Oda Nebe Hall", "Oda Nebe Adarash", "Oda Nebe Conference Hall", "Oda Nabe Hall", "ONAB"],
+      "aliases": [
+        "Oda Nebe Hall",
+        "Oda Nebe Adarash",
+        "Oda Nebe Conference Hall",
+        "Oda Nabe Hall",
+        "ONAB"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.564750, "lng": 39.291100 },
-        { "lat": 8.564750, "lng": 39.291330 },
-        { "lat": 8.564500, "lng": 39.291330 },
-        { "lat": 8.564500, "lng": 39.291100 }
+        {
+          "lat": 8.56475,
+          "lng": 39.2911
+        },
+        {
+          "lat": 8.56475,
+          "lng": 39.29133
+        },
+        {
+          "lat": 8.5645,
+          "lng": 39.29133
+        },
+        {
+          "lat": 8.5645,
+          "lng": 39.2911
+        }
       ],
-      "center": { "lat": 8.564625, "lng": 39.291216 },
+      "center": {
+        "lat": 8.564625,
+        "lng": 39.291216
+      },
       "rooms": [
-        { "id": "onab_main", "name": "Oda Nebe Main Conference & Orientation Hall (Adarash)", "floor": 1, "type": "Assembly Hall", "workDescription": "University central assembly hall for orientation, conferences, workshops, and official ceremonies." }
+        {
+          "id": "onab_main",
+          "name": "Oda Nebe Main Conference & Orientation Hall (Adarash)",
+          "floor": 1,
+          "type": "Assembly Hall",
+          "workDescription": "University central assembly hall for orientation, conferences, workshops, and official ceremonies."
+        }
       ],
       "entranceNodeId": "n_oda_nebe",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80"
+        ],
         "description": "Oda Nebe Main Conference & Orientation Hall (Adarash) located at exact coordinates 8.564625, 39.291216. Primary venue for student orientation, academic conferences, and university ceremonies.",
         "department": "University Events & Student Union Directorate",
         "verified": true
@@ -81,21 +168,49 @@
       "id": "astu_visual_arts_club",
       "code": "VAC",
       "name": "ASTU Visual Arts Society Club",
-      "aliases": ["ASTU Visual Arts Society Club", "Visual Arts Club", "ASTU Art Club", "VAC"],
+      "aliases": [
+        "ASTU Visual Arts Society Club",
+        "Visual Arts Club",
+        "ASTU Art Club",
+        "VAC"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.564950, "lng": 39.292200 },
-        { "lat": 8.564950, "lng": 39.292430 },
-        { "lat": 8.564770, "lng": 39.292430 },
-        { "lat": 8.564770, "lng": 39.292200 }
+        {
+          "lat": 8.56495,
+          "lng": 39.2922
+        },
+        {
+          "lat": 8.56495,
+          "lng": 39.29243
+        },
+        {
+          "lat": 8.56477,
+          "lng": 39.29243
+        },
+        {
+          "lat": 8.56477,
+          "lng": 39.2922
+        }
       ],
-      "center": { "lat": 8.564861, "lng": 39.292316 },
+      "center": {
+        "lat": 8.564861,
+        "lng": 39.292316
+      },
       "rooms": [
-        { "id": "vac_studio", "name": "Visual Arts & Graphics Studio", "floor": 1, "type": "Student Club Studio", "workDescription": "Creative workspace for student fine arts, design, digital media, and exhibitions." }
+        {
+          "id": "vac_studio",
+          "name": "Visual Arts & Graphics Studio",
+          "floor": 1,
+          "type": "Student Club Studio",
+          "workDescription": "Creative workspace for student fine arts, design, digital media, and exhibitions."
+        }
       ],
       "entranceNodeId": "n_vac",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"
+        ],
         "description": "ASTU Visual Arts Society Club studio located at exact coordinates 8.564861, 39.292316.",
         "department": "Student Union & Creative Arts Directorate",
         "verified": true
@@ -105,21 +220,48 @@
       "id": "astu_east_campus_point",
       "code": "ECB",
       "name": "ASTU East Campus Block",
-      "aliases": ["ASTU East Campus Block", "East Campus Building", "ECB"],
+      "aliases": [
+        "ASTU East Campus Block",
+        "East Campus Building",
+        "ECB"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.565150, "lng": 39.293150 },
-        { "lat": 8.565150, "lng": 39.293370 },
-        { "lat": 8.564950, "lng": 39.293370 },
-        { "lat": 8.564950, "lng": 39.293150 }
+        {
+          "lat": 8.56515,
+          "lng": 39.29315
+        },
+        {
+          "lat": 8.56515,
+          "lng": 39.29337
+        },
+        {
+          "lat": 8.56495,
+          "lng": 39.29337
+        },
+        {
+          "lat": 8.56495,
+          "lng": 39.29315
+        }
       ],
-      "center": { "lat": 8.565049, "lng": 39.29326 },
+      "center": {
+        "lat": 8.565049,
+        "lng": 39.29326
+      },
       "rooms": [
-        { "id": "ecb_hall", "name": "East Campus Study & Seminar Rooms", "floor": 1, "type": "Academic Block", "workDescription": "East campus academic facility." }
+        {
+          "id": "ecb_hall",
+          "name": "East Campus Study & Seminar Rooms",
+          "floor": 1,
+          "type": "Academic Block",
+          "workDescription": "East campus academic facility."
+        }
       ],
       "entranceNodeId": "n_ecb",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"
+        ],
         "description": "ASTU East Campus Block located at exact coordinates 8.565049, 39.29326.",
         "department": "Academic Affairs",
         "verified": true
@@ -129,21 +271,49 @@
       "id": "female_dormitory",
       "code": "FDORM",
       "name": "ASTU Female Dormitory",
-      "aliases": ["Female Dormitory", "Female Dorms", "Girls Dormitory", "FDORM"],
+      "aliases": [
+        "Female Dormitory",
+        "Female Dorms",
+        "Girls Dormitory",
+        "FDORM"
+      ],
       "category": "dormitory",
       "polygon": [
-        { "lat": 8.566700, "lng": 39.292350 },
-        { "lat": 8.566700, "lng": 39.292800 },
-        { "lat": 8.566350, "lng": 39.292800 },
-        { "lat": 8.566350, "lng": 39.292350 }
+        {
+          "lat": 8.5667,
+          "lng": 39.29235
+        },
+        {
+          "lat": 8.5667,
+          "lng": 39.2928
+        },
+        {
+          "lat": 8.56635,
+          "lng": 39.2928
+        },
+        {
+          "lat": 8.56635,
+          "lng": 39.29235
+        }
       ],
-      "center": { "lat": 8.566519, "lng": 39.292576 },
+      "center": {
+        "lat": 8.566519,
+        "lng": 39.292576
+      },
       "rooms": [
-        { "id": "fdorm_blocks", "name": "Female Housing Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Residential dormitory housing blocks for female undergraduate students." }
+        {
+          "id": "fdorm_blocks",
+          "name": "Female Housing Blocks",
+          "floor": 1,
+          "type": "Student Housing",
+          "workDescription": "Residential dormitory housing blocks for female undergraduate students."
+        }
       ],
       "entranceNodeId": "n_female_dorm",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"
+        ],
         "description": "ASTU Female Dormitory located at exact coordinates 8.566519, 39.292576.",
         "department": "Student Housing Directorate",
         "verified": true
@@ -153,21 +323,50 @@
       "id": "kt_tennis_court",
       "code": "KTTC",
       "name": "KT Tennis Court",
-      "aliases": ["KT Tennis Court", "Tennis Court", "KT Tennis", "ASTU Tennis Court", "KTTC"],
+      "aliases": [
+        "KT Tennis Court",
+        "Tennis Court",
+        "KT Tennis",
+        "ASTU Tennis Court",
+        "KTTC"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.565850, "lng": 39.293320 },
-        { "lat": 8.565850, "lng": 39.293570 },
-        { "lat": 8.565640, "lng": 39.293570 },
-        { "lat": 8.565640, "lng": 39.293320 }
+        {
+          "lat": 8.56585,
+          "lng": 39.29332
+        },
+        {
+          "lat": 8.56585,
+          "lng": 39.29357
+        },
+        {
+          "lat": 8.56564,
+          "lng": 39.29357
+        },
+        {
+          "lat": 8.56564,
+          "lng": 39.29332
+        }
       ],
-      "center": { "lat": 8.565747, "lng": 39.293447 },
+      "center": {
+        "lat": 8.565747,
+        "lng": 39.293447
+      },
       "rooms": [
-        { "id": "kttc_court", "name": "KT Outdoor Tennis Arena", "floor": 0, "type": "Outdoor Sports Facility", "workDescription": "Outdoor hard court tennis facility for student and staff athletics." }
+        {
+          "id": "kttc_court",
+          "name": "KT Outdoor Tennis Arena",
+          "floor": 0,
+          "type": "Outdoor Sports Facility",
+          "workDescription": "Outdoor hard court tennis facility for student and staff athletics."
+        }
       ],
       "entranceNodeId": "n_kt_tennis",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEzfhacsISBybjA9QP92NCeFrSsQlwFMBVd2SUtwwsebX9uCdLWU6fmP_QE695ZT1Z0M3G1_tCzwMk5x50cQlJ-JWmDfHhHHaxXfMLsVW4fhbOzd4A0olfeOyqTVPCi6zJry2JsA=w417-h240-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEzfhacsISBybjA9QP92NCeFrSsQlwFMBVd2SUtwwsebX9uCdLWU6fmP_QE695ZT1Z0M3G1_tCzwMk5x50cQlJ-JWmDfHhHHaxXfMLsVW4fhbOzd4A0olfeOyqTVPCi6zJry2JsA=w417-h240-k-no"
+        ],
         "description": "KT Outdoor Tennis Court located at exact coordinates 8.565747, 39.293447.",
         "department": "Sports & Youth Development Directorate",
         "verified": true
@@ -177,21 +376,51 @@
       "id": "astu_stadium",
       "code": "STAD",
       "name": "ASTU Stadium",
-      "aliases": ["ASTU Stadium", "Stadium", "Asti Stagim", "Sports Field", "Main Stadium", "Football Pitch"],
+      "aliases": [
+        "ASTU Stadium",
+        "Stadium",
+        "Asti Stagim",
+        "Sports Field",
+        "Main Stadium",
+        "Football Pitch"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.565650, "lng": 39.294400 },
-        { "lat": 8.565650, "lng": 39.294800 },
-        { "lat": 8.565250, "lng": 39.294800 },
-        { "lat": 8.565250, "lng": 39.294400 }
+        {
+          "lat": 8.56565,
+          "lng": 39.2944
+        },
+        {
+          "lat": 8.56565,
+          "lng": 39.2948
+        },
+        {
+          "lat": 8.56525,
+          "lng": 39.2948
+        },
+        {
+          "lat": 8.56525,
+          "lng": 39.2944
+        }
       ],
-      "center": { "lat": 8.565458, "lng": 39.294614 },
+      "center": {
+        "lat": 8.565458,
+        "lng": 39.294614
+      },
       "rooms": [
-        { "id": "stad_field", "name": "Main Football Pitch & Athletics Track", "floor": 0, "type": "Outdoor Sports Facility", "workDescription": "Outdoor sports stadium, football pitch, and running track arena." }
+        {
+          "id": "stad_field",
+          "name": "Main Football Pitch & Athletics Track",
+          "floor": 0,
+          "type": "Outdoor Sports Facility",
+          "workDescription": "Outdoor sports stadium, football pitch, and running track arena."
+        }
       ],
       "entranceNodeId": "n_stadium",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnnso_BEja19V87inKc15fygTcgY6AT5px_ppmEDyPEgI5JsRqR8YItvAhEJt9ALn4ZU5b4_pmcxTj5t3zDW5RQ63_vo4Shesnrl7NcKTdVi7CNaBe7vO_2aKKS8lmCnoG2Lpoo3hHClGc=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnnso_BEja19V87inKc15fygTcgY6AT5px_ppmEDyPEgI5JsRqR8YItvAhEJt9ALn4ZU5b4_pmcxTj5t3zDW5RQ63_vo4Shesnrl7NcKTdVi7CNaBe7vO_2aKKS8lmCnoG2Lpoo3hHClGc=w408-h306-k-no"
+        ],
         "description": "ASTU Main Outdoor Football Stadium & Athletics Sports Facility located at exact coordinates 8.565458, 39.294614.",
         "department": "Sports & Youth Development Directorate",
         "verified": true
@@ -201,21 +430,50 @@
       "id": "freshman_dorm",
       "code": "FMDORM",
       "name": "ASTU Freshman Dormitory",
-      "aliases": ["ASTU Freshman Dormitory", "Freshman Dorm", "Freshman Male Dorm", "Freshman Dormitory", "FMDORM"],
+      "aliases": [
+        "ASTU Freshman Dormitory",
+        "Freshman Dorm",
+        "Freshman Male Dorm",
+        "Freshman Dormitory",
+        "FMDORM"
+      ],
       "category": "dormitory",
       "polygon": [
-        { "lat": 8.568150, "lng": 39.294350 },
-        { "lat": 8.568150, "lng": 39.294800 },
-        { "lat": 8.567800, "lng": 39.294800 },
-        { "lat": 8.567800, "lng": 39.294350 }
+        {
+          "lat": 8.56815,
+          "lng": 39.29435
+        },
+        {
+          "lat": 8.56815,
+          "lng": 39.2948
+        },
+        {
+          "lat": 8.5678,
+          "lng": 39.2948
+        },
+        {
+          "lat": 8.5678,
+          "lng": 39.29435
+        }
       ],
-      "center": { "lat": 8.567993, "lng": 39.294577 },
+      "center": {
+        "lat": 8.567993,
+        "lng": 39.294577
+      },
       "rooms": [
-        { "id": "fmdorm_blocks", "name": "Freshman Housing Blocks", "floor": 1, "type": "Student Housing", "workDescription": "Primary residential housing blocks for first-year undergraduate students managed by Division of Freshman Programs (FDP)." }
+        {
+          "id": "fmdorm_blocks",
+          "name": "Freshman Housing Blocks",
+          "floor": 1,
+          "type": "Student Housing",
+          "workDescription": "Primary residential housing blocks for first-year undergraduate students managed by Division of Freshman Programs (FDP)."
+        }
       ],
       "entranceNodeId": "n_freshman_dorm",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"
+        ],
         "department": "Student Housing & Freshman Programs Directorate",
         "verified": true
       }
@@ -224,21 +482,49 @@
       "id": "female_library",
       "code": "FLIB",
       "name": "ASTU Female Library",
-      "aliases": ["ASTU Female Library", "Female Library", "Females Library", "FLIB"],
+      "aliases": [
+        "ASTU Female Library",
+        "Female Library",
+        "Females Library",
+        "FLIB"
+      ],
       "category": "library",
       "polygon": [
-        { "lat": 8.563580, "lng": 39.291880 },
-        { "lat": 8.563580, "lng": 39.292050 },
-        { "lat": 8.563340, "lng": 39.292050 },
-        { "lat": 8.563340, "lng": 39.291880 }
+        {
+          "lat": 8.56358,
+          "lng": 39.29188
+        },
+        {
+          "lat": 8.56358,
+          "lng": 39.29205
+        },
+        {
+          "lat": 8.56334,
+          "lng": 39.29205
+        },
+        {
+          "lat": 8.56334,
+          "lng": 39.29188
+        }
       ],
-      "center": { "lat": 8.563461, "lng": 39.291966 },
+      "center": {
+        "lat": 8.563461,
+        "lng": 39.291966
+      },
       "rooms": [
-        { "id": "flib_r1", "name": "Female Library Main Reading Room", "floor": 1, "type": "Quiet Study Area", "workDescription": "Dedicated quiet study space & academic library for female students." }
+        {
+          "id": "flib_r1",
+          "name": "Female Library Main Reading Room",
+          "floor": 1,
+          "type": "Quiet Study Area",
+          "workDescription": "Dedicated quiet study space & academic library for female students."
+        }
       ],
       "entranceNodeId": "n_female_library",
       "details": {
-        "images": ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"],
+        "images": [
+          "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
+        ],
         "description": "ASTU Female Library located at exact coordinates 8.563461, 39.291966.",
         "department": "Library Directorate",
         "verified": true
@@ -248,21 +534,50 @@
       "id": "pg_library",
       "code": "PGLIB",
       "name": "ASTU Postgraduate Library",
-      "aliases": ["ASTU Postgraduate Library", "Postgraduate Library", "PG Library", "Postgrad Library", "PGLIB"],
+      "aliases": [
+        "ASTU Postgraduate Library",
+        "Postgraduate Library",
+        "PG Library",
+        "Postgrad Library",
+        "PGLIB"
+      ],
       "category": "library",
       "polygon": [
-        { "lat": 8.564180, "lng": 39.290400 },
-        { "lat": 8.564180, "lng": 39.290620 },
-        { "lat": 8.563950, "lng": 39.290620 },
-        { "lat": 8.563950, "lng": 39.290400 }
+        {
+          "lat": 8.56418,
+          "lng": 39.2904
+        },
+        {
+          "lat": 8.56418,
+          "lng": 39.29062
+        },
+        {
+          "lat": 8.56395,
+          "lng": 39.29062
+        },
+        {
+          "lat": 8.56395,
+          "lng": 39.2904
+        }
       ],
-      "center": { "lat": 8.564068, "lng": 39.29051 },
+      "center": {
+        "lat": 8.564068,
+        "lng": 39.29051
+      },
       "rooms": [
-        { "id": "pglib_r1", "name": "Postgraduate Reading & Research Hall", "floor": 1, "type": "Research Library", "workDescription": "Dedicated research library, digital archives, and study halls for postgraduate masters & PhD students." }
+        {
+          "id": "pglib_r1",
+          "name": "Postgraduate Reading & Research Hall",
+          "floor": 1,
+          "type": "Research Library",
+          "workDescription": "Dedicated research library, digital archives, and study halls for postgraduate masters & PhD students."
+        }
       ],
       "entranceNodeId": "n_pg_library",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlbOLGV62E4sV-KtgO8WBFNdMFmAa1zPd41HeTvI_W9Fb0smv5-8w-VCXyeiFxR8lYXWqANwqYG2sTIIJV06gRaKhlyPGtsKmlThQ6GAgPSNLQXjHcCtkDESskuTSLg9hSFGaCldQ=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlbOLGV62E4sV-KtgO8WBFNdMFmAa1zPd41HeTvI_W9Fb0smv5-8w-VCXyeiFxR8lYXWqANwqYG2sTIIJV06gRaKhlyPGtsKmlThQ6GAgPSNLQXjHcCtkDESskuTSLg9hSFGaCldQ=w408-h306-k-no"
+        ],
         "description": "ASTU Postgraduate Library located at exact coordinates 8.564068, 39.29051.",
         "department": "Library & Post-Graduate Directorate",
         "verified": true
@@ -272,21 +587,51 @@
       "id": "soeec",
       "code": "SOEEC",
       "name": "ASTU School of Electrical Engineering and Computing",
-      "aliases": ["ASTU School of Electrical Engineering and Computing", "School of Electrical Engineering and Computing", "SOEEC", "SEEC", "Electrical & Computing Dept", "ECE"],
+      "aliases": [
+        "ASTU School of Electrical Engineering and Computing",
+        "School of Electrical Engineering and Computing",
+        "SOEEC",
+        "SEEC",
+        "Electrical & Computing Dept",
+        "ECE"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.563950, "lng": 39.289350 },
-        { "lat": 8.563950, "lng": 39.289600 },
-        { "lat": 8.563650, "lng": 39.289600 },
-        { "lat": 8.563650, "lng": 39.289350 }
+        {
+          "lat": 8.56395,
+          "lng": 39.28935
+        },
+        {
+          "lat": 8.56395,
+          "lng": 39.2896
+        },
+        {
+          "lat": 8.56365,
+          "lng": 39.2896
+        },
+        {
+          "lat": 8.56365,
+          "lng": 39.28935
+        }
       ],
-      "center": { "lat": 8.563803, "lng": 39.289464 },
+      "center": {
+        "lat": 8.563803,
+        "lng": 39.289464
+      },
       "rooms": [
-        { "id": "soeec_labs", "name": "Electrical & Computer Engineering Laboratories", "floor": 1, "type": "Academic & Research Labs", "workDescription": "Software engineering, hardware, microelectronics, embedded systems, and telecommunication laboratories." }
+        {
+          "id": "soeec_labs",
+          "name": "Electrical & Computer Engineering Laboratories",
+          "floor": 1,
+          "type": "Academic & Research Labs",
+          "workDescription": "Software engineering, hardware, microelectronics, embedded systems, and telecommunication laboratories."
+        }
       ],
       "entranceNodeId": "n_soeec",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnNpJXfQLERESgYe8CkU8bndgLSkifzba9nP16tzRN7O3W50wPgI5ZTJTKEVyUVkapnvHumBg7-NcQXt208dhLESTyz_xCFrhR_DKJYCueJjynvk3TwJ8yx-PWxuz7NWc3omccPrg=w408-h544-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnNpJXfQLERESgYe8CkU8bndgLSkifzba9nP16tzRN7O3W50wPgI5ZTJTKEVyUVkapnvHumBg7-NcQXt208dhLESTyz_xCFrhR_DKJYCueJjynvk3TwJ8yx-PWxuz7NWc3omccPrg=w408-h544-k-no"
+        ],
         "description": "ASTU School of Electrical Engineering and Computing (SOEEC) located at exact coordinates 8.563803, 39.289464.",
         "department": "School of Electrical Engineering and Computing",
         "verified": true
@@ -296,21 +641,50 @@
       "id": "stem_center",
       "code": "STEM",
       "name": "STEM Center, Adama Science & Technology University",
-      "aliases": ["STEM Center, Adama Science & Technology University", "STEM Center", "ASTU STEM Center", "STEM Expo Hall", "STEM"],
+      "aliases": [
+        "STEM Center, Adama Science & Technology University",
+        "STEM Center",
+        "ASTU STEM Center",
+        "STEM Expo Hall",
+        "STEM"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.564100, "lng": 39.288600 },
-        { "lat": 8.564100, "lng": 39.288850 },
-        { "lat": 8.563850, "lng": 39.288850 },
-        { "lat": 8.563850, "lng": 39.288600 }
+        {
+          "lat": 8.5641,
+          "lng": 39.2886
+        },
+        {
+          "lat": 8.5641,
+          "lng": 39.28885
+        },
+        {
+          "lat": 8.56385,
+          "lng": 39.28885
+        },
+        {
+          "lat": 8.56385,
+          "lng": 39.2886
+        }
       ],
-      "center": { "lat": 8.563971, "lng": 39.288712 },
+      "center": {
+        "lat": 8.563971,
+        "lng": 39.288712
+      },
       "rooms": [
-        { "id": "stem_labs", "name": "STEM Innovation & Robotics Laboratories", "floor": 1, "type": "Research & Exhibition Labs", "workDescription": "Science, Technology, Engineering, and Mathematics innovation labs, robotics workshops, and annual STEM Expo exhibition hall." }
+        {
+          "id": "stem_labs",
+          "name": "STEM Innovation & Robotics Laboratories",
+          "floor": 1,
+          "type": "Research & Exhibition Labs",
+          "workDescription": "Science, Technology, Engineering, and Mathematics innovation labs, robotics workshops, and annual STEM Expo exhibition hall."
+        }
       ],
       "entranceNodeId": "n_stem_center",
       "details": {
-        "images": ["https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"],
+        "images": [
+          "https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"
+        ],
         "description": "ASTU STEM Center located at exact coordinates 8.563971, 39.288712. Main venue for STEM Expo presentations and innovation workshops.",
         "department": "Division of STEM Programs & Youth Innovation Directorate",
         "verified": true
@@ -320,21 +694,49 @@
       "id": "app_sci_lib",
       "code": "ASLIB",
       "name": "Applied Science Library",
-      "aliases": ["Applied Science Library", "ASTU Applied Science Library", "Applied Science Lib", "ASLIB"],
+      "aliases": [
+        "Applied Science Library",
+        "ASTU Applied Science Library",
+        "Applied Science Lib",
+        "ASLIB"
+      ],
       "category": "library",
       "polygon": [
-        { "lat": 8.562630, "lng": 39.287550 },
-        { "lat": 8.562630, "lng": 39.287780 },
-        { "lat": 8.562380, "lng": 39.287780 },
-        { "lat": 8.562380, "lng": 39.287550 }
+        {
+          "lat": 8.56263,
+          "lng": 39.28755
+        },
+        {
+          "lat": 8.56263,
+          "lng": 39.28778
+        },
+        {
+          "lat": 8.56238,
+          "lng": 39.28778
+        },
+        {
+          "lat": 8.56238,
+          "lng": 39.28755
+        }
       ],
-      "center": { "lat": 8.562505, "lng": 39.287669 },
+      "center": {
+        "lat": 8.562505,
+        "lng": 39.287669
+      },
       "rooms": [
-        { "id": "aslib_r1", "name": "Applied Sciences Reading Hall", "floor": 1, "type": "Academic Library", "workDescription": "Dedicated quiet reading rooms, academic journals, and study halls for School of Applied Natural Sciences." }
+        {
+          "id": "aslib_r1",
+          "name": "Applied Sciences Reading Hall",
+          "floor": 1,
+          "type": "Academic Library",
+          "workDescription": "Dedicated quiet reading rooms, academic journals, and study halls for School of Applied Natural Sciences."
+        }
       ],
       "entranceNodeId": "n_app_sci_lib",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkRUnLwmAJ8Mgbr_YtrWK6P_pYAoVT0DzsFC_eXLbZ0SfHKEysV_01SL8Zn_kkJ4sK71C6iTLWt5Uo0O0AC__IgNi0h-GIeS_YpxSzMkjHtF8LiNFQHoMLN3JoIeEfeh6bRpIyM=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkRUnLwmAJ8Mgbr_YtrWK6P_pYAoVT0DzsFC_eXLbZ0SfHKEysV_01SL8Zn_kkJ4sK71C6iTLWt5Uo0O0AC__IgNi0h-GIeS_YpxSzMkjHtF8LiNFQHoMLN3JoIeEfeh6bRpIyM=w408-h306-k-no"
+        ],
         "description": "ASTU Applied Science Library located at exact coordinates 8.562505, 39.287669.",
         "department": "Library Directorate & Applied Natural Sciences",
         "verified": true
@@ -344,21 +746,50 @@
       "id": "sace",
       "code": "SACE",
       "name": "ASTU School Of Architecture and Civil Engineering",
-      "aliases": ["ASTU School Of Architecture and Civil Engineering", "School Of Architecture and Civil Engineering", "SACE", "Architecture Department", "Civil Engineering Dept"],
+      "aliases": [
+        "ASTU School Of Architecture and Civil Engineering",
+        "School Of Architecture and Civil Engineering",
+        "SACE",
+        "Architecture Department",
+        "Civil Engineering Dept"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.562250, "lng": 39.287500 },
-        { "lat": 8.562250, "lng": 39.287740 },
-        { "lat": 8.561960, "lng": 39.287740 },
-        { "lat": 8.561960, "lng": 39.287500 }
+        {
+          "lat": 8.56225,
+          "lng": 39.2875
+        },
+        {
+          "lat": 8.56225,
+          "lng": 39.28774
+        },
+        {
+          "lat": 8.56196,
+          "lng": 39.28774
+        },
+        {
+          "lat": 8.56196,
+          "lng": 39.2875
+        }
       ],
-      "center": { "lat": 8.562105, "lng": 39.287619 },
+      "center": {
+        "lat": 8.562105,
+        "lng": 39.287619
+      },
       "rooms": [
-        { "id": "sace_studios", "name": "Architecture Drafting Studios & Structural Labs", "floor": 1, "type": "Design Studios & Engineering Labs", "workDescription": "Architectural design studios, drafting halls, structural testing labs, and surveying equipment rooms." }
+        {
+          "id": "sace_studios",
+          "name": "Architecture Drafting Studios & Structural Labs",
+          "floor": 1,
+          "type": "Design Studios & Engineering Labs",
+          "workDescription": "Architectural design studios, drafting halls, structural testing labs, and surveying equipment rooms."
+        }
       ],
       "entranceNodeId": "n_sace",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkVF_ADMeeUqS-exI61krUX-15o2qD-iVuNuCiswVDjMLu3_9SotpGEUGYGJwrLGMYyN40XOEmplX4QcFi-V7u6axy0yvU3RgpRUL8GY4-Npp_Zfah5hKIGXfF0AxymQtW6stDS=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkVF_ADMeeUqS-exI61krUX-15o2qD-iVuNuCiswVDjMLu3_9SotpGEUGYGJwrLGMYyN40XOEmplX4QcFi-V7u6axy0yvU3RgpRUL8GY4-Npp_Zfah5hKIGXfF0AxymQtW6stDS=w408-h306-k-no"
+        ],
         "description": "ASTU School Of Architecture and Civil Engineering (SACE) located at exact coordinates 8.562105, 39.287619.",
         "department": "School of Civil Engineering and Architecture",
         "verified": true
@@ -368,21 +799,50 @@
       "id": "astu_main_gate",
       "code": "GATE1",
       "name": "ASTU MAIN GATE",
-      "aliases": ["ASTU MAIN GATE", "Main Gate", "ASTU Main Gate Entrance", "Main Entrance", "GATE1"],
+      "aliases": [
+        "ASTU MAIN GATE",
+        "Main Gate",
+        "ASTU Main Gate Entrance",
+        "Main Entrance",
+        "GATE1"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.559300, "lng": 39.285550 },
-        { "lat": 8.559300, "lng": 39.285830 },
-        { "lat": 8.559050, "lng": 39.285830 },
-        { "lat": 8.559050, "lng": 39.285550 }
+        {
+          "lat": 8.5593,
+          "lng": 39.28555
+        },
+        {
+          "lat": 8.5593,
+          "lng": 39.28583
+        },
+        {
+          "lat": 8.55905,
+          "lng": 39.28583
+        },
+        {
+          "lat": 8.55905,
+          "lng": 39.28555
+        }
       ],
-      "center": { "lat": 8.559177, "lng": 39.285693 },
+      "center": {
+        "lat": 8.559177,
+        "lng": 39.285693
+      },
       "rooms": [
-        { "id": "gate1_security", "name": "Main Gate Security & Visitor Control Post", "floor": 1, "type": "Security Checkpoint", "workDescription": "Primary vehicular and pedestrian campus entrance security control post and visitor verification booth." }
+        {
+          "id": "gate1_security",
+          "name": "Main Gate Security & Visitor Control Post",
+          "floor": 1,
+          "type": "Security Checkpoint",
+          "workDescription": "Primary vehicular and pedestrian campus entrance security control post and visitor verification booth."
+        }
       ],
       "entranceNodeId": "n_main_gate",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm4XRv-6cY3nl-rVGv6YbL2OxDblPQ9FesZBjtfaG8rwfrixPX-NejFY1TIj0N_BQYaPRFW0wjufuMNSQdZZjLgZVAcLMT7gIllAbfOpdFe92O_WgXR5m_a580VlcX4rQk5cLQ9Px9ubFVH=w408-h408-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm4XRv-6cY3nl-rVGv6YbL2OxDblPQ9FesZBjtfaG8rwfrixPX-NejFY1TIj0N_BQYaPRFW0wjufuMNSQdZZjLgZVAcLMT7gIllAbfOpdFe92O_WgXR5m_a580VlcX4rQk5cLQ9Px9ubFVH=w408-h408-k-no"
+        ],
         "description": "ASTU Main Gate Entrance located at exact coordinates 8.559177, 39.285693.",
         "department": "University Security & Safety Directorate",
         "verified": true
@@ -392,21 +852,50 @@
       "id": "oda_gateway",
       "code": "GATE2",
       "name": "Oda Gateway",
-      "aliases": ["Oda gateway", "Oda Gate", "Oda Gateway Entrance", "East Gate", "GATE2"],
+      "aliases": [
+        "Oda gateway",
+        "Oda Gate",
+        "Oda Gateway Entrance",
+        "East Gate",
+        "GATE2"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.557200, "lng": 39.290850 },
-        { "lat": 8.557200, "lng": 39.291120 },
-        { "lat": 8.556900, "lng": 39.291120 },
-        { "lat": 8.556900, "lng": 39.290850 }
+        {
+          "lat": 8.5572,
+          "lng": 39.29085
+        },
+        {
+          "lat": 8.5572,
+          "lng": 39.29112
+        },
+        {
+          "lat": 8.5569,
+          "lng": 39.29112
+        },
+        {
+          "lat": 8.5569,
+          "lng": 39.29085
+        }
       ],
-      "center": { "lat": 8.557049, "lng": 39.290984 },
+      "center": {
+        "lat": 8.557049,
+        "lng": 39.290984
+      },
       "rooms": [
-        { "id": "gate2_security", "name": "Oda Gate Security Post", "floor": 1, "type": "Security Checkpoint", "workDescription": "East perimeter campus gate and security checkpoint." }
+        {
+          "id": "gate2_security",
+          "name": "Oda Gate Security Post",
+          "floor": 1,
+          "type": "Security Checkpoint",
+          "workDescription": "East perimeter campus gate and security checkpoint."
+        }
       ],
       "entranceNodeId": "n_oda_gate",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlUoWdcR7-b2o1sPYQQGwgPleTpJUW9GAB2FDYtXhXuWaCA8bjOFnIKFyGjZB9MjQ_Ljd17vH8Iy6KXsKMtltXjBlqmTUtY4Pe2LfvdowyVKGxrdNNlCXjyi0EXSdD833Xnxuc9=w426-h240-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlUoWdcR7-b2o1sPYQQGwgPleTpJUW9GAB2FDYtXhXuWaCA8bjOFnIKFyGjZB9MjQ_Ljd17vH8Iy6KXsKMtltXjBlqmTUtY4Pe2LfvdowyVKGxrdNNlCXjyi0EXSdD833Xnxuc9=w426-h240-k-no"
+        ],
         "department": "University Security & Safety Directorate",
         "verified": true
       }
@@ -415,21 +904,51 @@
       "id": "wabe_street",
       "code": "WABE_ST",
       "name": "DAANDII WAABEE / ዋቤ መንገድ / WABE STREET",
-      "aliases": ["DAANDII WAABEE/ዋቤ መንገድ/WABE STREET", "DAANDII WAABEE", "ዋቤ መንገድ", "WABE STREET", "Wabe Road", "WABE_ST"],
+      "aliases": [
+        "DAANDII WAABEE/ዋቤ መንገድ/WABE STREET",
+        "DAANDII WAABEE",
+        "ዋቤ መንገድ",
+        "WABE STREET",
+        "Wabe Road",
+        "WABE_ST"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.558300, "lng": 39.290900 },
-        { "lat": 8.558300, "lng": 39.291200 },
-        { "lat": 8.558000, "lng": 39.291200 },
-        { "lat": 8.558000, "lng": 39.290900 }
+        {
+          "lat": 8.5583,
+          "lng": 39.2909
+        },
+        {
+          "lat": 8.5583,
+          "lng": 39.2912
+        },
+        {
+          "lat": 8.558,
+          "lng": 39.2912
+        },
+        {
+          "lat": 8.558,
+          "lng": 39.2909
+        }
       ],
-      "center": { "lat": 8.558173, "lng": 39.291056 },
+      "center": {
+        "lat": 8.558173,
+        "lng": 39.291056
+      },
       "rooms": [
-        { "id": "wabe_st_info", "name": "Wabe Street Promenade & Access Road", "floor": 0, "type": "Campus Access Road & Promenade", "workDescription": "Primary avenue connecting Oda Gateway and central academic campus blocks." }
+        {
+          "id": "wabe_st_info",
+          "name": "Wabe Street Promenade & Access Road",
+          "floor": 0,
+          "type": "Campus Access Road & Promenade",
+          "workDescription": "Primary avenue connecting Oda Gateway and central academic campus blocks."
+        }
       ],
       "entranceNodeId": "n_wabe_street",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnzcFh0QPlMCCG8q-8l5JV0KsrKAVoVUCJI9P9BbkeXfIpBUeEoRRjciULPVDfBI0MHxrdF3K51iCug_ue5-tAZSIk-QevwEu1K-PMpzx-MY28ZMkJ4BGcbXmi_cFQG-Locp2uAmA=w426-h240-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnzcFh0QPlMCCG8q-8l5JV0KsrKAVoVUCJI9P9BbkeXfIpBUeEoRRjciULPVDfBI0MHxrdF3K51iCug_ue5-tAZSIk-QevwEu1K-PMpzx-MY28ZMkJ4BGcbXmi_cFQG-Locp2uAmA=w426-h240-k-no"
+        ],
         "description": "DAANDII WAABEE / ዋቤ መንገድ / WABE STREET located at exact coordinates 8.558173, 39.291056.",
         "department": "Campus Infrastructure & Road Network",
         "verified": true
@@ -439,21 +958,50 @@
       "id": "astu_ict",
       "code": "ICT",
       "name": "Adama University ICT",
-      "aliases": ["Adama University ICT", "ASTU ICT Center", "ICT Center", "ICT Directorate", "ICT"],
+      "aliases": [
+        "Adama University ICT",
+        "ASTU ICT Center",
+        "ICT Center",
+        "ICT Directorate",
+        "ICT"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.559400, "lng": 39.291100 },
-        { "lat": 8.559400, "lng": 39.291350 },
-        { "lat": 8.559150, "lng": 39.291350 },
-        { "lat": 8.559150, "lng": 39.291100 }
+        {
+          "lat": 8.5594,
+          "lng": 39.2911
+        },
+        {
+          "lat": 8.5594,
+          "lng": 39.29135
+        },
+        {
+          "lat": 8.55915,
+          "lng": 39.29135
+        },
+        {
+          "lat": 8.55915,
+          "lng": 39.2911
+        }
       ],
-      "center": { "lat": 8.559277, "lng": 39.291225 },
+      "center": {
+        "lat": 8.559277,
+        "lng": 39.291225
+      },
       "rooms": [
-        { "id": "ict_center_labs", "name": "Central Data Center & Network Support Labs", "floor": 1, "type": "Data Center & Computer Labs", "workDescription": "University central server room, cloud infrastructure, network operations center, and digital services support." }
+        {
+          "id": "ict_center_labs",
+          "name": "Central Data Center & Network Support Labs",
+          "floor": 1,
+          "type": "Data Center & Computer Labs",
+          "workDescription": "University central server room, cloud infrastructure, network operations center, and digital services support."
+        }
       ],
       "entranceNodeId": "n_astu_ict",
       "details": {
-        "images": ["https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"],
+        "images": [
+          "https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"
+        ],
         "description": "Adama University ICT Center located at exact coordinates 8.559277, 39.291225.",
         "department": "ICT Center Directorate",
         "verified": true
@@ -463,21 +1011,49 @@
       "id": "central_library",
       "code": "CLIB",
       "name": "ASTU Central Library",
-      "aliases": ["ASTU Central Library", "Central Library", "Main Library", "CLIB"],
+      "aliases": [
+        "ASTU Central Library",
+        "Central Library",
+        "Main Library",
+        "CLIB"
+      ],
       "category": "library",
       "polygon": [
-        { "lat": 8.561230, "lng": 39.291220 },
-        { "lat": 8.561230, "lng": 39.291520 },
-        { "lat": 8.560930, "lng": 39.291520 },
-        { "lat": 8.560930, "lng": 39.291220 }
+        {
+          "lat": 8.56123,
+          "lng": 39.29122
+        },
+        {
+          "lat": 8.56123,
+          "lng": 39.29152
+        },
+        {
+          "lat": 8.56093,
+          "lng": 39.29152
+        },
+        {
+          "lat": 8.56093,
+          "lng": 39.29122
+        }
       ],
-      "center": { "lat": 8.561082, "lng": 39.291370 },
+      "center": {
+        "lat": 8.561082,
+        "lng": 39.29137
+      },
       "rooms": [
-        { "id": "clib_main_hall", "name": "Central Library Reading Hall & Reference Collection", "floor": 1, "type": "Academic Library", "workDescription": "Main university central library housing academic books, research journals, reference material, and general student study halls." }
+        {
+          "id": "clib_main_hall",
+          "name": "Central Library Reading Hall & Reference Collection",
+          "floor": 1,
+          "type": "Academic Library",
+          "workDescription": "Main university central library housing academic books, research journals, reference material, and general student study halls."
+        }
       ],
       "entranceNodeId": "n_central_library",
       "details": {
-        "images": ["https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"],
+        "images": [
+          "https://maps.gstatic.com/tactile/pane/default_geocode-1x.png"
+        ],
         "description": "ASTU Central Library located at exact coordinates 8.561082, 39.291370.",
         "department": "Library Directorate",
         "verified": true
@@ -487,21 +1063,51 @@
       "id": "admin_building",
       "code": "ADMIN",
       "name": "New Administrative Building",
-      "aliases": ["New Administrative Building", "ASTU Admin Building", "Administrative Building", "President Office", "Registrar", "ADMIN"],
+      "aliases": [
+        "New Administrative Building",
+        "ASTU Admin Building",
+        "Administrative Building",
+        "President Office",
+        "Registrar",
+        "ADMIN"
+      ],
       "category": "services",
       "polygon": [
-        { "lat": 8.561480, "lng": 39.290100 },
-        { "lat": 8.561480, "lng": 39.290410 },
-        { "lat": 8.561170, "lng": 39.290410 },
-        { "lat": 8.561170, "lng": 39.290100 }
+        {
+          "lat": 8.56148,
+          "lng": 39.2901
+        },
+        {
+          "lat": 8.56148,
+          "lng": 39.29041
+        },
+        {
+          "lat": 8.56117,
+          "lng": 39.29041
+        },
+        {
+          "lat": 8.56117,
+          "lng": 39.2901
+        }
       ],
-      "center": { "lat": 8.561326, "lng": 39.290258 },
+      "center": {
+        "lat": 8.561326,
+        "lng": 39.290258
+      },
       "rooms": [
-        { "id": "admin_main_offices", "name": "University Administration & Registrar Offices", "floor": 1, "type": "Administrative Offices", "workDescription": "Central administration block housing university executive offices, registrar, finance, human resources, and student affairs." }
+        {
+          "id": "admin_main_offices",
+          "name": "University Administration & Registrar Offices",
+          "floor": 1,
+          "type": "Administrative Offices",
+          "workDescription": "Central administration block housing university executive offices, registrar, finance, human resources, and student affairs."
+        }
       ],
       "entranceNodeId": "n_admin_building",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk8R_3AweUmhBMsxgqIXj8eTtfrGDEfekytMZqYcT9OqllrhDuqEM7vJdQhZFznC5z2vjEcQQdSO2lLuc69Au6mDaRsnVhmiTD5kbXZPxXWiIJBNIFGZhJN--GAtxemuBcJWrXX=w426-h240-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk8R_3AweUmhBMsxgqIXj8eTtfrGDEfekytMZqYcT9OqllrhDuqEM7vJdQhZFznC5z2vjEcQQdSO2lLuc69Au6mDaRsnVhmiTD5kbXZPxXWiIJBNIFGZhJN--GAtxemuBcJWrXX=w426-h240-k-no"
+        ],
         "description": "ASTU New Administrative Building located at exact coordinates 8.561326, 39.290258.",
         "department": "University Administration & Registrar",
         "verified": true
@@ -511,21 +1117,49 @@
       "id": "ict_building",
       "code": "ICTCTR",
       "name": "ICT Center",
-      "aliases": ["ICT Center", "ASTU ICT Building", "Information Communication Technology Center", "ICT Directorate"],
+      "aliases": [
+        "ICT Center",
+        "ASTU ICT Building",
+        "Information Communication Technology Center",
+        "ICT Directorate"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.561650, "lng": 39.288350 },
-        { "lat": 8.561650, "lng": 39.288580 },
-        { "lat": 8.561350, "lng": 39.288580 },
-        { "lat": 8.561350, "lng": 39.288350 }
+        {
+          "lat": 8.56165,
+          "lng": 39.28835
+        },
+        {
+          "lat": 8.56165,
+          "lng": 39.28858
+        },
+        {
+          "lat": 8.56135,
+          "lng": 39.28858
+        },
+        {
+          "lat": 8.56135,
+          "lng": 39.28835
+        }
       ],
-      "center": { "lat": 8.561501, "lng": 39.288465 },
+      "center": {
+        "lat": 8.561501,
+        "lng": 39.288465
+      },
       "rooms": [
-        { "id": "ict_labs", "name": "ICT Computer Laboratories & Technical Hub", "floor": 1, "type": "Computer Lab", "workDescription": "Central computing facilities, network support labs, and ICT training classrooms." }
+        {
+          "id": "ict_labs",
+          "name": "ICT Computer Laboratories & Technical Hub",
+          "floor": 1,
+          "type": "Computer Lab",
+          "workDescription": "Central computing facilities, network support labs, and ICT training classrooms."
+        }
       ],
       "entranceNodeId": "n_ict_building",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkly-wQzfX-qQagwCDlQUo4UzJWQhXNQG-k6vE0ud0sV8mojjG8EWvXUeMXkMNFJEQ41-ogISMmyM60T5pN0FhjDaEn0bNzWuaJ8NWUU4T-2Sq1JsmnsX5XgLdaSMU2xCBbBAhDg5jgikA=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkly-wQzfX-qQagwCDlQUo4UzJWQhXNQG-k6vE0ud0sV8mojjG8EWvXUeMXkMNFJEQ41-ogISMmyM60T5pN0FhjDaEn0bNzWuaJ8NWUU4T-2Sq1JsmnsX5XgLdaSMU2xCBbBAhDg5jgikA=w408-h306-k-no"
+        ],
         "description": "ICT Center located at exact coordinates 8.561501, 39.288465.",
         "department": "ICT Center Directorate",
         "verified": true
@@ -535,21 +1169,49 @@
       "id": "chem_eng",
       "code": "CHEMENG",
       "name": "ASTU Chemical Engineering",
-      "aliases": ["ASTU Chemical Engineering", "Chemical Engineering Department", "School of Chemical Engineering", "Chem Eng"],
+      "aliases": [
+        "ASTU Chemical Engineering",
+        "Chemical Engineering Department",
+        "School of Chemical Engineering",
+        "Chem Eng"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.562150, "lng": 39.288380 },
-        { "lat": 8.562150, "lng": 39.288620 },
-        { "lat": 8.561840, "lng": 39.288620 },
-        { "lat": 8.561840, "lng": 39.288380 }
+        {
+          "lat": 8.56215,
+          "lng": 39.28838
+        },
+        {
+          "lat": 8.56215,
+          "lng": 39.28862
+        },
+        {
+          "lat": 8.56184,
+          "lng": 39.28862
+        },
+        {
+          "lat": 8.56184,
+          "lng": 39.28838
+        }
       ],
-      "center": { "lat": 8.561998, "lng": 39.288499 },
+      "center": {
+        "lat": 8.561998,
+        "lng": 39.288499
+      },
       "rooms": [
-        { "id": "chem_labs", "name": "Chemical Process & Reaction Labs", "floor": 1, "type": "Engineering Laboratory", "workDescription": "Departmental laboratories, chemical process research units, and lecture halls for Chemical Engineering." }
+        {
+          "id": "chem_labs",
+          "name": "Chemical Process & Reaction Labs",
+          "floor": 1,
+          "type": "Engineering Laboratory",
+          "workDescription": "Departmental laboratories, chemical process research units, and lecture halls for Chemical Engineering."
+        }
       ],
       "entranceNodeId": "n_chem_eng",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmle8uFZeJLB-kFyOrq2wQKtL4XK9k1gISGE8VNbXGij3MdoXbCUrucy_-E2YWZjbxTR9Jkp_n5vROrRhQfpQeEx-3BdkswF1rybkCH-z0jBzJgR7ntKpDrK0pdQvL4d9AGddw9iQ=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmle8uFZeJLB-kFyOrq2wQKtL4XK9k1gISGE8VNbXGij3MdoXbCUrucy_-E2YWZjbxTR9Jkp_n5vROrRhQfpQeEx-3BdkswF1rybkCH-z0jBzJgR7ntKpDrK0pdQvL4d9AGddw9iQ=w408-h306-k-no"
+        ],
         "description": "ASTU Chemical Engineering Department located at exact coordinates 8.561998, 39.288499.",
         "department": "School of Chemical Engineering",
         "verified": true
@@ -559,21 +1221,49 @@
       "id": "freshman_programs",
       "code": "FDP",
       "name": "ASTU Freshman Programs",
-      "aliases": ["ASTU Freshman Programs", "Freshman Programs Directorate", "Division of Freshman Programs", "FDP"],
+      "aliases": [
+        "ASTU Freshman Programs",
+        "Freshman Programs Directorate",
+        "Division of Freshman Programs",
+        "FDP"
+      ],
       "category": "academic",
       "polygon": [
-        { "lat": 8.562100, "lng": 39.286100 },
-        { "lat": 8.562100, "lng": 39.286330 },
-        { "lat": 8.561800, "lng": 39.286330 },
-        { "lat": 8.561800, "lng": 39.286100 }
+        {
+          "lat": 8.5621,
+          "lng": 39.2861
+        },
+        {
+          "lat": 8.5621,
+          "lng": 39.28633
+        },
+        {
+          "lat": 8.5618,
+          "lng": 39.28633
+        },
+        {
+          "lat": 8.5618,
+          "lng": 39.2861
+        }
       ],
-      "center": { "lat": 8.561950, "lng": 39.286213 },
+      "center": {
+        "lat": 8.56195,
+        "lng": 39.286213
+      },
       "rooms": [
-        { "id": "fdp_offices", "name": "Freshman Programs Administration & Advising Offices", "floor": 1, "type": "Administrative & Academic", "workDescription": "Administrative headquarters, academic counseling, and foundational program coordination for first-year students." }
+        {
+          "id": "fdp_offices",
+          "name": "Freshman Programs Administration & Advising Offices",
+          "floor": 1,
+          "type": "Administrative & Academic",
+          "workDescription": "Administrative headquarters, academic counseling, and foundational program coordination for first-year students."
+        }
       ],
       "entranceNodeId": "n_freshman_programs",
       "details": {
-        "images": ["https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljXjXxWncKv1nVgkACSTnsLbSlAhxwVLfX1y0o-G-c6j007MNaNm_A7ksgVNHhRUviqLNDnEwKOyv9TZUP5aK_D1YBhwt0GtakMtChvAFRsTEjWRcy7avmT-dZhhJONom7R4EU=w408-h306-k-no"],
+        "images": [
+          "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljXjXxWncKv1nVgkACSTnsLbSlAhxwVLfX1y0o-G-c6j007MNaNm_A7ksgVNHhRUviqLNDnEwKOyv9TZUP5aK_D1YBhwt0GtakMtChvAFRsTEjWRcy7avmT-dZhhJONom7R4EU=w408-h306-k-no"
+        ],
         "description": "ASTU Freshman Programs Directorate located at exact coordinates 8.561950, 39.286213.",
         "department": "Freshman Programs Directorate",
         "verified": true
@@ -581,86 +1271,2126 @@
     }
   ],
   "nodes": [
-    { "id": "n_students_cafe", "lat": 8.565718, "lng": 39.290178, "label": "Students Cafe Entrance" },
-    { "id": "n_fac1", "lat": 8.565506, "lng": 39.291304, "label": "Campus Block Gate" },
-    { "id": "n_oda_nebe", "lat": 8.564625, "lng": 39.291216, "label": "Oda Nebe Entrance" },
-    { "id": "n_vac", "lat": 8.564861, "lng": 39.292316, "label": "Visual Arts Society Gate" },
-    { "id": "n_ecb", "lat": 8.565049, "lng": 39.29326, "label": "East Campus Block Gate" },
-    { "id": "n_female_dorm", "lat": 8.566519, "lng": 39.292576, "label": "Female Dormitory Gate" },
-    { "id": "n_kt_tennis", "lat": 8.565747, "lng": 39.293447, "label": "KT Tennis Court Entrance" },
-    { "id": "n_stadium", "lat": 8.565458, "lng": 39.294614, "label": "ASTU Stadium Gate" },
-    { "id": "n_freshman_dorm", "lat": 8.567993, "lng": 39.294577, "label": "Freshman Dorm Entrance" },
-    { "id": "n_female_library", "lat": 8.563461, "lng": 39.291966, "label": "Female Library Entrance" },
-    { "id": "n_pg_library", "lat": 8.564068, "lng": 39.29051, "label": "Postgraduate Library Entrance" },
-    { "id": "n_soeec", "lat": 8.563803, "lng": 39.289464, "label": "SOEEC Entrance" },
-    { "id": "n_stem_center", "lat": 8.563971, "lng": 39.288712, "label": "STEM Center Entrance" },
-    { "id": "n_app_sci_lib", "lat": 8.562505, "lng": 39.287669, "label": "Applied Science Library Entrance" },
-    { "id": "n_sace", "lat": 8.562105, "lng": 39.287619, "label": "SACE Entrance" },
-    { "id": "n_main_gate", "lat": 8.559177, "lng": 39.285693, "label": "ASTU Main Gate" },
-    { "id": "n_oda_gate", "lat": 8.557049, "lng": 39.290984, "label": "Oda Gateway" },
-    { "id": "n_wabe_street", "lat": 8.558173, "lng": 39.291056, "label": "Wabe Street Entrance" },
-    { "id": "n_astu_ict", "lat": 8.559277, "lng": 39.291225, "label": "Adama University ICT Entrance" },
-    { "id": "n_central_library", "lat": 8.561082, "lng": 39.291370, "label": "Central Library Entrance" },
-    { "id": "n_admin_building", "lat": 8.561326, "lng": 39.290258, "label": "Administrative Building Entrance" },
-    { "id": "n_ict_building", "lat": 8.561501, "lng": 39.288465, "label": "ICT Center Entrance" },
-    { "id": "n_chem_eng", "lat": 8.561998, "lng": 39.288499, "label": "Chemical Engineering Entrance" },
-    { "id": "n_freshman_programs", "lat": 8.561950, "lng": 39.286213, "label": "Freshman Programs Entrance" },
-    { "id": "n_central_hub", "lat": 8.565458, "lng": 39.292500, "label": "ASTU Central Campus Hub" },
-    { "id": "r_stem_junction", "lat": 8.563950, "lng": 39.288900, "label": "STEM & SOEEC Road Junction" },
-    { "id": "r_soeec_road_1", "lat": 8.564100, "lng": 39.289400, "label": "SOEEC Main Avenue South" },
-    { "id": "r_soeec_road_2", "lat": 8.564280, "lng": 39.289900, "label": "SOEEC Main Avenue North" },
-    { "id": "r_pg_junction", "lat": 8.564450, "lng": 39.290300, "label": "Postgraduate & Library Road Junction" },
-    { "id": "r_cafe_road_1", "lat": 8.564800, "lng": 39.290280, "label": "Dining Walkway South" },
-    { "id": "r_cafe_road_2", "lat": 8.565250, "lng": 39.290230, "label": "Dining Walkway Mid" },
-    { "id": "r_cafe_junction", "lat": 8.565650, "lng": 39.290200, "label": "Students Cafe Main Entrance Road" },
-    { "id": "r_main_gate_road_1", "lat": 8.559800, "lng": 39.286000, "label": "Main Gate Avenue South" },
-    { "id": "r_main_gate_road_2", "lat": 8.560700, "lng": 39.286800, "label": "Main Gate Avenue Mid" },
-    { "id": "r_sace_junction", "lat": 8.562150, "lng": 39.287700, "label": "SACE & Applied Science Road Junction" },
-    { "id": "r_stem_road_south", "lat": 8.563100, "lng": 39.288200, "label": "Applied Science to STEM Road" },
-    { "id": "r_admin_junction", "lat": 8.561300, "lng": 39.290700, "label": "Admin & Central Library Roundabout" },
-    { "id": "r_admin_road_north", "lat": 8.562800, "lng": 39.290500, "label": "Admin to PG Library Road" },
-    { "id": "r_hub_road_west", "lat": 8.564800, "lng": 39.291300, "label": "Central Hub West Road" },
-    { "id": "r_hub_road_east", "lat": 8.565200, "lng": 39.292100, "label": "Central Hub East Road" }
+    {
+      "id": "n_students_cafe",
+      "lat": 8.565718,
+      "lng": 39.290178,
+      "label": "Students Cafe Entrance"
+    },
+    {
+      "id": "n_fac1",
+      "lat": 8.565506,
+      "lng": 39.291304,
+      "label": "Campus Block Gate"
+    },
+    {
+      "id": "n_oda_nebe",
+      "lat": 8.564625,
+      "lng": 39.291216,
+      "label": "Oda Nebe Entrance"
+    },
+    {
+      "id": "n_vac",
+      "lat": 8.564861,
+      "lng": 39.292316,
+      "label": "Visual Arts Society Gate"
+    },
+    {
+      "id": "n_ecb",
+      "lat": 8.565049,
+      "lng": 39.29326,
+      "label": "East Campus Block Gate"
+    },
+    {
+      "id": "n_female_dorm",
+      "lat": 8.566519,
+      "lng": 39.292576,
+      "label": "Female Dormitory Gate"
+    },
+    {
+      "id": "n_kt_tennis",
+      "lat": 8.565747,
+      "lng": 39.293447,
+      "label": "KT Tennis Court Entrance"
+    },
+    {
+      "id": "n_stadium",
+      "lat": 8.565458,
+      "lng": 39.294614,
+      "label": "ASTU Stadium Gate"
+    },
+    {
+      "id": "n_freshman_dorm",
+      "lat": 8.567993,
+      "lng": 39.294577,
+      "label": "Freshman Dorm Entrance"
+    },
+    {
+      "id": "n_female_library",
+      "lat": 8.563461,
+      "lng": 39.291966,
+      "label": "Female Library Entrance"
+    },
+    {
+      "id": "n_pg_library",
+      "lat": 8.564068,
+      "lng": 39.29051,
+      "label": "Postgraduate Library Entrance"
+    },
+    {
+      "id": "n_soeec",
+      "lat": 8.563803,
+      "lng": 39.289464,
+      "label": "SOEEC Entrance"
+    },
+    {
+      "id": "n_stem_center",
+      "lat": 8.563971,
+      "lng": 39.288712,
+      "label": "STEM Center Entrance"
+    },
+    {
+      "id": "n_app_sci_lib",
+      "lat": 8.562505,
+      "lng": 39.287669,
+      "label": "Applied Science Library Entrance"
+    },
+    {
+      "id": "n_sace",
+      "lat": 8.562105,
+      "lng": 39.287619,
+      "label": "SACE Entrance"
+    },
+    {
+      "id": "n_main_gate",
+      "lat": 8.559177,
+      "lng": 39.285693,
+      "label": "ASTU Main Gate"
+    },
+    {
+      "id": "n_oda_gate",
+      "lat": 8.557049,
+      "lng": 39.290984,
+      "label": "Oda Gateway"
+    },
+    {
+      "id": "n_wabe_street",
+      "lat": 8.558173,
+      "lng": 39.291056,
+      "label": "Wabe Street Entrance"
+    },
+    {
+      "id": "n_astu_ict",
+      "lat": 8.559277,
+      "lng": 39.291225,
+      "label": "Adama University ICT Entrance"
+    },
+    {
+      "id": "n_central_library",
+      "lat": 8.561082,
+      "lng": 39.29137,
+      "label": "Central Library Entrance"
+    },
+    {
+      "id": "n_admin_building",
+      "lat": 8.561326,
+      "lng": 39.290258,
+      "label": "Administrative Building Entrance"
+    },
+    {
+      "id": "n_ict_building",
+      "lat": 8.561501,
+      "lng": 39.288465,
+      "label": "ICT Center Entrance"
+    },
+    {
+      "id": "n_chem_eng",
+      "lat": 8.561998,
+      "lng": 39.288499,
+      "label": "Chemical Engineering Entrance"
+    },
+    {
+      "id": "n_freshman_programs",
+      "lat": 8.56195,
+      "lng": 39.286213,
+      "label": "Freshman Programs Entrance"
+    },
+    {
+      "id": "n_central_hub",
+      "lat": 8.565458,
+      "lng": 39.2925,
+      "label": "ASTU Central Campus Hub"
+    },
+    {
+      "id": "r_stem_junction",
+      "lat": 8.56395,
+      "lng": 39.2889,
+      "label": "STEM & SOEEC Road Junction"
+    },
+    {
+      "id": "r_soeec_road_1",
+      "lat": 8.5641,
+      "lng": 39.2894,
+      "label": "SOEEC Main Avenue South"
+    },
+    {
+      "id": "r_soeec_road_2",
+      "lat": 8.56428,
+      "lng": 39.2899,
+      "label": "SOEEC Main Avenue North"
+    },
+    {
+      "id": "r_pg_junction",
+      "lat": 8.56445,
+      "lng": 39.2903,
+      "label": "Postgraduate & Library Road Junction"
+    },
+    {
+      "id": "r_cafe_road_1",
+      "lat": 8.5648,
+      "lng": 39.29028,
+      "label": "Dining Walkway South"
+    },
+    {
+      "id": "r_cafe_road_2",
+      "lat": 8.56525,
+      "lng": 39.29023,
+      "label": "Dining Walkway Mid"
+    },
+    {
+      "id": "r_cafe_junction",
+      "lat": 8.56565,
+      "lng": 39.2902,
+      "label": "Students Cafe Main Entrance Road"
+    },
+    {
+      "id": "r_main_gate_road_1",
+      "lat": 8.5598,
+      "lng": 39.286,
+      "label": "Main Gate Avenue South"
+    },
+    {
+      "id": "r_main_gate_road_2",
+      "lat": 8.5607,
+      "lng": 39.2868,
+      "label": "Main Gate Avenue Mid"
+    },
+    {
+      "id": "r_sace_junction",
+      "lat": 8.56215,
+      "lng": 39.2877,
+      "label": "SACE & Applied Science Road Junction"
+    },
+    {
+      "id": "r_stem_road_south",
+      "lat": 8.5631,
+      "lng": 39.2882,
+      "label": "Applied Science to STEM Road"
+    },
+    {
+      "id": "r_admin_junction",
+      "lat": 8.5613,
+      "lng": 39.2907,
+      "label": "Admin & Central Library Roundabout"
+    },
+    {
+      "id": "r_admin_road_north",
+      "lat": 8.5628,
+      "lng": 39.2905,
+      "label": "Admin to PG Library Road"
+    },
+    {
+      "id": "r_hub_road_west",
+      "lat": 8.5648,
+      "lng": 39.2913,
+      "label": "Central Hub West Road"
+    },
+    {
+      "id": "r_hub_road_east",
+      "lat": 8.5652,
+      "lng": 39.2921,
+      "label": "Central Hub East Road"
+    },
+    {
+      "id": "r_902569",
+      "lat": 8.566391,
+      "lng": 39.290052,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_903894",
+      "lat": 8.566561,
+      "lng": 39.290835,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_905399",
+      "lat": 8.566773,
+      "lng": 39.291242,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_906260",
+      "lat": 8.566996,
+      "lng": 39.291543,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_907729",
+      "lat": 8.567389,
+      "lng": 39.291961,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_915067",
+      "lat": 8.567665,
+      "lng": 39.292379,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_916032",
+      "lat": 8.567856,
+      "lng": 39.292486,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_916946",
+      "lat": 8.568004,
+      "lng": 39.292701,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_917750",
+      "lat": 8.568163,
+      "lng": 39.292819,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_918473",
+      "lat": 8.568386,
+      "lng": 39.293097,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_919552",
+      "lat": 8.568768,
+      "lng": 39.293269,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_920391",
+      "lat": 8.568959,
+      "lng": 39.293387,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_924329",
+      "lat": 8.569044,
+      "lng": 39.293473,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_925601",
+      "lat": 8.569107,
+      "lng": 39.293966,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_926825",
+      "lat": 8.569086,
+      "lng": 39.294513,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_928579",
+      "lat": 8.569054,
+      "lng": 39.295157,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_929667",
+      "lat": 8.568757,
+      "lng": 39.295243,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_930642",
+      "lat": 8.568428,
+      "lng": 39.295253,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_931502",
+      "lat": 8.568078,
+      "lng": 39.295178,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_932305",
+      "lat": 8.567771,
+      "lng": 39.295221,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_932827",
+      "lat": 8.567537,
+      "lng": 39.295221,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_933482",
+      "lat": 8.567293,
+      "lng": 39.295221,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_934199",
+      "lat": 8.567177,
+      "lng": 39.295221,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_937788",
+      "lat": 8.567102,
+      "lng": 39.294792,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_938778",
+      "lat": 8.567134,
+      "lng": 39.294599,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_939778",
+      "lat": 8.567134,
+      "lng": 39.294342,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_940582",
+      "lat": 8.567113,
+      "lng": 39.293988,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_941507",
+      "lat": 8.567166,
+      "lng": 39.293784,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_942168",
+      "lat": 8.567208,
+      "lng": 39.293548,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_943749",
+      "lat": 8.567346,
+      "lng": 39.293151,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_944821",
+      "lat": 8.567346,
+      "lng": 39.29298,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_945534",
+      "lat": 8.567325,
+      "lng": 39.292722,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_946242",
+      "lat": 8.567304,
+      "lng": 39.292475,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_946929",
+      "lat": 8.567251,
+      "lng": 39.292164,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_947733",
+      "lat": 8.56724,
+      "lng": 39.29195,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_951575",
+      "lat": 8.56706,
+      "lng": 39.292057,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_967706",
+      "lat": 8.566413,
+      "lng": 39.28899,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_968508",
+      "lat": 8.566742,
+      "lng": 39.28914,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_969025",
+      "lat": 8.566954,
+      "lng": 39.289226,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_969871",
+      "lat": 8.567431,
+      "lng": 39.289429,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_970772",
+      "lat": 8.567665,
+      "lng": 39.289612,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_971743",
+      "lat": 8.568248,
+      "lng": 39.289869,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_972707",
+      "lat": 8.568598,
+      "lng": 39.290127,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_973600",
+      "lat": 8.568694,
+      "lng": 39.290212,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_974909",
+      "lat": 8.56898,
+      "lng": 39.291263,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_980860",
+      "lat": 8.566466,
+      "lng": 39.286223,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_981591",
+      "lat": 8.566445,
+      "lng": 39.286534,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_982577",
+      "lat": 8.56637,
+      "lng": 39.287349,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_983626",
+      "lat": 8.566338,
+      "lng": 39.288303,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_984861",
+      "lat": 8.566445,
+      "lng": 39.289183,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_987005",
+      "lat": 8.566402,
+      "lng": 39.289848,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_989630",
+      "lat": 8.566487,
+      "lng": 39.290019,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_996053",
+      "lat": 8.56584,
+      "lng": 39.287392,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_997904",
+      "lat": 8.566201,
+      "lng": 39.287381,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_000213",
+      "lat": 8.564906,
+      "lng": 39.28737,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_001659",
+      "lat": 8.564217,
+      "lng": 39.28737,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_003410",
+      "lat": 8.562148,
+      "lng": 39.287327,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_006796",
+      "lat": 8.560737,
+      "lng": 39.287327,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_008906",
+      "lat": 8.559453,
+      "lng": 39.286727,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_019421",
+      "lat": 8.560853,
+      "lng": 39.284442,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_022075",
+      "lat": 8.560599,
+      "lng": 39.290824,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_027465",
+      "lat": 8.560525,
+      "lng": 39.293709,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_032663",
+      "lat": 8.560641,
+      "lng": 39.292025,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_035514",
+      "lat": 8.562286,
+      "lng": 39.291993,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_038827",
+      "lat": 8.562328,
+      "lng": 39.284914,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_044200",
+      "lat": 8.562296,
+      "lng": 39.28529,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_045957",
+      "lat": 8.560811,
+      "lng": 39.285332,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_049809",
+      "lat": 8.560811,
+      "lng": 39.286351,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_053279",
+      "lat": 8.560217,
+      "lng": 39.286115,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_056036",
+      "lat": 8.559007,
+      "lng": 39.285568,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_062668",
+      "lat": 8.556758,
+      "lng": 39.290952,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_066550",
+      "lat": 8.566381,
+      "lng": 39.290759,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_074678",
+      "lat": 8.567198,
+      "lng": 39.292991,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_076951",
+      "lat": 8.562318,
+      "lng": 39.292852,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_078566",
+      "lat": 8.562275,
+      "lng": 39.292101,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_080863",
+      "lat": 8.562275,
+      "lng": 39.294825,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_082569",
+      "lat": 8.564238,
+      "lng": 39.294739,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_084694",
+      "lat": 8.564482,
+      "lng": 39.29446,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_086494",
+      "lat": 8.5648,
+      "lng": 39.294117,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_089695",
+      "lat": 8.565988,
+      "lng": 39.293999,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_091029",
+      "lat": 8.566211,
+      "lng": 39.294117,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_092410",
+      "lat": 8.566402,
+      "lng": 39.294493,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_094104",
+      "lat": 8.566445,
+      "lng": 39.294857,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_095735",
+      "lat": 8.566254,
+      "lng": 39.295254,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_096436",
+      "lat": 8.56601,
+      "lng": 39.295361,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_097082",
+      "lat": 8.56585,
+      "lng": 39.295404,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_097673",
+      "lat": 8.565585,
+      "lng": 39.295404,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_098256",
+      "lat": 8.565373,
+      "lng": 39.295404,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_098737",
+      "lat": 8.564927,
+      "lng": 39.295415,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_099292",
+      "lat": 8.564821,
+      "lng": 39.295383,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_099894",
+      "lat": 8.564609,
+      "lng": 39.295136,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_100537",
+      "lat": 8.564397,
+      "lng": 39.294879,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_109410",
+      "lat": 8.564896,
+      "lng": 39.28632,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_111817",
+      "lat": 8.56236,
+      "lng": 39.286245,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_121205",
+      "lat": 8.564906,
+      "lng": 39.286415,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_123142",
+      "lat": 8.564832,
+      "lng": 39.287252,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_124710",
+      "lat": 8.564949,
+      "lng": 39.288764,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_126479",
+      "lat": 8.56497,
+      "lng": 39.289558,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_127799",
+      "lat": 8.565193,
+      "lng": 39.290062,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_129467",
+      "lat": 8.565065,
+      "lng": 39.290577,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_134803",
+      "lat": 8.562339,
+      "lng": 39.28678,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_136719",
+      "lat": 8.564673,
+      "lng": 39.286823,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_138560",
+      "lat": 8.564843,
+      "lng": 39.286801,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_144450",
+      "lat": 8.566349,
+      "lng": 39.28693,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_146735",
+      "lat": 8.564991,
+      "lng": 39.286362,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_151343",
+      "lat": 8.562307,
+      "lng": 39.285707,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_153246",
+      "lat": 8.564705,
+      "lng": 39.285761,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_156493",
+      "lat": 8.564662,
+      "lng": 39.28619,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_162411",
+      "lat": 8.562689,
+      "lng": 39.287359,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_163821",
+      "lat": 8.562848,
+      "lng": 39.287788,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_164720",
+      "lat": 8.56305,
+      "lng": 39.287863,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_165584",
+      "lat": 8.563081,
+      "lng": 39.288131,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_166824",
+      "lat": 8.563336,
+      "lng": 39.288142,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_168587",
+      "lat": 8.563368,
+      "lng": 39.288582,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_169720",
+      "lat": 8.563697,
+      "lng": 39.288603,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_174109",
+      "lat": 8.563803,
+      "lng": 39.287327,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_175792",
+      "lat": 8.563771,
+      "lng": 39.288206,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_176726",
+      "lat": 8.564004,
+      "lng": 39.288206,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_178222",
+      "lat": 8.564036,
+      "lng": 39.288442,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_180145",
+      "lat": 8.564185,
+      "lng": 39.288496,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_181446",
+      "lat": 8.564195,
+      "lng": 39.28885,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_186038",
+      "lat": 8.56445,
+      "lng": 39.288882,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_187274",
+      "lat": 8.564545,
+      "lng": 39.289397,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_188423",
+      "lat": 8.564609,
+      "lng": 39.289579,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_190465",
+      "lat": 8.564853,
+      "lng": 39.289504,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_198406",
+      "lat": 8.566285,
+      "lng": 39.289054,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_199825",
+      "lat": 8.565755,
+      "lng": 39.289944,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_201304",
+      "lat": 8.565946,
+      "lng": 39.289955,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_202002",
+      "lat": 8.566084,
+      "lng": 39.290105,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_202976",
+      "lat": 8.566041,
+      "lng": 39.290201,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_208818",
+      "lat": 8.562286,
+      "lng": 39.289268,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_210438",
+      "lat": 8.563813,
+      "lng": 39.289247,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_215546",
+      "lat": 8.563177,
+      "lng": 39.290727,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_217598",
+      "lat": 8.563166,
+      "lng": 39.287434,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_221848",
+      "lat": 8.562286,
+      "lng": 39.288163,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_224973",
+      "lat": 8.564132,
+      "lng": 39.288174,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_230247",
+      "lat": 8.56253,
+      "lng": 39.29078,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_231344",
+      "lat": 8.562509,
+      "lng": 39.289772,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_232518",
+      "lat": 8.562222,
+      "lng": 39.289772,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_240986",
+      "lat": 8.563686,
+      "lng": 39.290888,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_241818",
+      "lat": 8.563654,
+      "lng": 39.291156,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_242879",
+      "lat": 8.563888,
+      "lng": 39.291295,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_243833",
+      "lat": 8.564079,
+      "lng": 39.29137,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_245495",
+      "lat": 8.564291,
+      "lng": 39.291671,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_249608",
+      "lat": 8.564652,
+      "lng": 39.29181,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_251152",
+      "lat": 8.564853,
+      "lng": 39.29211,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_254190",
+      "lat": 8.565034,
+      "lng": 39.292196,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_267267",
+      "lat": 8.560026,
+      "lng": 39.291049,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_268309",
+      "lat": 8.560026,
+      "lng": 39.291327,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_269268",
+      "lat": 8.560143,
+      "lng": 39.291478,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_270345",
+      "lat": 8.560249,
+      "lng": 39.291617,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_271481",
+      "lat": 8.56009,
+      "lng": 39.291681,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_272792",
+      "lat": 8.559877,
+      "lng": 39.29151,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_273652",
+      "lat": 8.559697,
+      "lng": 39.291478,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_274394",
+      "lat": 8.559602,
+      "lng": 39.291713,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_275135",
+      "lat": 8.559655,
+      "lng": 39.291885,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_275999",
+      "lat": 8.559909,
+      "lng": 39.291896,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_277752",
+      "lat": 8.560015,
+      "lng": 39.292132,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_278815",
+      "lat": 8.559464,
+      "lng": 39.292078,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_280101",
+      "lat": 8.558159,
+      "lng": 39.292143,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_281433",
+      "lat": 8.558127,
+      "lng": 39.293462,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_282210",
+      "lat": 8.55818,
+      "lng": 39.294148,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_282964",
+      "lat": 8.558212,
+      "lng": 39.294856,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_284498",
+      "lat": 8.558466,
+      "lng": 39.294995,
+      "label": "Road Point"
+    }
   ],
   "edges": [
-    { "id": "eg_stem_to_junction", "source": "n_stem_center", "target": "r_stem_junction" },
-    { "id": "eg_soeec_to_junction", "source": "n_soeec", "target": "r_soeec_road_1" },
-    { "id": "eg_stem_jct_to_soeec_road1", "source": "r_stem_junction", "target": "r_soeec_road_1" },
-    { "id": "eg_soeec_road1_to_road2", "source": "r_soeec_road_1", "target": "r_soeec_road_2" },
-    { "id": "eg_soeec_road2_to_pg_jct", "source": "r_soeec_road_2", "target": "r_pg_junction" },
-    { "id": "eg_pg_lib_to_jct", "source": "n_pg_library", "target": "r_pg_junction" },
-    { "id": "eg_pg_jct_to_cafe_road1", "source": "r_pg_junction", "target": "r_cafe_road_1" },
-    { "id": "eg_cafe_road1_to_road2", "source": "r_cafe_road_1", "target": "r_cafe_road_2" },
-    { "id": "eg_cafe_road2_to_jct", "source": "r_cafe_road_2", "target": "r_cafe_junction" },
-    { "id": "eg_cafe_jct_to_cafe", "source": "r_cafe_junction", "target": "n_students_cafe" },
-    { "id": "eg_fac1_to_cafe_jct", "source": "n_fac1", "target": "r_cafe_junction" },
-    { "id": "eg_oda_to_hub_west", "source": "n_oda_nebe", "target": "r_hub_road_west" },
-    { "id": "eg_hub_west_to_hub_east", "source": "r_hub_road_west", "target": "r_hub_road_east" },
-    { "id": "eg_hub_east_to_hub", "source": "r_hub_road_east", "target": "n_central_hub" },
-    { "id": "eg_vac_to_hub", "source": "n_vac", "target": "n_central_hub" },
-    { "id": "eg_ecb_to_stadium", "source": "n_ecb", "target": "n_stadium" },
-    { "id": "eg_female_dorm_to_stadium", "source": "n_female_dorm", "target": "n_stadium" },
-    { "id": "eg_kt_tennis_to_stadium", "source": "n_kt_tennis", "target": "n_stadium" },
-    { "id": "eg_freshman_dorm_to_stadium", "source": "n_freshman_dorm", "target": "n_stadium" },
-    { "id": "eg_female_lib_to_hub", "source": "n_female_library", "target": "r_hub_road_east" },
-    { "id": "eg_app_sci_to_sace_jct", "source": "n_app_sci_lib", "target": "r_sace_junction" },
-    { "id": "eg_sace_to_sace_jct", "source": "n_sace", "target": "r_sace_junction" },
-    { "id": "eg_sace_jct_to_stem_road_south", "source": "r_sace_junction", "target": "r_stem_road_south" },
-    { "id": "eg_stem_road_south_to_stem_jct", "source": "r_stem_road_south", "target": "r_stem_junction" },
-    { "id": "eg_main_gate_to_road1", "source": "n_main_gate", "target": "r_main_gate_road_1" },
-    { "id": "eg_main_road1_to_road2", "source": "r_main_gate_road_1", "target": "r_main_gate_road_2" },
-    { "id": "eg_main_road2_to_sace_jct", "source": "r_main_gate_road_2", "target": "r_sace_junction" },
-    { "id": "eg_freshman_prog_to_main_road", "source": "n_freshman_programs", "target": "r_main_gate_road_2" },
-    { "id": "eg_admin_to_admin_jct", "source": "n_admin_building", "target": "r_admin_junction" },
-    { "id": "eg_central_lib_to_admin_jct", "source": "n_central_library", "target": "r_admin_junction" },
-    { "id": "eg_admin_jct_to_admin_road_north", "source": "r_admin_junction", "target": "r_admin_road_north" },
-    { "id": "eg_admin_road_north_to_pg_jct", "source": "r_admin_road_north", "target": "r_pg_junction" },
-    { "id": "eg_ict_bldg_to_chem_eng", "source": "n_ict_building", "target": "n_chem_eng" },
-    { "id": "eg_chem_eng_to_stem_jct", "source": "n_chem_eng", "target": "r_stem_junction" },
-    { "id": "eg_astu_ict_to_admin_jct", "source": "n_astu_ict", "target": "r_admin_junction" },
-    { "id": "eg_wabe_to_ict", "source": "n_wabe_street", "target": "n_astu_ict" },
-    { "id": "eg_oda_gate_to_wabe", "source": "n_oda_gate", "target": "n_wabe_street" },
-    { "id": "eg_stadium_to_hub", "source": "n_stadium", "target": "n_central_hub" },
-    { "id": "eg_pg_jct_to_hub_west", "source": "r_pg_junction", "target": "r_hub_road_west" }
+    {
+      "id": "eg_stem_to_junction",
+      "source": "n_stem_center",
+      "target": "r_stem_junction"
+    },
+    {
+      "id": "eg_soeec_to_junction",
+      "source": "n_soeec",
+      "target": "r_soeec_road_1"
+    },
+    {
+      "id": "eg_stem_jct_to_soeec_road1",
+      "source": "r_stem_junction",
+      "target": "r_soeec_road_1"
+    },
+    {
+      "id": "eg_soeec_road1_to_road2",
+      "source": "r_soeec_road_1",
+      "target": "r_soeec_road_2"
+    },
+    {
+      "id": "eg_soeec_road2_to_pg_jct",
+      "source": "r_soeec_road_2",
+      "target": "r_pg_junction"
+    },
+    {
+      "id": "eg_pg_lib_to_jct",
+      "source": "n_pg_library",
+      "target": "r_pg_junction"
+    },
+    {
+      "id": "eg_pg_jct_to_cafe_road1",
+      "source": "r_pg_junction",
+      "target": "r_cafe_road_1"
+    },
+    {
+      "id": "eg_cafe_road1_to_road2",
+      "source": "r_cafe_road_1",
+      "target": "r_cafe_road_2"
+    },
+    {
+      "id": "eg_cafe_road2_to_jct",
+      "source": "r_cafe_road_2",
+      "target": "r_cafe_junction"
+    },
+    {
+      "id": "eg_cafe_jct_to_cafe",
+      "source": "r_cafe_junction",
+      "target": "n_students_cafe"
+    },
+    {
+      "id": "eg_fac1_to_cafe_jct",
+      "source": "n_fac1",
+      "target": "r_cafe_junction"
+    },
+    {
+      "id": "eg_oda_to_hub_west",
+      "source": "n_oda_nebe",
+      "target": "r_hub_road_west"
+    },
+    {
+      "id": "eg_hub_west_to_hub_east",
+      "source": "r_hub_road_west",
+      "target": "r_hub_road_east"
+    },
+    {
+      "id": "eg_hub_east_to_hub",
+      "source": "r_hub_road_east",
+      "target": "n_central_hub"
+    },
+    {
+      "id": "eg_vac_to_hub",
+      "source": "n_vac",
+      "target": "n_central_hub"
+    },
+    {
+      "id": "eg_ecb_to_stadium",
+      "source": "n_ecb",
+      "target": "n_stadium"
+    },
+    {
+      "id": "eg_female_dorm_to_stadium",
+      "source": "n_female_dorm",
+      "target": "n_stadium"
+    },
+    {
+      "id": "eg_kt_tennis_to_stadium",
+      "source": "n_kt_tennis",
+      "target": "n_stadium"
+    },
+    {
+      "id": "eg_freshman_dorm_to_stadium",
+      "source": "n_freshman_dorm",
+      "target": "n_stadium"
+    },
+    {
+      "id": "eg_female_lib_to_hub",
+      "source": "n_female_library",
+      "target": "r_hub_road_east"
+    },
+    {
+      "id": "eg_app_sci_to_sace_jct",
+      "source": "n_app_sci_lib",
+      "target": "r_sace_junction"
+    },
+    {
+      "id": "eg_sace_to_sace_jct",
+      "source": "n_sace",
+      "target": "r_sace_junction"
+    },
+    {
+      "id": "eg_sace_jct_to_stem_road_south",
+      "source": "r_sace_junction",
+      "target": "r_stem_road_south"
+    },
+    {
+      "id": "eg_stem_road_south_to_stem_jct",
+      "source": "r_stem_road_south",
+      "target": "r_stem_junction"
+    },
+    {
+      "id": "eg_main_gate_to_road1",
+      "source": "n_main_gate",
+      "target": "r_main_gate_road_1"
+    },
+    {
+      "id": "eg_main_road1_to_road2",
+      "source": "r_main_gate_road_1",
+      "target": "r_main_gate_road_2"
+    },
+    {
+      "id": "eg_main_road2_to_sace_jct",
+      "source": "r_main_gate_road_2",
+      "target": "r_sace_junction"
+    },
+    {
+      "id": "eg_freshman_prog_to_main_road",
+      "source": "n_freshman_programs",
+      "target": "r_main_gate_road_2"
+    },
+    {
+      "id": "eg_admin_to_admin_jct",
+      "source": "n_admin_building",
+      "target": "r_admin_junction"
+    },
+    {
+      "id": "eg_central_lib_to_admin_jct",
+      "source": "n_central_library",
+      "target": "r_admin_junction"
+    },
+    {
+      "id": "eg_admin_jct_to_admin_road_north",
+      "source": "r_admin_junction",
+      "target": "r_admin_road_north"
+    },
+    {
+      "id": "eg_admin_road_north_to_pg_jct",
+      "source": "r_admin_road_north",
+      "target": "r_pg_junction"
+    },
+    {
+      "id": "eg_ict_bldg_to_chem_eng",
+      "source": "n_ict_building",
+      "target": "n_chem_eng"
+    },
+    {
+      "id": "eg_chem_eng_to_stem_jct",
+      "source": "n_chem_eng",
+      "target": "r_stem_junction"
+    },
+    {
+      "id": "eg_astu_ict_to_admin_jct",
+      "source": "n_astu_ict",
+      "target": "r_admin_junction"
+    },
+    {
+      "id": "eg_wabe_to_ict",
+      "source": "n_wabe_street",
+      "target": "n_astu_ict"
+    },
+    {
+      "id": "eg_oda_gate_to_wabe",
+      "source": "n_oda_gate",
+      "target": "n_wabe_street"
+    },
+    {
+      "id": "eg_stadium_to_hub",
+      "source": "n_stadium",
+      "target": "n_central_hub"
+    },
+    {
+      "id": "eg_pg_jct_to_hub_west",
+      "source": "r_pg_junction",
+      "target": "r_hub_road_west"
+    },
+    {
+      "id": "e_r_902569_r_903894",
+      "source": "r_902569",
+      "target": "r_903894"
+    },
+    {
+      "id": "e_r_903894_r_905399",
+      "source": "r_903894",
+      "target": "r_905399"
+    },
+    {
+      "id": "e_r_905399_r_906260",
+      "source": "r_905399",
+      "target": "r_906260"
+    },
+    {
+      "id": "e_r_906260_r_907729",
+      "source": "r_906260",
+      "target": "r_907729"
+    },
+    {
+      "id": "e_r_907729_r_915067",
+      "source": "r_907729",
+      "target": "r_915067"
+    },
+    {
+      "id": "e_r_915067_r_916032",
+      "source": "r_915067",
+      "target": "r_916032"
+    },
+    {
+      "id": "e_r_916032_r_916946",
+      "source": "r_916032",
+      "target": "r_916946"
+    },
+    {
+      "id": "e_r_916946_r_917750",
+      "source": "r_916946",
+      "target": "r_917750"
+    },
+    {
+      "id": "e_r_917750_r_918473",
+      "source": "r_917750",
+      "target": "r_918473"
+    },
+    {
+      "id": "e_r_918473_r_919552",
+      "source": "r_918473",
+      "target": "r_919552"
+    },
+    {
+      "id": "e_r_919552_r_920391",
+      "source": "r_919552",
+      "target": "r_920391"
+    },
+    {
+      "id": "e_r_920391_r_924329",
+      "source": "r_920391",
+      "target": "r_924329"
+    },
+    {
+      "id": "e_r_924329_r_925601",
+      "source": "r_924329",
+      "target": "r_925601"
+    },
+    {
+      "id": "e_r_925601_r_926825",
+      "source": "r_925601",
+      "target": "r_926825"
+    },
+    {
+      "id": "e_r_926825_r_928579",
+      "source": "r_926825",
+      "target": "r_928579"
+    },
+    {
+      "id": "e_r_928579_r_929667",
+      "source": "r_928579",
+      "target": "r_929667"
+    },
+    {
+      "id": "e_r_929667_r_930642",
+      "source": "r_929667",
+      "target": "r_930642"
+    },
+    {
+      "id": "e_r_930642_r_931502",
+      "source": "r_930642",
+      "target": "r_931502"
+    },
+    {
+      "id": "e_r_931502_r_932305",
+      "source": "r_931502",
+      "target": "r_932305"
+    },
+    {
+      "id": "e_r_932305_r_932827",
+      "source": "r_932305",
+      "target": "r_932827"
+    },
+    {
+      "id": "e_r_932827_r_933482",
+      "source": "r_932827",
+      "target": "r_933482"
+    },
+    {
+      "id": "e_r_933482_r_934199",
+      "source": "r_933482",
+      "target": "r_934199"
+    },
+    {
+      "id": "e_r_934199_r_937788",
+      "source": "r_934199",
+      "target": "r_937788"
+    },
+    {
+      "id": "e_r_937788_r_938778",
+      "source": "r_937788",
+      "target": "r_938778"
+    },
+    {
+      "id": "e_r_938778_r_939778",
+      "source": "r_938778",
+      "target": "r_939778"
+    },
+    {
+      "id": "e_r_939778_r_940582",
+      "source": "r_939778",
+      "target": "r_940582"
+    },
+    {
+      "id": "e_r_940582_r_941507",
+      "source": "r_940582",
+      "target": "r_941507"
+    },
+    {
+      "id": "e_r_941507_r_942168",
+      "source": "r_941507",
+      "target": "r_942168"
+    },
+    {
+      "id": "e_r_942168_r_943749",
+      "source": "r_942168",
+      "target": "r_943749"
+    },
+    {
+      "id": "e_r_943749_r_944821",
+      "source": "r_943749",
+      "target": "r_944821"
+    },
+    {
+      "id": "e_r_944821_r_945534",
+      "source": "r_944821",
+      "target": "r_945534"
+    },
+    {
+      "id": "e_r_945534_r_946242",
+      "source": "r_945534",
+      "target": "r_946242"
+    },
+    {
+      "id": "e_r_946242_r_946929",
+      "source": "r_946242",
+      "target": "r_946929"
+    },
+    {
+      "id": "e_r_946929_r_947733",
+      "source": "r_946929",
+      "target": "r_947733"
+    },
+    {
+      "id": "e_r_947733_r_951575",
+      "source": "r_947733",
+      "target": "r_951575"
+    },
+    {
+      "id": "e_r_967706_r_968508",
+      "source": "r_967706",
+      "target": "r_968508"
+    },
+    {
+      "id": "e_r_968508_r_969025",
+      "source": "r_968508",
+      "target": "r_969025"
+    },
+    {
+      "id": "e_r_969025_r_969871",
+      "source": "r_969025",
+      "target": "r_969871"
+    },
+    {
+      "id": "e_r_969871_r_970772",
+      "source": "r_969871",
+      "target": "r_970772"
+    },
+    {
+      "id": "e_r_970772_r_971743",
+      "source": "r_970772",
+      "target": "r_971743"
+    },
+    {
+      "id": "e_r_971743_r_972707",
+      "source": "r_971743",
+      "target": "r_972707"
+    },
+    {
+      "id": "e_r_972707_r_973600",
+      "source": "r_972707",
+      "target": "r_973600"
+    },
+    {
+      "id": "e_r_973600_r_974909",
+      "source": "r_973600",
+      "target": "r_974909"
+    },
+    {
+      "id": "e_r_980860_r_981591",
+      "source": "r_980860",
+      "target": "r_981591"
+    },
+    {
+      "id": "e_r_981591_r_982577",
+      "source": "r_981591",
+      "target": "r_982577"
+    },
+    {
+      "id": "e_r_982577_r_983626",
+      "source": "r_982577",
+      "target": "r_983626"
+    },
+    {
+      "id": "e_r_983626_r_984861",
+      "source": "r_983626",
+      "target": "r_984861"
+    },
+    {
+      "id": "e_r_984861_r_987005",
+      "source": "r_984861",
+      "target": "r_987005"
+    },
+    {
+      "id": "e_r_987005_r_989630",
+      "source": "r_987005",
+      "target": "r_989630"
+    },
+    {
+      "id": "e_r_996053_r_997904",
+      "source": "r_996053",
+      "target": "r_997904"
+    },
+    {
+      "id": "e_r_997904_r_000213",
+      "source": "r_997904",
+      "target": "r_000213"
+    },
+    {
+      "id": "e_r_000213_r_001659",
+      "source": "r_000213",
+      "target": "r_001659"
+    },
+    {
+      "id": "e_r_001659_r_003410",
+      "source": "r_001659",
+      "target": "r_003410"
+    },
+    {
+      "id": "e_r_003410_r_006796",
+      "source": "r_003410",
+      "target": "r_006796"
+    },
+    {
+      "id": "e_r_006796_r_008906",
+      "source": "r_006796",
+      "target": "r_008906"
+    },
+    {
+      "id": "e_r_019421_r_022075",
+      "source": "r_019421",
+      "target": "r_022075"
+    },
+    {
+      "id": "e_r_022075_r_027465",
+      "source": "r_022075",
+      "target": "r_027465"
+    },
+    {
+      "id": "e_r_032663_r_035514",
+      "source": "r_032663",
+      "target": "r_035514"
+    },
+    {
+      "id": "e_r_035514_r_038827",
+      "source": "r_035514",
+      "target": "r_038827"
+    },
+    {
+      "id": "e_r_044200_r_045957",
+      "source": "r_044200",
+      "target": "r_045957"
+    },
+    {
+      "id": "e_r_049809_r_053279",
+      "source": "r_049809",
+      "target": "r_053279"
+    },
+    {
+      "id": "e_r_053279_r_056036",
+      "source": "r_053279",
+      "target": "r_056036"
+    },
+    {
+      "id": "e_r_062668_r_066550",
+      "source": "r_062668",
+      "target": "r_066550"
+    },
+    {
+      "id": "e_r_074678_r_076951",
+      "source": "r_074678",
+      "target": "r_076951"
+    },
+    {
+      "id": "e_r_076951_r_078566",
+      "source": "r_076951",
+      "target": "r_078566"
+    },
+    {
+      "id": "e_r_078566_r_080863",
+      "source": "r_078566",
+      "target": "r_080863"
+    },
+    {
+      "id": "e_r_080863_r_082569",
+      "source": "r_080863",
+      "target": "r_082569"
+    },
+    {
+      "id": "e_r_082569_r_084694",
+      "source": "r_082569",
+      "target": "r_084694"
+    },
+    {
+      "id": "e_r_084694_r_086494",
+      "source": "r_084694",
+      "target": "r_086494"
+    },
+    {
+      "id": "e_r_086494_r_089695",
+      "source": "r_086494",
+      "target": "r_089695"
+    },
+    {
+      "id": "e_r_089695_r_091029",
+      "source": "r_089695",
+      "target": "r_091029"
+    },
+    {
+      "id": "e_r_091029_r_092410",
+      "source": "r_091029",
+      "target": "r_092410"
+    },
+    {
+      "id": "e_r_092410_r_094104",
+      "source": "r_092410",
+      "target": "r_094104"
+    },
+    {
+      "id": "e_r_094104_r_095735",
+      "source": "r_094104",
+      "target": "r_095735"
+    },
+    {
+      "id": "e_r_095735_r_096436",
+      "source": "r_095735",
+      "target": "r_096436"
+    },
+    {
+      "id": "e_r_096436_r_097082",
+      "source": "r_096436",
+      "target": "r_097082"
+    },
+    {
+      "id": "e_r_097082_r_097673",
+      "source": "r_097082",
+      "target": "r_097673"
+    },
+    {
+      "id": "e_r_097673_r_098256",
+      "source": "r_097673",
+      "target": "r_098256"
+    },
+    {
+      "id": "e_r_098256_r_098737",
+      "source": "r_098256",
+      "target": "r_098737"
+    },
+    {
+      "id": "e_r_098737_r_099292",
+      "source": "r_098737",
+      "target": "r_099292"
+    },
+    {
+      "id": "e_r_099292_r_099894",
+      "source": "r_099292",
+      "target": "r_099894"
+    },
+    {
+      "id": "e_r_099894_r_100537",
+      "source": "r_099894",
+      "target": "r_100537"
+    },
+    {
+      "id": "e_r_109410_r_111817",
+      "source": "r_109410",
+      "target": "r_111817"
+    },
+    {
+      "id": "e_r_121205_r_123142",
+      "source": "r_121205",
+      "target": "r_123142"
+    },
+    {
+      "id": "e_r_123142_r_124710",
+      "source": "r_123142",
+      "target": "r_124710"
+    },
+    {
+      "id": "e_r_124710_r_126479",
+      "source": "r_124710",
+      "target": "r_126479"
+    },
+    {
+      "id": "e_r_126479_r_127799",
+      "source": "r_126479",
+      "target": "r_127799"
+    },
+    {
+      "id": "e_r_127799_r_129467",
+      "source": "r_127799",
+      "target": "r_129467"
+    },
+    {
+      "id": "e_r_134803_r_136719",
+      "source": "r_134803",
+      "target": "r_136719"
+    },
+    {
+      "id": "e_r_136719_r_138560",
+      "source": "r_136719",
+      "target": "r_138560"
+    },
+    {
+      "id": "e_r_144450_r_146735",
+      "source": "r_144450",
+      "target": "r_146735"
+    },
+    {
+      "id": "e_r_151343_r_153246",
+      "source": "r_151343",
+      "target": "r_153246"
+    },
+    {
+      "id": "e_r_153246_r_156493",
+      "source": "r_153246",
+      "target": "r_156493"
+    },
+    {
+      "id": "e_r_162411_r_163821",
+      "source": "r_162411",
+      "target": "r_163821"
+    },
+    {
+      "id": "e_r_163821_r_164720",
+      "source": "r_163821",
+      "target": "r_164720"
+    },
+    {
+      "id": "e_r_164720_r_165584",
+      "source": "r_164720",
+      "target": "r_165584"
+    },
+    {
+      "id": "e_r_165584_r_166824",
+      "source": "r_165584",
+      "target": "r_166824"
+    },
+    {
+      "id": "e_r_166824_r_168587",
+      "source": "r_166824",
+      "target": "r_168587"
+    },
+    {
+      "id": "e_r_168587_r_169720",
+      "source": "r_168587",
+      "target": "r_169720"
+    },
+    {
+      "id": "e_r_174109_r_175792",
+      "source": "r_174109",
+      "target": "r_175792"
+    },
+    {
+      "id": "e_r_175792_r_176726",
+      "source": "r_175792",
+      "target": "r_176726"
+    },
+    {
+      "id": "e_r_176726_r_178222",
+      "source": "r_176726",
+      "target": "r_178222"
+    },
+    {
+      "id": "e_r_178222_r_180145",
+      "source": "r_178222",
+      "target": "r_180145"
+    },
+    {
+      "id": "e_r_180145_r_181446",
+      "source": "r_180145",
+      "target": "r_181446"
+    },
+    {
+      "id": "e_r_181446_r_186038",
+      "source": "r_181446",
+      "target": "r_186038"
+    },
+    {
+      "id": "e_r_186038_r_187274",
+      "source": "r_186038",
+      "target": "r_187274"
+    },
+    {
+      "id": "e_r_187274_r_188423",
+      "source": "r_187274",
+      "target": "r_188423"
+    },
+    {
+      "id": "e_r_188423_r_190465",
+      "source": "r_188423",
+      "target": "r_190465"
+    },
+    {
+      "id": "e_r_198406_r_199825",
+      "source": "r_198406",
+      "target": "r_199825"
+    },
+    {
+      "id": "e_r_199825_r_201304",
+      "source": "r_199825",
+      "target": "r_201304"
+    },
+    {
+      "id": "e_r_201304_r_202002",
+      "source": "r_201304",
+      "target": "r_202002"
+    },
+    {
+      "id": "e_r_202002_r_202976",
+      "source": "r_202002",
+      "target": "r_202976"
+    },
+    {
+      "id": "e_r_208818_r_210438",
+      "source": "r_208818",
+      "target": "r_210438"
+    },
+    {
+      "id": "e_r_215546_r_217598",
+      "source": "r_215546",
+      "target": "r_217598"
+    },
+    {
+      "id": "e_r_221848_r_224973",
+      "source": "r_221848",
+      "target": "r_224973"
+    },
+    {
+      "id": "e_r_230247_r_231344",
+      "source": "r_230247",
+      "target": "r_231344"
+    },
+    {
+      "id": "e_r_231344_r_232518",
+      "source": "r_231344",
+      "target": "r_232518"
+    },
+    {
+      "id": "e_r_240986_r_241818",
+      "source": "r_240986",
+      "target": "r_241818"
+    },
+    {
+      "id": "e_r_241818_r_242879",
+      "source": "r_241818",
+      "target": "r_242879"
+    },
+    {
+      "id": "e_r_242879_r_243833",
+      "source": "r_242879",
+      "target": "r_243833"
+    },
+    {
+      "id": "e_r_243833_r_245495",
+      "source": "r_243833",
+      "target": "r_245495"
+    },
+    {
+      "id": "e_r_245495_r_249608",
+      "source": "r_245495",
+      "target": "r_249608"
+    },
+    {
+      "id": "e_r_249608_r_251152",
+      "source": "r_249608",
+      "target": "r_251152"
+    },
+    {
+      "id": "e_r_251152_r_254190",
+      "source": "r_251152",
+      "target": "r_254190"
+    },
+    {
+      "id": "e_r_267267_r_268309",
+      "source": "r_267267",
+      "target": "r_268309"
+    },
+    {
+      "id": "e_r_268309_r_269268",
+      "source": "r_268309",
+      "target": "r_269268"
+    },
+    {
+      "id": "e_r_269268_r_270345",
+      "source": "r_269268",
+      "target": "r_270345"
+    },
+    {
+      "id": "e_r_270345_r_271481",
+      "source": "r_270345",
+      "target": "r_271481"
+    },
+    {
+      "id": "e_r_271481_r_272792",
+      "source": "r_271481",
+      "target": "r_272792"
+    },
+    {
+      "id": "e_r_272792_r_273652",
+      "source": "r_272792",
+      "target": "r_273652"
+    },
+    {
+      "id": "e_r_273652_r_274394",
+      "source": "r_273652",
+      "target": "r_274394"
+    },
+    {
+      "id": "e_r_274394_r_275135",
+      "source": "r_274394",
+      "target": "r_275135"
+    },
+    {
+      "id": "e_r_275135_r_275999",
+      "source": "r_275135",
+      "target": "r_275999"
+    },
+    {
+      "id": "e_r_275999_r_277752",
+      "source": "r_275999",
+      "target": "r_277752"
+    },
+    {
+      "id": "e_r_277752_r_278815",
+      "source": "r_277752",
+      "target": "r_278815"
+    },
+    {
+      "id": "e_r_278815_r_280101",
+      "source": "r_278815",
+      "target": "r_280101"
+    },
+    {
+      "id": "e_r_280101_r_281433",
+      "source": "r_280101",
+      "target": "r_281433"
+    },
+    {
+      "id": "e_r_281433_r_282210",
+      "source": "r_281433",
+      "target": "r_282210"
+    },
+    {
+      "id": "e_r_282210_r_282964",
+      "source": "r_282210",
+      "target": "r_282964"
+    },
+    {
+      "id": "e_r_282964_r_284498",
+      "source": "r_282964",
+      "target": "r_284498"
+    }
   ]
 }
