@@ -38,9 +38,25 @@ export function findShortestPath(
     const n2 = nodeMap.get(edge.target);
     if (!n1 || !n2) return;
 
-    const w = edge.weight ?? calculateHaversineDistance(n1, n2);
+    let baseDist = calculateHaversineDistance(n1, n2);
+
+    // Advanced customization multipliers:
+    // E.g., stairs add a walking penalty; dirt paths add slight friction
+    if (edge.type === 'stairs') {
+      baseDist *= 2.5; // Stairs feel longer / slower to walk
+    } else if (edge.type === 'dirt_path') {
+      baseDist *= 1.2;
+    }
+
+    const w = edge.weight ?? baseDist;
+
+    // Forward direction
     adj.get(edge.source)?.push({ neighborId: edge.target, weight: w, edgeId: edge.id });
-    adj.get(edge.target)?.push({ neighborId: edge.source, weight: w, edgeId: edge.id });
+
+    // Reverse direction (unless marked strictly one-way)
+    if (!edge.isOneWay) {
+      adj.get(edge.target)?.push({ neighborId: edge.source, weight: w, edgeId: edge.id });
+    }
   });
 
   const distances = new Map<string, number>();

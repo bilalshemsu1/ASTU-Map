@@ -53,7 +53,10 @@ export interface PathEdge {
   id: string;
   source: string;
   target: string;
-  weight?: number;
+  weight?: number; // Custom distance or penalty weight
+  type?: 'asphalt_road' | 'paved_walkway' | 'dirt_path' | 'stairs' | 'indoor_corridor';
+  isOneWay?: boolean;
+  handicapAccessible?: boolean;
 }
 
 export interface CampusData {

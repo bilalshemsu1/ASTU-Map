@@ -6,11 +6,14 @@ import { CampusData, LatLng } from '../../lib/types/map';
 
 interface DigitizeMapClientProps {
   campus: CampusData;
-  mode: 'view' | 'building' | 'node' | 'edge';
+  mode: 'view' | 'building' | 'node' | 'edge' | 'edit';
   currPolygon: LatLng[];
   selectedSourceNode: string | null;
   onAddMapClick: (latlng: LatLng) => void;
   onNodeClick: (nodeId: string) => void;
+  onNodeDragEnd?: (nodeId: string, newLatLng: LatLng) => void;
+  onDeleteNode?: (nodeId: string) => void;
+  onDeleteEdge?: (edgeId: string) => void;
 }
 
 function MapClickHandler({ onClick }: { onClick: (latlng: LatLng) => void }) {
@@ -29,6 +32,8 @@ export default function DigitizeMapClient({
   selectedSourceNode,
   onAddMapClick,
   onNodeClick,
+  onDeleteNode,
+  onDeleteEdge,
 }: DigitizeMapClientProps) {
   const { meta, buildings, nodes, edges } = campus;
 
@@ -66,6 +71,23 @@ export default function DigitizeMapClient({
           const src = nodes.find((n) => n.id === edge.source);
           const tgt = nodes.find((n) => n.id === edge.target);
           if (!src || !tgt) return null;
+
+          let color = '#38bdf8'; // sky blue default paved
+          let weight = 3;
+          let dashArray = undefined;
+
+          if (edge.type === 'asphalt_road') {
+            color = '#f59e0b'; // amber for main roads
+            weight = 4;
+          } else if (edge.type === 'dirt_path') {
+            color = '#a16207'; // brown for dirt paths
+            dashArray = '6, 6';
+          } else if (edge.type === 'stairs') {
+            color = '#ef4444'; // red for stairs
+            weight = 4;
+            dashArray = '2, 6';
+          }
+
           return (
             <Polyline
               key={edge.id}
@@ -73,8 +95,26 @@ export default function DigitizeMapClient({
                 [src.lat, src.lng],
                 [tgt.lat, tgt.lng],
               ]}
-              pathOptions={{ color: '#38bdf8', weight: 2, dashArray: '4, 4' }}
-            />
+              pathOptions={{ color, weight, dashArray }}
+            >
+              {(mode === 'view' || mode === 'edit') && (
+                <Popup>
+                  <strong>Road Edge:</strong> {edge.id}
+                  <br />
+                  Type: {edge.type || 'paved_walkway'}
+                  {edge.isOneWay && <span className="block text-amber-400 font-bold">⚠️ One-Way Only</span>}
+                  {edge.handicapAccessible && <span className="block text-emerald-400 font-bold">♿ Wheelchair Accessible</span>}
+                  {mode === 'edit' && onDeleteEdge && (
+                    <button
+                      onClick={() => onDeleteEdge(edge.id)}
+                      className="mt-2 text-[11px] bg-red-600 text-white px-2 py-1 rounded font-bold block cursor-pointer w-full"
+                    >
+                      🗑️ Delete Road Edge
+                    </button>
+                  )}
+                </Popup>
+              )}
+            </Polyline>
           );
         })}
 
@@ -83,13 +123,20 @@ export default function DigitizeMapClient({
           <Polygon
             key={b.id}
             positions={b.polygon.map((p) => [p.lat, p.lng])}
-            pathOptions={{ color: '#60a5fa', fillColor: '#3b82f6', fillOpacity: 0.4 }}
+            pathOptions={{
+              color: '#60a5fa',
+              fillColor: '#3b82f6',
+              fillOpacity: mode === 'building' ? 0.4 : 0.15,
+              interactive: mode === 'view' || mode === 'building',
+            }}
           >
-            <Popup>
-              <strong>{b.code}</strong>: {b.name}
-              <br />
-              Center: ({b.center.lat.toFixed(5)}, {b.center.lng.toFixed(5)})
-            </Popup>
+            {mode === 'view' && (
+              <Popup>
+                <strong>{b.code}</strong>: {b.name}
+                <br />
+                Center: ({b.center.lat.toFixed(5)}, {b.center.lng.toFixed(5)})
+              </Popup>
+            )}
           </Polygon>
         ))}
 
@@ -108,10 +155,10 @@ export default function DigitizeMapClient({
             <CircleMarker
               key={n.id}
               center={[n.lat, n.lng]}
-              radius={isSelected ? 8 : 5}
+              radius={isSelected ? 8 : (mode === 'edit' ? 7 : 5)}
               pathOptions={{
-                color: '#0284c7',
-                fillColor: isSelected ? '#22c55e' : '#e2e8f0',
+                color: mode === 'edit' ? '#f59e0b' : '#0284c7',
+                fillColor: isSelected ? '#22c55e' : (mode === 'edit' ? '#fbbf24' : '#e2e8f0'),
                 fillOpacity: 0.9,
                 weight: 2,
               }}
@@ -122,11 +169,23 @@ export default function DigitizeMapClient({
                 },
               }}
             >
-              <Popup>
-                {n.label || `Node ${n.id}`}
-                <br />
-                Lat: {n.lat}, Lng: {n.lng}
-              </Popup>
+              {(mode === 'view' || mode === 'edit') && (
+                <Popup>
+                  <strong>{n.label || `Node ${n.id}`}</strong>
+                  <br />
+                  ID: <span className="font-mono">{n.id}</span>
+                  <br />
+                  Lat: {n.lat}, Lng: {n.lng}
+                  {mode === 'edit' && onDeleteNode && (
+                    <button
+                      onClick={() => onDeleteNode(n.id)}
+                      className="mt-2 text-[11px] bg-red-600 text-white px-2 py-1 rounded font-bold block cursor-pointer w-full"
+                    >
+                      🗑️ Delete Node
+                    </button>
+                  )}
+                </Popup>
+              )}
             </CircleMarker>
           );
         })}
