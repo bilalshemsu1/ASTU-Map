@@ -388,6 +388,58 @@ export default function DigitizePage() {
     alert(`Auto-connected ${addedCount} building entrance nodes to their nearest road points! 🎉`);
   };
 
+  const [autoSave, setAutoSave] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
+  const isInitialMount = React.useRef(true);
+  const latestCampusRef = React.useRef(campus);
+  latestCampusRef.current = campus;
+
+  const saveToDisk = async (dataToSave = latestCampusRef.current) => {
+    setIsSaving(true);
+    setSaveStatus(null);
+    try {
+      const res = await fetch('/api/save-campus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSave),
+      });
+      const result = await res.json();
+      if (result.success) {
+        setHasUnsavedChanges(false);
+        setSaveStatus('Saved to Codebase!');
+        setTimeout(() => setSaveStatus(null), 3000);
+      } else {
+        console.error('Failed to save to project:', result.error);
+      }
+    } catch (err) {
+      console.error('Error saving to project file:', err);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // Track unsaved changes on campus update
+  React.useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    setHasUnsavedChanges(true);
+  }, [campus]);
+
+  // Periodic auto-save every 1 minute (60,000 ms) when enabled
+  React.useEffect(() => {
+    if (!autoSave) return;
+
+    const interval = setInterval(() => {
+      saveToDisk(latestCampusRef.current);
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, [autoSave]);
+
   const exportJSON = () => {
     const jsonStr = JSON.stringify(campus, null, 2);
     const blob = new Blob([jsonStr], { type: 'application/json' });
@@ -473,11 +525,41 @@ export default function DigitizePage() {
             ← Navigator
           </a>
 
+          <label className="flex items-center gap-2 px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 font-bold cursor-pointer hover:border-slate-700">
+            <input
+              type="checkbox"
+              checked={autoSave}
+              onChange={(e) => setAutoSave(e.target.checked)}
+              className="accent-cyan-500 rounded"
+            />
+            <span>Auto-Save (Every 1 min)</span>
+          </label>
+
+          <button
+            onClick={() => saveToDisk()}
+            disabled={isSaving}
+            className={`px-4 py-2 rounded-xl font-bold text-xs transition-all shadow-lg flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 disabled:opacity-50 ${
+              hasUnsavedChanges
+                ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 ring-2 ring-amber-400/50 animate-pulse'
+                : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/20'
+            }`}
+          >
+            <span>
+              {isSaving
+                ? '⏳ Saving...'
+                : saveStatus
+                ? '✅ Saved!'
+                : hasUnsavedChanges
+                ? '💾 Save Changes'
+                : '⚡ Save Now'}
+            </span>
+          </button>
+
           <button
             onClick={exportJSON}
-            className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs transition-all shadow-lg shadow-emerald-600/20 flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95"
+            className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-xl font-bold text-xs transition-all flex items-center gap-2 cursor-pointer"
           >
-            <span>💾 Export campus.json</span>
+            <span>💾 Download JSON</span>
           </button>
         </div>
       </div>

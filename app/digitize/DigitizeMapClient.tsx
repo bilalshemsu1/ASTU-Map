@@ -2,7 +2,16 @@
 
 import React from 'react';
 import { MapContainer, TileLayer, Polygon, Polyline, CircleMarker, Popup, useMapEvents } from 'react-leaflet';
+import L from 'leaflet';
 import { CampusData, LatLng } from '../../lib/types/map';
+
+// Fix Leaflet icon paths in Next.js environment
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 interface DigitizeMapClientProps {
   campus: CampusData;
@@ -46,11 +55,12 @@ export default function DigitizeMapClient({
         zoom={meta.zoom || 17}
         minZoom={15}
         maxZoom={22}
-        maxBounds={[
+        maxBounds={L.latLngBounds([
           [8.5530, 39.2820],
           [8.5720, 39.3000]
-        ]}
+        ])}
         maxBoundsViscosity={1.0}
+        preferCanvas={true}
         className="w-full h-full"
       >
         <MapClickHandler onClick={onAddMapClick} />
