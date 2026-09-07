@@ -1268,6 +1268,48 @@
         "department": "Freshman Programs Directorate",
         "verified": true
       }
+    },
+    {
+      "id": "b_sport",
+      "code": "SPORT",
+      "name": "Basketball court",
+      "aliases": [
+        "Basketball court",
+        "SPORT"
+      ],
+      "category": "sports",
+      "polygon": [
+        {
+          "lat": 8.565169000000001,
+          "lng": 39.29313
+        },
+        {
+          "lat": 8.565169000000001,
+          "lng": 39.29337
+        },
+        {
+          "lat": 8.564929,
+          "lng": 39.29337
+        },
+        {
+          "lat": 8.564929,
+          "lng": 39.29313
+        }
+      ],
+      "center": {
+        "lat": 8.565049,
+        "lng": 39.29325
+      },
+      "rooms": [
+        {
+          "id": "sport_main",
+          "name": "Basketball court Main Hall",
+          "floor": 1,
+          "type": "Hall",
+          "workDescription": "Main facility area for Basketball court."
+        }
+      ],
+      "entranceNodeId": "n_sport"
     }
   ],
   "nodes": [
@@ -2430,12 +2472,6 @@
       "label": "Road Point"
     },
     {
-      "id": "r_703343",
-      "lat": 8.562607,
-      "lng": 39.287828,
-      "label": "Road Point"
-    },
-    {
       "id": "r_710777",
       "lat": 8.562856,
       "lng": 39.288117,
@@ -2934,18 +2970,6 @@
       "label": "Road Point"
     },
     {
-      "id": "r_132093",
-      "lat": 8.56671,
-      "lng": 39.293241,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_136629",
-      "lat": 8.566746,
-      "lng": 39.293393,
-      "label": "Road Point"
-    },
-    {
       "id": "r_146529",
       "lat": 8.567195,
       "lng": 39.29359,
@@ -3436,6 +3460,72 @@
       "lat": 8.564261,
       "lng": 39.288158,
       "label": "Road Point"
+    },
+    {
+      "id": "r_824760",
+      "lat": 8.559161,
+      "lng": 39.290904,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_826650",
+      "lat": 8.560034,
+      "lng": 39.29088,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_184950",
+      "lat": 8.562071,
+      "lng": 39.285727,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_186167",
+      "lat": 8.561917,
+      "lng": 39.285775,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_196577",
+      "lat": 8.561816,
+      "lng": 39.285836,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_204800",
+      "lat": 8.561714,
+      "lng": 39.285906,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_205552",
+      "lat": 8.56163,
+      "lng": 39.285972,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_206152",
+      "lat": 8.561566,
+      "lng": 39.286049,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_785673",
+      "lat": 8.562625,
+      "lng": 39.287822,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_936705",
+      "lat": 8.561715,
+      "lng": 39.288567,
+      "label": "Road Point"
+    },
+    {
+      "id": "r_978513",
+      "lat": 8.564538,
+      "lng": 39.289157,
+      "label": "Road Point"
     }
   ],
   "edges": [
@@ -3443,14 +3533,6 @@
       "id": "e_n_oda_gate_r_336303",
       "source": "n_oda_gate",
       "target": "r_336303",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_336303_r_338905",
-      "source": "r_336303",
-      "target": "r_338905",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -4384,14 +4466,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_auto_n_central_library_r_338905",
-      "source": "n_central_library",
-      "target": "r_338905",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_auto_n_admin_building_r_733795",
       "source": "n_admin_building",
       "target": "r_733795",
@@ -4987,22 +5061,6 @@
       "id": "e_r_685662_r_640585",
       "source": "r_685662",
       "target": "r_640585",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_698546_r_703343",
-      "source": "r_698546",
-      "target": "r_703343",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_703343_r_423699",
-      "source": "r_703343",
-      "target": "r_423699",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -5659,30 +5717,6 @@
       "id": "e_auto_n_female_dorm_r_099513",
       "source": "n_female_dorm",
       "target": "r_099513",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_097561_r_132093",
-      "source": "r_097561",
-      "target": "r_132093",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_132093_r_136629",
-      "source": "r_132093",
-      "target": "r_136629",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_136629_r_079258",
-      "source": "r_136629",
-      "target": "r_079258",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -6403,6 +6437,206 @@
       "id": "e_r_427783_r_710777",
       "source": "r_427783",
       "target": "r_710777",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_336303_r_824760",
+      "source": "r_336303",
+      "target": "r_824760",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_824760_r_826650",
+      "source": "r_824760",
+      "target": "r_826650",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_338905_r_826650",
+      "source": "r_338905",
+      "target": "r_826650",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_admin_building_r_338905",
+      "source": "n_admin_building",
+      "target": "r_338905",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_freshman_programs_r_574880",
+      "source": "n_freshman_programs",
+      "target": "r_574880",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_356784_r_184950",
+      "source": "r_356784",
+      "target": "r_184950",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_184950_r_186167",
+      "source": "r_184950",
+      "target": "r_186167",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_186167_r_196577",
+      "source": "r_186167",
+      "target": "r_196577",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_196577_r_204800",
+      "source": "r_196577",
+      "target": "r_204800",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_204800_r_205552",
+      "source": "r_204800",
+      "target": "r_205552",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_205552_r_206152",
+      "source": "r_205552",
+      "target": "r_206152",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_196577_n_freshman_programs",
+      "source": "r_196577",
+      "target": "n_freshman_programs",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_female_dorm_r_085548",
+      "source": "n_female_dorm",
+      "target": "r_085548",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_female_dorm_r_097561",
+      "source": "n_female_dorm",
+      "target": "r_097561",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_students_cafe_r_832259",
+      "source": "n_students_cafe",
+      "target": "r_832259",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_students_cafe_r_836417",
+      "source": "n_students_cafe",
+      "target": "r_836417",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_423699_r_785673",
+      "source": "r_423699",
+      "target": "r_785673",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_698546_r_785673",
+      "source": "r_698546",
+      "target": "r_785673",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_app_sci_lib_r_402091",
+      "source": "n_app_sci_lib",
+      "target": "r_402091",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_admin_building_r_755095",
+      "source": "n_admin_building",
+      "target": "r_755095",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_central_library_r_515777",
+      "source": "n_central_library",
+      "target": "r_515777",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_ict_building_r_936705",
+      "source": "n_ict_building",
+      "target": "r_936705",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_stem_center_r_436544",
+      "source": "n_stem_center",
+      "target": "r_436544",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_stem_center_r_476758",
+      "source": "n_stem_center",
+      "target": "r_476758",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_978513_r_481071",
+      "source": "r_978513",
+      "target": "r_481071",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
