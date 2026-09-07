@@ -8,29 +8,60 @@ export async function fetchRealWalkingRoute(
   targetNodeId: string,
   campusData: CampusData
 ): Promise<RouteResult> {
-  // Snap start and target coordinates to the nearest nodes in the road graph network
+  // Only snap start/target to nearest node if an explicit node ID was not provided or invalid
   let actualStartNodeId = startNodeId;
-  let minStartDist = Infinity;
-  campusData.nodes.forEach((n) => {
-    const d = calculateHaversineDistance(start, n);
-    if (d < minStartDist) {
-      minStartDist = d;
-      actualStartNodeId = n.id;
-    }
-  });
+  const startExists = campusData.nodes.some((n) => n.id === startNodeId);
+  if (!startExists) {
+    let minStartDist = Infinity;
+    campusData.nodes.forEach((n) => {
+      const d = calculateHaversineDistance(start, n);
+      if (d < minStartDist) {
+        minStartDist = d;
+        actualStartNodeId = n.id;
+      }
+    });
+  }
 
   let actualTargetNodeId = targetNodeId;
-  let minTargetDist = Infinity;
-  campusData.nodes.forEach((n) => {
-    const d = calculateHaversineDistance(target, n);
-    if (d < minTargetDist) {
-      minTargetDist = d;
-      actualTargetNodeId = n.id;
-    }
-  });
+  const targetExists = campusData.nodes.some((n) => n.id === targetNodeId);
+  if (!targetExists) {
+    let minTargetDist = Infinity;
+    campusData.nodes.forEach((n) => {
+      const d = calculateHaversineDistance(target, n);
+      if (d < minTargetDist) {
+        minTargetDist = d;
+        actualTargetNodeId = n.id;
+      }
+    });
+  }
 
   // 1. Primary ASTU Internal Campus Graph Route (Accurate Foot Paths)
-  const localResult = findShortestPath(actualStartNodeId, actualTargetNodeId, campusData);
+  let localResult = findShortestPath(actualStartNodeId, actualTargetNodeId, campusData);
+
+  // If path finding failed using entrance node IDs (e.g. unlinked entrance node), snap to nearest road nodes
+  if (!localResult || localResult.path.length === 0) {
+    let nearestStartRoadId = actualStartNodeId;
+    let minStartD = Infinity;
+    let nearestTargetRoadId = actualTargetNodeId;
+    let minTargetD = Infinity;
+
+    campusData.nodes.forEach((n) => {
+      if (n.id.startsWith('r_')) {
+        const dS = calculateHaversineDistance(start, n);
+        if (dS < minStartD) {
+          minStartD = dS;
+          nearestStartRoadId = n.id;
+        }
+        const dT = calculateHaversineDistance(target, n);
+        if (dT < minTargetD) {
+          minTargetD = dT;
+          nearestTargetRoadId = n.id;
+        }
+      }
+    });
+
+    localResult = findShortestPath(nearestStartRoadId, nearestTargetRoadId, campusData);
+  }
   if (localResult && localResult.path.length > 0) {
     // Prepend exact user start point if far from node
     const startNode = localResult.path[0];
