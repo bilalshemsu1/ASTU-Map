@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { CampusData, Building, PathNode, PathEdge, LatLng } from '../../lib/types/map';
 
 const defaultFallbackData: CampusData = {
-  meta: { center: { lat: 8.5639, lng: 39.2887 }, zoom: 17 },
+  meta: { name: 'ASTU Campus Map', center: { lat: 8.5639, lng: 39.2887 }, zoom: 17 },
   buildings: [],
   nodes: [],
   edges: [],

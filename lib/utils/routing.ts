@@ -97,8 +97,7 @@ export async function fetchRealWalkingRoute(
     return localResult;
   }
 
-  // 2. Direct Fallback Route if Graph Search is Unconnected
-  const directDist = Math.round(calculateHaversineDistance(start, target));
+  // 4. Direct Fallback Route if Graph Search is Unconnected
   return {
     path: [
       { id: 'start', lat: start.lat, lng: start.lng },
