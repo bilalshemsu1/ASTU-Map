@@ -615,9 +615,9 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </div>
       )}
 
-      {/* RICH PLACE DETAILS SHEET */}
+      {/* RICH PLACE DETAILS SHEET (Z-INDEX z-[1000]) */}
       {selectedPlace && !isNavigating && !isDirectionsMode && (
-        <div className="absolute bottom-0 left-0 right-0 md:top-[92px] md:left-4 md:right-auto md:bottom-auto z-20 w-full md:w-[420px] pointer-events-auto transition-all duration-300">
+        <div className="absolute bottom-0 left-0 right-0 md:top-[92px] md:left-4 md:right-auto md:bottom-auto z-[1000] w-full md:w-[420px] pointer-events-auto transition-all duration-300">
           <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300">
             
             {/* Top Drag Handle Bar & Collapsible Header */}
@@ -947,7 +947,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
       {/* BOTTOM SHEET ROUTE SUMMARY */}
       {!isNavigating && isDirectionsMode && routeResult && (
-        <div className="absolute bottom-0 left-0 right-0 md:left-4 md:right-auto md:bottom-4 z-20 w-full md:w-[420px] pointer-events-auto transition-all duration-300">
+        <div className="absolute bottom-0 left-0 right-0 md:left-4 md:right-auto md:bottom-4 z-[1000] w-full md:w-[420px] pointer-events-auto transition-all duration-300">
           <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-xl border border-gray-200 p-4 flex flex-col gap-3">
             <div
               onClick={() => setIsStepsExpanded(!isStepsExpanded)}
@@ -1028,9 +1028,9 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </div>
       )}
 
-      {/* ACTIVE NAVIGATION GUIDANCE BAR */}
+      {/* ACTIVE NAVIGATION GUIDANCE BAR (Z-INDEX z-[1000]) */}
       {isNavigating && routeResult && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 w-11/12 max-w-lg pointer-events-auto">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[1000] w-11/12 max-w-lg pointer-events-auto">
           <div
             className={`rounded-2xl shadow-xl p-4 flex flex-col gap-2.5 text-white border transition-colors ${
               isArrived ? 'bg-emerald-600 border-emerald-500' : 'bg-[#1a73e8] border-blue-500'
