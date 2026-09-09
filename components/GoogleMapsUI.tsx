@@ -435,9 +435,9 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </div>
       )}
 
-      {/* TOP FLOATING SEARCH BAR & DROPDOWN RESULTS (HIGHEST PRIORITY Z-INDEX z-40) */}
+      {/* TOP FLOATING SEARCH BAR & DROPDOWN RESULTS (HIGHEST PRIORITY Z-INDEX z-[1000]) */}
       {!isNavigating && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-40 w-[calc(100vw-1.5rem)] max-w-[420px] md:w-[420px] pointer-events-auto">
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-[1000] w-[calc(100vw-1.5rem)] max-w-[420px] md:w-[420px] pointer-events-auto">
           <div className="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
             {!isDirectionsMode ? (
               <div className="flex items-center px-3.5 py-2 md:px-4 md:py-2.5 gap-2.5">
