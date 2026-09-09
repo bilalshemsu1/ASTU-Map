@@ -1,9 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { CampusData, Building, PathNode, PathEdge, LatLng } from '../../lib/types/map';
-import initialCampusData from '../../lib/data/campus.json';
+
+const defaultFallbackData: CampusData = {
+  meta: { center: { lat: 8.5639, lng: 39.2887 }, zoom: 17 },
+  buildings: [],
+  nodes: [],
+  edges: [],
+};
 
 const DigitizeMapClient = dynamic(() => import('./DigitizeMapClient'), {
   ssr: false,
@@ -15,7 +21,21 @@ const DigitizeMapClient = dynamic(() => import('./DigitizeMapClient'), {
 });
 
 export default function DigitizePage() {
-  const [campus, setCampus] = useState<CampusData>(initialCampusData as CampusData);
+  const [campus, setCampus] = useState<CampusData>(defaultFallbackData);
+  const [isLoadingData, setIsLoadingData] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/campus-data')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.nodes) {
+          setCampus(data);
+        }
+      })
+      .catch((err) => console.error('Failed to load campus data:', err))
+      .finally(() => setIsLoadingData(false));
+  }, []);
+
   const [mode, setMode] = useState<'view' | 'building' | 'node' | 'edge' | 'edit'>('view');
 
   const handleDeleteNode = (nodeId: string) => {
