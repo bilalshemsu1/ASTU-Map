@@ -68,7 +68,6 @@ export async function fetchRealWalkingRoute(
   }
 
   // 3. Fallback: If path is still null or unnaturally indirect (> 2.8x straight-line distance), optimize with direct walkway
-  const directDist = Math.round(calculateHaversineDistance(start, target));
   if (!localResult || localResult.path.length === 0 || (directDist > 30 && localResult.totalDistanceMeters > directDist * 2.8)) {
     const startRoadNode = findClosestNode(start, true);
     const targetRoadNode = findClosestNode(target, true);
