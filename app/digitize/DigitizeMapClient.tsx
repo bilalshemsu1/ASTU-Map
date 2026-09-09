@@ -48,6 +48,13 @@ export default function DigitizeMapClient({
 
   const currentPolyPositions: [number, number][] = currPolygon.map((p) => [p.lat, p.lng]);
 
+  const maxBounds = React.useMemo(() => {
+    return L.latLngBounds([
+      [8.5530, 39.2820],
+      [8.5720, 39.3000],
+    ]);
+  }, []);
+
   return (
     <div className="w-full h-full min-h-[500px] rounded-lg overflow-hidden relative">
       <MapContainer
@@ -55,10 +62,7 @@ export default function DigitizeMapClient({
         zoom={meta.zoom || 17}
         minZoom={15}
         maxZoom={22}
-        maxBounds={L.latLngBounds([
-          [8.5530, 39.2820],
-          [8.5720, 39.3000]
-        ])}
+        maxBounds={maxBounds}
         maxBoundsViscosity={1.0}
         preferCanvas={true}
         className="w-full h-full"

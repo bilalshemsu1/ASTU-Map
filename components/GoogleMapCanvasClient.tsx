@@ -189,14 +189,10 @@ export default function GoogleMapCanvasClient({
   };
 
   return (
-    <div className="w-full h-full relative z-0">
-      {/* Toast Notification Banner for Copied Lat/Lng */}
+    <div className="w-full h-full relative font-sans selection:bg-blue-500/20">
+      {/* Dynamic Toast Feedback Overlay */}
       {toastMessage && (
-        <div
-          style={{ zIndex: 9999 }}
-          className="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900/95 text-white px-5 py-3 rounded-2xl shadow-2xl border border-emerald-500/50 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-200 pointer-events-auto"
-        >
-          <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] bg-slate-900/90 text-white px-4 py-2 rounded-xl border border-slate-700 shadow-2xl backdrop-blur-md flex items-center gap-2 animate-bounce">
           <div className="font-mono text-xs text-emerald-300 font-semibold">{toastMessage}</div>
           <button
             onClick={() => setToastMessage(null)}
@@ -212,10 +208,7 @@ export default function GoogleMapCanvasClient({
         zoom={meta.zoom || 17}
         minZoom={15}
         maxZoom={22}
-        maxBounds={L.latLngBounds([
-          [8.5530, 39.2820], // South-West corner of ASTU boundary
-          [8.5720, 39.3000]  // North-East corner of ASTU boundary
-        ])}
+        maxBounds={maxBounds}
         maxBoundsViscosity={1.0}
         zoomControl={false}
         attributionControl={false}
