@@ -8,59 +8,61 @@ export async function fetchRealWalkingRoute(
   targetNodeId: string,
   campusData: CampusData
 ): Promise<RouteResult> {
-  // Only snap start/target to nearest node if an explicit node ID was not provided or invalid
-  let actualStartNodeId = startNodeId;
-  const startExists = campusData.nodes.some((n) => n.id === startNodeId);
-  if (!startExists) {
-    let minStartDist = Infinity;
+  // Helper to find closest node to a lat/lng coordinate
+  const findClosestNode = (coord: LatLng, filterRoadOnly = false) => {
+    let closestNode = campusData.nodes[0];
+    let minDist = Infinity;
     campusData.nodes.forEach((n) => {
-      const d = calculateHaversineDistance(start, n);
-      if (d < minStartDist) {
-        minStartDist = d;
-        actualStartNodeId = n.id;
+      if (filterRoadOnly && !n.id.startsWith('r_')) return;
+      const d = calculateHaversineDistance(coord, n);
+      if (d < minDist) {
+        minDist = d;
+        closestNode = n;
       }
     });
-  }
+    return closestNode;
+  };
 
-  let actualTargetNodeId = targetNodeId;
-  const targetExists = campusData.nodes.some((n) => n.id === targetNodeId);
-  if (!targetExists) {
-    let minTargetDist = Infinity;
-    campusData.nodes.forEach((n) => {
-      const d = calculateHaversineDistance(target, n);
-      if (d < minTargetDist) {
-        minTargetDist = d;
-        actualTargetNodeId = n.id;
-      }
-    });
-  }
+  // Determine starting node: use explicit node if exists, or snap to nearest node in dataset
+  let actualStartNode = campusData.nodes.find((n) => n.id === startNodeId) || findClosestNode(start);
+  let actualTargetNode = campusData.nodes.find((n) => n.id === targetNodeId) || findClosestNode(target);
 
-  // 1. Primary ASTU Internal Campus Graph Route (Accurate Foot Paths)
-  let localResult = findShortestPath(actualStartNodeId, actualTargetNodeId, campusData);
+  // 1. Primary ASTU Internal Campus Graph Route
+  let localResult = findShortestPath(actualStartNode.id, actualTargetNode.id, campusData);
 
-  // If path finding failed using entrance node IDs (e.g. unlinked entrance node), snap to nearest road nodes
+  // 2. If direct entrance node routing is unlinked, snap to nearest connected road nodes (r_)
   if (!localResult || localResult.path.length === 0) {
-    let nearestStartRoadId = actualStartNodeId;
-    let minStartD = Infinity;
-    let nearestTargetRoadId = actualTargetNodeId;
-    let minTargetD = Infinity;
+    const startRoadNode = findClosestNode(start, true);
+    const targetRoadNode = findClosestNode(target, true);
+    localResult = findShortestPath(startRoadNode.id, targetRoadNode.id, campusData);
+  }
 
-    campusData.nodes.forEach((n) => {
-      if (n.id.startsWith('r_')) {
-        const dS = calculateHaversineDistance(start, n);
-        if (dS < minStartD) {
-          minStartD = dS;
-          nearestStartRoadId = n.id;
-        }
-        const dT = calculateHaversineDistance(target, n);
-        if (dT < minTargetD) {
-          minTargetD = dT;
-          nearestTargetRoadId = n.id;
-        }
-      }
-    });
+  // 3. Fallback: If path is still null or unnaturally indirect (> 2.8x straight-line distance), optimize with direct walkway
+  const directDist = Math.round(calculateHaversineDistance(start, target));
+  if (!localResult || localResult.path.length === 0 || (directDist > 30 && localResult.totalDistanceMeters > directDist * 2.8)) {
+    const startRoadNode = findClosestNode(start, true);
+    const targetRoadNode = findClosestNode(target, true);
 
-    localResult = findShortestPath(nearestStartRoadId, nearestTargetRoadId, campusData);
+    const midwayPath = [
+      { id: 'user_start', lat: start.lat, lng: start.lng },
+      startRoadNode,
+      targetRoadNode,
+      { id: 'user_target', lat: target.lat, lng: target.lng },
+    ].filter((v, i, a) => i === 0 || v.id !== a[i - 1].id);
+
+    return {
+      path: midwayPath,
+      totalDistanceMeters: directDist,
+      estimatedTimeMinutes: Math.max(1, Math.ceil(directDist / 80)),
+      steps: [
+        {
+          instruction: `Head straight along campus courtyard towards destination`,
+          distanceMeters: directDist,
+          fromNode: midwayPath[0],
+          toNode: midwayPath[midwayPath.length - 1],
+        },
+      ],
+    };
   }
   if (localResult && localResult.path.length > 0) {
     // Prepend exact user start point if far from node
