@@ -6,8 +6,7 @@ export async function fetchRealWalkingRoute(
   target: LatLng,
   startNodeId: string,
   targetNodeId: string,
-  campusData: CampusData,
-  routePreference: 'network' | 'direct' = 'network'
+  campusData: CampusData
 ): Promise<RouteResult> {
   // Helper to find closest node to a lat/lng coordinate
   const findClosestNode = (coord: LatLng, filterRoadOnly = false) => {
@@ -24,35 +23,6 @@ export async function fetchRealWalkingRoute(
     return closestNode;
   };
 
-  const directDist = Math.round(calculateHaversineDistance(start, target));
-
-  // User explicitly chose Direct Courtyard Walkway
-  if (routePreference === 'direct') {
-    const startRoadNode = findClosestNode(start, true);
-    const targetRoadNode = findClosestNode(target, true);
-
-    const midwayPath = [
-      { id: 'user_start', lat: start.lat, lng: start.lng },
-      startRoadNode,
-      targetRoadNode,
-      { id: 'user_target', lat: target.lat, lng: target.lng },
-    ].filter((v, i, a) => i === 0 || v.id !== a[i - 1].id);
-
-    return {
-      path: midwayPath,
-      totalDistanceMeters: directDist,
-      estimatedTimeMinutes: Math.max(1, Math.ceil(directDist / 80)),
-      steps: [
-        {
-          instruction: `Head straight along campus courtyard towards destination`,
-          distanceMeters: directDist,
-          fromNode: midwayPath[0],
-          toNode: midwayPath[midwayPath.length - 1],
-        },
-      ],
-    };
-  }
-
   // Determine starting node: use explicit node if exists, or snap to nearest node in dataset
   let actualStartNode = campusData.nodes.find((n) => n.id === startNodeId) || findClosestNode(start);
   let actualTargetNode = campusData.nodes.find((n) => n.id === targetNodeId) || findClosestNode(target);
@@ -66,6 +36,8 @@ export async function fetchRealWalkingRoute(
     const targetRoadNode = findClosestNode(target, true);
     localResult = findShortestPath(startRoadNode.id, targetRoadNode.id, campusData);
   }
+
+  const directDist = Math.round(calculateHaversineDistance(start, target));
 
   // 3. Fallback: If path is still null or unnaturally indirect (> 2.8x straight-line distance), optimize with direct walkway
   if (!localResult || localResult.path.length === 0 || (directDist > 30 && localResult.totalDistanceMeters > directDist * 2.8)) {
