@@ -232,47 +232,6 @@ export default function GoogleMapCanvasClient({
           maxNativeZoom={mapType === 'satellite' ? 20 : 19}
         />
 
-        {/* Digitizer Clicked Point Marker & Popup */}
-        {clickedPoint && (
-          <Marker position={[clickedPoint.lat, clickedPoint.lng]} icon={clickedPinIcon}>
-            <Popup>
-              <div className="p-2 font-sans w-64">
-                <div className="flex items-center gap-1.5 text-violet-700 font-bold text-xs mb-1">
-                  <MapPin className="w-4 h-4" />
-                  <span>Clicked Coordinates</span>
-                </div>
-                <div className="font-mono bg-slate-900 text-emerald-400 p-2 rounded-lg text-[11px] mb-2 select-all break-all">
-                  "lat": {clickedPoint.lat}, "lng": {clickedPoint.lng}
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => {
-                      const text = `"lat": ${clickedPoint.lat}, "lng": ${clickedPoint.lng}`;
-                      navigator.clipboard?.writeText(text);
-                      setToastMessage(`Copied: { ${text} }`);
-                    }}
-                    className="flex-1 flex items-center justify-center gap-1 bg-violet-600 hover:bg-violet-700 text-white py-1.5 px-2 rounded-lg text-[11px] font-semibold transition-colors"
-                  >
-                    <Copy className="w-3 h-3" />
-                    <span>Copy JSON</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      const text = `${clickedPoint.lat}, ${clickedPoint.lng}`;
-                      navigator.clipboard?.writeText(text);
-                      setToastMessage(`Copied: ${text}`);
-                    }}
-                    className="flex-1 flex items-center justify-center gap-1 bg-slate-700 hover:bg-slate-800 text-white py-1.5 px-2 rounded-lg text-[11px] font-semibold transition-colors"
-                  >
-                    <Copy className="w-3 h-3" />
-                    <span>Copy Raw</span>
-                  </button>
-                </div>
-              </div>
-            </Popup>
-          </Marker>
-        )}
-
         {/* Building Pins */}
         {buildings.map((b) => (
           <Marker

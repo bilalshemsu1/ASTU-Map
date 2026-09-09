@@ -6,7 +6,8 @@ export async function fetchRealWalkingRoute(
   target: LatLng,
   startNodeId: string,
   targetNodeId: string,
-  campusData: CampusData
+  campusData: CampusData,
+  routePreference: 'network' | 'direct' = 'network'
 ): Promise<RouteResult> {
   // Helper to find closest node to a lat/lng coordinate
   const findClosestNode = (coord: LatLng, filterRoadOnly = false) => {
@@ -22,6 +23,35 @@ export async function fetchRealWalkingRoute(
     });
     return closestNode;
   };
+
+  const directDist = Math.round(calculateHaversineDistance(start, target));
+
+  // User explicitly chose Direct Courtyard Walkway
+  if (routePreference === 'direct') {
+    const startRoadNode = findClosestNode(start, true);
+    const targetRoadNode = findClosestNode(target, true);
+
+    const midwayPath = [
+      { id: 'user_start', lat: start.lat, lng: start.lng },
+      startRoadNode,
+      targetRoadNode,
+      { id: 'user_target', lat: target.lat, lng: target.lng },
+    ].filter((v, i, a) => i === 0 || v.id !== a[i - 1].id);
+
+    return {
+      path: midwayPath,
+      totalDistanceMeters: directDist,
+      estimatedTimeMinutes: Math.max(1, Math.ceil(directDist / 80)),
+      steps: [
+        {
+          instruction: `Head straight along campus courtyard towards destination`,
+          distanceMeters: directDist,
+          fromNode: midwayPath[0],
+          toNode: midwayPath[midwayPath.length - 1],
+        },
+      ],
+    };
+  }
 
   // Determine starting node: use explicit node if exists, or snap to nearest node in dataset
   let actualStartNode = campusData.nodes.find((n) => n.id === startNodeId) || findClosestNode(start);

@@ -48,6 +48,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
   // UI Modes
   const [isDirectionsMode, setIsDirectionsMode] = useState<boolean>(false);
+  const [selectedRouteType, setSelectedRouteType] = useState<'network' | 'direct'>('network');
   const [isNavigating, setIsNavigating] = useState<boolean>(false);
   const [activeNodeIndex, setActiveNodeIndex] = useState<number>(0);
   const [isStepsExpanded, setIsStepsExpanded] = useState<boolean>(false);
@@ -152,7 +153,8 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       destPos,
       startNodeId,
       destBuilding.entranceNodeId,
-      campusData
+      campusData,
+      selectedRouteType
     ).then((res) => {
       if (isMounted) {
         setRouteResult(res);
@@ -163,7 +165,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     return () => {
       isMounted = false;
     };
-  }, [isDirectionsMode, startCoords, startNodeId, destBuilding, campusData]);
+  }, [isDirectionsMode, startCoords, startNodeId, destBuilding, campusData, selectedRouteType]);
 
   // Handle Dragging Blue Pin on Map to update custom start position
   const handleUpdateLiveLocation = (coords: LatLng) => {
@@ -955,6 +957,30 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               title="Click to toggle steps"
             />
 
+            {/* Route Choice Selection Picker */}
+            <div className="flex items-center gap-2 bg-gray-100 p-1.5 rounded-xl border border-gray-200">
+              <button
+                onClick={() => setSelectedRouteType('network')}
+                className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                  selectedRouteType === 'network'
+                    ? 'bg-blue-600 text-white shadow'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                <span>🚶 Paved Campus Network</span>
+              </button>
+              <button
+                onClick={() => setSelectedRouteType('direct')}
+                className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                  selectedRouteType === 'direct'
+                    ? 'bg-blue-600 text-white shadow'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                <span>⚡ Direct Courtyard Path</span>
+              </button>
+            </div>
+
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-baseline gap-2">
@@ -966,7 +992,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </span>
                 </div>
                 <div className="text-xs text-gray-500 font-medium mt-0.5">
-                  ASTU Campus Navigation
+                  {selectedRouteType === 'network' ? 'Standard Paved Pedestrian Walkway' : 'Direct Campus Courtyard Line'}
                 </div>
               </div>
 
