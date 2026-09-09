@@ -208,7 +208,10 @@ export default function GoogleMapCanvasClient({
         zoom={meta.zoom || 17}
         minZoom={15}
         maxZoom={22}
-        maxBounds={maxBounds}
+        maxBounds={[
+          [8.5530, 39.2820],
+          [8.5720, 39.3000],
+        ]}
         maxBoundsViscosity={1.0}
         zoomControl={false}
         attributionControl={false}
