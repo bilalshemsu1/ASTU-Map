@@ -2298,30 +2298,6 @@
       "label": "Road Point"
     },
     {
-      "id": "r_151810",
-      "lat": 8.565411,
-      "lng": 39.295526,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_162958",
-      "lat": 8.566201,
-      "lng": 39.293731,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_163755",
-      "lat": 8.566286,
-      "lng": 39.293527,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_173492",
-      "lat": 8.566395,
-      "lng": 39.293882,
-      "label": "Road Point"
-    },
-    {
       "id": "r_476758",
       "lat": 8.563922,
       "lng": 39.288951,
@@ -2748,18 +2724,6 @@
       "label": "Road Point"
     },
     {
-      "id": "r_939457",
-      "lat": 8.567208,
-      "lng": 39.295481,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_944091",
-      "lat": 8.567174,
-      "lng": 39.295164,
-      "label": "Road Point"
-    },
-    {
       "id": "r_946858",
       "lat": 8.569121,
       "lng": 39.295177,
@@ -2823,18 +2787,6 @@
       "id": "r_002708",
       "lat": 8.568991,
       "lng": 39.294983,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_015721",
-      "lat": 8.568194,
-      "lng": 39.29459,
-      "label": "Road Point"
-    },
-    {
-      "id": "r_018400",
-      "lat": 8.568192,
-      "lng": 39.295169,
       "label": "Road Point"
     },
     {
@@ -3621,14 +3573,6 @@
       "id": "e_r_365359_r_369618",
       "source": "r_365359",
       "target": "r_369618",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_369618_n_freshman_dorm",
-      "source": "r_369618",
-      "target": "n_freshman_dorm",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -4514,14 +4458,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_r_048813_r_365359",
-      "source": "r_048813",
-      "target": "r_365359",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_r_048813_r_063788",
       "source": "r_048813",
       "target": "r_063788",
@@ -4829,54 +4765,6 @@
       "id": "e_r_147353_r_123849",
       "source": "r_147353",
       "target": "r_123849",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_151810_r_141431",
-      "source": "r_151810",
-      "target": "r_141431",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_119022_r_162958",
-      "source": "r_119022",
-      "target": "r_162958",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_162958_r_163755",
-      "source": "r_162958",
-      "target": "r_163755",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_163755_r_068394",
-      "source": "r_163755",
-      "target": "r_068394",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_119898_r_173492",
-      "source": "r_119898",
-      "target": "r_173492",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_173492_r_094233",
-      "source": "r_173492",
-      "target": "r_094233",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -5434,22 +5322,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_r_369618_r_939457",
-      "source": "r_369618",
-      "target": "r_939457",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_944091_r_946858",
-      "source": "r_944091",
-      "target": "r_946858",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_r_946858_r_949776",
       "source": "r_946858",
       "target": "r_949776",
@@ -5490,14 +5362,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_n_freshman_dorm_r_993657",
-      "source": "n_freshman_dorm",
-      "target": "r_993657",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_r_993657_r_998614",
       "source": "r_993657",
       "target": "r_998614",
@@ -5533,22 +5397,6 @@
       "id": "e_r_002708_r_946858",
       "source": "r_002708",
       "target": "r_946858",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_015721_r_018400",
-      "source": "r_015721",
-      "target": "r_018400",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_024582_n_freshman_dorm",
-      "source": "r_024582",
-      "target": "n_freshman_dorm",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -5690,14 +5538,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_r_097561_r_099513",
-      "source": "r_097561",
-      "target": "r_099513",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_r_099513_r_103874",
       "source": "r_099513",
       "target": "r_103874",
@@ -5717,14 +5557,6 @@
       "id": "e_auto_n_female_dorm_r_099513",
       "source": "n_female_dorm",
       "target": "r_099513",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_r_146529_r_079258",
-      "source": "r_146529",
-      "target": "r_079258",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
@@ -6298,14 +6130,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_r_939457_r_141431",
-      "source": "r_939457",
-      "target": "r_141431",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_r_360275_r_698652",
       "source": "r_360275",
       "target": "r_698652",
@@ -6538,22 +6362,6 @@
       "handicapAccessible": true
     },
     {
-      "id": "e_n_female_dorm_r_085548",
-      "source": "n_female_dorm",
-      "target": "r_085548",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
-      "id": "e_n_female_dorm_r_097561",
-      "source": "n_female_dorm",
-      "target": "r_097561",
-      "type": "paved_walkway",
-      "isOneWay": false,
-      "handicapAccessible": true
-    },
-    {
       "id": "e_n_students_cafe_r_832259",
       "source": "n_students_cafe",
       "target": "r_832259",
@@ -6637,6 +6445,286 @@
       "id": "e_r_978513_r_481071",
       "source": "r_978513",
       "target": "r_481071",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_central_library_r_338905",
+      "source": "n_central_library",
+      "target": "r_338905",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_central_library_r_244370",
+      "source": "n_central_library",
+      "target": "r_244370",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_central_library_r_502626",
+      "source": "n_central_library",
+      "target": "r_502626",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_central_library_r_500821",
+      "source": "n_central_library",
+      "target": "r_500821",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_admin_building_r_495569",
+      "source": "n_admin_building",
+      "target": "r_495569",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_admin_building_r_500821",
+      "source": "n_admin_building",
+      "target": "r_500821",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_admin_building_r_466853",
+      "source": "n_admin_building",
+      "target": "r_466853",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_astu_ict_r_244370",
+      "source": "n_astu_ict",
+      "target": "r_244370",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_astu_ict_r_824760",
+      "source": "n_astu_ict",
+      "target": "r_824760",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_astu_ict_r_268314",
+      "source": "n_astu_ict",
+      "target": "r_268314",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_astu_ict_r_826650",
+      "source": "n_astu_ict",
+      "target": "r_826650",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_freshman_programs_r_634975",
+      "source": "n_freshman_programs",
+      "target": "r_634975",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_679941_n_freshman_programs",
+      "source": "r_679941",
+      "target": "n_freshman_programs",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_640585_n_freshman_programs",
+      "source": "r_640585",
+      "target": "n_freshman_programs",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_356784_n_freshman_programs",
+      "source": "r_356784",
+      "target": "n_freshman_programs",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_624396_r_206152",
+      "source": "r_624396",
+      "target": "r_206152",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_601563_r_634975",
+      "source": "r_601563",
+      "target": "r_634975",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_479090_n_pg_library",
+      "source": "r_479090",
+      "target": "n_pg_library",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_soeec_n_pg_library",
+      "source": "n_soeec",
+      "target": "n_pg_library",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_476758_n_pg_library",
+      "source": "r_476758",
+      "target": "n_pg_library",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_398146_n_pg_library",
+      "source": "r_398146",
+      "target": "n_pg_library",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_922663_r_398146",
+      "source": "r_922663",
+      "target": "r_398146",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_105371_r_085548",
+      "source": "r_105371",
+      "target": "r_085548",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_kt_tennis_r_118309",
+      "source": "n_kt_tennis",
+      "target": "r_118309",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_117343_n_kt_tennis",
+      "source": "r_117343",
+      "target": "n_kt_tennis",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_608539_n_kt_tennis",
+      "source": "r_608539",
+      "target": "n_kt_tennis",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_181124_n_kt_tennis",
+      "source": "r_181124",
+      "target": "n_kt_tennis",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_166067_n_kt_tennis",
+      "source": "r_166067",
+      "target": "n_kt_tennis",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_072060_n_female_dorm",
+      "source": "r_072060",
+      "target": "n_female_dorm",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_097561_r_099513",
+      "source": "r_097561",
+      "target": "r_099513",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_freshman_dorm_r_094233",
+      "source": "n_freshman_dorm",
+      "target": "r_094233",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_r_119022_r_181124",
+      "source": "r_119022",
+      "target": "r_181124",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_app_sci_lib_r_785673",
+      "source": "n_app_sci_lib",
+      "target": "r_785673",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_app_sci_lib_r_421961",
+      "source": "n_app_sci_lib",
+      "target": "r_421961",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_n_freshman_dorm_r_369618",
+      "source": "n_freshman_dorm",
+      "target": "r_369618",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true
