@@ -158,20 +158,8 @@ export default function GoogleMapCanvasClient({
 
   const mapZoom = currentNavNode ? 19 : selectedBuilding ? 18 : liveUserLocation ? 18 : meta.zoom || 17;
 
-  const [clickedPoint, setClickedPoint] = useState<{ lat: number; lng: number } | null>(null);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [copiedSuccess, setCopiedSuccess] = useState<boolean>(false);
-
   const handleMapClick = (coords: { lat: number; lng: number }) => {
-    setClickedPoint(coords);
-    const jsonCoords = `"lat": ${coords.lat}, "lng": ${coords.lng}`;
-    if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(jsonCoords).catch(() => {});
-    }
-    setCopiedSuccess(true);
-    setToastMessage(`Copied: { ${jsonCoords} }`);
-    setTimeout(() => setCopiedSuccess(false), 2000);
-    setTimeout(() => setToastMessage(null), 4000);
+    // Map click handler for user interaction
   };
 
   const routePositions: [number, number][] = routeResult
@@ -190,18 +178,6 @@ export default function GoogleMapCanvasClient({
 
   return (
     <div className="w-full h-full relative font-sans selection:bg-blue-500/20">
-      {/* Dynamic Toast Feedback Overlay */}
-      {toastMessage && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] bg-slate-900/90 text-white px-4 py-2 rounded-xl border border-slate-700 shadow-2xl backdrop-blur-md flex items-center gap-2 animate-bounce">
-          <div className="font-mono text-xs text-emerald-300 font-semibold">{toastMessage}</div>
-          <button
-            onClick={() => setToastMessage(null)}
-            className="ml-2 text-gray-400 hover:text-white text-xs font-bold"
-          >
-            ✕
-          </button>
-        </div>
-      )}
 
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
