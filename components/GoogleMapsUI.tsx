@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   Search,
   Navigation,
@@ -357,6 +357,66 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const handlePrevStep = () => {
     if (activeNodeIndex > 0) {
       setActiveNodeIndex((prev) => prev - 1);
+    }
+  };
+
+  // ── RESPONSIVE SCROLL / SWIPE MODE: change direction steps with gestures ──
+  const SWIPE_THRESHOLD_PX = 45;
+  const WHEEL_THRESHOLD_PX = 60;
+  const stepTouchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const wheelAccumRef = useRef<number>(0);
+  const wheelLockedRef = useRef<boolean>(false);
+  const wheelResetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wheelLockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clean up gesture timers on unmount
+  useEffect(() => {
+    return () => {
+      if (wheelResetTimerRef.current) clearTimeout(wheelResetTimerRef.current);
+      if (wheelLockTimerRef.current) clearTimeout(wheelLockTimerRef.current);
+    };
+  }, []);
+
+  // Touch swipe: flick the guidance card left / up → next step, right / down → previous step
+  const handleGuidanceTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const t = e.touches[0];
+    stepTouchStartRef.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const handleGuidanceTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const start = stepTouchStartRef.current;
+    stepTouchStartRef.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    // Below threshold → treat as a normal tap (buttons on the card still work)
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < SWIPE_THRESHOLD_PX) return;
+    const goingNext = Math.abs(dx) >= Math.abs(dy) ? dx < 0 : dy < 0;
+    if (goingNext) handleNextStep();
+    else handlePrevStep();
+  };
+
+  // Mouse wheel / trackpad scroll: scroll down → next step, scroll up → previous step
+  const handleGuidanceWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (wheelLockedRef.current) return;
+    // Normalize line-mode wheel deltas (deltaMode 1) to pixels
+    const delta = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    wheelAccumRef.current += delta;
+
+    if (wheelResetTimerRef.current) clearTimeout(wheelResetTimerRef.current);
+    wheelResetTimerRef.current = setTimeout(() => {
+      wheelAccumRef.current = 0;
+    }, 250);
+
+    if (Math.abs(wheelAccumRef.current) >= WHEEL_THRESHOLD_PX) {
+      if (wheelAccumRef.current > 0) handleNextStep();
+      else handlePrevStep();
+      wheelAccumRef.current = 0;
+      wheelLockedRef.current = true;
+      wheelLockTimerRef.current = setTimeout(() => {
+        wheelLockedRef.current = false;
+      }, 450);
     }
   };
 
@@ -1032,10 +1092,21 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       {isNavigating && routeResult && (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[1000] w-11/12 max-w-lg pointer-events-auto">
           <div
-            className={`rounded-2xl shadow-xl p-4 flex flex-col gap-2.5 text-white border transition-colors ${
+            onTouchStart={handleGuidanceTouchStart}
+            onTouchEnd={handleGuidanceTouchEnd}
+            onWheel={handleGuidanceWheel}
+            className={`rounded-2xl shadow-xl p-4 flex flex-col gap-2.5 text-white border transition-colors touch-none select-none ${
               isArrived ? 'bg-emerald-600 border-emerald-500' : 'bg-[#1a73e8] border-blue-500'
             }`}
           >
+            {/* Swipe / Scroll affordance hint */}
+            {!isArrived && (
+              <div className="flex items-center justify-center gap-2 -mt-1 mb-0.5 text-[9px] font-bold uppercase tracking-widest text-white/70">
+                <span className="w-6 h-1 rounded-full bg-white/40" />
+                <span>Swipe or scroll card to change step</span>
+                <span className="w-6 h-1 rounded-full bg-white/40" />
+              </div>
+            )}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center font-bold shadow-inner">
