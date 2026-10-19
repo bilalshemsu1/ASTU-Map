@@ -2,6 +2,33 @@
 
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import {
+  Compass,
+  Crosshair,
+  Route,
+  Waypoints,
+  SlidersHorizontal,
+  Shapes,
+  Maximize2,
+  Minimize2,
+  Undo2,
+  Save,
+  Download,
+  ArrowLeft,
+  Building2,
+  MapPin,
+  LocateFixed,
+  Scissors,
+  Plus,
+  Check,
+  Loader2,
+  Info,
+  Accessibility,
+  Layers,
+  Zap,
+  Network,
+  Unlink,
+} from 'lucide-react';
 import { CampusData, Building, PathNode, PathEdge, LatLng } from '../../lib/types/map';
 
 const defaultFallbackData: CampusData = {
@@ -405,7 +432,7 @@ export default function DigitizePage() {
       };
     });
 
-    alert(`Auto-connected ${addedCount} building entrance nodes to their nearest road points! 🎉`);
+    alert(`Auto-connected ${addedCount} building entrance nodes to their nearest road points.`);
   };
 
   const [autoSave, setAutoSave] = useState(false);
@@ -473,154 +500,215 @@ export default function DigitizePage() {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 p-4 md:p-6 flex flex-col gap-5 font-sans relative selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Top Cyber Command Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 p-4 rounded-2xl shadow-2xl relative overflow-hidden">
-        {/* Subtle Ambient Glow Effect */}
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-[#060a12] text-slate-100 p-3 sm:p-5 flex flex-col gap-4 font-sans relative selection:bg-cyan-500/20 selection:text-cyan-200">
+      {/* Top Professional GIS Command Header */}
+      <header className="flex flex-wrap items-center justify-between gap-3.5 bg-slate-900/80 backdrop-blur-md border border-slate-800/90 px-4 sm:px-5 py-3 rounded-2xl shadow-xl relative overflow-hidden">
+        {/* Subtle Accent Edge Light */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent pointer-events-none" />
 
-        <div className="flex items-center gap-3.5 z-10">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-xl shadow-lg shadow-cyan-500/20 ring-1 ring-white/20">
-            📡
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-cyan-400 shadow-inner shrink-0">
+            <Compass className="w-5 h-5 stroke-[2.2]" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-300">
-                ASTU Cartography Command Center
+            <div className="flex items-center gap-2 flex-wrap">
+              <h1 className="text-sm sm:text-base font-semibold tracking-tight text-white">
+                ASTU GIS Cartography Studio
               </h1>
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 tracking-wider uppercase">
-                v3.2 Studio
+              <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/80">
+                v3.2
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-medium text-emerald-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Live Grid
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-2">
-              <span>Precision GIS Node & Walkway Digitizer Studio</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] text-emerald-400 font-mono font-bold">Live Grid Connected</span>
+            <p className="text-[11px] text-slate-400 mt-0.5">
+              Precision Geospatial Node & Walkway Digitizer
             </p>
           </div>
         </div>
 
-        {/* Top Control Actions Bar */}
-        <div className="flex items-center gap-2.5 flex-wrap z-10">
-          <button
-            onClick={handleAutoConnectBuildingNodes}
-            title="Automatically snap and connect every building entrance node to its nearest drawn road point!"
-            className="px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl font-bold text-xs transition-all shadow-lg shadow-purple-500/20 flex items-center gap-2 cursor-pointer ring-1 ring-purple-400/30 hover:scale-105 active:scale-95"
-          >
-            <span>⚡ Auto-Connect Entrances</span>
-          </button>
-
-          <button
-            onClick={() => setIsFullScreen((prev) => !prev)}
-            className="px-3.5 py-2 bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 border border-slate-700/80 rounded-xl font-bold text-xs transition-all shadow flex items-center gap-1.5 cursor-pointer hover:border-slate-600"
-          >
-            <span>{isFullScreen ? '📉 Exit Fullscreen' : '🖥️ Fullscreen Canvas'}</span>
-          </button>
-
-          <div className="h-5 w-[1px] bg-slate-800 hidden sm:block" />
-
-          <button
-            onClick={handleUndoLastNode}
-            title="Undo last added road/entrance node point"
-            className="px-3 py-2 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-700/60 text-amber-300 rounded-xl font-bold text-xs transition-all shadow flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>↩️ Undo Point</span>
-          </button>
-
-          <button
-            onClick={handleUndoLastEdge}
-            title="Undo last added road edge connection"
-            className="px-3 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 rounded-xl font-bold text-xs transition-all shadow flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>🔗 Undo Link</span>
-          </button>
-
-          <div className="h-5 w-[1px] bg-slate-800 hidden sm:block" />
-
+        {/* Action Toolbar */}
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Navigator Back Link */}
           <a
             href="/"
-            className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800/90 rounded-xl text-xs font-bold transition-all text-slate-300 border border-slate-800 flex items-center gap-1.5"
+            className="px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/80 rounded-xl text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
           >
-            ← Navigator
+            <ArrowLeft className="w-3.5 h-3.5 text-slate-400" />
+            <span>Navigator</span>
           </a>
 
-          <label className="flex items-center gap-2 px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 font-bold cursor-pointer hover:border-slate-700">
+          <div className="h-4 w-[1px] bg-slate-800 hidden sm:block" />
+
+          {/* History Controls */}
+          <div className="flex items-center bg-slate-800/60 p-0.5 rounded-xl border border-slate-700/80">
+            <button
+              onClick={handleUndoLastNode}
+              title="Undo last added road/entrance node point"
+              className="px-2.5 py-1.5 hover:bg-slate-700/80 text-slate-300 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <Undo2 className="w-3.5 h-3.5 text-amber-400" />
+              <span>Undo Node</span>
+            </button>
+            <div className="h-3.5 w-[1px] bg-slate-700/60" />
+            <button
+              onClick={handleUndoLastEdge}
+              title="Undo last added road edge connection"
+              className="px-2.5 py-1.5 hover:bg-slate-700/80 text-slate-300 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <Unlink className="w-3.5 h-3.5 text-slate-400" />
+              <span>Undo Link</span>
+            </button>
+          </div>
+
+          {/* Automation Tools */}
+          <button
+            onClick={handleAutoConnectBuildingNodes}
+            title="Automatically snap and connect every building entrance node to its nearest drawn road point"
+            className="px-3 py-1.5 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shadow-sm hover:border-indigo-500/50"
+          >
+            <Zap className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Auto-Connect</span>
+          </button>
+
+          {/* Fullscreen Toggle */}
+          <button
+            onClick={() => setIsFullScreen((prev) => !prev)}
+            className="px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/80 rounded-xl text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
+          >
+            {isFullScreen ? (
+              <>
+                <Minimize2 className="w-3.5 h-3.5 text-slate-400" />
+                <span>Exit Fullscreen</span>
+              </>
+            ) : (
+              <>
+                <Maximize2 className="w-3.5 h-3.5 text-slate-400" />
+                <span>Fullscreen</span>
+              </>
+            )}
+          </button>
+
+          <div className="h-4 w-[1px] bg-slate-800 hidden sm:block" />
+
+          {/* Auto-Save Toggle */}
+          <label className="flex items-center gap-2 px-2.5 py-1.5 bg-slate-800/40 border border-slate-800 hover:border-slate-700 rounded-xl text-xs text-slate-300 font-medium cursor-pointer transition-colors">
             <input
               type="checkbox"
               checked={autoSave}
               onChange={(e) => setAutoSave(e.target.checked)}
-              className="accent-cyan-500 rounded"
+              className="accent-cyan-500 rounded cursor-pointer w-3.5 h-3.5"
             />
-            <span>Auto-Save (Every 1 min)</span>
+            <span className="text-[11px] text-slate-300">Auto-Save (1m)</span>
           </label>
 
+          {/* Save Button */}
           <button
             onClick={() => saveToDisk()}
             disabled={isSaving}
-            className={`px-4 py-2 rounded-xl font-bold text-xs transition-all shadow-lg flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 disabled:opacity-50 ${
+            className={`px-3.5 py-1.5 rounded-xl font-medium text-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 ${
               hasUnsavedChanges
-                ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 ring-2 ring-amber-400/50 animate-pulse'
-                : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/20'
+                ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold shadow-md shadow-amber-500/20'
+                : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-sm'
             }`}
           >
-            <span>
-              {isSaving
-                ? '⏳ Saving...'
-                : saveStatus
-                ? '✅ Saved!'
-                : hasUnsavedChanges
-                ? '💾 Save Changes'
-                : '⚡ Save Now'}
-            </span>
+            {isSaving ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span>Saving...</span>
+              </>
+            ) : saveStatus ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-white" />
+                <span>Saved!</span>
+              </>
+            ) : hasUnsavedChanges ? (
+              <>
+                <Save className="w-3.5 h-3.5" />
+                <span>Save Changes</span>
+              </>
+            ) : (
+              <>
+                <Save className="w-3.5 h-3.5" />
+                <span>Save Now</span>
+              </>
+            )}
           </button>
 
+          {/* Export JSON */}
           <button
             onClick={exportJSON}
-            className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-xl font-bold text-xs transition-all flex items-center gap-2 cursor-pointer"
+            className="px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/80 rounded-xl text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
           >
-            <span>💾 Download JSON</span>
+            <Download className="w-3.5 h-3.5 text-slate-400" />
+            <span>Export JSON</span>
           </button>
         </div>
-      </div>
+      </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Controls Panel */}
-        <div className="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-5 shadow-2xl">
-          {/* Step Guidance Card */}
-          <div className="bg-sky-950/60 border border-sky-800/80 rounded-xl p-3.5 text-xs text-sky-200 leading-relaxed">
-            <strong className="text-sky-300 block font-bold mb-1">🚗 Continuous Road & Building Setup:</strong>
-            {mode === 'node' && (
-              <div>
-                <span>Simply click along any campus road on the satellite map. The system automatically connects consecutive points into a continuous road path!</span>
-                {lastRoadNodeId && (
-                  <button
-                    onClick={() => setLastRoadNodeId(null)}
-                    className="mt-2 text-[11px] bg-amber-600/90 hover:bg-amber-500 text-white px-2.5 py-1 rounded-lg font-bold block cursor-pointer"
-                  >
-                    Start New Separate Road Segment ✂️
-                  </button>
-                )}
-              </div>
-            )}
-            {mode === 'view' && 'Click anywhere on the satellite map to capture Lat & Lng coordinates for registering a building or location!'}
-            {mode === 'edge' && 'Click Node A then Node B on the map to build custom connections between road waypoints or building entrances.'}
-            {mode === 'building' && 'Click 3 or more corners on the satellite map to outline a building polygon.'}
-          </div>
+      {/* Main Workspace Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        {/* Left Side: Digitizer Studio Controls Panel */}
+        <div className="lg:col-span-4 bg-slate-900/70 border border-slate-800/90 rounded-2xl p-4 flex flex-col gap-4 shadow-xl backdrop-blur-sm">
+          {/* Active Digitizer Tool Mode Toolbar */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <label className="text-[10px] font-mono font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Layers className="w-3 h-3 text-cyan-400" />
+                Active Digitizer Tool
+              </label>
+              <span className="text-[10px] font-mono text-slate-500 uppercase">
+                Mode: {mode}
+              </span>
+            </div>
 
-          <div>
-            <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block mb-2.5">
-              ACTIVE DIGITIZER TOOL MODE
-            </label>
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-1.5">
               {[
-                { id: 'view', label: '📍 Click & Register', desc: 'Auto Lat/Lng capture', icon: '📍', color: 'from-cyan-500/20 to-blue-500/20 border-cyan-500/50 text-cyan-300 ring-cyan-500/30' },
-                { id: 'node', label: '🛣️ Draw Campus Roads', desc: 'Auto-connect line', icon: '🛣️', color: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/50 text-emerald-300 ring-emerald-500/30' },
-                { id: 'edge', label: '🔗 Custom Connection', desc: 'Link any 2 points', icon: '🔗', color: 'from-purple-500/20 to-indigo-500/20 border-purple-500/50 text-purple-300 ring-purple-500/30' },
-                { id: 'edit', label: '✏️ Edit & Delete', desc: 'Inspect & remove', icon: '✏️', color: 'from-amber-500/20 to-orange-500/20 border-amber-500/50 text-amber-300 ring-amber-500/30' },
-                { id: 'building', label: '🏢 Trace Polygon', desc: 'Outline block', icon: '🏢', color: 'from-blue-500/20 to-sky-500/20 border-blue-500/50 text-blue-300 ring-blue-500/30' },
+                {
+                  id: 'view',
+                  label: 'Point Capture & Register',
+                  desc: 'Click satellite map to capture Lat/Lng coordinates',
+                  icon: Crosshair,
+                  activeColor: 'bg-cyan-500/10 border-cyan-500/40 text-cyan-300 ring-1 ring-cyan-500/20',
+                  iconColor: 'text-cyan-400',
+                },
+                {
+                  id: 'node',
+                  label: 'Draw Campus Roads',
+                  desc: 'Click consecutively to auto-trace road paths',
+                  icon: Route,
+                  activeColor: 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300 ring-1 ring-emerald-500/20',
+                  iconColor: 'text-emerald-400',
+                },
+                {
+                  id: 'edge',
+                  label: 'Link Custom Nodes',
+                  desc: 'Click two nodes to establish a topological connection',
+                  icon: Waypoints,
+                  activeColor: 'bg-indigo-500/10 border-indigo-500/40 text-indigo-300 ring-1 ring-indigo-500/20',
+                  iconColor: 'text-indigo-400',
+                },
+                {
+                  id: 'edit',
+                  label: 'Inspect & Prune',
+                  desc: 'Click on nodes or edges to view details or remove',
+                  icon: SlidersHorizontal,
+                  activeColor: 'bg-amber-500/10 border-amber-500/40 text-amber-300 ring-1 ring-amber-500/20',
+                  iconColor: 'text-amber-400',
+                },
+                {
+                  id: 'building',
+                  label: 'Trace Building Polygon',
+                  desc: 'Click 3+ boundary corners to outline a footprint',
+                  icon: Shapes,
+                  activeColor: 'bg-sky-500/10 border-sky-500/40 text-sky-300 ring-1 ring-sky-500/20',
+                  iconColor: 'text-sky-400',
+                },
               ].map((m) => {
                 const isActive = mode === m.id;
+                const IconComponent = m.icon;
                 return (
                   <button
                     key={m.id}
@@ -629,78 +717,143 @@ export default function DigitizePage() {
                       setSelectedSourceNode(null);
                       setLastRoadNodeId(null);
                     }}
-                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer relative overflow-hidden ${
+                    className={`p-2.5 rounded-xl text-left border transition-all cursor-pointer flex items-start gap-3 ${
                       isActive
-                        ? `bg-gradient-to-br ${m.color} text-white shadow-xl ring-2 shadow-cyan-500/10`
-                        : 'bg-slate-900/90 border-slate-800 text-slate-400 hover:bg-slate-800/80 hover:text-slate-200'
+                        ? m.activeColor
+                        : 'bg-slate-900/40 border-slate-800/80 text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'
                     }`}
                   >
-                    {isActive && (
-                      <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                    )}
-                    <div className="font-bold text-xs flex items-center gap-1.5">{m.label}</div>
-                    <div className="text-[10px] opacity-70 mt-0.5 font-mono">{m.desc}</div>
+                    <div
+                      className={`p-1.5 rounded-lg border mt-0.5 shrink-0 ${
+                        isActive
+                          ? 'bg-slate-950 border-slate-700/80'
+                          : 'bg-slate-800/60 border-slate-700/40'
+                      }`}
+                    >
+                      <IconComponent
+                        className={`w-4 h-4 ${isActive ? m.iconColor : 'text-slate-400'}`}
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-semibold leading-tight">{m.label}</div>
+                      <div className="text-[10px] text-slate-400 mt-0.5 leading-snug truncate">
+                        {m.desc}
+                      </div>
+                    </div>
                   </button>
                 );
               })}
             </div>
           </div>
 
+          {/* Contextual Mode Guidance & Segment Inspector */}
+          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs">
+              <span className="font-medium text-slate-300 flex items-center gap-1.5">
+                <Info className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Workflow Guidance</span>
+              </span>
+              {mode === 'node' && lastRoadNodeId && (
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">
+                  Tracing Active
+                </span>
+              )}
+            </div>
+
+            <div className="text-xs text-slate-400 leading-relaxed">
+              {mode === 'node' && (
+                <div>
+                  <p>
+                    Click sequentially on the satellite map along any walkway or road. Each click places a node and automatically constructs a connected topological link.
+                  </p>
+                  {lastRoadNodeId && (
+                    <button
+                      onClick={() => setLastRoadNodeId(null)}
+                      className="mt-2 text-[11px] bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 px-2.5 py-1 rounded-lg font-medium flex items-center gap-1.5 cursor-pointer transition-colors"
+                    >
+                      <Scissors className="w-3 h-3 text-amber-400" />
+                      <span>Start New Road Segment</span>
+                    </button>
+                  )}
+                </div>
+              )}
+              {mode === 'view' &&
+                'Click any position on the satellite imagery to sample precise coordinates for location registration or node creation.'}
+              {mode === 'edge' &&
+                (selectedSourceNode
+                  ? `Source selected: ${selectedSourceNode}. Now click target node to create link.`
+                  : 'Click the source node (Node A), then click target node (Node B) to create a custom path link.')}
+              {mode === 'edit' &&
+                'Click any road waypoint or edge polyline on the map to inspect properties or remove it from the campus graph.'}
+              {mode === 'building' &&
+                `Click at least 3 corner boundary points on the satellite map to outline a building footprint polygon (${currPolygon.length} corners placed).`}
+            </div>
+          </div>
+
           {/* Advanced Edge Customization Controls */}
           {(mode === 'node' || mode === 'edge') && (
-            <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 flex flex-col gap-2 text-xs">
-              <span className="font-bold text-amber-400 flex items-center gap-1.5">
-                ⚙️ Custom Road Edge Properties
-              </span>
+            <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 flex flex-col gap-2.5">
+              <div className="flex items-center justify-between text-xs font-semibold text-slate-200">
+                <span className="flex items-center gap-1.5">
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-cyan-400" />
+                  Road & Path Specifications
+                </span>
+              </div>
+
               <div className="flex flex-col gap-1">
-                <label className="text-[10px] text-slate-400 font-bold">Road Surface / Path Type:</label>
+                <label className="text-[10px] text-slate-400 font-medium">Surface Classification:</label>
                 <select
                   value={roadType}
                   onChange={(e) => setRoadType(e.target.value as any)}
-                  className="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-sky-500"
+                  className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
                 >
-                  <option value="paved_walkway">🚶 Paved Pedestrian Walkway</option>
-                  <option value="asphalt_road">🚗 Asphalt Vehicle Road</option>
-                  <option value="dirt_path">🌿 Dirt / Grass Footpath</option>
-                  <option value="stairs">🪜 Stairs / Steps (Slower speed penalty)</option>
+                  <option value="paved_walkway">Paved Pedestrian Walkway</option>
+                  <option value="asphalt_road">Asphalt Vehicle Road</option>
+                  <option value="dirt_path">Natural Footpath / Trail</option>
+                  <option value="stairs">Outdoor Stairs / Elevation Steps</option>
                 </select>
               </div>
 
-              <div className="flex items-center justify-between pt-1">
-                <label className="text-slate-300 flex items-center gap-2 cursor-pointer text-[11px]">
+              <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-800/60">
+                <label className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800 cursor-pointer text-[11px] text-slate-300 hover:border-slate-700 transition-colors">
                   <input
                     type="checkbox"
                     checked={isOneWay}
                     onChange={(e) => setIsOneWay(e.target.checked)}
-                    className="accent-sky-500"
+                    className="accent-cyan-500 rounded"
                   />
-                  <span>Strictly One-Way Edge</span>
+                  <span>One-Way Flow</span>
                 </label>
-                <label className="text-slate-300 flex items-center gap-2 cursor-pointer text-[11px]">
+                <label className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800 cursor-pointer text-[11px] text-slate-300 hover:border-slate-700 transition-colors">
                   <input
                     type="checkbox"
                     checked={handicapAccessible}
                     onChange={(e) => setHandicapAccessible(e.target.checked)}
-                    className="accent-emerald-500"
+                    className="accent-emerald-500 rounded"
                   />
-                  <span>♿ Accessible</span>
+                  <span className="flex items-center gap-1">
+                    <Accessibility className="w-3 h-3 text-emerald-400" />
+                    Accessible
+                  </span>
                 </label>
               </div>
             </div>
           )}
 
           {/* Quick Register Location Form */}
-          <div className="bg-slate-950/80 border border-sky-900/60 rounded-xl p-3.5 flex flex-col gap-2.5">
+          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5 flex flex-col gap-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-sky-400 flex items-center gap-1.5">
-                <span>🏢 Quick Register New Location</span>
+              <span className="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+                <Building2 className="w-3.5 h-3.5 text-sky-400" />
+                Register Campus Place
               </span>
               {clickedLatLng ? (
-                <span className="text-[10px] bg-emerald-950 border border-emerald-700 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-emerald-400" />
                   {clickedLatLng.lat.toFixed(5)}, {clickedLatLng.lng.toFixed(5)}
                 </span>
               ) : (
-                <span className="text-[10px] text-amber-400">Click map to select location</span>
+                <span className="text-[10px] text-slate-500">Click map to target</span>
               )}
             </div>
 
@@ -710,19 +863,19 @@ export default function DigitizePage() {
                 placeholder="Code (e.g. GYM)"
                 value={newCode}
                 onChange={(e) => setNewCode(e.target.value)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors font-mono"
               />
               <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value as any)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-2 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2 py-1.5 text-xs text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
               >
                 <option value="academic">Academic</option>
                 <option value="administrative">Administrative</option>
-                <option value="dining">Dining / Cafe</option>
+                <option value="dining">Dining / Food</option>
                 <option value="dormitory">Dormitory</option>
-                <option value="sports">Sports</option>
-                <option value="other">Other</option>
+                <option value="sports">Athletics / Sports</option>
+                <option value="other">Other Facility</option>
               </select>
             </div>
 
@@ -731,19 +884,19 @@ export default function DigitizePage() {
               placeholder="Building Name (e.g. Student Gymnasium)"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+              className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
             />
 
             <div className="flex flex-col gap-1">
-              <label className="text-[10px] text-slate-400 font-bold">
-                Connect to Nearby Road Node (Optional):
+              <label className="text-[10px] text-slate-400 font-medium">
+                Connect to Road Network (Optional):
               </label>
               <select
                 value={connectToRoadId}
                 onChange={(e) => setConnectToRoadId(e.target.value)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-2 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2 py-1.5 text-xs text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
               >
-                <option value="">-- No Immediate Road Link --</option>
+                <option value="">-- No Direct Road Link --</option>
                 {campus.nodes.map((n) => (
                   <option key={n.id} value={n.id}>
                     {n.label} ({n.id})
@@ -755,29 +908,31 @@ export default function DigitizePage() {
             <button
               onClick={handleRegisterLocation}
               disabled={!clickedLatLng}
-              className={`py-2 rounded-xl text-xs font-bold text-white shadow transition-all cursor-pointer ${
+              className={`py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                 clickedLatLng
-                  ? 'bg-emerald-600 hover:bg-emerald-500'
+                  ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
                   : 'bg-slate-800 text-slate-500 cursor-not-allowed'
               }`}
             >
-              Register Location & Entrance Node
+              <Plus className="w-3.5 h-3.5" />
+              <span>Register Place & Entrance</span>
             </button>
           </div>
 
           {/* Building Form */}
           {mode === 'building' && (
-            <div className="border-t border-slate-800 pt-4 flex flex-col gap-2.5">
+            <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5 flex flex-col gap-2.5">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-amber-400 font-bold">
-                  Building Corners: {currPolygon.length}
+                <span className="text-xs font-semibold text-sky-400 flex items-center gap-1.5">
+                  <Shapes className="w-3.5 h-3.5" />
+                  Building Polygon ({currPolygon.length} corners)
                 </span>
                 {currPolygon.length > 0 && (
                   <button
                     onClick={() => setCurrPolygon((prev) => prev.slice(0, -1))}
                     className="text-[10px] text-slate-400 hover:text-white underline cursor-pointer"
                   >
-                    Undo Last Point
+                    Undo Corner
                   </button>
                 )}
               </div>
@@ -786,25 +941,26 @@ export default function DigitizePage() {
                 placeholder="Block Code (e.g. STEM, SOEEC)"
                 value={bCode}
                 onChange={(e) => setBCode(e.target.value)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors font-mono"
               />
               <input
                 type="text"
                 placeholder="Building Name (e.g. STEM Center)"
                 value={bName}
                 onChange={(e) => setBName(e.target.value)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
               />
               <div className="flex gap-2 mt-1">
                 <button
                   onClick={handleFinishBuilding}
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-500 py-2 rounded-xl text-xs font-bold text-white shadow transition-all cursor-pointer"
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-500 py-1.5 px-3 rounded-lg text-xs font-semibold text-white shadow-sm transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
-                  Save Building Polygon
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Save Footprint</span>
                 </button>
                 <button
                   onClick={() => setCurrPolygon([])}
-                  className="bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-xl text-xs text-slate-400 cursor-pointer"
+                  className="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-slate-200 cursor-pointer transition-colors"
                 >
                   Clear
                 </button>
@@ -813,9 +969,10 @@ export default function DigitizePage() {
           )}
 
           {/* Direct Lat/Lng Input Box */}
-          <div className="border-t border-slate-800 pt-3 flex flex-col gap-2">
-            <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-              <span>📍 Manual Lat/Lng Coordinate Input</span>
+          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 flex flex-col gap-2">
+            <span className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+              <LocateFixed className="w-3.5 h-3.5 text-slate-400" />
+              <span>Manual Coordinate Entry</span>
             </span>
             <div className="grid grid-cols-2 gap-2">
               <input
@@ -823,14 +980,14 @@ export default function DigitizePage() {
                 placeholder="Latitude (e.g. 8.5639)"
                 value={manualLat}
                 onChange={(e) => setManualLat(e.target.value)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors font-mono"
               />
               <input
                 type="text"
                 placeholder="Longitude (e.g. 39.2887)"
                 value={manualLng}
                 onChange={(e) => setManualLng(e.target.value)}
-                className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors font-mono"
               />
             </div>
             <input
@@ -838,49 +995,52 @@ export default function DigitizePage() {
               placeholder="Landmark / Road Label (e.g. STEM Junction)"
               value={manualLabel}
               onChange={(e) => setManualLabel(e.target.value)}
-              className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-sky-500"
+              className="bg-slate-900 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
             />
             <button
               onClick={handleAddManualNode}
-              className="bg-sky-600 hover:bg-sky-500 py-1.5 rounded-xl text-xs font-bold text-white shadow transition-all cursor-pointer"
+              className="bg-slate-800 hover:bg-slate-700 border border-slate-700 py-1.5 rounded-lg text-xs font-medium text-slate-200 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
             >
-              Add Node to Map
+              <Plus className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Add Node to Map</span>
             </button>
           </div>
 
-          <div className="border-t border-slate-800/80 pt-3 font-mono text-[11px] text-slate-300 flex items-center justify-between bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+          {/* Telemetry & Stats Strip */}
+          <div className="font-mono text-[11px] text-slate-400 flex items-center justify-between bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              <span>🏢 Buildings:</span>
-              <strong className="text-cyan-300">{campus.buildings.length}</strong>
+              <Building2 className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Buildings:</span>
+              <strong className="text-slate-200 font-semibold">{campus.buildings.length}</strong>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>📍 Nodes:</span>
-              <strong className="text-emerald-300">{campus.nodes.length}</strong>
+              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Nodes:</span>
+              <strong className="text-slate-200 font-semibold">{campus.nodes.length}</strong>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-purple-400" />
-              <span>🔗 Edges:</span>
-              <strong className="text-purple-300">{campus.edges.length}</strong>
+              <Network className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Edges:</span>
+              <strong className="text-slate-200 font-semibold">{campus.edges.length}</strong>
             </span>
           </div>
         </div>
 
-        {/* Satellite Map */}
+        {/* Right Side: Satellite Map Canvas Frame */}
         <div
-          className={`bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl transition-all duration-300 ${
+          className={`bg-slate-900/60 border border-slate-800 rounded-2xl p-1.5 shadow-xl transition-all duration-300 ${
             isFullScreen
-              ? 'fixed inset-4 z-50 col-span-12 h-[calc(100vh-2rem)] min-h-none ring-4 ring-indigo-500/50'
+              ? 'fixed inset-3 z-50 col-span-12 h-[calc(100vh-1.5rem)] min-h-none ring-2 ring-cyan-500/40 bg-slate-950'
               : 'lg:col-span-8 min-h-[600px] relative'
           }`}
         >
           {isFullScreen && (
             <button
               onClick={() => setIsFullScreen(false)}
-              className="absolute top-4 right-4 z-[1000] bg-slate-950/90 hover:bg-slate-900 border border-slate-700 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-2xl flex items-center gap-2 cursor-pointer"
+              className="absolute top-4 right-4 z-[1000] bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-white font-medium text-xs px-3.5 py-2 rounded-xl shadow-xl flex items-center gap-2 cursor-pointer transition-colors backdrop-blur-sm"
             >
-              <span>📉 Exit Fullscreen (Esc)</span>
+              <Minimize2 className="w-3.5 h-3.5 text-slate-400" />
+              <span>Exit Fullscreen</span>
             </button>
           )}
 

@@ -3,6 +3,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, Polygon, Polyline, CircleMarker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
+import { AlertTriangle, Accessibility, Trash2 } from 'lucide-react';
 import { CampusData, LatLng } from '../../lib/types/map';
 
 // Fix Leaflet icon paths in Next.js environment
@@ -109,19 +110,35 @@ export default function DigitizeMapClient({
             >
               {(mode === 'view' || mode === 'edit') && (
                 <Popup>
-                  <strong>Road Edge:</strong> {edge.id}
-                  <br />
-                  Type: {edge.type || 'paved_walkway'}
-                  {edge.isOneWay && <span className="block text-amber-400 font-bold">⚠️ One-Way Only</span>}
-                  {edge.handicapAccessible && <span className="block text-emerald-400 font-bold">♿ Wheelchair Accessible</span>}
-                  {mode === 'edit' && onDeleteEdge && (
-                    <button
-                      onClick={() => onDeleteEdge(edge.id)}
-                      className="mt-2 text-[11px] bg-red-600 text-white px-2 py-1 rounded font-bold block cursor-pointer w-full"
-                    >
-                      🗑️ Delete Road Edge
-                    </button>
-                  )}
+                  <div className="text-xs p-1 min-w-[150px] space-y-1.5 font-sans">
+                    <div className="font-semibold text-slate-900 border-b border-slate-200 pb-1">
+                      Road Edge: <span className="font-mono text-slate-600">{edge.id}</span>
+                    </div>
+                    <div className="text-slate-600 text-[11px]">
+                      Type: <span className="font-medium text-slate-800 capitalize">{edge.type?.replace('_', ' ') || 'Paved Walkway'}</span>
+                    </div>
+                    {edge.isOneWay && (
+                      <span className="flex items-center gap-1 text-[11px] text-amber-700 font-medium">
+                        <AlertTriangle className="w-3 h-3 text-amber-600" />
+                        One-Way Only
+                      </span>
+                    )}
+                    {edge.handicapAccessible && (
+                      <span className="flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
+                        <Accessibility className="w-3 h-3 text-emerald-600" />
+                        Wheelchair Accessible
+                      </span>
+                    )}
+                    {mode === 'edit' && onDeleteEdge && (
+                      <button
+                        onClick={() => onDeleteEdge(edge.id)}
+                        className="mt-2 text-[11px] bg-rose-600 hover:bg-rose-700 text-white px-2.5 py-1.5 rounded-md font-semibold flex items-center justify-center gap-1.5 cursor-pointer w-full transition-colors shadow-sm"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                        Delete Edge
+                      </button>
+                    )}
+                  </div>
                 </Popup>
               )}
             </Polyline>
@@ -142,9 +159,13 @@ export default function DigitizeMapClient({
           >
             {mode === 'view' && (
               <Popup>
-                <strong>{b.code}</strong>: {b.name}
-                <br />
-                Center: ({b.center.lat.toFixed(5)}, {b.center.lng.toFixed(5)})
+                <div className="text-xs p-1 min-w-[140px] space-y-1 font-sans">
+                  <div className="font-bold text-slate-900">{b.name}</div>
+                  <div className="text-[11px] text-slate-500 font-mono">Code: {b.code}</div>
+                  <div className="text-[11px] text-slate-600 font-mono">
+                    {b.center.lat.toFixed(5)}, {b.center.lng.toFixed(5)}
+                  </div>
+                </div>
               </Popup>
             )}
           </Polygon>
@@ -181,19 +202,24 @@ export default function DigitizeMapClient({
             >
               {(mode === 'view' || mode === 'edit') && (
                 <Popup>
-                  <strong>{n.label || `Node ${n.id}`}</strong>
-                  <br />
-                  ID: <span className="font-mono">{n.id}</span>
-                  <br />
-                  Lat: {n.lat}, Lng: {n.lng}
-                  {mode === 'edit' && onDeleteNode && (
-                    <button
-                      onClick={() => onDeleteNode(n.id)}
-                      className="mt-2 text-[11px] bg-red-600 text-white px-2 py-1 rounded font-bold block cursor-pointer w-full"
-                    >
-                      🗑️ Delete Node
-                    </button>
-                  )}
+                  <div className="text-xs p-1 min-w-[150px] space-y-1.5 font-sans">
+                    <div className="font-semibold text-slate-900 border-b border-slate-200 pb-1">
+                      {n.label || `Node ${n.id}`}
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-mono">ID: {n.id}</div>
+                    <div className="text-[11px] text-slate-600 font-mono">
+                      {n.lat.toFixed(6)}, {n.lng.toFixed(6)}
+                    </div>
+                    {mode === 'edit' && onDeleteNode && (
+                      <button
+                        onClick={() => onDeleteNode(n.id)}
+                        className="mt-2 text-[11px] bg-rose-600 hover:bg-rose-700 text-white px-2.5 py-1.5 rounded-md font-semibold flex items-center justify-center gap-1.5 cursor-pointer w-full transition-colors shadow-sm"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                        Delete Node
+                      </button>
+                    )}
+                  </div>
                 </Popup>
               )}
             </CircleMarker>
