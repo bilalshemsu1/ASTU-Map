@@ -9,10 +9,10 @@ import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/type
 const googleMarkerIcon = L.icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
+  iconSize: [19, 31],
+  iconAnchor: [9.5, 31],
+  popupAnchor: [1, -28],
+  shadowSize: [31, 31],
 });
 
 const clickedPinIcon = L.icon({
@@ -27,10 +27,10 @@ const clickedPinIcon = L.icon({
 const startPinIcon = L.icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
+  iconSize: [19, 31],
+  iconAnchor: [9.5, 31],
+  popupAnchor: [1, -28],
+  shadowSize: [31, 31],
 });
 
 const userLivePinIcon = L.icon({
@@ -85,7 +85,7 @@ const getShortBuildingName = (name: string, code: string): string => {
 
 const createBuildingLabelIcon = (building: Building, isSelected: boolean) => {
   const shortName = getShortBuildingName(building.name, building.code);
-  const offsetClass = isSelected ? 'translate-y-3' : '-translate-y-1/2';
+  const offsetClass = isSelected ? '-translate-y-10' : '-translate-y-1/2';
 
   return L.divIcon({
     className: 'astu-building-label-marker',
