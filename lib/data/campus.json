@@ -3478,6 +3478,18 @@
       "lat": 8.564538,
       "lng": 39.289157,
       "label": "Road Point"
+    },
+    {
+      "id": "n_ecb",
+      "lat": 8.565049,
+      "lng": 39.29326,
+      "label": "East Campus Entrance"
+    },
+    {
+      "id": "n_sport",
+      "lat": 8.565049,
+      "lng": 39.29325,
+      "label": "Sports Complex Entrance"
     }
   ],
   "edges": [
@@ -6725,6 +6737,110 @@
       "id": "e_n_freshman_dorm_r_369618",
       "source": "n_freshman_dorm",
       "target": "r_369618",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r797263_r432414",
+      "source": "r_797263",
+      "target": "r_432414",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r211095_r893982",
+      "source": "r_211095",
+      "target": "r_893982",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r718153_r714109",
+      "source": "r_718153",
+      "target": "r_714109",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_n_femalelib_r797402",
+      "source": "n_female_library",
+      "target": "r_797402",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r660083_r567332",
+      "source": "r_660083",
+      "target": "r_567332",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r766689_r712328",
+      "source": "r_766689",
+      "target": "r_712328",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r778814_r712328",
+      "source": "r_778814",
+      "target": "r_712328",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r637577_r000534",
+      "source": "r_637577",
+      "target": "r_000534",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r858434_r755557",
+      "source": "r_858434",
+      "target": "r_755557",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r024582_r094233",
+      "source": "r_024582",
+      "target": "r_094233",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_r146529_r081389",
+      "source": "r_146529",
+      "target": "r_081389",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_necb_r608539",
+      "source": "n_ecb",
+      "target": "r_608539",
+      "type": "paved_walkway",
+      "isOneWay": false,
+      "handicapAccessible": true
+    },
+    {
+      "id": "e_bridge_nsport_r613469",
+      "source": "n_sport",
+      "target": "r_613469",
       "type": "paved_walkway",
       "isOneWay": false,
       "handicapAccessible": true

@@ -31,12 +31,14 @@ import {
   Layers,
   Loader2,
   Share2,
+  Sparkles,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
 import { fetchRealWalkingRoute } from '../lib/utils/routing';
 import { calculateHaversineDistance, formatDistance, formatTime } from '../lib/utils/graph';
 import GoogleMapCanvas from './GoogleMapCanvas';
+import AIAssistantModal from './AIAssistantModal';
 
 interface GoogleMapsUIProps {
   campusData: CampusData;
@@ -51,6 +53,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const [isNavigating, setIsNavigating] = useState<boolean>(false);
   const [activeNodeIndex, setActiveNodeIndex] = useState<number>(0);
   const [isStepsExpanded, setIsStepsExpanded] = useState<boolean>(false);
+  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState<boolean>(false);
 
   // Selected Place Inspection State & Collapsible Bottom Sheet Mode
   const [selectedPlace, setSelectedPlace] = useState<Building | null>(null);
@@ -77,7 +80,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       if (targetBuilding) {
         setSelectedPlace(targetBuilding);
         setRecenterTrigger((prev) => prev + 1);
-        setLocationToast(`📍 Loaded shared location: ${targetBuilding.name}`);
+        setLocationToast(`Loaded shared location: ${targetBuilding.name}`);
         setTimeout(() => setLocationToast(null), 4000);
       }
     }
@@ -96,12 +99,12 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     if (typeof navigator !== 'undefined' && navigator.share) {
       navigator.share(shareData).catch(() => {
         navigator.clipboard?.writeText(shareUrl);
-        setLocationToast('🔗 Location link copied to clipboard!');
+        setLocationToast('Location link copied to clipboard');
         setTimeout(() => setLocationToast(null), 3500);
       });
     } else {
       navigator.clipboard?.writeText(shareUrl);
-      setLocationToast('🔗 Location link copied to clipboard!');
+      setLocationToast('Location link copied to clipboard');
       setTimeout(() => setLocationToast(null), 3500);
     }
   };
@@ -184,7 +187,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     setStartNodeId(closestNode.id);
     setStartLabel(`Custom Position (${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)})`);
 
-    setLocationToast('📍 Start location pin moved!');
+    setLocationToast('Start location pin moved');
     setTimeout(() => setLocationToast(null), 3000);
   };
 
@@ -227,7 +230,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
         setRecenterTrigger((prev) => prev + 1);
 
-        setLocationToast(`🎯 Live GPS Position Locked (±${accuracy}m accuracy)!`);
+        setLocationToast(`Live GPS Position Locked (±${accuracy}m accuracy)`);
         setTimeout(() => setLocationToast(null), 4000);
       },
       (err) => {
@@ -328,12 +331,45 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     }
   };
 
-  const handleOpenDirectionsToPlace = (building: Building, room?: Room) => {
+  const handleOpenDirectionsToPlace = (
+    building: Building,
+    room?: Room,
+    originChoice?: 'ask' | 'gps' | 'main_gate' | 'oda_gate'
+  ) => {
     setDestBuilding(building);
     setDestRoom(room);
     setDestLabel(room ? `${building.code} — ${room.name}` : building.name);
     setSelectedPlace(null);
     setIsDirectionsMode(true);
+
+    if (originChoice === 'gps') {
+      handleUseCurrentLocation();
+    } else if (originChoice === 'oda_gate') {
+      const odaNode = campusData.nodes.find((n) => n.id === 'n_oda_gate');
+      if (odaNode) {
+        setStartNodeId(odaNode.id);
+        setStartCoords({ lat: odaNode.lat, lng: odaNode.lng });
+        setStartLabel('Oda Gateway');
+        setRecenterTrigger((prev) => prev + 1);
+      }
+    } else if (originChoice === 'main_gate') {
+      const gateNode = campusData.nodes.find((n) => n.id === 'n_main_gate');
+      if (gateNode) {
+        setStartNodeId(gateNode.id);
+        setStartCoords({ lat: gateNode.lat, lng: gateNode.lng });
+        setStartLabel('ASTU MAIN GATE');
+        setRecenterTrigger((prev) => prev + 1);
+      }
+    } else if (originChoice === 'ask') {
+      setActiveInput('start');
+      setSearchQuery('');
+    } else if (liveUserLocation) {
+      setStartCoords(liveUserLocation);
+      setStartLabel('My Live Location');
+    } else {
+      setActiveInput('start');
+      setSearchQuery('');
+    }
   };
 
   const handleStartNavigation = () => {
@@ -449,6 +485,28 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     return matchingStep ? matchingStep.instruction : `Heading towards ${destLabel}`;
   }, [routeResult, activeNodeIndex, isArrived, destLabel]);
 
+  // Dynamic bottom positioning for floating action rail (Assistant, Layer, GPS)
+  // Automatically shifts above mobile bottom sheets (location detail peek, route summary)
+  // or hides when sheets are expanded on small screens to prevent overlap.
+  const floatingRailPosition = useMemo(() => {
+    if (isNavigating) {
+      return 'bottom-24 md:bottom-6';
+    }
+    if (selectedPlace && !isDirectionsMode) {
+      if (isPlaceSheetExpanded) {
+        return 'hidden md:flex md:bottom-6';
+      }
+      return 'bottom-[112px] md:bottom-6';
+    }
+    if (isDirectionsMode && routeResult) {
+      if (isStepsExpanded) {
+        return 'hidden md:flex md:bottom-6';
+      }
+      return 'bottom-[160px] md:bottom-6';
+    }
+    return 'bottom-6 md:bottom-6';
+  }, [isNavigating, selectedPlace, isDirectionsMode, isPlaceSheetExpanded, routeResult, isStepsExpanded]);
+
   // Sliding Carousel Image Navigation
   const placeImages = selectedPlace?.details?.images || [];
   const handleNextImage = () => {
@@ -510,6 +568,14 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   onChange={(e) => handleSearchChange(e.target.value, 'search')}
                   className="w-full outline-none text-xs md:text-sm text-gray-800 placeholder-gray-500 bg-transparent font-medium py-1 min-w-0"
                 />
+                <button
+                  onClick={() => setIsAIAssistantOpen(true)}
+                  className="p-2 md:p-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg transition-all shadow flex items-center justify-center flex-shrink-0 cursor-pointer active:scale-95 group"
+                  title="Open Assistant"
+                  aria-label="Open Assistant"
+                >
+                  <Sparkles className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                </button>
                 <button
                   onClick={() => setIsDirectionsMode(true)}
                   className="p-2 md:p-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow flex-shrink-0 cursor-pointer"
@@ -1164,11 +1230,19 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </div>
       )}
 
-      {/* Floating Target GPS Button & Map Type Toggle Switch with z-[1000] */}
+      {/* Floating Target GPS Button, Map Type Toggle Switch & AI Assistant FAB with z-[1000] */}
       <div
         style={{ zIndex: 1000 }}
-        className="absolute bottom-32 sm:bottom-28 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 pointer-events-auto"
+        className={`absolute right-4 md:right-6 flex flex-col gap-2 pointer-events-auto transition-all duration-300 ease-in-out ${floatingRailPosition}`}
       >
+        <button
+          onClick={() => setIsAIAssistantOpen(true)}
+          className="w-11 h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-xl border border-slate-700/80 flex items-center justify-center transition-all cursor-pointer active:scale-95 group"
+          title="Open AI Assistant"
+        >
+          <Sparkles className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
+        </button>
+
         <button
           onClick={() => setMapType(mapType === 'roadmap' ? 'satellite' : 'roadmap')}
           className="w-11 h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer"
@@ -1192,6 +1266,20 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
           )}
         </button>
       </div>
+
+      {/* ASTU AI CAMPUS ASSISTANT MODAL / DRAWER */}
+      <AIAssistantModal
+        isOpen={isAIAssistantOpen}
+        onClose={() => setIsAIAssistantOpen(false)}
+        campusData={campusData}
+        onSelectPlace={(building) => {
+          setSelectedPlace(building);
+          setRecenterTrigger((prev) => prev + 1);
+        }}
+        onStartDirections={(building, room, originChoice) => {
+          handleOpenDirectionsToPlace(building, room, originChoice);
+        }}
+      />
     </div>
   );
 }

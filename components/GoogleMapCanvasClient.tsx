@@ -114,7 +114,7 @@ function ZoomControls() {
   return (
     <div
       style={{ zIndex: 1000 }}
-      className="absolute bottom-60 sm:bottom-52 md:bottom-32 right-4 md:right-6 flex flex-col bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden divide-y divide-gray-200 pointer-events-auto"
+      className="hidden md:flex absolute bottom-48 right-6 flex-col bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden divide-y divide-gray-200 pointer-events-auto"
     >
       <button
         onClick={() => map.zoomIn()}

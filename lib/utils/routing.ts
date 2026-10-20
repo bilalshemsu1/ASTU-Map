@@ -8,8 +8,8 @@ export async function fetchRealWalkingRoute(
   targetNodeId: string,
   campusData: CampusData
 ): Promise<RouteResult> {
-  // Helper to find closest node to a lat/lng coordinate
-  const findClosestNode = (coord: LatLng, filterRoadOnly = false) => {
+  // Helper to find closest node to a given coordinate
+  const findClosestNode = (coord: LatLng, filterRoadOnly = false): PathNode => {
     let closestNode = campusData.nodes[0];
     let minDist = Infinity;
     campusData.nodes.forEach((n) => {
@@ -23,73 +23,71 @@ export async function fetchRealWalkingRoute(
     return closestNode;
   };
 
-  // Determine starting node: use explicit node if exists, or snap to nearest node in dataset
-  let actualStartNode = campusData.nodes.find((n) => n.id === startNodeId) || findClosestNode(start);
-  let actualTargetNode = campusData.nodes.find((n) => n.id === targetNodeId) || findClosestNode(target);
+  // Determine starting graph node: use explicit node if valid, or snap to nearest connected road/walkway node
+  let actualStartNode =
+    (startNodeId && campusData.nodes.find((n) => n.id === startNodeId)) ||
+    findClosestNode(start, true);
 
-  // 1. Primary ASTU Internal Campus Graph Route
+  // Determine target graph node: use explicit building entrance node if valid, or snap to nearest road node
+  let actualTargetNode =
+    (targetNodeId && campusData.nodes.find((n) => n.id === targetNodeId)) ||
+    findClosestNode(target, false);
+
+  // 1. Primary ASTU Internal Campus Graph Route via Dijkstra
   let localResult = findShortestPath(actualStartNode.id, actualTargetNode.id, campusData);
 
-  // 2. If direct entrance node routing is unlinked, snap to nearest connected road nodes (r_)
+  // 2. If entrance nodes were disconnected, snap both to the nearest road network nodes (r_*)
   if (!localResult || localResult.path.length === 0) {
     const startRoadNode = findClosestNode(start, true);
     const targetRoadNode = findClosestNode(target, true);
+    actualStartNode = startRoadNode;
+    actualTargetNode = targetRoadNode;
     localResult = findShortestPath(startRoadNode.id, targetRoadNode.id, campusData);
   }
 
-  const directDist = Math.round(calculateHaversineDistance(start, target));
-
-  // 3. Fallback: If path is still null or unnaturally indirect (> 2.8x straight-line distance), optimize with direct walkway
-  if (!localResult || localResult.path.length === 0 || (directDist > 30 && localResult.totalDistanceMeters > directDist * 2.8)) {
-    const startRoadNode = findClosestNode(start, true);
-    const targetRoadNode = findClosestNode(target, true);
-
-    const midwayPath = [
-      { id: 'user_start', lat: start.lat, lng: start.lng },
-      startRoadNode,
-      targetRoadNode,
-      { id: 'user_target', lat: target.lat, lng: target.lng },
-    ].filter((v, i, a) => i === 0 || v.id !== a[i - 1].id);
-
-    return {
-      path: midwayPath,
-      totalDistanceMeters: directDist,
-      estimatedTimeMinutes: Math.max(1, Math.ceil(directDist / 80)),
-      steps: [
-        {
-          instruction: `Head straight along campus courtyard towards destination`,
-          distanceMeters: directDist,
-          fromNode: midwayPath[0],
-          toNode: midwayPath[midwayPath.length - 1],
-        },
-      ],
-    };
-  }
+  // 3. Connect User Start & Target to the Road Network
   if (localResult && localResult.path.length > 0) {
-    // Prepend exact user start point if far from node
-    const startNode = localResult.path[0];
-    const distToStartNode = calculateHaversineDistance(start, startNode);
-    if (distToStartNode > 15) {
-      localResult.path.unshift({ id: 'user_start', lat: start.lat, lng: start.lng });
-      localResult.totalDistanceMeters += Math.round(distToStartNode);
+    const startRoadNode = localResult.path[0];
+    const distToStartRoad = calculateHaversineDistance(start, startRoadNode);
+
+    // Prepend user origin point if separated from the first road node (> 6m)
+    if (distToStartRoad > 6) {
+      localResult.path.unshift({
+        id: 'user_start',
+        lat: start.lat,
+        lng: start.lng,
+        label: 'Start Position',
+      });
+      localResult.totalDistanceMeters += Math.round(distToStartRoad);
       localResult.steps.unshift({
-        instruction: `Walk towards ${startNode.label || 'campus walkway'}`,
-        distanceMeters: Math.round(distToStartNode),
+        instruction: `Walk ${Math.round(distToStartRoad)}m to join campus path (${startRoadNode.label || 'campus walkway'})`,
+        distanceMeters: Math.round(distToStartRoad),
         fromNode: { id: 'user_start', lat: start.lat, lng: start.lng },
-        toNode: startNode,
+        toNode: startRoadNode,
       });
     }
 
-    // Append exact target point if far from entrance node
-    const targetNode = localResult.path[localResult.path.length - 1];
-    const distToTargetNode = calculateHaversineDistance(target, targetNode);
-    if (distToTargetNode > 15) {
-      localResult.path.push({ id: 'user_target', lat: target.lat, lng: target.lng });
-      localResult.totalDistanceMeters += Math.round(distToTargetNode);
+    // Append target destination point if separated from the last road/entrance node (> 6m)
+    const endRoadNode = localResult.path[localResult.path.length - 1];
+    const distToEndRoad = calculateHaversineDistance(target, endRoadNode);
+
+    if (distToEndRoad > 6) {
+      const targetBuilding = campusData.buildings.find(
+        (b) => b.entranceNodeId === targetNodeId || b.id === targetNodeId
+      );
+      const destLabel = targetBuilding?.name || endRoadNode.label || 'destination';
+
+      localResult.path.push({
+        id: 'user_target',
+        lat: target.lat,
+        lng: target.lng,
+        label: destLabel,
+      });
+      localResult.totalDistanceMeters += Math.round(distToEndRoad);
       localResult.steps.push({
-        instruction: 'Arrive at destination building entrance',
-        distanceMeters: Math.round(distToTargetNode),
-        fromNode: targetNode,
+        instruction: `Arrive at ${destLabel}`,
+        distanceMeters: Math.round(distToEndRoad),
+        fromNode: endRoadNode,
         toNode: { id: 'user_target', lat: target.lat, lng: target.lng },
       });
     }
@@ -98,21 +96,46 @@ export async function fetchRealWalkingRoute(
     return localResult;
   }
 
-  // 4. Direct Fallback Route if Graph Search is Unconnected
+  // 4. Fallback: Always snap to the nearest road network rather than cutting a straight line across campus
+  const snapStart = findClosestNode(start, true);
+  const snapTarget = findClosestNode(target, true);
+  const roadSegmentDist = Math.round(calculateHaversineDistance(snapStart, snapTarget));
+  const distStartToRoad = Math.round(calculateHaversineDistance(start, snapStart));
+  const distRoadToTarget = Math.round(calculateHaversineDistance(snapTarget, target));
+  const totalMeters = distStartToRoad + roadSegmentDist + distRoadToTarget;
+
+  const connectedRoadPath: PathNode[] = [
+    { id: 'user_start', lat: start.lat, lng: start.lng, label: 'Start Point' },
+    snapStart,
+    snapTarget,
+    { id: 'user_target', lat: target.lat, lng: target.lng, label: 'Destination' },
+  ].filter((v, i, a) => i === 0 || v.id !== a[i - 1].id);
+
+  const fallbackSteps: RouteStep[] = [
+    {
+      instruction: `Walk ${distStartToRoad}m to nearest road (${snapStart.label || 'campus walkway'})`,
+      distanceMeters: distStartToRoad,
+      fromNode: connectedRoadPath[0],
+      toNode: snapStart,
+    },
+    {
+      instruction: `Follow campus road network towards ${snapTarget.label || 'destination area'}`,
+      distanceMeters: roadSegmentDist,
+      fromNode: snapStart,
+      toNode: snapTarget,
+    },
+    {
+      instruction: `Arrive at destination`,
+      distanceMeters: distRoadToTarget,
+      fromNode: snapTarget,
+      toNode: connectedRoadPath[connectedRoadPath.length - 1],
+    },
+  ];
+
   return {
-    path: [
-      { id: 'start', lat: start.lat, lng: start.lng },
-      { id: 'target', lat: target.lat, lng: target.lng },
-    ],
-    totalDistanceMeters: directDist,
-    estimatedTimeMinutes: Math.max(1, Math.ceil(directDist / 80)),
-    steps: [
-      {
-        instruction: 'Walk directly along campus path to destination',
-        distanceMeters: directDist,
-        fromNode: { id: 'start', lat: start.lat, lng: start.lng },
-        toNode: { id: 'target', lat: target.lat, lng: target.lng },
-      },
-    ],
+    path: connectedRoadPath,
+    totalDistanceMeters: totalMeters,
+    estimatedTimeMinutes: Math.max(1, Math.ceil(totalMeters / 80)),
+    steps: fallbackSteps,
   };
 }
