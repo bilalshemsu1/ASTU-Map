@@ -392,10 +392,10 @@ export default function AIAssistantModal({
               className={`flex w-full ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[88%] rounded-2xl p-3.5 text-xs sm:text-[13px] leading-relaxed shadow-xs ${
+                className={`rounded-2xl p-3.5 text-xs sm:text-[13px] leading-relaxed shadow-xs ${
                   msg.role === 'user'
-                    ? 'bg-slate-900 text-white rounded-br-xs font-medium'
-                    : 'bg-white text-slate-800 border border-slate-200/80 rounded-bl-xs'
+                    ? 'max-w-[85%] bg-slate-900 text-white rounded-br-xs font-medium'
+                    : 'w-full bg-white text-slate-800 border border-slate-200/80 rounded-2xl'
                 }`}
               >
                 {msg.role === 'user' ? (
