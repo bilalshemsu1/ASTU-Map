@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Polygon, Polyline, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { Plus, Minus, Copy, Check, MapPin } from 'lucide-react';
 import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/types/map';
@@ -41,6 +41,30 @@ const userLivePinIcon = L.icon({
   popupAnchor: [1, -38],
   shadowSize: [41, 41],
 });
+
+const createBuildingLabelIcon = (building: Building, isSelected: boolean) => {
+  const labelText = building.name.replace(/^ASTU\s+/, '');
+  const offsetClass = isSelected ? 'translate-y-3' : '-translate-y-1/2';
+
+  return L.divIcon({
+    className: 'astu-building-label-marker',
+    html: `
+      <div class="pointer-events-auto cursor-pointer group -translate-x-1/2 ${offsetClass} select-none transition-all duration-200">
+        <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-bold tracking-tight whitespace-nowrap shadow-xs transition-all ${
+          isSelected
+            ? 'bg-red-600 text-white shadow-lg ring-2 ring-white scale-105'
+            : 'bg-white/95 text-slate-800 border border-slate-300/80 shadow-xs hover:border-blue-500 hover:text-blue-700 hover:bg-white hover:scale-105'
+        }">
+          <span class="text-[9px] font-black uppercase px-1 py-0.2 rounded ${
+            isSelected ? 'bg-red-700 text-white' : 'bg-slate-100 text-slate-600'
+          }">${building.code}</span>
+          <span>${labelText}</span>
+        </div>
+      </div>
+    `,
+    iconSize: [0, 0],
+  });
+};
 
 interface GoogleMapCanvasClientProps {
   campusData: CampusData;
@@ -140,6 +164,7 @@ export default function GoogleMapCanvasClient({
   onSelectBuilding,
   routeResult,
   startNodeId,
+  targetNodeId,
   mapType,
   currentNavNode,
   liveUserLocation,
@@ -147,6 +172,12 @@ export default function GoogleMapCanvasClient({
   recenterTrigger,
 }: GoogleMapCanvasClientProps) {
   const { meta, buildings, nodes } = campusData;
+
+  const isBuildingTarget = (b: Building) => {
+    if (selectedBuilding && selectedBuilding.id === b.id) return true;
+    if (targetNodeId && (b.entranceNodeId === targetNodeId || b.id === targetNodeId)) return true;
+    return false;
+  };
 
   const mapCenter: [number, number] = currentNavNode
     ? [currentNavNode.lat, currentNavNode.lng]
@@ -208,29 +239,63 @@ export default function GoogleMapCanvasClient({
           maxNativeZoom={mapType === 'satellite' ? 20 : 19}
         />
 
-        {/* Building Pins */}
-        {buildings.map((b) => (
-          <Marker
-            key={b.id}
-            position={[b.center.lat, b.center.lng]}
-            icon={googleMarkerIcon}
-            eventHandlers={{
-              click: () => onSelectBuilding(b),
-            }}
-          >
-            <Popup>
-              <div className="p-1 font-sans">
-                <h4 className="font-bold text-sm text-gray-900">{b.name}</h4>
-                <p className="text-xs text-blue-600 font-semibold mt-0.5">Block Code: {b.code}</p>
-                {b.rooms.length > 0 && (
-                  <p className="text-xs text-gray-500 mt-1">
-                    Rooms: {b.rooms.map((r) => r.name).join(', ')}
-                  </p>
-                )}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        {/* Building Polygons & Google Maps-style Labels */}
+        {buildings.map((b) => {
+          const isSelected = isBuildingTarget(b);
+          const polygonPositions: [number, number][] = b.polygon.map((p) => [p.lat, p.lng]);
+
+          return (
+            <React.Fragment key={b.id}>
+              {/* Building Boundary Footprint */}
+              <Polygon
+                positions={polygonPositions}
+                pathOptions={{
+                  color: isSelected ? '#ea4335' : (mapType === 'satellite' ? '#60a5fa' : '#3b82f6'),
+                  fillColor: isSelected ? '#ea4335' : (mapType === 'satellite' ? '#3b82f6' : '#93c5fd'),
+                  fillOpacity: isSelected ? 0.35 : (mapType === 'satellite' ? 0.16 : 0.12),
+                  weight: isSelected ? 2.5 : 1.2,
+                }}
+                eventHandlers={{
+                  click: () => onSelectBuilding(b),
+                }}
+              />
+
+              {/* Clean Google Maps-Style Building Name Label */}
+              <Marker
+                position={[b.center.lat, b.center.lng]}
+                icon={createBuildingLabelIcon(b, isSelected)}
+                zIndexOffset={isSelected ? 500 : 100}
+                eventHandlers={{
+                  click: () => onSelectBuilding(b),
+                }}
+              />
+
+              {/* Red Location Pin ONLY for the searched / selected building */}
+              {isSelected && (
+                <Marker
+                  position={[b.center.lat, b.center.lng]}
+                  icon={googleMarkerIcon}
+                  zIndexOffset={1000}
+                  eventHandlers={{
+                    click: () => onSelectBuilding(b),
+                  }}
+                >
+                  <Popup>
+                    <div className="p-1 font-sans">
+                      <h4 className="font-bold text-sm text-gray-900">{b.name}</h4>
+                      <p className="text-xs text-blue-600 font-semibold mt-0.5">Block Code: {b.code}</p>
+                      {b.rooms.length > 0 && (
+                        <p className="text-xs text-gray-500 mt-1">
+                          Rooms: {b.rooms.map((r) => r.name).join(', ')}
+                        </p>
+                      )}
+                    </div>
+                  </Popup>
+                </Marker>
+              )}
+            </React.Fragment>
+          );
+        })}
 
         {/* Live GPS Location Draggable Blue Pin */}
         {liveUserLocation && (

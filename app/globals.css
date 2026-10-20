@@ -50,3 +50,10 @@ a,
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Custom transparent container for Leaflet Google Maps-style building labels */
+.astu-building-label-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
