@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Polygon, Polyline, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { Plus, Minus, Copy, Check, MapPin } from 'lucide-react';
 import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/types/map';
@@ -42,24 +42,58 @@ const userLivePinIcon = L.icon({
   shadowSize: [41, 41],
 });
 
+const getShortBuildingName = (name: string, code: string): string => {
+  const clean = name
+    .replace(/^ASTU\s+/i, '')
+    .replace(/,\s*Adama.*$/i, '')
+    .replace(/\s*\(\d+\.\d+.*?\)/g, '')
+    .trim();
+
+  const nameMap: Record<string, string> = {
+    'School of Electrical Engineering and Computing': 'EE & Computing',
+    'School Of Architecture and Civil Engineering': 'Architecture & Civil',
+    'STEM Center, Adama Science & Technology University': 'STEM Center',
+    'DAANDII WAABEE / ዋቤ መንገድ / WABE STREET': 'Wabe Street',
+    'ASTU Campus Block': 'Campus Block',
+    'New Administrative Building': 'Admin Building',
+    'Visual Arts Society Club': 'Visual Arts Club',
+    'Postgraduate Library': 'PG Library',
+    'Applied Science Library': 'Applied Sci Library',
+    'Female Dormitory': 'Female Dorms',
+    'Freshman Dormitory': 'Freshman Dorms',
+    'Chemical Engineering': 'Chemical Eng',
+    'Oda Nebe Hall (Adarash)': 'Oda Nebe Hall',
+    'Adama University ICT': 'ICT Hall',
+    'East Campus Block': 'East Campus Block',
+    'Central Library': 'Central Library',
+    'Students Cafe': 'Students Cafe',
+    'MAIN GATE': 'Main Gate',
+    'Stadium': 'Stadium',
+  };
+
+  for (const [key, val] of Object.entries(nameMap)) {
+    if (clean.toLowerCase().includes(key.toLowerCase()) || name.toLowerCase().includes(key.toLowerCase())) {
+      return val;
+    }
+  }
+
+  if (clean.length > 18) {
+    return clean.slice(0, 16).trim() + '…';
+  }
+  return clean;
+};
+
 const createBuildingLabelIcon = (building: Building, isSelected: boolean) => {
-  const labelText = building.name.replace(/^ASTU\s+/, '');
+  const shortName = getShortBuildingName(building.name, building.code);
   const offsetClass = isSelected ? 'translate-y-3' : '-translate-y-1/2';
 
   return L.divIcon({
     className: 'astu-building-label-marker',
     html: `
-      <div class="pointer-events-auto cursor-pointer group -translate-x-1/2 ${offsetClass} select-none transition-all duration-200">
-        <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-bold tracking-tight whitespace-nowrap shadow-xs transition-all ${
-          isSelected
-            ? 'bg-red-600 text-white shadow-lg ring-2 ring-white scale-105'
-            : 'bg-white/95 text-slate-800 border border-slate-300/80 shadow-xs hover:border-blue-500 hover:text-blue-700 hover:bg-white hover:scale-105'
-        }">
-          <span class="text-[9px] font-black uppercase px-1 py-0.2 rounded ${
-            isSelected ? 'bg-red-700 text-white' : 'bg-slate-100 text-slate-600'
-          }">${building.code}</span>
-          <span>${labelText}</span>
-        </div>
+      <div class="pointer-events-auto cursor-pointer group -translate-x-1/2 ${offsetClass} select-none">
+        <span class="google-map-label-text ${isSelected ? 'is-selected' : ''}">
+          ${shortName}
+        </span>
       </div>
     `,
     iconSize: [0, 0],
@@ -239,27 +273,12 @@ export default function GoogleMapCanvasClient({
           maxNativeZoom={mapType === 'satellite' ? 20 : 19}
         />
 
-        {/* Building Polygons & Google Maps-style Labels */}
+        {/* Building Labels & Location Pins */}
         {buildings.map((b) => {
           const isSelected = isBuildingTarget(b);
-          const polygonPositions: [number, number][] = b.polygon.map((p) => [p.lat, p.lng]);
 
           return (
             <React.Fragment key={b.id}>
-              {/* Building Boundary Footprint */}
-              <Polygon
-                positions={polygonPositions}
-                pathOptions={{
-                  color: isSelected ? '#ea4335' : (mapType === 'satellite' ? '#60a5fa' : '#3b82f6'),
-                  fillColor: isSelected ? '#ea4335' : (mapType === 'satellite' ? '#3b82f6' : '#93c5fd'),
-                  fillOpacity: isSelected ? 0.35 : (mapType === 'satellite' ? 0.16 : 0.12),
-                  weight: isSelected ? 2.5 : 1.2,
-                }}
-                eventHandlers={{
-                  click: () => onSelectBuilding(b),
-                }}
-              />
-
               {/* Clean Google Maps-Style Building Name Label */}
               <Marker
                 position={[b.center.lat, b.center.lng]}

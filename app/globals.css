@@ -57,3 +57,32 @@ a,
   border: none !important;
 }
 
+/* Google Maps-style typography: white text with dark outline and no rectangular box */
+.google-map-label-text {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+  display: inline-block;
+  text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0px  1px 3px rgba(0, 0, 0, 0.95),
+     0px  0px 4px rgba(0, 0, 0, 0.85);
+  letter-spacing: -0.01em;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.google-map-label-text:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.google-map-label-text.is-selected {
+  color: #ffffff;
+  font-weight: 800;
+}
+
