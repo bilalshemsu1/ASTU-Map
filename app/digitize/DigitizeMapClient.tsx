@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Polygon, Polyline, CircleMarker, Popup, useMap
 import L from 'leaflet';
 import { AlertTriangle, Accessibility, Trash2 } from 'lucide-react';
 import { CampusData, LatLng } from '../../lib/types/map';
+import { ASTU_CAMPUS_BOUNDS } from '../../lib/constants/campusBounds';
 
 // Fix Leaflet icon paths in Next.js environment
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -53,14 +54,11 @@ export default function DigitizeMapClient({
     <div className="w-full h-full min-h-[500px] rounded-lg overflow-hidden relative">
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
-        zoom={meta.zoom || 17}
-        minZoom={15}
-        maxZoom={22}
-        maxBounds={[
-          [8.5530, 39.2820],
-          [8.5720, 39.3000],
-        ]}
-        maxBoundsViscosity={1.0}
+        zoom={meta.zoom || ASTU_CAMPUS_BOUNDS.defaultZoom}
+        minZoom={ASTU_CAMPUS_BOUNDS.minZoom}
+        maxZoom={ASTU_CAMPUS_BOUNDS.maxZoom}
+        maxBounds={ASTU_CAMPUS_BOUNDS.leafletBounds}
+        maxBoundsViscosity={ASTU_CAMPUS_BOUNDS.maxBoundsViscosity}
         preferCanvas={true}
         className="w-full h-full"
       >

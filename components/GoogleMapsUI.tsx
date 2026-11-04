@@ -43,6 +43,7 @@ import {
   BookOpen,
   GraduationCap,
   Accessibility,
+  Compass,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
@@ -288,6 +289,14 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
     setLocationToast('Start location pin moved');
     setTimeout(() => setLocationToast(null), 3000);
+  };
+
+  // Recenter map camera back to ASTU Campus
+  const handleRecenterCampus = () => {
+    setSelectedPlace(null);
+    setRecenterTrigger((prev) => prev + 1);
+    setLocationToast('Centered on ASTU Campus');
+    setTimeout(() => setLocationToast(null), 2500);
   };
 
   // Start / toggle continuous high-accuracy browser GPS subscription for live navigation
@@ -1799,6 +1808,14 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
           title="Open AI Assistant"
         >
           <Sparkles className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
+        </button>
+
+        <button
+          onClick={handleRecenterCampus}
+          className="w-11 h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer active:scale-95"
+          title="Recenter Map on ASTU Campus"
+        >
+          <Compass className="w-5 h-5 text-gray-700 hover:text-blue-600 transition-colors" />
         </button>
 
         <button

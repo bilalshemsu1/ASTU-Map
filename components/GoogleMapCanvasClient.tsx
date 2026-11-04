@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Polyline, Marker, Popup, Circle, CircleMarker,
 import L from 'leaflet';
 import { Plus, Minus, Copy, Check, MapPin, Compass, LocateFixed, Info } from 'lucide-react';
 import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/types/map';
+import { ASTU_CAMPUS_BOUNDS } from '../lib/constants/campusBounds';
 
 const googleMarkerIcon = L.icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
@@ -277,14 +278,11 @@ export default function GoogleMapCanvasClient({
 
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
-        zoom={meta.zoom || 17}
-        minZoom={15}
-        maxZoom={22}
-        maxBounds={[
-          [8.5530, 39.2820],
-          [8.5720, 39.3000],
-        ]}
-        maxBoundsViscosity={1.0}
+        zoom={meta.zoom || ASTU_CAMPUS_BOUNDS.defaultZoom}
+        minZoom={ASTU_CAMPUS_BOUNDS.minZoom}
+        maxZoom={ASTU_CAMPUS_BOUNDS.maxZoom}
+        maxBounds={ASTU_CAMPUS_BOUNDS.leafletBounds}
+        maxBoundsViscosity={ASTU_CAMPUS_BOUNDS.maxBoundsViscosity}
         zoomControl={false}
         attributionControl={false}
         preferCanvas={true}

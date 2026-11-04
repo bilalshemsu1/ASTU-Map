@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Polygon, Polyline, Marker, Popup, CircleMarker
 import L from 'leaflet';
 import { MapPin } from 'lucide-react';
 import { CampusData, Building, RouteResult } from '../lib/types/map';
+import { ASTU_CAMPUS_BOUNDS } from '../lib/constants/campusBounds';
 
 // Fix Leaflet default icon paths in Next.js
 const defaultIcon = L.icon({
@@ -76,7 +77,11 @@ export default function MapRendererClient({
     <div className="w-full h-full min-h-[500px] rounded-xl overflow-hidden shadow-2xl border border-slate-800 relative">
       <MapContainer
         center={[meta.center.lat, meta.center.lng]}
-        zoom={meta.zoom || 17}
+        zoom={meta.zoom || ASTU_CAMPUS_BOUNDS.defaultZoom}
+        minZoom={ASTU_CAMPUS_BOUNDS.minZoom}
+        maxZoom={ASTU_CAMPUS_BOUNDS.maxZoom}
+        maxBounds={ASTU_CAMPUS_BOUNDS.leafletBounds}
+        maxBoundsViscosity={ASTU_CAMPUS_BOUNDS.maxBoundsViscosity}
         scrollWheelZoom={true}
         className="w-full h-full"
       >
