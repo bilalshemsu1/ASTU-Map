@@ -30,10 +30,15 @@ export function calculateBearing(p1: LatLng, p2: LatLng): number {
   return (brng + 360) % 360;
 }
 
+export interface RoutingOptions {
+  wheelchairAccessible?: boolean;
+}
+
 export function findShortestPath(
   startNodeId: string,
   targetNodeId: string,
-  campusData: CampusData
+  campusData: CampusData,
+  options?: RoutingOptions
 ): RouteResult | null {
   const { nodes, edges } = campusData;
 
@@ -49,6 +54,13 @@ export function findShortestPath(
   nodes.forEach((n) => adj.set(n.id, []));
 
   edges.forEach((edge) => {
+    // If wheelchair accessible mode is requested, exclude stairs and non-accessible paths
+    if (options?.wheelchairAccessible) {
+      if (edge.type === 'stairs' || edge.handicapAccessible === false) {
+        return;
+      }
+    }
+
     const n1 = nodeMap.get(edge.source);
     const n2 = nodeMap.get(edge.target);
     if (!n1 || !n2) return;

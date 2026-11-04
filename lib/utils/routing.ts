@@ -1,12 +1,13 @@
 import { PathNode, RouteResult, RouteStep, LatLng, CampusData } from '../types/map';
-import { calculateHaversineDistance, findShortestPath } from './graph';
+import { calculateHaversineDistance, findShortestPath, RoutingOptions } from './graph';
 
 export async function fetchRealWalkingRoute(
   start: LatLng,
   target: LatLng,
   startNodeId: string,
   targetNodeId: string,
-  campusData: CampusData
+  campusData: CampusData,
+  options?: RoutingOptions
 ): Promise<RouteResult> {
   // Helper to find closest node to a given coordinate
   const findClosestNode = (coord: LatLng, filterRoadOnly = false): PathNode => {
@@ -34,7 +35,7 @@ export async function fetchRealWalkingRoute(
     findClosestNode(target, false);
 
   // 1. Primary ASTU Internal Campus Graph Route via Dijkstra
-  let localResult = findShortestPath(actualStartNode.id, actualTargetNode.id, campusData);
+  let localResult = findShortestPath(actualStartNode.id, actualTargetNode.id, campusData, options);
 
   // 2. If entrance nodes were disconnected, snap both to the nearest road network nodes (r_*)
   if (!localResult || localResult.path.length === 0) {
@@ -42,7 +43,7 @@ export async function fetchRealWalkingRoute(
     const targetRoadNode = findClosestNode(target, true);
     actualStartNode = startRoadNode;
     actualTargetNode = targetRoadNode;
-    localResult = findShortestPath(startRoadNode.id, targetRoadNode.id, campusData);
+    localResult = findShortestPath(startRoadNode.id, targetRoadNode.id, campusData, options);
   }
 
   // 3. Connect User Start & Target to the Road Network
