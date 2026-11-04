@@ -30,6 +30,192 @@ export function calculateBearing(p1: LatLng, p2: LatLng): number {
   return (brng + 360) % 360;
 }
 
+export const isGenericLabel = (lbl?: string): boolean =>
+  !lbl || /^(Road Point|Node|Waypoint|Path Point|Campus Road|Path)/i.test(lbl.trim());
+
+function getTurnDirection(diff: number): string {
+  if (diff > 45 && diff < 135) return 'Turn right';
+  if (diff >= 135) return 'Make a sharp turn right';
+  if (diff < -45 && diff > -135) return 'Turn left';
+  if (diff <= -135) return 'Make a sharp turn left';
+  return 'Continue straight';
+}
+
+interface StepGroup {
+  fromNode: PathNode;
+  toNode: PathNode;
+  distanceMeters: number;
+  direction: string;
+  isFirst: boolean;
+  isFinal: boolean;
+  lastBearing: number;
+}
+
+/**
+ * Generates natural, human-friendly turn-by-turn navigation instructions.
+ * - Filters out robotic generic labels (e.g., "towards Road Point")
+ * - Consolidates consecutive straight segments along the same trajectory (bearing diff < 20 deg)
+ * - Highlights landmark waypoints and explicit arrival instructions
+ */
+export function generateRouteSteps(path: PathNode[]): RouteStep[] {
+  if (!path || path.length < 2) return [];
+
+  // Single segment path
+  if (path.length === 2) {
+    const from = path[0];
+    const to = path[1];
+    const stepDist = Math.round(calculateHaversineDistance(from, to));
+    const instruction = !isGenericLabel(to.label) ? `Arrive at ${to.label}` : 'Arrive at destination';
+    return [{ instruction, distanceMeters: stepDist, fromNode: from, toNode: to }];
+  }
+
+  // 1. Break into raw segments with precise compass bearings and turn angles
+  const rawSegments: Array<{
+    from: PathNode;
+    to: PathNode;
+    dist: number;
+    bearing: number;
+    diff: number;
+    direction: string;
+    index: number;
+  }> = [];
+
+  for (let i = 0; i < path.length - 1; i++) {
+    const from = path[i];
+    const to = path[i + 1];
+    const dist = calculateHaversineDistance(from, to);
+    const bearing = calculateBearing(from, to);
+    let diff = 0;
+    let direction = 'Continue straight';
+
+    if (i > 0) {
+      const prev = path[i - 1];
+      const bearingPrev = calculateBearing(prev, from);
+      diff = ((bearing - bearingPrev + 540) % 360) - 180;
+      direction = getTurnDirection(diff);
+    }
+
+    rawSegments.push({
+      from,
+      to,
+      dist,
+      bearing,
+      diff,
+      direction,
+      index: i,
+    });
+  }
+
+  // 2. Consolidate consecutive straight segments (bearing difference < 20 degrees)
+  // Accumulate distance so users aren't bombarded with multiple redundant "Continue straight" steps.
+  // The final destination segment is kept distinct to explicitly communicate arrival.
+  const consolidated: StepGroup[] = [];
+  let currentGroup: StepGroup | null = null;
+
+  for (let i = 0; i < rawSegments.length; i++) {
+    const seg = rawSegments[i];
+    const isFinalSegment = i === rawSegments.length - 1;
+
+    if (!currentGroup) {
+      currentGroup = {
+        fromNode: seg.from,
+        toNode: seg.to,
+        distanceMeters: seg.dist,
+        direction: seg.direction,
+        isFirst: seg.index === 0,
+        isFinal: isFinalSegment,
+        lastBearing: seg.bearing,
+      };
+      if (isFinalSegment) {
+        consolidated.push(currentGroup);
+      }
+      continue;
+    }
+
+    const bearingDiff = Math.abs(((seg.bearing - currentGroup.lastBearing + 540) % 360) - 180);
+    const isIntermediateGeneric = isGenericLabel(seg.from.label);
+
+    const canConsolidate =
+      !isFinalSegment &&
+      isIntermediateGeneric &&
+      bearingDiff < 20;
+
+    if (canConsolidate) {
+      currentGroup.toNode = seg.to;
+      currentGroup.distanceMeters += seg.dist;
+      currentGroup.lastBearing = seg.bearing;
+    } else {
+      consolidated.push(currentGroup);
+      currentGroup = {
+        fromNode: seg.from,
+        toNode: seg.to,
+        distanceMeters: seg.dist,
+        direction: seg.direction,
+        isFirst: false,
+        isFinal: isFinalSegment,
+        lastBearing: seg.bearing,
+      };
+      if (isFinalSegment) {
+        consolidated.push(currentGroup);
+      }
+    }
+  }
+
+  // 3. Format instructions according to landmark and distance phrasing rules
+  return consolidated.map((group, idx) => {
+    const dist = Math.round(group.distanceMeters);
+    const to = group.toNode;
+    const isLandmark = !isGenericLabel(to.label);
+    const isLast = idx === consolidated.length - 1;
+
+    let instruction = '';
+
+    if (isLast) {
+      instruction = isLandmark ? `Arrive at ${to.label}` : 'Arrive at destination';
+    } else if (group.isFirst) {
+      instruction = isLandmark
+        ? `Head towards ${to.label}`
+        : `Head straight for ${dist}m`;
+    } else {
+      switch (group.direction) {
+        case 'Turn right':
+          instruction = isLandmark
+            ? `Turn right towards ${to.label}`
+            : `Turn right and walk ${dist}m`;
+          break;
+        case 'Turn left':
+          instruction = isLandmark
+            ? `Turn left towards ${to.label}`
+            : `Turn left and walk ${dist}m`;
+          break;
+        case 'Make a sharp turn right':
+          instruction = isLandmark
+            ? `Sharp right towards ${to.label}`
+            : `Sharp right and walk ${dist}m`;
+          break;
+        case 'Make a sharp turn left':
+          instruction = isLandmark
+            ? `Sharp left towards ${to.label}`
+            : `Sharp left and walk ${dist}m`;
+          break;
+        case 'Continue straight':
+        default:
+          instruction = isLandmark
+            ? `Continue straight towards ${to.label}`
+            : `Continue straight for ${dist}m`;
+          break;
+      }
+    }
+
+    return {
+      instruction,
+      distanceMeters: dist,
+      fromNode: group.fromNode,
+      toNode: group.toNode,
+    };
+  });
+}
+
 export interface RoutingOptions {
   wheelchairAccessible?: boolean;
 }
@@ -145,35 +331,7 @@ export function findShortestPath(
   const estimatedTimeMinutes = Math.max(1, Math.ceil(totalDistanceMeters / 80));
 
   // Generate step-by-step instructions
-  const steps: RouteStep[] = [];
-  for (let i = 0; i < path.length - 1; i++) {
-    const from = path[i];
-    const to = path[i + 1];
-    const stepDist = Math.round(calculateHaversineDistance(from, to));
-
-    let direction = 'Walk straight';
-    if (i > 0) {
-      const prev = path[i - 1];
-      const bearingPrev = Math.atan2(from.lat - prev.lat, from.lng - prev.lng);
-      const bearingNext = Math.atan2(to.lat - from.lat, to.lng - from.lng);
-      let diff = (bearingNext - bearingPrev) * (180 / Math.PI);
-      diff = ((diff + 360 + 180) % 360) - 180;
-
-      if (diff > 45 && diff < 135) direction = 'Turn right';
-      else if (diff >= 135) direction = 'Make a sharp turn right';
-      else if (diff < -45 && diff > -135) direction = 'Turn left';
-      else if (diff <= -135) direction = 'Make a sharp turn left';
-      else direction = 'Continue straight';
-    }
-
-    const landmarkText = to.label ? ` towards ${to.label}` : '';
-    steps.push({
-      instruction: `${direction}${landmarkText}`,
-      distanceMeters: stepDist,
-      fromNode: from,
-      toNode: to,
-    });
-  }
+  const steps: RouteStep[] = generateRouteSteps(path);
 
   // Multi-pass alternative path finder (finds up to 3 distinct alternate walkways)
   const alternativePaths: PathNode[][] = [];

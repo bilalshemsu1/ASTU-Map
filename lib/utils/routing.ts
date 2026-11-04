@@ -1,5 +1,5 @@
 import { PathNode, RouteResult, RouteStep, LatLng, CampusData } from '../types/map';
-import { calculateHaversineDistance, findShortestPath, RoutingOptions } from './graph';
+import { calculateHaversineDistance, findShortestPath, isGenericLabel, RoutingOptions } from './graph';
 
 export async function fetchRealWalkingRoute(
   start: LatLng,
@@ -60,8 +60,11 @@ export async function fetchRealWalkingRoute(
         label: 'Start Position',
       });
       localResult.totalDistanceMeters += Math.round(distToStartRoad);
+      const startRoadLabel = !isGenericLabel(startRoadNode.label)
+        ? startRoadNode.label
+        : 'campus walkway';
       localResult.steps.unshift({
-        instruction: `Walk ${Math.round(distToStartRoad)}m to join campus path (${startRoadNode.label || 'campus walkway'})`,
+        instruction: `Walk ${Math.round(distToStartRoad)}m to join campus path (${startRoadLabel})`,
         distanceMeters: Math.round(distToStartRoad),
         fromNode: { id: 'user_start', lat: start.lat, lng: start.lng },
         toNode: startRoadNode,
@@ -76,7 +79,15 @@ export async function fetchRealWalkingRoute(
       const targetBuilding = campusData.buildings.find(
         (b) => b.entranceNodeId === targetNodeId || b.id === targetNodeId
       );
-      const destLabel = targetBuilding?.name || endRoadNode.label || 'destination';
+      const destLabel = targetBuilding?.name || (!isGenericLabel(endRoadNode.label) ? endRoadNode.label : 'destination');
+
+      // If the preceding last step said "Arrive at ...", adjust it to continue straight so there isn't a duplicate arrival
+      if (localResult.steps.length > 0) {
+        const prevStep = localResult.steps[localResult.steps.length - 1];
+        if (prevStep.instruction.startsWith('Arrive at')) {
+          prevStep.instruction = `Continue straight for ${prevStep.distanceMeters}m`;
+        }
+      }
 
       localResult.path.push({
         id: 'user_target',
