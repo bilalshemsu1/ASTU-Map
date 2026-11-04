@@ -933,6 +933,14 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </button>
                 )}
                 <button
+                  onClick={() => setIsAIAssistantOpen(true)}
+                  className="p-2 md:p-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg transition-all shadow flex items-center justify-center flex-shrink-0 cursor-pointer active:scale-95 group"
+                  title="Ask ASTU AI Campus Assistant"
+                  aria-label="Ask ASTU AI Campus Assistant"
+                >
+                  <Sparkles className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                </button>
+                <button
                   onClick={() => setIsDirectionsMode(true)}
                   className="p-2 md:p-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow flex-shrink-0 cursor-pointer"
                   title="Get Directions"
@@ -1824,14 +1832,6 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
             <Minus className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
-
-        <button
-          onClick={() => setIsAIAssistantOpen(true)}
-          className="w-11 h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-xl border border-slate-700/80 flex items-center justify-center transition-all cursor-pointer active:scale-95 group"
-          title="Open AI Campus Assistant"
-        >
-          <Sparkles className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
-        </button>
 
         <button
           onClick={handleRecenterCampus}
