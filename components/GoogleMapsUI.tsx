@@ -32,11 +32,18 @@ import {
   Loader2,
   Share2,
   Sparkles,
+  Play,
+  Pause,
+  FastForward,
+  RotateCcw,
+  Volume2,
+  VolumeX,
+  Radio,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
 import { fetchRealWalkingRoute } from '../lib/utils/routing';
-import { calculateHaversineDistance, formatDistance, formatTime } from '../lib/utils/graph';
+import { calculateHaversineDistance, calculateBearing, formatDistance, formatTime } from '../lib/utils/graph';
 import GoogleMapCanvas from './GoogleMapCanvas';
 import AIAssistantModal from './AIAssistantModal';
 
@@ -133,9 +140,57 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
   // GPS Location State, Recenter Trigger & Feedback
   const [isLocating, setIsLocating] = useState<boolean>(false);
+  const [isLiveTracking, setIsLiveTracking] = useState<boolean>(false);
   const [liveUserLocation, setLiveUserLocation] = useState<LatLng | null>(null);
+  const [liveLocationAccuracyMeters, setLiveLocationAccuracyMeters] = useState<number | null>(null);
+  const [userHeading, setUserHeading] = useState<number | null>(null);
+  const [followUser, setFollowUser] = useState<boolean>(true);
   const [recenterTrigger, setRecenterTrigger] = useState<number>(0);
   const [locationToast, setLocationToast] = useState<string | null>(null);
+
+  // Live Walk Simulation State
+  const [isSimulating, setIsSimulating] = useState<boolean>(false);
+  const [isSimulationPaused, setIsSimulationPaused] = useState<boolean>(false);
+  const [simulationSpeed, setSimulationSpeed] = useState<number>(1); // 1x, 2x, 4x
+  const [isVoiceGuidance, setIsVoiceGuidance] = useState<boolean>(true);
+
+  const locationWatchIdRef = useRef<number | null>(null);
+  const hasReceivedGpsFixRef = useRef<boolean>(false);
+  const simTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const simStateRef = useRef<{ segmentIdx: number; t: number }>({ segmentIdx: 0, t: 0 });
+  const prevGpsCoordsRef = useRef<LatLng | null>(null);
+  const isRecalculatingRef = useRef<boolean>(false);
+  const lastSpokenIndexRef = useRef<number | null>(null);
+
+  // Spoken voice guidance helper using Web Speech API
+  const speakInstruction = (text: string) => {
+    if (!isVoiceGuidance || typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      const clean = text
+        .replace(/[—–-]/g, ' ')
+        .replace(/\bASTU\b/g, 'A S T U')
+        .replace(/\s+/g, ' ')
+        .trim();
+      const utterance = new SpeechSynthesisUtterance(clean);
+      utterance.rate = 1.05;
+      utterance.pitch = 1.0;
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
+    } catch {
+      // Audio speech graceful fallback
+    }
+  };
+
+  // Stop simulated walk
+  const stopSimulation = () => {
+    if (simTimerRef.current) {
+      clearInterval(simTimerRef.current);
+      simTimerRef.current = null;
+    }
+    setIsSimulating(false);
+    setIsSimulationPaused(false);
+  };
 
   // Fetch Real Foot Walking Route
   useEffect(() => {
@@ -168,9 +223,37 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     };
   }, [isDirectionsMode, startCoords, startNodeId, destBuilding, campusData]);
 
+  const stopLiveLocationTracking = (silent = false) => {
+    if (locationWatchIdRef.current !== null && typeof navigator !== 'undefined') {
+      navigator.geolocation.clearWatch(locationWatchIdRef.current);
+      locationWatchIdRef.current = null;
+    }
+    setIsLiveTracking(false);
+    setIsLocating(false);
+
+    if (!silent) {
+      setLocationToast('Live GPS tracking paused');
+      setTimeout(() => setLocationToast(null), 2500);
+    }
+  };
+
+  // Stop tracking and simulation on unmount
+  useEffect(() => {
+    return () => {
+      stopLiveLocationTracking(true);
+      stopSimulation();
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
   // Handle Dragging Blue Pin on Map to update custom start position
   const handleUpdateLiveLocation = (coords: LatLng) => {
+    stopLiveLocationTracking(true);
+    stopSimulation();
     setLiveUserLocation(coords);
+    setLiveLocationAccuracyMeters(null);
     setStartCoords(coords);
 
     let closestNode = campusData.nodes[0];
@@ -191,57 +274,143 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     setTimeout(() => setLocationToast(null), 3000);
   };
 
-  // Handle Pure High-Accuracy Browser GPS Location
+  // Start / toggle continuous high-accuracy browser GPS subscription for live navigation
   const handleUseCurrentLocation = () => {
     if (!navigator.geolocation) {
       alert('Geolocation is not supported by your browser.');
       return;
     }
 
-    setIsLocating(true);
-    setLocationToast('Acquiring your live GPS position...');
+    // If already tracking, tap re-centers map camera on live position
+    if (locationWatchIdRef.current !== null && liveUserLocation) {
+      setRecenterTrigger((prev) => prev + 1);
+      setLocationToast('Centered on your live GPS position');
+      setTimeout(() => setLocationToast(null), 2500);
+      return;
+    }
 
-    navigator.geolocation.getCurrentPosition(
+    // Stop any active simulation before starting real GPS
+    stopSimulation();
+
+    setIsLocating(true);
+    setIsLiveTracking(true);
+    hasReceivedGpsFixRef.current = false;
+    setLocationToast('Acquiring real-time GPS signal...');
+
+    locationWatchIdRef.current = navigator.geolocation.watchPosition(
       (pos) => {
         const userLat = pos.coords.latitude;
         const userLng = pos.coords.longitude;
         const rawCoords = { lat: userLat, lng: userLng };
-        const accuracy = Math.round(pos.coords.accuracy || 10);
+        const accuracy = Math.round(pos.coords.accuracy || 8);
+        const heading = pos.coords.heading;
 
         setIsLocating(false);
-
-        setStartCoords(rawCoords);
         setLiveUserLocation(rawCoords);
+        setLiveLocationAccuracyMeters(accuracy);
 
-        let closestNode = campusData.nodes[0];
-        let minDist = Infinity;
-
-        campusData.nodes.forEach((n) => {
-          const d = calculateHaversineDistance(rawCoords, n);
-          if (d < minDist) {
-            minDist = d;
-            closestNode = n;
+        // Calculate heading/bearing
+        if (heading != null && !isNaN(heading) && heading >= 0) {
+          setUserHeading(heading);
+        } else if (prevGpsCoordsRef.current) {
+          const distMoved = calculateHaversineDistance(prevGpsCoordsRef.current, rawCoords);
+          if (distMoved > 2.0) {
+            const calculatedBrng = calculateBearing(prevGpsCoordsRef.current, rawCoords);
+            setUserHeading(calculatedBrng);
           }
-        });
+        }
+        prevGpsCoordsRef.current = rawCoords;
 
-        setStartNodeId(closestNode.id);
-        setStartLabel(`Your Live GPS Location (${userLat.toFixed(4)}, ${userLng.toFixed(4)})`);
-        setActiveInput(null);
+        // Campus boundary check: warn if user is far from ASTU campus center
+        const distFromCampus = calculateHaversineDistance(rawCoords, campusData.meta.center);
+        if (distFromCampus > 3500 && !hasReceivedGpsFixRef.current) {
+          setLocationToast(`Outside ASTU campus (±${accuracy}m). Preview mode available.`);
+        }
 
-        setRecenterTrigger((prev) => prev + 1);
+        // When NOT navigating, snap start location to closest campus road node
+        if (!isNavigating) {
+          setStartCoords(rawCoords);
+          let closestNode = campusData.nodes[0];
+          let minDist = Infinity;
+          campusData.nodes.forEach((n) => {
+            const d = calculateHaversineDistance(rawCoords, n);
+            if (d < minDist) {
+              minDist = d;
+              closestNode = n;
+            }
+          });
+          setStartNodeId(closestNode.id);
+          setStartLabel(`My Live Location (±${accuracy}m)`);
+        } else if (routeResult && routeResult.steps.length > 0) {
+          // ACTIVE REAL-TIME NAVIGATION: Proximity-based turn auto-advancement
+          const currentStep = routeResult.steps[activeNodeIndex];
+          if (currentStep && activeNodeIndex < routeResult.steps.length - 1) {
+            const distToTurn = calculateHaversineDistance(rawCoords, currentStep.toNode);
+            if (distToTurn < 12) {
+              setActiveNodeIndex((prev) => {
+                const nextIdx = prev + 1;
+                const nextStep = routeResult.steps[nextIdx];
+                if (nextStep) speakInstruction(nextStep.instruction);
+                return nextIdx;
+              });
+              if (typeof navigator !== 'undefined' && navigator.vibrate) {
+                navigator.vibrate(200);
+              }
+            }
+          }
 
-        setLocationToast(`Live GPS Position Locked (±${accuracy}m accuracy)`);
-        setTimeout(() => setLocationToast(null), 4000);
+          // Off-route detection & seamless auto-rerouting
+          if (destBuilding && !isRecalculatingRef.current) {
+            let minDistanceToPath = Infinity;
+            for (const node of routeResult.path) {
+              const d = calculateHaversineDistance(rawCoords, node);
+              if (d < minDistanceToPath) minDistanceToPath = d;
+            }
+
+            if (minDistanceToPath > 35) {
+              isRecalculatingRef.current = true;
+              setLocationToast('Off-route detected — recalculating path...');
+              fetchRealWalkingRoute(
+                rawCoords,
+                destBuilding.center,
+                '',
+                destBuilding.entranceNodeId,
+                campusData
+              ).then((recalculated) => {
+                setRouteResult(recalculated);
+                setActiveNodeIndex(0);
+                if (recalculated.steps[0]) speakInstruction(`Rerouted. ${recalculated.steps[0].instruction}`);
+                setLocationToast('Route updated');
+                setTimeout(() => setLocationToast(null), 3000);
+              }).finally(() => {
+                isRecalculatingRef.current = false;
+              });
+            }
+          }
+        }
+
+        if (!hasReceivedGpsFixRef.current) {
+          hasReceivedGpsFixRef.current = true;
+          setRecenterTrigger((prev) => prev + 1);
+          setLocationToast(`Live GPS Locked (±${accuracy}m accuracy)`);
+          setTimeout(() => setLocationToast(null), 3500);
+        }
       },
       (err) => {
-        setIsLocating(false);
-        setLocationToast(null);
-        alert(`Could not get GPS location: ${err.message}`);
+        const permissionDenied = err.code === err.PERMISSION_DENIED;
+        if (permissionDenied) stopLiveLocationTracking(true);
+        else setIsLocating(false);
+
+        const message = permissionDenied
+          ? 'Location permission was denied. Enable it in browser settings to use live tracking.'
+          : 'GPS signal is temporarily weak. Waiting for satellite lock...';
+        setLocationToast(message);
+        setTimeout(() => setLocationToast(null), 5000);
       },
       {
         enableHighAccuracy: true,
-        timeout: 30000,
-        maximumAge: 10000,
+        timeout: 20000,
+        maximumAge: 2500,
       }
     );
   };
@@ -374,14 +543,147 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
   const handleStartNavigation = () => {
     if (!routeResult || routeResult.steps.length === 0) return;
+    stopSimulation();
     setIsNavigating(true);
     setActiveNodeIndex(0);
+    setFollowUser(true);
+    if (isVoiceGuidance && routeResult.steps[0]) {
+      speakInstruction(routeResult.steps[0].instruction);
+    }
+  };
+
+  const handleStartSimulation = () => {
+    if (!routeResult || routeResult.path.length < 2) return;
+
+    // Stop real-time GPS tracking to avoid conflicting positions
+    stopLiveLocationTracking(true);
+    stopSimulation();
+
+    setIsNavigating(true);
+    setIsSimulating(true);
+    setIsSimulationPaused(false);
+    setActiveNodeIndex(0);
+    setFollowUser(true);
+
+    const firstPt = routeResult.path[0];
+    const secondPt = routeResult.path[1];
+    setLiveUserLocation({ lat: firstPt.lat, lng: firstPt.lng });
+    setLiveLocationAccuracyMeters(3);
+
+    const initialHeading = calculateBearing(firstPt, secondPt);
+    setUserHeading(initialHeading);
+
+    simStateRef.current = { segmentIdx: 0, t: 0 };
+    setRecenterTrigger((prev) => prev + 1);
+
+    if (isVoiceGuidance && routeResult.steps[0]) {
+      speakInstruction(`Starting demo walk. ${routeResult.steps[0].instruction}`);
+    }
+
+    setLocationToast('Demo Walk Simulator Started');
+    setTimeout(() => setLocationToast(null), 3000);
   };
 
   const handleStopNavigation = () => {
+    stopSimulation();
     setIsNavigating(false);
     setActiveNodeIndex(0);
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
   };
+
+  // ── ANIMATED LIVE WALK SIMULATION TICKER ──
+  useEffect(() => {
+    if (!isSimulating || isSimulationPaused || !routeResult || routeResult.path.length < 2) {
+      if (simTimerRef.current) {
+        clearInterval(simTimerRef.current);
+        simTimerRef.current = null;
+      }
+      return;
+    }
+
+    const TICK_MS = 60;
+    // Speed multiplier: 1x (~1.4 m/s), 2x (~3.5 m/s), 4x (~8.0 m/s)
+    const speedMps = simulationSpeed === 4 ? 8.0 : simulationSpeed === 2 ? 3.5 : 1.4;
+    const distancePerTick = speedMps * (TICK_MS / 1000);
+
+    simTimerRef.current = setInterval(() => {
+      const path = routeResult.path;
+      let { segmentIdx, t } = simStateRef.current;
+
+      if (segmentIdx >= path.length - 1) {
+        stopSimulation();
+        setActiveNodeIndex(routeResult.steps.length - 1);
+        const lastNode = path[path.length - 1];
+        setLiveUserLocation({ lat: lastNode.lat, lng: lastNode.lng });
+        setLocationToast(`Arrived at destination: ${destLabel || 'ASTU'}`);
+        if (isVoiceGuidance) {
+          speakInstruction(`You have arrived at your destination: ${destLabel || 'ASTU'}`);
+        }
+        return;
+      }
+
+      const p1 = path[segmentIdx];
+      const p2 = path[segmentIdx + 1];
+      const segDistance = Math.max(calculateHaversineDistance(p1, p2), 0.1);
+
+      const deltaT = distancePerTick / segDistance;
+      t += deltaT;
+
+      while (t >= 1.0 && segmentIdx < path.length - 1) {
+        t -= 1.0;
+        segmentIdx += 1;
+      }
+
+      simStateRef.current = { segmentIdx, t };
+
+      if (segmentIdx >= path.length - 1) {
+        stopSimulation();
+        setActiveNodeIndex(routeResult.steps.length - 1);
+        const lastNode = path[path.length - 1];
+        setLiveUserLocation({ lat: lastNode.lat, lng: lastNode.lng });
+        setLocationToast(`Arrived at destination: ${destLabel || 'ASTU'}`);
+        if (isVoiceGuidance) {
+          speakInstruction(`You have arrived at your destination: ${destLabel || 'ASTU'}`);
+        }
+        return;
+      }
+
+      const curP1 = path[segmentIdx];
+      const curP2 = path[segmentIdx + 1] || curP1;
+
+      const currentLat = curP1.lat + (curP2.lat - curP1.lat) * t;
+      const currentLng = curP1.lng + (curP2.lng - curP1.lng) * t;
+      const currentPos = { lat: currentLat, lng: currentLng };
+
+      setLiveUserLocation(currentPos);
+
+      // Bearing
+      const brng = calculateBearing(curP1, curP2);
+      setUserHeading(brng);
+
+      // Proximity check to turn steps
+      routeResult.steps.forEach((step, idx) => {
+        if (idx > activeNodeIndex) {
+          const distToTurn = calculateHaversineDistance(currentPos, step.toNode);
+          if (distToTurn < 11) {
+            setActiveNodeIndex(idx);
+            if (isVoiceGuidance) {
+              speakInstruction(step.instruction);
+            }
+          }
+        }
+      });
+    }, TICK_MS);
+
+    return () => {
+      if (simTimerRef.current) {
+        clearInterval(simTimerRef.current);
+        simTimerRef.current = null;
+      }
+    };
+  }, [isSimulating, isSimulationPaused, simulationSpeed, routeResult, activeNodeIndex, isVoiceGuidance, destLabel]);
 
   const handleNextStep = () => {
     if (!routeResult) return;
@@ -541,6 +843,10 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         mapType={mapType}
         currentNavNode={currentNavNode}
         liveUserLocation={liveUserLocation}
+        liveLocationAccuracyMeters={liveLocationAccuracyMeters}
+        userHeading={userHeading}
+        isNavigating={isNavigating}
+        followUser={followUser}
         onUpdateLiveLocation={handleUpdateLiveLocation}
         recenterTrigger={recenterTrigger}
       />
@@ -672,7 +978,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                     ) : (
                       <LocateFixed className="w-4 h-4 text-blue-600 flex-shrink-0" />
                     )}
-                    <span className="truncate">{isLocating ? 'Locating your position...' : 'Use My Live GPS Location'}</span>
+                    <span className="truncate">{isLocating ? 'Starting live tracking...' : isLiveTracking ? 'Live GPS tracking is active' : 'Use My Live GPS Location'}</span>
                   </div>
                 )}
 
@@ -1096,13 +1402,25 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                 </div>
               </div>
 
-              <button
-                onClick={handleStartNavigation}
-                className="px-6 py-2.5 bg-[#1a73e8] hover:bg-blue-700 text-white font-black text-sm rounded-lg shadow flex items-center gap-2 transition-all active:scale-95 cursor-pointer"
-              >
-                <Navigation className="w-4 h-4 fill-white" />
-                <span>Start</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleStartSimulation}
+                  className="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs md:text-sm rounded-lg shadow-md flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+                  title="Run an animated live walking simulation of this route (Demo presentation mode)"
+                >
+                  <Play className="w-4 h-4 fill-white" />
+                  <span>Demo Walk</span>
+                </button>
+
+                <button
+                  onClick={handleStartNavigation}
+                  className="px-5 py-2.5 bg-[#1a73e8] hover:bg-blue-700 text-white font-black text-xs md:text-sm rounded-lg shadow flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+                  title="Start real-time turn-by-turn navigation"
+                >
+                  <Navigation className="w-4 h-4 fill-white" />
+                  <span>Start</span>
+                </button>
+              </div>
             </div>
 
             <div className="border-t border-gray-100 pt-2.5">
@@ -1161,18 +1479,96 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
             onTouchStart={handleGuidanceTouchStart}
             onTouchEnd={handleGuidanceTouchEnd}
             onWheel={handleGuidanceWheel}
-            className={`rounded-2xl shadow-xl p-4 flex flex-col gap-2.5 text-white border transition-colors touch-none select-none ${
+            className={`rounded-2xl shadow-2xl p-4 flex flex-col gap-2.5 text-white border transition-colors touch-none select-none ${
               isArrived ? 'bg-emerald-600 border-emerald-500' : 'bg-[#1a73e8] border-blue-500'
             }`}
           >
+            {/* Simulation & Real-time Live Status Bar */}
+            <div className="flex items-center justify-between pb-2 border-b border-white/20 text-xs">
+              {isSimulating ? (
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-100 text-[10px] md:text-[11px] font-black uppercase tracking-wider border border-emerald-400/40">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Demo Walk ({simulationSpeed}x)
+                  </span>
+
+                  {/* Play / Pause Toggle */}
+                  <button
+                    onClick={() => setIsSimulationPaused(!isSimulationPaused)}
+                    className="p-1 hover:bg-white/20 rounded-md transition-colors cursor-pointer"
+                    title={isSimulationPaused ? 'Resume Demo Walk' : 'Pause Demo Walk'}
+                  >
+                    {isSimulationPaused ? <Play className="w-3.5 h-3.5 fill-white" /> : <Pause className="w-3.5 h-3.5 fill-white" />}
+                  </button>
+
+                  {/* Speed Toggle (1x -> 2x -> 4x) */}
+                  <button
+                    onClick={() => setSimulationSpeed(simulationSpeed === 1 ? 2 : simulationSpeed === 2 ? 4 : 1)}
+                    className="px-1.5 py-0.5 hover:bg-white/20 rounded text-[11px] font-black transition-colors cursor-pointer bg-white/10"
+                    title="Change Walking Speed"
+                  >
+                    {simulationSpeed}x
+                  </button>
+
+                  {/* Restart Demo Walk */}
+                  <button
+                    onClick={handleStartSimulation}
+                    className="p-1 hover:bg-white/20 rounded-md transition-colors cursor-pointer"
+                    title="Restart Demo Walk from start"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : isLiveTracking ? (
+                <div className="flex items-center gap-1.5">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-100 text-[11px] font-black uppercase tracking-wider border border-emerald-400/40">
+                    <Radio className="w-3 h-3 text-emerald-300 animate-pulse" />
+                    Live GPS (±{liveLocationAccuracyMeters || 8}m)
+                  </span>
+                </div>
+              ) : (
+                <span className="text-[11px] text-white/80 font-bold uppercase tracking-wider">
+                  Step-by-Step Navigation
+                </span>
+              )}
+
+              <div className="flex items-center gap-2">
+                {/* Voice Guidance Toggle */}
+                <button
+                  onClick={() => {
+                    const nextVal = !isVoiceGuidance;
+                    setIsVoiceGuidance(nextVal);
+                    setLocationToast(nextVal ? 'Voice guidance ON' : 'Voice guidance MUTED');
+                    setTimeout(() => setLocationToast(null), 2000);
+                  }}
+                  className={`p-1.5 rounded-md transition-colors cursor-pointer ${
+                    isVoiceGuidance ? 'bg-white/25 text-white' : 'text-white/50 hover:bg-white/10'
+                  }`}
+                  title={isVoiceGuidance ? 'Mute Voice Directions' : 'Enable Voice Directions'}
+                >
+                  {isVoiceGuidance ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                </button>
+
+                {/* Close Button */}
+                <button
+                  onClick={handleStopNavigation}
+                  className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-xs flex items-center justify-center transition-colors shadow cursor-pointer"
+                  title="Stop / Exit Navigation"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
             {/* Swipe / Scroll affordance hint */}
             {!isArrived && (
-              <div className="flex items-center justify-center gap-2 -mt-1 mb-0.5 text-[9px] font-bold uppercase tracking-widest text-white/70">
+              <div className="flex items-center justify-center gap-2 -mt-0.5 mb-0.5 text-[9px] font-bold uppercase tracking-widest text-white/70">
                 <span className="w-6 h-1 rounded-full bg-white/40" />
                 <span>Swipe or scroll card to change step</span>
                 <span className="w-6 h-1 rounded-full bg-white/40" />
               </div>
             )}
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center font-bold shadow-inner">
@@ -1193,14 +1589,6 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </p>
                 </div>
               </div>
-
-              <button
-                onClick={handleStopNavigation}
-                className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-sm flex items-center justify-center transition-colors shadow cursor-pointer"
-                title="Stop / Close Direction Mode"
-              >
-                <X className="w-4 h-4" />
-              </button>
             </div>
 
             <div className="flex items-center justify-between border-t border-white/20 pt-2 text-xs font-bold">
@@ -1252,15 +1640,19 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         </button>
 
         <button
-          onClick={handleUseCurrentLocation}
+          onClick={isLiveTracking ? () => stopLiveLocationTracking() : handleUseCurrentLocation}
           disabled={isLocating}
-          className={`w-11 h-11 bg-white hover:bg-gray-100 text-blue-600 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer ${
-            isLocating ? 'ring-4 ring-blue-400/50 cursor-wait' : ''
+          className={`w-11 h-11 rounded-xl shadow-xl border flex items-center justify-center transition-all cursor-pointer ${
+            isLiveTracking
+              ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700 ring-4 ring-emerald-400/40'
+              : 'bg-white hover:bg-gray-100 text-blue-600 border-gray-200'
           }`}
-          title="Re-center on My Live Location"
+          title={isLiveTracking ? `Live GPS Active (±${liveLocationAccuracyMeters || 10}m) — Click to pause` : 'Start Live Real-Time GPS Tracking'}
         >
           {isLocating ? (
             <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
+          ) : isLiveTracking ? (
+            <LocateFixed className="w-5 h-5 animate-pulse" />
           ) : (
             <LocateFixed className="w-5 h-5" />
           )}

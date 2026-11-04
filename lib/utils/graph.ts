@@ -15,6 +15,21 @@ export function calculateHaversineDistance(p1: LatLng, p2: LatLng): number {
   return R * c;
 }
 
+// Calculate compass bearing from p1 to p2 in degrees (0 - 360)
+export function calculateBearing(p1: LatLng, p2: LatLng): number {
+  const startLat = (p1.lat * Math.PI) / 180;
+  const startLng = (p1.lng * Math.PI) / 180;
+  const destLat = (p2.lat * Math.PI) / 180;
+  const destLng = (p2.lng * Math.PI) / 180;
+
+  const y = Math.sin(destLng - startLng) * Math.cos(destLat);
+  const x =
+    Math.cos(startLat) * Math.sin(destLat) -
+    Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+  const brng = (Math.atan2(y, x) * 180) / Math.PI;
+  return (brng + 360) % 360;
+}
+
 export function findShortestPath(
   startNodeId: string,
   targetNodeId: string,

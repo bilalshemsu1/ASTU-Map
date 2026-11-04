@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Marker, Popup, Circle, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { Plus, Minus, Copy, Check, MapPin } from 'lucide-react';
 import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/types/map';
@@ -41,6 +41,29 @@ const userLivePinIcon = L.icon({
   popupAnchor: [1, -38],
   shadowSize: [41, 41],
 });
+
+// Google Maps-style navigation puck with pulsating halo and direction heading arrow
+const createNavigationPuckIcon = (heading?: number | null) => {
+  const rotation = heading != null && !isNaN(heading) ? Math.round(heading) : 0;
+  const hasHeading = heading != null && !isNaN(heading);
+  return L.divIcon({
+    className: 'astu-nav-puck-marker',
+    html: `
+      <div style="position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; transform: translate(-22px, -22px); pointer-events: none;">
+        ${
+          hasHeading
+            ? `<div style="position: absolute; top: -2px; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 14px solid #1a73e8; transform-origin: 50% 24px; transform: rotate(${rotation}deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35)); transition: transform 0.25s ease-out;"></div>`
+            : ''
+        }
+        <div style="position: absolute; width: 36px; height: 36px; border-radius: 50%; background: rgba(37, 99, 235, 0.28); animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+        <div style="position: relative; width: 22px; height: 22px; border-radius: 50%; background: #1a73e8; border: 3px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 10;">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: #ffffff;"></div>
+        </div>
+      </div>
+    `,
+    iconSize: [0, 0],
+  });
+};
 
 const getShortBuildingName = (name: string, code: string): string => {
   const clean = name
@@ -110,6 +133,9 @@ interface GoogleMapCanvasClientProps {
   mapType: 'roadmap' | 'satellite' | 'terrain';
   currentNavNode?: PathNode | null;
   liveUserLocation?: LatLng | null;
+  liveLocationAccuracyMeters?: number | null;
+  userHeading?: number | null;
+  isNavigating?: boolean;
   onUpdateLiveLocation?: (coords: LatLng) => void;
   recenterTrigger?: number;
 }
@@ -202,6 +228,9 @@ export default function GoogleMapCanvasClient({
   mapType,
   currentNavNode,
   liveUserLocation,
+  liveLocationAccuracyMeters,
+  userHeading,
+  isNavigating,
   onUpdateLiveLocation,
   recenterTrigger,
 }: GoogleMapCanvasClientProps) {
@@ -213,7 +242,9 @@ export default function GoogleMapCanvasClient({
     return false;
   };
 
-  const mapCenter: [number, number] = currentNavNode
+  const mapCenter: [number, number] = isNavigating && liveUserLocation
+    ? [liveUserLocation.lat, liveUserLocation.lng]
+    : currentNavNode
     ? [currentNavNode.lat, currentNavNode.lng]
     : selectedBuilding
     ? [selectedBuilding.center.lat, selectedBuilding.center.lng]
@@ -221,7 +252,7 @@ export default function GoogleMapCanvasClient({
     ? [liveUserLocation.lat, liveUserLocation.lng]
     : [meta.center.lat, meta.center.lng];
 
-  const mapZoom = currentNavNode ? 19 : selectedBuilding ? 18 : liveUserLocation ? 18 : meta.zoom || 17;
+  const mapZoom = isNavigating ? 19 : currentNavNode ? 19 : selectedBuilding ? 18 : liveUserLocation ? 18 : meta.zoom || 17;
 
   const handleMapClick = (coords: { lat: number; lng: number }) => {
     // Map click handler for user interaction
@@ -316,32 +347,55 @@ export default function GoogleMapCanvasClient({
           );
         })}
 
-        {/* Live GPS Location Draggable Blue Pin */}
+        {/* Live GPS Location: Navigation Puck during navigation, or Draggable Blue Pin in preview mode */}
         {liveUserLocation && (
-          <Marker
-            position={[liveUserLocation.lat, liveUserLocation.lng]}
-            icon={userLivePinIcon}
-            draggable={true}
-            eventHandlers={{
-              dragend: (e) => {
-                const targetMarker = e.target as L.Marker;
-                const pos = targetMarker.getLatLng();
-                if (onUpdateLiveLocation) {
-                  onUpdateLiveLocation({ lat: pos.lat, lng: pos.lng });
-                }
-              },
-            }}
-          >
-            <Popup>
-              <div className="p-1 text-xs font-sans">
-                <strong className="text-blue-600 font-extrabold block">🎯 Your Start / GPS Position</strong>
-                <span className="text-gray-500 block text-[10px] mt-0.5">💡 Tip: Drag this blue pin anywhere to adjust your exact start point!</span>
-              </div>
-            </Popup>
-          </Marker>
+          <>
+            {liveLocationAccuracyMeters !== null && liveLocationAccuracyMeters !== undefined && liveLocationAccuracyMeters > 0 && (
+              <Circle
+                center={[liveUserLocation.lat, liveUserLocation.lng]}
+                radius={Math.min(liveLocationAccuracyMeters, 150)}
+                pathOptions={{
+                  color: '#2563eb',
+                  fillColor: '#3b82f6',
+                  fillOpacity: 0.12,
+                  opacity: 0.5,
+                  weight: 1,
+                }}
+              />
+            )}
+            <Marker
+              position={[liveUserLocation.lat, liveUserLocation.lng]}
+              icon={isNavigating ? createNavigationPuckIcon(userHeading) : userLivePinIcon}
+              draggable={!isNavigating}
+              zIndexOffset={1200}
+              eventHandlers={{
+                dragend: (e) => {
+                  if (isNavigating) return;
+                  const targetMarker = e.target as L.Marker;
+                  const pos = targetMarker.getLatLng();
+                  if (onUpdateLiveLocation) {
+                    onUpdateLiveLocation({ lat: pos.lat, lng: pos.lng });
+                  }
+                },
+              }}
+            >
+              <Popup>
+                <div className="p-1 text-xs font-sans">
+                  <strong className="text-blue-600 font-extrabold block">
+                    {isNavigating ? '🧭 Your Live Navigation Position' : '🎯 Your Start / GPS Position'}
+                  </strong>
+                  {!isNavigating && (
+                    <span className="text-gray-500 block text-[10px] mt-0.5">
+                      💡 Tip: Drag this blue pin anywhere to adjust your exact start point!
+                    </span>
+                  )}
+                </div>
+              </Popup>
+            </Marker>
+          </>
         )}
 
-        {/* Start Location Marker */}
+        {/* Start Location Marker (when live location is not active) */}
         {startNode && !currentNavNode && !liveUserLocation && (
           <Marker position={[startNode.lat, startNode.lng]} icon={startPinIcon}>
             <Popup>
@@ -352,20 +406,20 @@ export default function GoogleMapCanvasClient({
           </Marker>
         )}
 
-        {/* Active Navigation Pulsating Location Blue Circle Marker */}
+        {/* Upcoming Navigation Waypoint Indicator */}
         {currentNavNode && (
           <CircleMarker
             center={[currentNavNode.lat, currentNavNode.lng]}
-            radius={10}
+            radius={liveUserLocation ? 6 : 10}
             pathOptions={{
               color: '#ffffff',
-              fillColor: '#4285f4',
+              fillColor: liveUserLocation ? '#10b981' : '#4285f4',
               fillOpacity: 1,
-              weight: 3,
+              weight: 2.5,
             }}
           >
             <Popup>
-              <div className="text-xs font-bold text-blue-600">Current Navigation Step</div>
+              <div className="text-xs font-bold text-emerald-700">Next Turn Waypoint</div>
             </Popup>
           </CircleMarker>
         )}

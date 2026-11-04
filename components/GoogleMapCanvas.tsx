@@ -26,6 +26,10 @@ interface GoogleMapCanvasProps {
   mapType: 'roadmap' | 'satellite' | 'terrain';
   currentNavNode?: PathNode | null;
   liveUserLocation?: LatLng | null;
+  liveLocationAccuracyMeters?: number | null;
+  userHeading?: number | null;
+  isNavigating?: boolean;
+  followUser?: boolean;
   onUpdateLiveLocation?: (coords: LatLng) => void;
   recenterTrigger?: number;
 }
