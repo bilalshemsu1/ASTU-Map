@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Polyline, Marker, Popup, Circle, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import { Plus, Minus, Copy, Check, MapPin } from 'lucide-react';
+import { Plus, Minus, Copy, Check, MapPin, Compass, LocateFixed, Info } from 'lucide-react';
 import { CampusData, Building, RouteResult, PathNode, LatLng } from '../lib/types/map';
 
 const googleMarkerIcon = L.icon({
@@ -381,12 +381,23 @@ export default function GoogleMapCanvasClient({
             >
               <Popup>
                 <div className="p-1 text-xs font-sans">
-                  <strong className="text-blue-600 font-extrabold block">
-                    {isNavigating ? '🧭 Your Live Navigation Position' : '🎯 Your Start / GPS Position'}
+                  <strong className="text-blue-600 font-extrabold flex items-center gap-1.5">
+                    {isNavigating ? (
+                      <>
+                        <Compass className="w-3.5 h-3.5 text-blue-600 inline flex-shrink-0" />
+                        <span>Your Live Navigation Position</span>
+                      </>
+                    ) : (
+                      <>
+                        <LocateFixed className="w-3.5 h-3.5 text-blue-600 inline flex-shrink-0" />
+                        <span>Your Start / GPS Position</span>
+                      </>
+                    )}
                   </strong>
                   {!isNavigating && (
-                    <span className="text-gray-500 block text-[10px] mt-0.5">
-                      💡 Tip: Drag this blue pin anywhere to adjust your exact start point!
+                    <span className="text-gray-500 flex items-center gap-1 text-[10px] mt-1">
+                      <Info className="w-3 h-3 text-amber-500 inline flex-shrink-0" />
+                      <span>Tip: Drag this blue pin anywhere to adjust your exact start point!</span>
                     </span>
                   )}
                 </div>

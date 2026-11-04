@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Polygon, Polyline, Marker, Popup, CircleMarker, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import { MapPin } from 'lucide-react';
 import { CampusData, Building, RouteResult } from '../lib/types/map';
 
 // Fix Leaflet default icon paths in Next.js
@@ -164,8 +165,9 @@ export default function MapRendererClient({
                   <div className="p-1 text-slate-900">
                     <h3 className="font-bold text-sm text-sky-700">{b.name}</h3>
                     <p className="text-xs text-slate-600 font-semibold mb-1">Code: {b.code}</p>
-                    <p className="text-xs text-slate-500 mb-2">
-                      📍 ({b.center.lat.toFixed(5)}, {b.center.lng.toFixed(5)})
+                    <p className="text-xs text-slate-500 mb-2 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-rose-500 inline flex-shrink-0" />
+                      <span>({b.center.lat.toFixed(5)}, {b.center.lng.toFixed(5)})</span>
                     </p>
                     {b.rooms.length > 0 && (
                       <div className="border-t border-slate-200 pt-1">

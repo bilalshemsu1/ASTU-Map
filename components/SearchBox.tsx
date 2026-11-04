@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { MapPin, DoorOpen } from 'lucide-react';
 import { CampusData, Building, Room, PathNode } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
 
@@ -113,7 +114,10 @@ export default function SearchBox({
                     onClick={() => handleSelectPresetNode(n)}
                     className="px-3 py-2 text-xs hover:bg-slate-800 rounded cursor-pointer flex justify-between items-center text-slate-300"
                   >
-                    <span>📍 {n.label}</span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" />
+                      <span>{n.label}</span>
+                    </span>
                     <span className="text-slate-500">Preset</span>
                   </div>
                 ))}
@@ -135,8 +139,11 @@ export default function SearchBox({
                   </span>
                 </div>
                 {res.matchingRoom && (
-                  <p className="text-xs text-emerald-400 mt-0.5">
-                    🚪 Matched Room: <span className="font-semibold">{res.matchingRoom.name}</span>
+                  <p className="text-xs text-emerald-400 mt-0.5 flex items-center gap-1.5">
+                    <DoorOpen className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>
+                      Matched Room: <span className="font-semibold">{res.matchingRoom.name}</span>
+                    </span>
                   </p>
                 )}
                 {res.building.aliases.length > 0 && (

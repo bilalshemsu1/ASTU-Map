@@ -1560,8 +1560,15 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                     ({formatDistance(routeResult.totalDistanceMeters)})
                   </span>
                 </div>
-                <div className="text-xs text-gray-500 font-medium mt-0.5">
-                  {isAccessibleMode ? '♿ Accessible ramp path (No stairs)' : 'Fastest foot path • ASTU Campus'}
+                <div className="text-xs text-gray-500 font-medium mt-0.5 flex items-center">
+                  {isAccessibleMode ? (
+                    <>
+                      <Accessibility className="w-3.5 h-3.5 text-emerald-600 inline mr-1 flex-shrink-0" />
+                      <span>Accessible ramp path (No stairs)</span>
+                    </>
+                  ) : (
+                    <span>Fastest foot path • ASTU Campus</span>
+                  )}
                 </div>
               </div>
 
