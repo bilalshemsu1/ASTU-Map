@@ -43,11 +43,71 @@
       },
       "rooms": [
         {
-          "id": "scafe_hall",
-          "name": "Student Main Dining Hall",
+          "id": "scafe_main_hall_a",
+          "name": "Student Main Dining Hall A",
+          "floor": 0,
+          "type": "service",
+          "capacity": 600,
+          "workDescription": "Undergraduate daily breakfast, lunch, and dinner meal serving line and dining seating",
+          "equipment": [
+            "Stainless Steel Food Distribution Counters",
+            "Steam Food Warmers",
+            "Bain-Marie Tables",
+            "Handwashing Troughs"
+          ]
+        },
+        {
+          "id": "scafe_kitchen",
+          "name": "Industrial Kitchen & Food Preparation Center",
+          "floor": 0,
+          "type": "service",
+          "capacity": 50,
+          "workDescription": "Commercial-scale food preparation, traditional injera baking, and soup/stew cooking",
+          "equipment": [
+            "Industrial Steam Cookers",
+            "Injera Baking Mitad Batteries",
+            "Walk-in Cold Storage Rooms",
+            "Industrial Dough Mixers"
+          ]
+        },
+        {
+          "id": "scafe_hygiene_off",
+          "name": "Food Quality & Sanitation Inspection Desk",
+          "floor": 0,
+          "type": "office",
+          "capacity": 10,
+          "workDescription": "Daily ingredient quality control, food sanitation testing, and nutrition standards compliance",
+          "equipment": [
+            "Food Temperature Loggers",
+            "Inspection Desk",
+            "Sanitation Assay Kits"
+          ]
+        },
+        {
+          "id": "scafe_upper_hall_b",
+          "name": "Upper Dining Hall B & Student Canteen",
           "floor": 1,
-          "type": "Cafeteria",
-          "workDescription": "Main undergraduate dining cafeteria serving student meals."
+          "type": "service",
+          "capacity": 400,
+          "workDescription": "Auxiliary dining hall during peak hours, afternoon tea, snacks, and student social canteen",
+          "equipment": [
+            "Dining Tables & Benches",
+            "Beverage Refrigerators",
+            "Coffee & Tea Brewing Station"
+          ]
+        },
+        {
+          "id": "scafe_directorate",
+          "name": "Catering Services Directorate & Meal Cards Office",
+          "floor": 1,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Student dining roster administration, meal card distribution, and food logistics procurement",
+          "equipment": [
+            "Management Workstations",
+            "Card Verification Readers",
+            "Supply Filing Ledger"
+          ]
         }
       ],
       "entranceNodeId": "n_students_cafe",
@@ -57,7 +117,18 @@
         ],
         "description": "ASTU Students Main Dining Hall & Cafeteria.",
         "department": "Campus Food & Student Services Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "open": "07:00",
+          "close": "20:00",
+          "meals": {
+            "breakfast": "07:00 - 08:30",
+            "lunch": "11:30 - 14:00",
+            "dinner": "17:30 - 19:30"
+          }
+        },
+        "hours": "Daily: 07:00 - 20:00 (Breakfast: 07:00 - 08:30 | Lunch: 11:30 - 14:00 | Dinner: 17:30 - 19:30)"
       }
     },
     {
@@ -95,11 +166,83 @@
       },
       "rooms": [
         {
-          "id": "fac1_rooms",
-          "name": "Campus Facility Rooms",
+          "id": "fac1_nano_lab",
+          "name": "Materials Science & Nanotechnology Workshop",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Nanomaterial synthesis, crystal structure characterization, and thin-film coating research",
+          "equipment": [
+            "Sputter Coaters",
+            "Optical Metallurgical Microscopes",
+            "Ultrasonic Sonicators",
+            "High-temperature Furnaces"
+          ]
+        },
+        {
+          "id": "fac1_amphi",
+          "name": "Technology Block Amphitheater 1",
+          "floor": 0,
+          "type": "lecture_hall",
+          "capacity": 220,
+          "workDescription": "Multidisciplinary science lectures, university colloquiums, and defense presentations",
+          "equipment": [
+            "Dual Projectors",
+            "Public Address System",
+            "Stage Lighting"
+          ]
+        },
+        {
+          "id": "fac1_sensor_lab",
+          "name": "Instrumentation & Sensor Calibration Lab",
           "floor": 1,
-          "type": "Academic Block",
-          "workDescription": "ASTU campus facility."
+          "type": "laboratory",
+          "capacity": 50,
+          "workDescription": "Transducer measurements, precision voltage reference calibrations, and analog sensor testing",
+          "equipment": [
+            "Precision Digital Multimeters",
+            "Frequency Counters",
+            "Calibration Benches",
+            "LCR Meters"
+          ]
+        },
+        {
+          "id": "fac1_dept_off",
+          "name": "Technology Block Directorate Offices",
+          "floor": 1,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Academic laboratory coordination, safety protocols management, and facility reservations",
+          "equipment": [
+            "Administrative Workstations",
+            "Meeting Room Suite"
+          ]
+        },
+        {
+          "id": "fac1_applied_math",
+          "name": "Computational Physics & Modeling Lab",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 55,
+          "workDescription": "Numerical simulations, finite element analysis (FEA), and computational fluid mechanics modeling",
+          "equipment": [
+            "Simulation Workstations",
+            "MATLAB & COMSOL Licenses",
+            "Display Projector"
+          ]
+        },
+        {
+          "id": "fac1_study_space",
+          "name": "Open Engineering Study Commons",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 75,
+          "workDescription": "Student quiet revision, interdisciplinary design discussions, and study groups",
+          "equipment": [
+            "Study Desks",
+            "Charging Stations",
+            "Whiteboards"
+          ]
         }
       ],
       "entranceNodeId": "n_fac1",
@@ -109,7 +252,13 @@
         ],
         "description": "ASTU multi-purpose technology facility housing modern academic laboratories, lecture halls, and staff offices.",
         "department": "Academic / Administrative",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:00"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:00"
       }
     },
     {
@@ -148,11 +297,59 @@
       },
       "rooms": [
         {
-          "id": "onab_main",
-          "name": "Oda Nebe Main Conference & Orientation Hall (Adarash)",
+          "id": "onab_main_auditorium",
+          "name": "Oda Nebe Grand Assembly & Convocation Auditorium",
+          "floor": 0,
+          "type": "lecture_hall",
+          "capacity": 1200,
+          "workDescription": "University graduation ceremonies, national scientific conferences, presidential addresses, and cultural festivals",
+          "equipment": [
+            "High-output Line Array PA System",
+            "Stage Theatrical Lighting",
+            "Triple HD Projection Screens",
+            "Motorized Stage Curtains",
+            "Podium Microphones"
+          ]
+        },
+        {
+          "id": "onab_vip_lounge",
+          "name": "VIP Dignitaries Lounge & Protocol Reception",
+          "floor": 0,
+          "type": "service",
+          "capacity": 40,
+          "workDescription": "VIP hospitality, visiting ministers & international delegations protocol, and speaker green room",
+          "equipment": [
+            "Executive Lounge Suites",
+            "Hospitality Servery",
+            "Private Restrooms"
+          ]
+        },
+        {
+          "id": "onab_av_control",
+          "name": "Audio-Visual Control & Event Broadcasting Studio",
           "floor": 1,
-          "type": "Assembly Hall",
-          "workDescription": "University central assembly hall for orientation, conferences, workshops, and official ceremonies."
+          "type": "service",
+          "capacity": 15,
+          "workDescription": "Live audio mixing, stage lighting control, multi-camera video switching, and livestream broadcasting",
+          "equipment": [
+            "32-Channel Digital Mixing Console",
+            "Video Switchers",
+            "Live Streaming Encoders",
+            "DMX Stage Lighting Board"
+          ]
+        },
+        {
+          "id": "onab_events_off",
+          "name": "University Events & Protocol Directorate Office",
+          "floor": 1,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Event calendar scheduling, stage logistics coordination, and campus ceremonial protocol",
+          "equipment": [
+            "Booking Terminals",
+            "Event Production Desks",
+            "PA System Monitor"
+          ]
         }
       ],
       "entranceNodeId": "n_oda_nebe",
@@ -162,7 +359,13 @@
         ],
         "description": "Oda Nebe Main Conference & Orientation Hall (Adarash)Primary venue for student orientation, academic conferences, and university ceremonies.",
         "department": "University Events & Student Union Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "17:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 17:30"
       }
     },
     {
@@ -200,11 +403,44 @@
       },
       "rooms": [
         {
-          "id": "vac_studio",
-          "name": "Visual Arts & Graphics Studio",
+          "id": "vac_fine_arts",
+          "name": "Fine Arts & Painting Studio",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 40,
+          "workDescription": "Student oil painting, sketching, pottery, and sculpture creative sessions",
+          "equipment": [
+            "Painting Easels",
+            "Canvas Stretchers",
+            "Ceramic Wheels",
+            "Sculpting Tools"
+          ]
+        },
+        {
+          "id": "vac_digital_media",
+          "name": "Digital Media & Graphic Design Studio",
           "floor": 1,
-          "type": "Student Club Studio",
-          "workDescription": "Creative workspace for student fine arts, design, digital media, and exhibitions."
+          "type": "laboratory",
+          "capacity": 35,
+          "workDescription": "Digital illustration, posters and banner design, and animation workshops",
+          "equipment": [
+            "Graphic Tablets",
+            "High-res Color Printers",
+            "Design Workstations"
+          ]
+        },
+        {
+          "id": "vac_gallery",
+          "name": "Student Art Gallery & Exhibition Hall",
+          "floor": 1,
+          "type": "study_hall",
+          "capacity": 80,
+          "workDescription": "Public student art exhibitions, design showcases, and cultural art fairs",
+          "equipment": [
+            "Spotlight Rails",
+            "Display Stands",
+            "Gallery Hanging Systems"
+          ]
         }
       ],
       "entranceNodeId": "n_vac",
@@ -214,7 +450,13 @@
         ],
         "description": "ASTU Visual Arts Society Club studio.",
         "department": "Student Union & Creative Arts Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Sat",
+          "open": "09:00",
+          "close": "19:00"
+        },
+        "hours": "Mon - Sat: 09:00 - 19:00"
       }
     },
     {
@@ -251,11 +493,71 @@
       },
       "rooms": [
         {
-          "id": "ecb_hall",
-          "name": "East Campus Study & Seminar Rooms",
+          "id": "ecb_lecture_1",
+          "name": "East Campus Lecture Hall 1",
+          "floor": 0,
+          "type": "lecture_hall",
+          "capacity": 200,
+          "workDescription": "General science lectures, foundational undergraduate courses, and seminar assemblies",
+          "equipment": [
+            "Ceiling Projector",
+            "PA Sound System",
+            "Tiered Lecture Seating"
+          ]
+        },
+        {
+          "id": "ecb_physics_lab",
+          "name": "East Campus Experimental Physics Lab",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Classical mechanics demonstrations, optics experiments, and basic electromagnetism practicals",
+          "equipment": [
+            "Optical Benches",
+            "Spectrometers",
+            "Mechanics Dynamics Carts",
+            "Digital Oscilloscopes"
+          ]
+        },
+        {
+          "id": "ecb_chem_lab",
+          "name": "East Campus General Chemistry Lab",
           "floor": 1,
-          "type": "Academic Block",
-          "workDescription": "East campus academic facility."
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Qualitative chemical analysis, acid-base titrations, and thermochemistry experiments",
+          "equipment": [
+            "Chemical Fume Hoods",
+            "Titration Burette Stands",
+            "Analytical Balances",
+            "Centrifuges"
+          ]
+        },
+        {
+          "id": "ecb_faculty_off",
+          "name": "East Campus Faculty Consultation Suite",
+          "floor": 1,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Instructor office hours, tutorial sessions, and student advisory consultations",
+          "equipment": [
+            "Faculty Desks",
+            "Reference Shelves",
+            "Laser Printer"
+          ]
+        },
+        {
+          "id": "ecb_study_hall",
+          "name": "East Campus Reading & Seminar Hall",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 90,
+          "workDescription": "Quiet individual study, group revision, and departmental seminars",
+          "equipment": [
+            "Long Study Desks",
+            "Reading Lamps",
+            "High-speed Wi-Fi"
+          ]
         }
       ],
       "entranceNodeId": "n_ecb",
@@ -265,7 +567,13 @@
         ],
         "description": "ASTU East Campus Block.",
         "department": "Academic Affairs",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:00"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:00"
       }
     },
     {
@@ -303,11 +611,96 @@
       },
       "rooms": [
         {
-          "id": "fdorm_blocks",
-          "name": "Female Housing Blocks",
+          "id": "fdorm_warden",
+          "name": "Dormitory Proctor & Security Office",
+          "floor": 0,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Student resident intake, room key management, visitor sign-in, and residential health emergency response",
+          "equipment": [
+            "Proctor Log Desk",
+            "CCTV Monitoring Screen",
+            "First Aid Station",
+            "Master Key Safe"
+          ]
+        },
+        {
+          "id": "fdorm_g_rooms",
+          "name": "Ground Floor Residential Quarters",
+          "floor": 0,
+          "type": "service",
+          "capacity": 120,
+          "workDescription": "Undergraduate female student housing accommodations",
+          "equipment": [
+            "Bunk Beds",
+            "Steel Lockers",
+            "Study Desks"
+          ]
+        },
+        {
+          "id": "fdorm_study_1",
+          "name": "Block A Silent Study Lounge",
           "floor": 1,
-          "type": "Student Housing",
-          "workDescription": "Residential dormitory housing blocks for female undergraduate students."
+          "type": "study_hall",
+          "capacity": 50,
+          "workDescription": "Night study, exam revision, and quiet peer discussion for residential students",
+          "equipment": [
+            "Study Tables",
+            "Whiteboard",
+            "Power Sockets"
+          ]
+        },
+        {
+          "id": "fdorm_1_rooms",
+          "name": "First Floor Residential Quarters",
+          "floor": 1,
+          "type": "service",
+          "capacity": 150,
+          "workDescription": "Undergraduate female student housing accommodations",
+          "equipment": [
+            "Bunk Beds",
+            "Steel Lockers",
+            "Study Desks"
+          ]
+        },
+        {
+          "id": "fdorm_2_rooms",
+          "name": "Second Floor Residential Quarters",
+          "floor": 2,
+          "type": "service",
+          "capacity": 150,
+          "workDescription": "Undergraduate female student housing accommodations",
+          "equipment": [
+            "Bunk Beds",
+            "Steel Lockers",
+            "Study Desks"
+          ]
+        },
+        {
+          "id": "fdorm_common",
+          "name": "Resident Common & Recreation Lounge",
+          "floor": 2,
+          "type": "service",
+          "capacity": 60,
+          "workDescription": "Social gathering, evening television news viewing, and recreational downtime",
+          "equipment": [
+            "Community TV Screen",
+            "Lounge Sofas",
+            "Reading Rack"
+          ]
+        },
+        {
+          "id": "fdorm_3_rooms",
+          "name": "Third Floor Residential Quarters",
+          "floor": 3,
+          "type": "service",
+          "capacity": 150,
+          "workDescription": "Undergraduate female student housing accommodations",
+          "equipment": [
+            "Bunk Beds",
+            "Steel Lockers",
+            "Study Desks"
+          ]
         }
       ],
       "entranceNodeId": "n_female_dorm",
@@ -317,7 +710,12 @@
         ],
         "description": "ASTU Female Dormitory.",
         "department": "Student Housing Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "is24x7": true
+        },
+        "hours": "24 Hours / 7 Days (Resident Access)"
       }
     },
     {
@@ -357,10 +755,31 @@
       "rooms": [
         {
           "id": "kttc_court",
-          "name": "KT Outdoor Tennis Arena",
+          "name": "KT Championship Outdoor Tennis Court",
           "floor": 0,
-          "type": "Outdoor Sports Facility",
-          "workDescription": "Outdoor hard court tennis facility for student and staff athletics."
+          "type": "service",
+          "capacity": 150,
+          "workDescription": "Tennis tournaments, student tennis club coaching, and recreational matches",
+          "equipment": [
+            "Hard Court Surface",
+            "Regulation Tennis Nets",
+            "High-Intensity LED Floodlights",
+            "Spectator Bleachers"
+          ]
+        },
+        {
+          "id": "kttc_depot",
+          "name": "Tennis Equipment & Racket Depot",
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Tennis racket loans, ball machine operation, and court maintenance storage",
+          "equipment": [
+            "Racket Racks",
+            "Tennis Ball Machines",
+            "Stringing Machine",
+            "Ball Carts"
+          ]
         }
       ],
       "entranceNodeId": "n_kt_tennis",
@@ -370,7 +789,13 @@
         ],
         "description": "KT Outdoor Tennis Court.",
         "department": "Sports & Youth Development Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "open": "06:00",
+          "close": "20:00"
+        },
+        "hours": "Daily: 06:00 - 20:00"
       }
     },
     {
@@ -413,8 +838,42 @@
           "id": "stad_field",
           "name": "Main Football Pitch & Athletics Track",
           "floor": 0,
-          "type": "Outdoor Sports Facility",
-          "workDescription": "Outdoor sports stadium, football pitch, and running track arena."
+          "type": "service",
+          "capacity": 3000,
+          "workDescription": "Inter-collegiate soccer tournaments, track & field events, university athletic days, and campus drills",
+          "equipment": [
+            "Natural Turf Pitch",
+            "8-Lane Tartan Running Track",
+            "Regulation Goal Posts",
+            "Floodlight Masts"
+          ]
+        },
+        {
+          "id": "stad_locker",
+          "name": "Athletes Changing Rooms & Equipment Store",
+          "floor": 0,
+          "type": "service",
+          "capacity": 60,
+          "workDescription": "Team locker room, referee changing quarters, sports gear distribution, and sports medical triage",
+          "equipment": [
+            "Locker Benches",
+            "Shower Stalls",
+            "Football & Athletics Racks",
+            "First Aid Stretchers"
+          ]
+        },
+        {
+          "id": "stad_office",
+          "name": "Sports & Athletics Coaching Office",
+          "floor": 0,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "University athletics coordination, intramural tournament scheduling, and coach administration",
+          "equipment": [
+            "Coach Desks",
+            "Championship Trophy Display",
+            "Scorekeeping Equipment"
+          ]
         }
       ],
       "entranceNodeId": "n_stadium",
@@ -424,7 +883,13 @@
         ],
         "description": "ASTU Main Outdoor Football Stadium & Athletics Sports Facility.",
         "department": "Sports & Youth Development Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "open": "06:00",
+          "close": "20:00"
+        },
+        "hours": "Daily: 06:00 - 20:00"
       }
     },
     {
@@ -463,11 +928,80 @@
       },
       "rooms": [
         {
-          "id": "fmdorm_blocks",
-          "name": "Freshman Housing Blocks",
+          "id": "fmdorm_proctor",
+          "name": "Freshman Proctor & Warden Administration",
+          "floor": 0,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Freshman resident intake, room allocation, dormitory regulations orientation, and evening security checks",
+          "equipment": [
+            "Proctor Desk",
+            "Resident Registry Computer",
+            "First Aid Kit",
+            "Key Vault"
+          ]
+        },
+        {
+          "id": "fmdorm_g_rooms",
+          "name": "Ground Floor Freshman Residence Units",
+          "floor": 0,
+          "type": "service",
+          "capacity": 140,
+          "workDescription": "First-year undergraduate male student housing",
+          "equipment": [
+            "Bunk Beds",
+            "Lockers",
+            "Individual Study Desks"
+          ]
+        },
+        {
+          "id": "fmdorm_study_1",
+          "name": "Freshman Floor 1 Academic Study Hall",
           "floor": 1,
-          "type": "Student Housing",
-          "workDescription": "Primary residential housing blocks for first-year undergraduate students managed by Division of Freshman Programs (FDP)."
+          "type": "study_hall",
+          "capacity": 60,
+          "workDescription": "Evening calculus and physics problem sessions, group study, and exam revision",
+          "equipment": [
+            "Long Study Desks",
+            "Whiteboard",
+            "Power Outlets"
+          ]
+        },
+        {
+          "id": "fmdorm_1_rooms",
+          "name": "Floor 1 Freshman Residence Units",
+          "floor": 1,
+          "type": "service",
+          "capacity": 160,
+          "workDescription": "First-year undergraduate male student housing",
+          "equipment": [
+            "Bunk Beds",
+            "Lockers"
+          ]
+        },
+        {
+          "id": "fmdorm_2_rooms",
+          "name": "Floor 2 Freshman Residence Units",
+          "floor": 2,
+          "type": "service",
+          "capacity": 160,
+          "workDescription": "First-year undergraduate male student housing",
+          "equipment": [
+            "Bunk Beds",
+            "Lockers"
+          ]
+        },
+        {
+          "id": "fmdorm_3_rooms",
+          "name": "Floor 3 Freshman Residence Units",
+          "floor": 3,
+          "type": "service",
+          "capacity": 160,
+          "workDescription": "First-year undergraduate male student housing",
+          "equipment": [
+            "Bunk Beds",
+            "Lockers"
+          ]
         }
       ],
       "entranceNodeId": "n_freshman_dorm",
@@ -476,7 +1010,12 @@
           "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"
         ],
         "department": "Student Housing & Freshman Programs Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "is24x7": true
+        },
+        "hours": "24 Hours / 7 Days (Resident Access)"
       }
     },
     {
@@ -514,11 +1053,56 @@
       },
       "rooms": [
         {
-          "id": "flib_r1",
-          "name": "Female Library Main Reading Room",
+          "id": "flib_circ",
+          "name": "Female Library Circulation & Inquiries Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 30,
+          "workDescription": "Textbook checkout, study hall room allocations, and student library registrations",
+          "equipment": [
+            "Barcode Scanners",
+            "Circulation Computer",
+            "RFID Gate"
+          ]
+        },
+        {
+          "id": "flib_g_hall",
+          "name": "Ground Floor Silent Reading Room",
+          "floor": 0,
+          "type": "study_hall",
+          "capacity": 130,
+          "workDescription": "Quiet individual study and textbook review for undergraduate female students",
+          "equipment": [
+            "Study Carrels",
+            "Ergonomic Chairs",
+            "Power Extension Strips"
+          ]
+        },
+        {
+          "id": "flib_1_hall",
+          "name": "First Floor Collaborative Study Hall",
           "floor": 1,
-          "type": "Quiet Study Area",
-          "workDescription": "Dedicated quiet study space & academic library for female students."
+          "type": "study_hall",
+          "capacity": 140,
+          "workDescription": "Group discussions, engineering assignment reviews, and exam preparation",
+          "equipment": [
+            "Group Worktables",
+            "Whiteboards",
+            "Wi-Fi Access Points"
+          ]
+        },
+        {
+          "id": "flib_elib",
+          "name": "Female Students Digital Learning Lab",
+          "floor": 1,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Online academic database exploration, digital e-book access, and academic papers search",
+          "equipment": [
+            "Desktop Computers",
+            "Network Laser Printer",
+            "High-speed Internet Access"
+          ]
         }
       ],
       "entranceNodeId": "n_female_library",
@@ -528,7 +1112,13 @@
         ],
         "description": "ASTU Female Library.",
         "department": "Library Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "21:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 21:30"
       }
     },
     {
@@ -567,11 +1157,56 @@
       },
       "rooms": [
         {
-          "id": "pglib_r1",
-          "name": "Postgraduate Reading & Research Hall",
+          "id": "pglib_thesis_room",
+          "name": "Postgraduate Dissertation & Thesis Repository",
+          "floor": 0,
+          "type": "study_hall",
+          "capacity": 80,
+          "workDescription": "Consultation of completed ASTU Masters theses, doctoral dissertations, and research archives",
+          "equipment": [
+            "Thesis Archival Shelving",
+            "Microfiche / Scanner Station",
+            "Electronic Catalog Terminals"
+          ]
+        },
+        {
+          "id": "pglib_service_desk",
+          "name": "Postgraduate Research Librarian & Consultation Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Inter-library loans, research citation support, plagiarism scan verification, and bibliography consulting",
+          "equipment": [
+            "Librarian Workstation",
+            "Turnitin Verification Terminal",
+            "Document Scanner"
+          ]
+        },
+        {
+          "id": "pglib_silent_hall",
+          "name": "Scholars & PhD Candidates Silent Research Hall",
           "floor": 1,
-          "type": "Research Library",
-          "workDescription": "Dedicated research library, digital archives, and study halls for postgraduate masters & PhD students."
+          "type": "study_hall",
+          "capacity": 110,
+          "workDescription": "Advanced independent research, scientific article composition, and dissertation writing",
+          "equipment": [
+            "Individual Research Cubicles",
+            "Dedicated Power Outlets",
+            "Adjustable Reading Lamps"
+          ]
+        },
+        {
+          "id": "pglib_seminar_room",
+          "name": "Graduate Colloquium & Defense Seminar Room",
+          "floor": 1,
+          "type": "lecture_hall",
+          "capacity": 60,
+          "workDescription": "Postgraduate thesis defense presentations, research symposiums, and visiting researcher colloquiums",
+          "equipment": [
+            "Laser Projector",
+            "U-shaped Conference Tables",
+            "Teleconferencing Mic Array"
+          ]
         }
       ],
       "entranceNodeId": "n_pg_library",
@@ -581,7 +1216,13 @@
         ],
         "description": "ASTU Postgraduate Library.",
         "department": "Library & Post-Graduate Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "21:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 21:30"
       }
     },
     {
@@ -621,11 +1262,155 @@
       },
       "rooms": [
         {
-          "id": "soeec_labs",
-          "name": "Electrical & Computer Engineering Laboratories",
+          "id": "soeec_power_lab",
+          "name": "Power Systems & High Voltage Lab",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "High-voltage testing, power grid simulation, transformer characterization, and electrical machinery experiments",
+          "equipment": [
+            "Transformer Test Benches",
+            "High Voltage Probes",
+            "Power Quality Analyzers",
+            "Motor Dynamometers"
+          ]
+        },
+        {
+          "id": "soeec_embedded_lab",
+          "name": "Robotics & Embedded Systems Lab",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 50,
+          "workDescription": "Microcontroller programming, sensor integration, robotic actuators, and IoT firmware prototyping",
+          "equipment": [
+            "FPGA Development Boards",
+            "Digital Storage Oscilloscopes",
+            "Soldering Stations",
+            "Logic Analyzers",
+            "3D Printers"
+          ]
+        },
+        {
+          "id": "soeec_amphi",
+          "name": "SOEEC Amphitheatre Lecture Hall 1",
+          "floor": 0,
+          "type": "lecture_hall",
+          "capacity": 260,
+          "workDescription": "Undergraduate engineering lectures, tech symposiums, code competitions, and guest speaker seminars",
+          "equipment": [
+            "Dual Projectors",
+            "Sound System",
+            "Wireless Microphones",
+            "Podium Control System"
+          ]
+        },
+        {
+          "id": "soeec_ai_lab",
+          "name": "Software Engineering & AI Computing Lab",
           "floor": 1,
-          "type": "Academic & Research Labs",
-          "workDescription": "Software engineering, hardware, microelectronics, embedded systems, and telecommunication laboratories."
+          "type": "laboratory",
+          "capacity": 60,
+          "workDescription": "Machine learning model training, full-stack software development, and capstone software projects",
+          "equipment": [
+            "High-spec GPU Workstations",
+            "Gigabit Switch Racks",
+            "Dual 4K Monitors"
+          ]
+        },
+        {
+          "id": "soeec_telecom_lab",
+          "name": "Telecommunications & RF Signal Processing Lab",
+          "floor": 1,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Wireless communications, modulation analysis, antenna radiation pattern testing, and microwave experiments",
+          "equipment": [
+            "Spectrum Analyzers",
+            "RF Signal Generators",
+            "Vector Network Analyzers",
+            "Antenna Test Kits"
+          ]
+        },
+        {
+          "id": "soeec_dean_off",
+          "name": "Dean of SOEEC Executive Suite",
+          "floor": 1,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "School administrative leadership, academic department supervision, faculty meetings, and industry partnerships",
+          "equipment": [
+            "Executive Conference Table",
+            "Video Display System",
+            "Document Filing Archive"
+          ]
+        },
+        {
+          "id": "soeec_mechatronics",
+          "name": "Advanced Industrial Mechatronics & Control Lab",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 40,
+          "workDescription": "Industrial automation, mechatronics control systems, PLC logic programming, and pneumatic test loops",
+          "equipment": [
+            "Siemens PLC Benches",
+            "Pneumatic Test Rigs",
+            "Servo Actuators",
+            "PID Controllers"
+          ]
+        },
+        {
+          "id": "soeec_cs_dept",
+          "name": "Department Head Office - Computer Science & Software Engineering",
+          "floor": 2,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Computer Science and Software Engineering student advising, curriculum planning, and instructor coordination",
+          "equipment": [
+            "Staff Workstations",
+            "Student Advising Benches",
+            "Laser Printer"
+          ]
+        },
+        {
+          "id": "soeec_study_hall",
+          "name": "Computing Collaborative Study & Project Lounge",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 80,
+          "workDescription": "Collaborative peer group study, code reviews, hackathon team collaboration, and algorithmic discussions",
+          "equipment": [
+            "Modular Study Tables",
+            "Magnetic Whiteboards",
+            "Power Outlets",
+            "High-speed Wi-Fi 6 Access Points"
+          ]
+        },
+        {
+          "id": "soeec_hpc_lab",
+          "name": "Postgraduate Research & HPC Cluster Hub",
+          "floor": 3,
+          "type": "laboratory",
+          "capacity": 35,
+          "workDescription": "Graduate thesis research in artificial intelligence, cybersecurity defense, and high-performance computing",
+          "equipment": [
+            "HPC Compute Nodes",
+            "Deep Learning Terminals",
+            "UPS Backup Bank",
+            "Acoustic Insulation"
+          ]
+        },
+        {
+          "id": "soeec_ee_dept",
+          "name": "Department Head Office - Electrical & Electronics Engineering",
+          "floor": 3,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Electrical engineering academic affairs, internship supervision, and student clearance desk",
+          "equipment": [
+            "Faculty Workstations",
+            "Curriculum Archives",
+            "Laser Printer"
+          ]
         }
       ],
       "entranceNodeId": "n_soeec",
@@ -635,7 +1420,13 @@
         ],
         "description": "ASTU School of Electrical Engineering and Computing (SOEEC).",
         "department": "School of Electrical Engineering and Computing",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:30"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:30"
       }
     },
     {
@@ -674,11 +1465,88 @@
       },
       "rooms": [
         {
-          "id": "stem_labs",
-          "name": "STEM Innovation & Robotics Laboratories",
+          "id": "stem_maker",
+          "name": "Robotics, Mechatronics & Digital FabLab",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 60,
+          "workDescription": "Rapid prototyping, CNC milling, custom robotics chassis construction, and mechatronic design",
+          "equipment": [
+            "Industrial Robotic Arms",
+            "3D Printers",
+            "Laser Cutters",
+            "CNC Milling Machine",
+            "PCB Etching Station"
+          ]
+        },
+        {
+          "id": "stem_expo_hall",
+          "name": "Annual STEM Expo & Innovation Exhibition Hall",
+          "floor": 0,
+          "type": "study_hall",
+          "capacity": 280,
+          "workDescription": "National science expos, youth STEM outreach, robotic combat demonstrations, and student project showcases",
+          "equipment": [
+            "Modular Exhibition Booths",
+            "Digital Interactive Kiosks",
+            "Ceiling Projectors",
+            "Public PA System"
+          ]
+        },
+        {
+          "id": "stem_ai_iot",
+          "name": "Applied AI & Embedded IoT Hub",
           "floor": 1,
-          "type": "Research & Exhibition Labs",
-          "workDescription": "Science, Technology, Engineering, and Mathematics innovation labs, robotics workshops, and annual STEM Expo exhibition hall."
+          "type": "laboratory",
+          "capacity": 50,
+          "workDescription": "Computer vision experimentation, edge neural networks, and automated sensor network programming",
+          "equipment": [
+            "NVIDIA Jetson Development Boards",
+            "Arduino & Raspberry Pi Kits",
+            "Sensor Workbenches"
+          ]
+        },
+        {
+          "id": "stem_incubator",
+          "name": "STEM Innovation Incubation & Startup Accelerator Desk",
+          "floor": 1,
+          "type": "office",
+          "capacity": 40,
+          "workDescription": "Student enterprise mentoring, patent filings, intellectual property guidance, and tech venture pitching",
+          "equipment": [
+            "Agile Pod Desks",
+            "Conference Touchscreen Display",
+            "Glass Marker Boards",
+            "High-speed Wi-Fi"
+          ]
+        },
+        {
+          "id": "stem_energy_lab",
+          "name": "Clean Energy & Photovoltaic Research Lab",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 35,
+          "workDescription": "Solar cell efficiency testing, battery storage optimization, and small-scale wind turbine analysis",
+          "equipment": [
+            "Solar Simulators",
+            "Battery Cyclers & Analyzers",
+            "Wind Tunnel Model",
+            "Pyranometers"
+          ]
+        },
+        {
+          "id": "stem_auditorium",
+          "name": "STEM Multipurpose Auditorium",
+          "floor": 2,
+          "type": "lecture_hall",
+          "capacity": 160,
+          "workDescription": "Research guest talks, young scientist workshops, scientific seminars, and video conferenced lectures",
+          "equipment": [
+            "Laser Projector",
+            "Wireless Lapel Microphones",
+            "Surround Sound Audio",
+            "Smart Whiteboard"
+          ]
         }
       ],
       "entranceNodeId": "n_stem_center",
@@ -688,7 +1556,13 @@
         ],
         "description": "ASTU STEM CenterMain venue for STEM Expo presentations and innovation workshops.",
         "department": "Division of STEM Programs & Youth Innovation Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "17:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 17:30"
       }
     },
     {
@@ -726,11 +1600,56 @@
       },
       "rooms": [
         {
-          "id": "aslib_r1",
-          "name": "Applied Sciences Reading Hall",
+          "id": "aslib_circ_desk",
+          "name": "Applied Science Lending & Journals Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 30,
+          "workDescription": "Applied physics, mathematics, and chemistry book loans and textbook reference service",
+          "equipment": [
+            "Library Circulation Terminal",
+            "Barcode Scanner",
+            "Drop Box"
+          ]
+        },
+        {
+          "id": "aslib_g_hall",
+          "name": "Applied Sciences Reading Hall 1",
+          "floor": 0,
+          "type": "study_hall",
+          "capacity": 130,
+          "workDescription": "Silent reading hall with applied natural sciences collections, math texts, and chemistry references",
+          "equipment": [
+            "Solid Wood Study Desks",
+            "Book Stacks",
+            "Task Lighting"
+          ]
+        },
+        {
+          "id": "aslib_e_hall",
+          "name": "Digital Science Research & Reading Hall 2",
           "floor": 1,
-          "type": "Academic Library",
-          "workDescription": "Dedicated quiet reading rooms, academic journals, and study halls for School of Applied Natural Sciences."
+          "type": "study_hall",
+          "capacity": 120,
+          "workDescription": "Electronic scientific database browsing, digital paper reading, and quiet study",
+          "equipment": [
+            "Thin-client Research PCs",
+            "Modular Study Tables",
+            "Wi-Fi Hubs"
+          ]
+        },
+        {
+          "id": "aslib_faculty_room",
+          "name": "Science Faculty & Research Alcove",
+          "floor": 1,
+          "type": "office",
+          "capacity": 25,
+          "workDescription": "Academic consultation, scientific paper peer-review, and curriculum planning",
+          "equipment": [
+            "Faculty Study Desks",
+            "Bookcases",
+            "Color Laser Printer"
+          ]
         }
       ],
       "entranceNodeId": "n_app_sci_lib",
@@ -740,7 +1659,13 @@
         ],
         "description": "ASTU Applied Science Library.",
         "department": "Library Directorate & Applied Natural Sciences",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "21:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 21:30"
       }
     },
     {
@@ -779,11 +1704,155 @@
       },
       "rooms": [
         {
-          "id": "sace_studios",
-          "name": "Architecture Drafting Studios & Structural Labs",
+          "id": "sace_concrete_lab",
+          "name": "Materials & Concrete Testing Laboratory",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 50,
+          "workDescription": "Compressive strength analysis, aggregate sieve testing, and concrete mix design research",
+          "equipment": [
+            "Universal Testing Machine (UTM)",
+            "Concrete Compression Machine",
+            "Sieve Shakers",
+            "Slump Cones"
+          ]
+        },
+        {
+          "id": "sace_soil_lab",
+          "name": "Geotechnical & Soil Mechanics Laboratory",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Soil bearing capacity evaluation, direct shear tests, and foundation engineering analysis",
+          "equipment": [
+            "Triaxial Shear Apparatus",
+            "Consolidation Test Cells",
+            "Direct Shear Machines",
+            "Desiccators"
+          ]
+        },
+        {
+          "id": "sace_auditorium",
+          "name": "SACE Main Auditorium Hall A",
+          "floor": 0,
+          "type": "lecture_hall",
+          "capacity": 220,
+          "workDescription": "Core civil engineering lectures, architectural history presentations, and design jury symposiums",
+          "equipment": [
+            "Dual Laser Projectors",
+            "Digital PA Sound System",
+            "Integrated Lighting Controls"
+          ]
+        },
+        {
+          "id": "sace_studio_1",
+          "name": "Architectural Design Studio 1 (Drafting & Modeling)",
           "floor": 1,
-          "type": "Design Studios & Engineering Labs",
-          "workDescription": "Architectural design studios, drafting halls, structural testing labs, and surveying equipment rooms."
+          "type": "laboratory",
+          "capacity": 65,
+          "workDescription": "Manual architectural drafting, physical model fabrication, and spatial planning critiques",
+          "equipment": [
+            "Adjustable Drafting Tables",
+            "Light Tables",
+            "Wide-format Plotters",
+            "Cutting Mats & Model Tools"
+          ]
+        },
+        {
+          "id": "sace_survey_store",
+          "name": "Geomatics & Surveying Instrumentation Depot",
+          "floor": 1,
+          "type": "service",
+          "capacity": 30,
+          "workDescription": "Geodetic survey equipment checkout, instrument calibration, and GIS field preparation",
+          "equipment": [
+            "Total Stations",
+            "Digital Theodolites",
+            "RTK Differential GPS",
+            "Automatic Optical Levels",
+            "Tripods & Prisms"
+          ]
+        },
+        {
+          "id": "sace_dean_off",
+          "name": "Dean of SACE Executive Suite",
+          "floor": 1,
+          "type": "office",
+          "capacity": 18,
+          "workDescription": "School administrative governance, architectural accreditation compliance, and engineering consultancy partnerships",
+          "equipment": [
+            "Conference Table",
+            "Executive Desk",
+            "Plan Filing Drawer Cabinets"
+          ]
+        },
+        {
+          "id": "sace_bim_lab",
+          "name": "BIM & CAD Computer-Aided Engineering Lab",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 60,
+          "workDescription": "Computer-aided design, 3D structural modeling in ETABS/SAP2000, and BIM architectural simulation",
+          "equipment": [
+            "CAD Precision Workstations",
+            "Revit & AutoCAD Licenses",
+            "Dual Display Monitors",
+            "Plotting Station"
+          ]
+        },
+        {
+          "id": "sace_struct_studio",
+          "name": "Structural Design Studio & Critique Room",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 70,
+          "workDescription": "Reinforced concrete design, steel structure calculations, and peer critique of structural drawings",
+          "equipment": [
+            "Large Format Review Tables",
+            "Whiteboard Walls",
+            "Structural Scale Models"
+          ]
+        },
+        {
+          "id": "sace_civil_dept",
+          "name": "Department of Civil Engineering Faculty Office",
+          "floor": 2,
+          "type": "office",
+          "capacity": 25,
+          "workDescription": "Faculty office hours, student academic mentoring, and thesis advising",
+          "equipment": [
+            "Faculty Desks",
+            "Technical Code Bookcases",
+            "Laser Printers"
+          ]
+        },
+        {
+          "id": "sace_exhibition",
+          "name": "Architecture Thesis Gallery & Exhibition Space",
+          "floor": 3,
+          "type": "study_hall",
+          "capacity": 110,
+          "workDescription": "Graduation project jury reviews, architectural model exhibitions, and town planning defenses",
+          "equipment": [
+            "Display Partitions",
+            "Adjustable Spotlights",
+            "Pedestal Model Mounts",
+            "Projector"
+          ]
+        },
+        {
+          "id": "sace_hydro_lab",
+          "name": "Hydraulics & Water Resources Laboratory",
+          "floor": 3,
+          "type": "laboratory",
+          "capacity": 35,
+          "workDescription": "Open-channel hydraulics, pipe flow experiments, and environmental water sample analysis",
+          "equipment": [
+            "Tilting Flume Apparatus",
+            "Hydraulic Benches",
+            "Fluid Flow Meters",
+            "Venturi Tubes"
+          ]
         }
       ],
       "entranceNodeId": "n_sace",
@@ -793,7 +1862,13 @@
         ],
         "description": "ASTU School Of Architecture and Civil Engineering (SACE).",
         "department": "School of Civil Engineering and Architecture",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:00"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:00"
       }
     },
     {
@@ -834,9 +1909,16 @@
         {
           "id": "gate1_security",
           "name": "Main Gate Security & Visitor Control Post",
-          "floor": 1,
-          "type": "Security Checkpoint",
-          "workDescription": "Primary vehicular and pedestrian campus entrance security control post and visitor verification booth."
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Primary vehicular and pedestrian campus entrance security control post and visitor verification booth",
+          "equipment": [
+            "Boom Barriers",
+            "Under-Vehicle Inspection Mirrors",
+            "Metal Detectors",
+            "Visitor Badge Station"
+          ]
         }
       ],
       "entranceNodeId": "n_main_gate",
@@ -846,7 +1928,12 @@
         ],
         "description": "ASTU Main Gate Entrance.",
         "department": "University Security & Safety Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "is24x7": true
+        },
+        "hours": "24 Hours / 7 Days (Campus Security)"
       }
     },
     {
@@ -887,9 +1974,15 @@
         {
           "id": "gate2_security",
           "name": "Oda Gate Security Post",
-          "floor": 1,
-          "type": "Security Checkpoint",
-          "workDescription": "East perimeter campus gate and security checkpoint."
+          "floor": 0,
+          "type": "service",
+          "capacity": 15,
+          "workDescription": "East perimeter campus gate, student ID card verification, and security checkpoint",
+          "equipment": [
+            "Pedestrian Turnstiles",
+            "Handheld Metal Detectors",
+            "Security Log Desk"
+          ]
         }
       ],
       "entranceNodeId": "n_oda_gate",
@@ -898,7 +1991,12 @@
           "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlUoWdcR7-b2o1sPYQQGwgPleTpJUW9GAB2FDYtXhXuWaCA8bjOFnIKFyGjZB9MjQ_Ljd17vH8Iy6KXsKMtltXjBlqmTUtY4Pe2LfvdowyVKGxrdNNlCXjyi0EXSdD833Xnxuc9=w426-h240-k-no"
         ],
         "department": "University Security & Safety Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "is24x7": true
+        },
+        "hours": "24 Hours / 7 Days (Campus Security)"
       }
     },
     {
@@ -938,11 +2036,17 @@
       },
       "rooms": [
         {
-          "id": "wabe_st_info",
-          "name": "Wabe Street Promenade & Access Road",
+          "id": "wabe_st_promenade",
+          "name": "Wabe Street Promenade & Access Boulevard",
           "floor": 0,
-          "type": "Campus Access Road & Promenade",
-          "workDescription": "Primary avenue connecting Oda Gateway and central academic campus blocks."
+          "type": "service",
+          "capacity": 500,
+          "workDescription": "Primary central campus pedestrian boulevard connecting student dormitories, dining halls, and academic blocks",
+          "equipment": [
+            "Solar Street Lights",
+            "Pedestrian Benches",
+            "Waste Sorting Stations"
+          ]
         }
       ],
       "entranceNodeId": "n_wabe_street",
@@ -952,7 +2056,12 @@
         ],
         "description": "Primary central promenade and access avenue connecting Oda Gateway to central university faculties.",
         "department": "Campus Infrastructure & Road Network",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "is24x7": true
+        },
+        "hours": "24 Hours / 7 Days (Public Access)"
       }
     },
     {
@@ -991,11 +2100,55 @@
       },
       "rooms": [
         {
-          "id": "ict_center_labs",
-          "name": "Central Data Center & Network Support Labs",
+          "id": "astu_ict_server",
+          "name": "Campus Secondary Data Center & Telecom Hub",
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Secondary campus server backup, optical distribution frame (ODF), and VoIP telephony hub",
+          "equipment": [
+            "Server Cabinets",
+            "Optical Fiber Splicing Machines",
+            "Backup Power Bank"
+          ]
+        },
+        {
+          "id": "astu_ict_help",
+          "name": "Student Internet Access & Account Activation Counter",
+          "floor": 0,
+          "type": "service",
+          "capacity": 30,
+          "workDescription": "Student wireless registration, password assistance, and network access credentials",
+          "equipment": [
+            "Verification Terminals",
+            "Barcode Readers"
+          ]
+        },
+        {
+          "id": "astu_ict_pc_lab",
+          "name": "Campus Open Computer Lab A",
           "floor": 1,
-          "type": "Data Center & Computer Labs",
-          "workDescription": "University central server room, cloud infrastructure, network operations center, and digital services support."
+          "type": "laboratory",
+          "capacity": 60,
+          "workDescription": "Student academic internet access, online assignment submission, and course research",
+          "equipment": [
+            "Desktop Computers",
+            "Laser Printer",
+            "High-speed Fiber Uplink"
+          ]
+        },
+        {
+          "id": "astu_ict_staff_off",
+          "name": "Network Engineers & Field Support Office",
+          "floor": 1,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Campus telecommunication line repairs, Wi-Fi access point maintenance, and lab administration",
+          "equipment": [
+            "Fluke Network Testers",
+            "Field Repair Tools",
+            "Support Terminals"
+          ]
         }
       ],
       "entranceNodeId": "n_astu_ict",
@@ -1005,7 +2158,13 @@
         ],
         "description": "Adama University ICT Center.",
         "department": "ICT Center Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:00"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:00"
       }
     },
     {
@@ -1043,11 +2202,124 @@
       },
       "rooms": [
         {
-          "id": "clib_main_hall",
-          "name": "Central Library Reading Hall & Reference Collection",
+          "id": "clib_circ",
+          "name": "Circulation & Book Issue Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 50,
+          "workDescription": "Book borrowing, returns, patron account registration, library membership cards, and user inquiries",
+          "equipment": [
+            "RFID Self-Checkout Kiosks",
+            "Barcode Scanners",
+            "Card Printers",
+            "Catalog Search Terminals"
+          ]
+        },
+        {
+          "id": "clib_ref",
+          "name": "General Reference & Periodicals Hall",
+          "floor": 0,
+          "type": "study_hall",
+          "capacity": 160,
+          "workDescription": "Consultation of encyclopedias, reference texts, and daily national periodicals",
+          "equipment": [
+            "Index Reference Carrels",
+            "Microfiche Readers",
+            "Newspaper Racks",
+            "Reading Tables"
+          ]
+        },
+        {
+          "id": "clib_admin_off",
+          "name": "Library Administration & Acquisitions Office",
+          "floor": 0,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Resource procurement, collection cataloging, ISBN processing, and digital archiving",
+          "equipment": [
+            "High-speed Book Scanners",
+            "Cataloging Workstations",
+            "Thermal Label Printers"
+          ]
+        },
+        {
+          "id": "clib_read_a",
+          "name": "Main Reading Hall A (Engineering & Technology)",
           "floor": 1,
-          "type": "Academic Library",
-          "workDescription": "Main university central library housing academic books, research journals, reference material, and general student study halls."
+          "type": "study_hall",
+          "capacity": 280,
+          "workDescription": "Silent study and consultation of engineering, computing, and technology collections",
+          "equipment": [
+            "Individual Study Carrels",
+            "LED Reading Lamps",
+            "Power Charging Strips",
+            "Acoustic Baffles"
+          ]
+        },
+        {
+          "id": "clib_elib",
+          "name": "Digital E-Library Lab",
+          "floor": 1,
+          "type": "laboratory",
+          "capacity": 120,
+          "workDescription": "Access to IEEE Xplore, ScienceDirect, digital theses, and academic database research",
+          "equipment": [
+            "Desktop Computer Terminals",
+            "High-speed Fiber LAN",
+            "Heavy-duty Network Laser Printers"
+          ]
+        },
+        {
+          "id": "clib_read_b",
+          "name": "Main Reading Hall B (Applied Sciences & Mathematics)",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 250,
+          "workDescription": "Study hall for physics, chemistry, biology, and foundational mathematics collections",
+          "equipment": [
+            "Hardwood Study Desks",
+            "Dewey Decimal Book Stacks",
+            "Ergonomic Chairs"
+          ]
+        },
+        {
+          "id": "clib_group_study",
+          "name": "Collaborative Group Study Rooms (Rooms 201-204)",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 60,
+          "workDescription": "Group project research discussions, peer study sessions, and presentation preparation",
+          "equipment": [
+            "Magnetic Whiteboards",
+            "Mounted Presentation Displays",
+            "Modular Conference Tables"
+          ]
+        },
+        {
+          "id": "clib_archives",
+          "name": "Rare Manuscripts & University Historical Archives",
+          "floor": 3,
+          "type": "study_hall",
+          "capacity": 40,
+          "workDescription": "Preservation and inspection of historic ASTU founding records, rare Ethiopian manuscripts, and thesis archives",
+          "equipment": [
+            "Climate-controlled Glass Cases",
+            "Archival Overhead Scanners",
+            "UV Filter Illumination"
+          ]
+        },
+        {
+          "id": "clib_faculty_sanctuary",
+          "name": "Faculty & Postgraduate Research Sanctuary",
+          "floor": 3,
+          "type": "study_hall",
+          "capacity": 50,
+          "workDescription": "Dedicated silent writing and thesis defense preparation for faculty members and PhD candidates",
+          "equipment": [
+            "Private Research Pods",
+            "Ergonomic High-back Chairs",
+            "High-speed Wi-Fi"
+          ]
         }
       ],
       "entranceNodeId": "n_central_library",
@@ -1057,7 +2329,13 @@
         ],
         "description": "ASTU Central Library.",
         "department": "Library Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Sat",
+          "open": "08:00",
+          "close": "22:00"
+        },
+        "hours": "Mon - Sat: 08:00 - 22:00"
       }
     },
     {
@@ -1097,11 +2375,150 @@
       },
       "rooms": [
         {
-          "id": "admin_main_offices",
-          "name": "University Administration & Registrar Offices",
+          "id": "admin_reg_desk",
+          "name": "Registrar Admissions & Transcripts Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 80,
+          "workDescription": "Transcripts, ID printing, Course registration, student admissions, and credential verification",
+          "equipment": [
+            "Queue Management Display System",
+            "High-speed Document Scanners",
+            "ID Card Printers",
+            "Official Seal Embossers"
+          ]
+        },
+        {
+          "id": "admin_cashier",
+          "name": "Student Finance & Cashier Office",
+          "floor": 0,
+          "type": "service",
+          "capacity": 50,
+          "workDescription": "Tuition processing, cost-sharing clearances, meal card funding, and bank deposit reconciliations",
+          "equipment": [
+            "POS Terminals",
+            "Bank Verification Terminals",
+            "Currency Counters",
+            "Receipt Printers"
+          ]
+        },
+        {
+          "id": "admin_info_desk",
+          "name": "Public Relations & Campus Visitor Information Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 30,
+          "workDescription": "Campus visitor clearances, general inquiry triage, and campus event directories",
+          "equipment": [
+            "Touchscreen Information Kiosk",
+            "Campus Map Directory",
+            "Visitor Logging Station"
+          ]
+        },
+        {
+          "id": "admin_dean_students",
+          "name": "Dean of Students Office",
           "floor": 1,
-          "type": "Administrative Offices",
-          "workDescription": "Central administration block housing university executive offices, registrar, finance, human resources, and student affairs."
+          "type": "office",
+          "capacity": 25,
+          "workDescription": "Student union governance, student welfare, extracurricular coordination, and residential counseling",
+          "equipment": [
+            "Meeting Suite",
+            "Student Case Filing Systems",
+            "Executive Workstations"
+          ]
+        },
+        {
+          "id": "admin_hr",
+          "name": "Human Resource Management & Staff Affairs",
+          "floor": 1,
+          "type": "office",
+          "capacity": 30,
+          "workDescription": "Staff recruitment, academic payroll processing, leave management, and personnel dossiers",
+          "equipment": [
+            "HR Database Terminals",
+            "Confidential Document Vaults",
+            "Office Printers"
+          ]
+        },
+        {
+          "id": "admin_procure",
+          "name": "Procurement & Property Directorate",
+          "floor": 1,
+          "type": "office",
+          "capacity": 25,
+          "workDescription": "Tender invitations, equipment logistics, laboratory asset tracking, and university procurement",
+          "equipment": [
+            "Procurement ERP Terminals",
+            "Asset Tag Scanners",
+            "Laser Printers"
+          ]
+        },
+        {
+          "id": "admin_pres_suite",
+          "name": "President of ASTU Executive Office",
+          "floor": 2,
+          "type": "office",
+          "capacity": 25,
+          "workDescription": "Executive governance, institutional leadership, government liaison, and international university partnerships",
+          "equipment": [
+            "Executive Conference Table",
+            "Encrypted Telepresence System",
+            "Secure Executive Terminals"
+          ]
+        },
+        {
+          "id": "admin_vp_acad",
+          "name": "Vice President for Academic Affairs Office",
+          "floor": 2,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Academic curriculum development, accreditation review, faculty appointments, and grade standardization",
+          "equipment": [
+            "Curriculum Database Terminals",
+            "Executive Meeting Suite",
+            "Filing Archive"
+          ]
+        },
+        {
+          "id": "admin_vp_rd",
+          "name": "Vice President for Research & Technology Transfer Office",
+          "floor": 2,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Research grant administration, university patent registration, and industry tech partnerships",
+          "equipment": [
+            "Research Grant Review Terminals",
+            "Patent Archives",
+            "Conference Display"
+          ]
+        },
+        {
+          "id": "admin_senate_hall",
+          "name": "University Senate Chamber & Council Hall",
+          "floor": 3,
+          "type": "lecture_hall",
+          "capacity": 120,
+          "workDescription": "Statutory senate assemblies, curriculum ratifications, academic policy decisions, and honoris causa voting",
+          "equipment": [
+            "Interactive Delegate Microphone Array",
+            "Dual 85-inch Presentation Displays",
+            "Digital Voting System",
+            "Simultaneous Interpretation Benches"
+          ]
+        },
+        {
+          "id": "admin_legal",
+          "name": "Legal Affairs & Institutional Ethics Directorate",
+          "floor": 3,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Institutional legal drafting, contract compliance, intellectual property advisory, and grievance arbitration",
+          "equipment": [
+            "Legal Document Archive",
+            "Workstations",
+            "Secure Filing Cabinets"
+          ]
         }
       ],
       "entranceNodeId": "n_admin_building",
@@ -1111,7 +2528,15 @@
         ],
         "description": "ASTU New Administrative Building.",
         "department": "University Administration & Registrar",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "17:30",
+          "lunchStart": "12:30",
+          "lunchEnd": "13:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 17:30 (Lunch: 12:30 - 13:30)"
       }
     },
     {
@@ -1149,11 +2574,124 @@
       },
       "rooms": [
         {
-          "id": "ict_labs",
-          "name": "ICT Computer Laboratories & Technical Hub",
+          "id": "ict_datacenter",
+          "name": "University Tier-3 Data Center & Cloud Hub",
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Central university server hosting, student information system (SIS), cloud storage, and domain hosting",
+          "equipment": [
+            "Blade Server Racks",
+            "Redundant Online UPS Bank",
+            "Precision Climate Control",
+            "FM200 Fire Suppression"
+          ]
+        },
+        {
+          "id": "ict_noc",
+          "name": "Network Operations Center (NOC)",
+          "floor": 0,
+          "type": "service",
+          "capacity": 25,
+          "workDescription": "Real-time monitoring of campus-wide optical fiber backbone, internet bandwidth throttling, and firewall defense",
+          "equipment": [
+            "Multi-screen NOC Video Wall",
+            "Network Monitoring Workstations",
+            "Cisco Core Switches"
+          ]
+        },
+        {
+          "id": "ict_helpdesk",
+          "name": "Campus IT Helpdesk & Device Support Desk",
+          "floor": 0,
+          "type": "service",
+          "capacity": 35,
+          "workDescription": "Student Wi-Fi onboarding, institutional email configuration, portal credential resets, and OS repairs",
+          "equipment": [
+            "Support Queuing Kiosk",
+            "Diagnostics Benches",
+            "Repair Toolkit Sets"
+          ]
+        },
+        {
+          "id": "ict_ccna_lab",
+          "name": "Cisco Certified Network Academy (CCNA) Lab",
           "floor": 1,
-          "type": "Computer Lab",
-          "workDescription": "Central computing facilities, network support labs, and ICT training classrooms."
+          "type": "laboratory",
+          "capacity": 50,
+          "workDescription": "Practical enterprise networking, router configuration, VLAN setup, and network troubleshooting exercises",
+          "equipment": [
+            "Cisco 2960 Switches",
+            "Cisco 2911 Routers",
+            "Patch Panel Racks",
+            "Console Workstations"
+          ]
+        },
+        {
+          "id": "ict_general_lab",
+          "name": "High-Performance Computing Lab 101",
+          "floor": 1,
+          "type": "laboratory",
+          "capacity": 65,
+          "workDescription": "Freshman digital literacy instruction, national entrance e-exams, and university programming competitions",
+          "equipment": [
+            "Core i7 All-in-One Desktop PCs",
+            "Gigabit Managed Network",
+            "Dual Ceiling Projectors"
+          ]
+        },
+        {
+          "id": "ict_dev_studio",
+          "name": "Institutional Software Development Studio",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 40,
+          "workDescription": "In-house development and deployment of campus digital portal, mobile navigation app, and payment integrations",
+          "equipment": [
+            "Multi-monitor Workstations",
+            "DevOps Server Clusters",
+            "Interactive Scrum Board"
+          ]
+        },
+        {
+          "id": "ict_directorate",
+          "name": "ICT Directorate Executive Offices",
+          "floor": 2,
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "University-wide digital strategy planning, IT infrastructure procurement, and cybersecurity governance",
+          "equipment": [
+            "Executive Office Desks",
+            "Conference Table",
+            "Video Display System"
+          ]
+        },
+        {
+          "id": "ict_cyber_lab",
+          "name": "Cybersecurity & Digital Defense Lab",
+          "floor": 3,
+          "type": "laboratory",
+          "capacity": 40,
+          "workDescription": "Threat analysis, ethical penetration testing, cryptography exercises, and network intrusion detection drills",
+          "equipment": [
+            "Isolated Air-gapped Sandbox Network",
+            "Deep Packet Inspection Tools",
+            "Forensic Workstations"
+          ]
+        },
+        {
+          "id": "ict_multimedia",
+          "name": "E-Learning & Digital Multimedia Studio",
+          "floor": 3,
+          "type": "service",
+          "capacity": 25,
+          "workDescription": "High-definition video lecture recording, online MOOC curriculum production, and podcast recording",
+          "equipment": [
+            "Acoustic Wall Paneling",
+            "4K Video Cameras",
+            "Studio Lighting Rigs",
+            "Green Screen Backdrop"
+          ]
         }
       ],
       "entranceNodeId": "n_ict_building",
@@ -1163,7 +2701,13 @@
         ],
         "description": "ICT Center.",
         "department": "ICT Center Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:00"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:00"
       }
     },
     {
@@ -1201,11 +2745,111 @@
       },
       "rooms": [
         {
-          "id": "chem_labs",
-          "name": "Chemical Process & Reaction Labs",
+          "id": "chem_unit_ops",
+          "name": "Unit Operations & Transport Phenomena Lab",
+          "floor": 0,
+          "type": "laboratory",
+          "capacity": 45,
+          "workDescription": "Heat transfer, distillation, gas absorption, fluid flow, and mass transfer experiments",
+          "equipment": [
+            "Fractional Distillation Columns",
+            "Shell-and-Tube Heat Exchangers",
+            "Fluidized Bed Reactors",
+            "Pumping Stations"
+          ]
+        },
+        {
+          "id": "chem_safety_store",
+          "name": "Chemical Storage & Laboratory Safety Depot",
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Hazardous reagent storage, material safety data sheet (MSDS) records, and protective gear distribution",
+          "equipment": [
+            "Fume Extraction Hoods",
+            "Emergency Eyewash & Safety Shower",
+            "Corrosive Chemical Lockers",
+            "Gas Detectors"
+          ]
+        },
+        {
+          "id": "chem_amphi_1",
+          "name": "Chemical Engineering Lecture Amphitheater 1",
           "floor": 1,
-          "type": "Engineering Laboratory",
-          "workDescription": "Departmental laboratories, chemical process research units, and lecture halls for Chemical Engineering."
+          "type": "lecture_hall",
+          "capacity": 190,
+          "workDescription": "Thermodynamics, reaction kinetics, and chemical process safety lectures",
+          "equipment": [
+            "Dual Projectors",
+            "Surround Sound Speakers",
+            "Tri-fold Magnetic Chalkboards"
+          ]
+        },
+        {
+          "id": "chem_reaction_lab",
+          "name": "Chemical Reaction Kinetics & Catalysis Lab",
+          "floor": 1,
+          "type": "laboratory",
+          "capacity": 40,
+          "workDescription": "Catalyst synthesis, batch and plug-flow reactor operations, and reaction kinetics analysis",
+          "equipment": [
+            "Autoclave High-pressure Reactors",
+            "Gas Chromatograph (GC)",
+            "UV-Vis Spectrophotometer"
+          ]
+        },
+        {
+          "id": "chem_dept_off",
+          "name": "Department of Chemical Engineering Head Office",
+          "floor": 1,
+          "type": "office",
+          "capacity": 15,
+          "workDescription": "Departmental administration, academic faculty advising, and industrial internships coordination",
+          "equipment": [
+            "Department Head Desk",
+            "Faculty Meeting Table",
+            "Student Clearance Desk"
+          ]
+        },
+        {
+          "id": "chem_bioprocess_lab",
+          "name": "Biochemical Engineering & Fermentation Lab",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 35,
+          "workDescription": "Industrial bioprocessing, microbial fermentation, enzyme kinetics, and bioreactor monitoring",
+          "equipment": [
+            "Benchtop Bioreactors",
+            "Incubator Shakers",
+            "Refrigerated Centrifuges",
+            "Laminar Flow Cabinets"
+          ]
+        },
+        {
+          "id": "chem_sim_lab",
+          "name": "Aspen Plus & Process Simulation Computer Lab",
+          "floor": 2,
+          "type": "laboratory",
+          "capacity": 50,
+          "workDescription": "Computer simulations of chemical manufacturing plants, flowsheeting, and plant economic sizing",
+          "equipment": [
+            "High-spec Simulation Workstations",
+            "Aspen HYSYS & Aspen Plus Licenses",
+            "Interactive Whiteboard"
+          ]
+        },
+        {
+          "id": "chem_study_lounge",
+          "name": "Senior Process Design & Capstone Study Room",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 60,
+          "workDescription": "Senior plant design group project calculations, safety review sessions, and team presentations",
+          "equipment": [
+            "Large Drafting Tables",
+            "Whiteboards",
+            "Power Strips"
+          ]
         }
       ],
       "entranceNodeId": "n_chem_eng",
@@ -1215,7 +2859,13 @@
         ],
         "description": "ASTU Chemical Engineering Department.",
         "department": "School of Chemical Engineering",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:00",
+          "close": "18:00"
+        },
+        "hours": "Mon - Fri: 08:00 - 18:00"
       }
     },
     {
@@ -1253,11 +2903,82 @@
       },
       "rooms": [
         {
-          "id": "fdp_offices",
-          "name": "Freshman Programs Administration & Advising Offices",
+          "id": "fdp_advising_ctr",
+          "name": "Freshman Academic Advising & Orientation Center",
+          "floor": 0,
+          "type": "office",
+          "capacity": 50,
+          "workDescription": "Freshman academic counseling, engineering field placement advisement, and transitional student guidance",
+          "equipment": [
+            "Advising Stations",
+            "Waiting Area Benches",
+            "Information Displays"
+          ]
+        },
+        {
+          "id": "fdp_lecture_1",
+          "name": "Freshman Foundation Lecture Theatre 101",
+          "floor": 0,
+          "type": "lecture_hall",
+          "capacity": 300,
+          "workDescription": "First-year general calculus, foundational mechanics, and general engineering lectures",
+          "equipment": [
+            "High-lumen Dual Projectors",
+            "Auditorium Sound System",
+            "Wireless Microphones"
+          ]
+        },
+        {
+          "id": "fdp_dean_off",
+          "name": "Division of Freshman Programs Directorate",
           "floor": 1,
-          "type": "Administrative & Academic",
-          "workDescription": "Administrative headquarters, academic counseling, and foundational program coordination for first-year students."
+          "type": "office",
+          "capacity": 20,
+          "workDescription": "Administration of first-year undergraduate cohort, semester exam coordination, and student records",
+          "equipment": [
+            "Director Office Suite",
+            "Records Archival Safes",
+            "Meeting Table"
+          ]
+        },
+        {
+          "id": "fdp_comp_lab",
+          "name": "Freshman Computing & Programming Lab",
+          "floor": 1,
+          "type": "laboratory",
+          "capacity": 60,
+          "workDescription": "Foundational programming in C++ / Python, logic formulation, and academic IT skills training",
+          "equipment": [
+            "Desktop Computers",
+            "Teacher Master Console",
+            "Ceiling Projector"
+          ]
+        },
+        {
+          "id": "fdp_tutoring_hall",
+          "name": "STEM Foundations Collaborative Tutoring Hall",
+          "floor": 2,
+          "type": "study_hall",
+          "capacity": 100,
+          "workDescription": "Peer tutoring, problem sessions for calculus and physics, and freshman study groups",
+          "equipment": [
+            "Movable Collaborative Desks",
+            "Wall Whiteboards",
+            "Reference Handbooks"
+          ]
+        },
+        {
+          "id": "fdp_faculty_off",
+          "name": "Freshman Foundational Faculty Offices",
+          "floor": 2,
+          "type": "office",
+          "capacity": 30,
+          "workDescription": "Mathematics and physics lecturers office hours, grade consultations, and student help desk",
+          "equipment": [
+            "Instructor Desks",
+            "Filing Cabinets",
+            "Shared Printer"
+          ]
         }
       ],
       "entranceNodeId": "n_freshman_programs",
@@ -1267,7 +2988,13 @@
         ],
         "description": "ASTU Freshman Programs Directorate.",
         "department": "Freshman Programs Directorate",
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Mon - Fri",
+          "open": "08:30",
+          "close": "17:30"
+        },
+        "hours": "Mon - Fri: 08:30 - 17:30"
       }
     },
     {
@@ -1303,11 +3030,31 @@
       },
       "rooms": [
         {
-          "id": "sport_main",
-          "name": "Basketball court Main Hall",
-          "floor": 1,
-          "type": "Hall",
-          "workDescription": "Main facility area for Basketball court."
+          "id": "sport_court",
+          "name": "ASTU Championship Basketball Court",
+          "floor": 0,
+          "type": "service",
+          "capacity": 200,
+          "workDescription": "Inter-departmental basketball league matches, practice scrimmages, and student recreation",
+          "equipment": [
+            "Standard Acrylic Hardcourt",
+            "Breakaway Rims & Glass Backboards",
+            "Electronic Digital Scoreboard",
+            "Perimeter Floodlights"
+          ]
+        },
+        {
+          "id": "sport_depot",
+          "name": "Basketball Equipment Shed & Officials Table",
+          "floor": 0,
+          "type": "service",
+          "capacity": 20,
+          "workDescription": "Basketball equipment checkout, match refereeing, and tournament statistics tracking",
+          "equipment": [
+            "Basketball Racks",
+            "Scorekeeper Table",
+            "Ball Pumps & Pressure Gauges"
+          ]
         }
       ],
       "entranceNodeId": "n_sport",
@@ -1317,14 +3064,19 @@
         ],
         "description": "Outdoor campus basketball court for intramural matches, student recreation, and athletic training.",
         "department": "Department of Sports Science & Physical Education",
-        "hours": "6:00 AM – 7:30 PM Daily",
+        "hours": "Daily: 06:00 - 20:00",
         "features": [
           "Regulation FIBA court",
           "Night floodlighting",
           "Spectator seating"
         ],
         "totalCapacity": 250,
-        "verified": true
+        "verified": true,
+        "operatingHours": {
+          "days": "Daily",
+          "open": "06:00",
+          "close": "20:00"
+        }
       }
     }
   ],

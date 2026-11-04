@@ -14,6 +14,20 @@ export interface Room {
   equipment?: string[]; // e.g. ["Oscilloscopes", "FPGA Boards", "3D Printers"]
 }
 
+export interface FacilitySchedule {
+  days?: string; // e.g. "Mon - Fri", "Daily"
+  open?: string; // "08:00" (24h format)
+  close?: string; // "22:00"
+  is24x7?: boolean;
+  lunchStart?: string; // "12:30"
+  lunchEnd?: string; // "13:30"
+  meals?: {
+    breakfast?: string; // "07:00 - 08:30"
+    lunch?: string; // "11:30 - 14:00"
+    dinner?: string; // "17:30 - 19:30"
+  };
+}
+
 export interface PlaceDetails {
   images?: string[]; // Array of image URLs for sliding carousel
   description?: string; // In-depth long description
@@ -22,6 +36,7 @@ export interface PlaceDetails {
   phone?: string;
   website?: string;
   hours?: string;
+  operatingHours?: FacilitySchedule;
   features?: string[];
   department?: string;
   headOfDepartment?: string;
