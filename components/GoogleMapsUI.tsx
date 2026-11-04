@@ -44,6 +44,8 @@ import {
   GraduationCap,
   Accessibility,
   Compass,
+  Plus,
+  Minus,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
@@ -57,12 +59,12 @@ interface GoogleMapsUIProps {
 }
 
 const CAMPUS_CATEGORIES = [
-  { id: 'dining', label: 'Cafeterias', icon: Coffee, color: 'text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300' },
-  { id: 'library', label: 'Libraries', icon: BookOpen, color: 'text-blue-800 bg-blue-50 hover:bg-blue-100 border-blue-300' },
-  { id: 'administrative', label: 'Admin & Services', icon: Building2, color: 'text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border-indigo-300' },
-  { id: 'academic', label: 'Faculties & Labs', icon: GraduationCap, color: 'text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border-emerald-300' },
-  { id: 'dormitory', label: 'Dormitories', icon: DoorOpen, color: 'text-purple-800 bg-purple-50 hover:bg-purple-100 border-purple-300' },
-  { id: 'sports', label: 'Sports', icon: Footprints, color: 'text-orange-800 bg-orange-50 hover:bg-orange-100 border-orange-300' },
+  { id: 'dining', label: 'Cafeterias', icon: Coffee, iconColor: 'text-amber-600' },
+  { id: 'library', label: 'Libraries', icon: BookOpen, iconColor: 'text-blue-600' },
+  { id: 'administrative', label: 'Admin & Services', icon: Building2, iconColor: 'text-indigo-600' },
+  { id: 'academic', label: 'Faculties & Labs', icon: GraduationCap, iconColor: 'text-emerald-600' },
+  { id: 'dormitory', label: 'Dormitories', icon: DoorOpen, iconColor: 'text-purple-600' },
+  { id: 'sports', label: 'Sports', icon: Footprints, iconColor: 'text-orange-600' },
 ];
 
 export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
@@ -162,6 +164,8 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const [userHeading, setUserHeading] = useState<number | null>(null);
   const [followUser, setFollowUser] = useState<boolean>(true);
   const [recenterTrigger, setRecenterTrigger] = useState<number>(0);
+  const [zoomInTrigger, setZoomInTrigger] = useState<number>(0);
+  const [zoomOutTrigger, setZoomOutTrigger] = useState<number>(0);
   const [locationToast, setLocationToast] = useState<string | null>(null);
 
   // Live Walk Simulation State
@@ -817,21 +821,21 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   // or hides when sheets are expanded on small screens to prevent overlap.
   const floatingRailPosition = useMemo(() => {
     if (isNavigating) {
-      return 'bottom-24 md:bottom-6';
+      return 'bottom-[250px] md:bottom-8';
     }
     if (selectedPlace && !isDirectionsMode) {
       if (isPlaceSheetExpanded) {
-        return 'hidden md:flex md:bottom-6';
+        return 'hidden md:flex md:bottom-8';
       }
-      return 'bottom-[112px] md:bottom-6';
+      return 'bottom-[200px] md:bottom-8';
     }
     if (isDirectionsMode && routeResult) {
       if (isStepsExpanded) {
-        return 'hidden md:flex md:bottom-6';
+        return 'hidden md:flex md:bottom-8';
       }
-      return 'bottom-[160px] md:bottom-6';
+      return 'bottom-[210px] md:bottom-8';
     }
-    return 'bottom-6 md:bottom-6';
+    return 'bottom-8 md:bottom-8';
   }, [isNavigating, selectedPlace, isDirectionsMode, isPlaceSheetExpanded, routeResult, isStepsExpanded]);
 
   // Sliding Carousel Image Navigation
@@ -889,6 +893,8 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         followUser={followUser}
         onUpdateLiveLocation={handleUpdateLiveLocation}
         recenterTrigger={recenterTrigger}
+        zoomInTrigger={zoomInTrigger}
+        zoomOutTrigger={zoomOutTrigger}
       />
 
       {/* GPS LOCATION TOAST NOTIFICATION BANNER */}
@@ -914,14 +920,18 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   onChange={(e) => handleSearchChange(e.target.value, 'search')}
                   className="w-full outline-none text-xs md:text-sm text-gray-800 placeholder-gray-500 bg-transparent font-medium py-1 min-w-0"
                 />
-                <button
-                  onClick={() => setIsAIAssistantOpen(true)}
-                  className="p-2 md:p-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg transition-all shadow flex items-center justify-center flex-shrink-0 cursor-pointer active:scale-95 group"
-                  title="Open Assistant"
-                  aria-label="Open Assistant"
-                >
-                  <Sparkles className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors" />
-                </button>
+                {activeInput === 'search' && searchQuery && (
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setActiveInput(null);
+                    }}
+                    className="p-1 text-gray-400 hover:text-gray-600 rounded-full transition-colors cursor-pointer"
+                    title="Clear search"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
                 <button
                   onClick={() => setIsDirectionsMode(true)}
                   className="p-2 md:p-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow flex-shrink-0 cursor-pointer"
@@ -1106,7 +1116,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
           {/* QUICK CATEGORY CHIPS BAR (GOOGLE MAPS STYLE) */}
           {!isDirectionsMode && !activeInput && (
-            <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar select-none">
+            <div className="mt-2 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] select-none px-0.5">
               {CAMPUS_CATEGORIES.map((cat) => {
                 const IconComp = cat.icon;
                 const isSelected = selectedCategory === cat.id;
@@ -1114,13 +1124,13 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(isSelected ? null : cat.id)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shadow-md transition-all cursor-pointer border ${
+                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap shadow-sm transition-all cursor-pointer border ${
                       isSelected
-                        ? 'bg-blue-600 text-white border-blue-600 shadow-blue-500/30 scale-105'
-                        : `${cat.color} bg-white/95 backdrop-blur-md`
+                        ? 'bg-slate-900 text-white border-slate-900 shadow-md scale-105 font-bold'
+                        : 'bg-white/95 text-slate-700 hover:text-slate-950 hover:bg-white border-slate-200/90 font-medium'
                     }`}
                   >
-                    <IconComp className="w-3.5 h-3.5" />
+                    <IconComp className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : cat.iconColor}`} />
                     <span>{cat.label}</span>
                   </button>
                 );
@@ -1584,16 +1594,16 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleStartSimulation}
-                  className="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs md:text-sm rounded-lg shadow-md flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
-                  title="Run an animated live walking simulation of this route (Demo presentation mode)"
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-xl transition-all active:scale-95 cursor-pointer border border-slate-200"
+                  title="Simulate route walk (Preview / presentation test mode)"
+                  aria-label="Simulate route walk"
                 >
-                  <Play className="w-4 h-4 fill-white" />
-                  <span>Demo Walk</span>
+                  <Play className="w-4 h-4 fill-slate-700 text-slate-700" />
                 </button>
 
                 <button
                   onClick={handleStartNavigation}
-                  className="px-5 py-2.5 bg-[#1a73e8] hover:bg-blue-700 text-white font-black text-xs md:text-sm rounded-lg shadow flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+                  className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-blue-500/25 flex items-center gap-2 transition-all active:scale-95 cursor-pointer"
                   title="Start real-time turn-by-turn navigation"
                 >
                   <Navigation className="w-4 h-4 fill-white" />
@@ -1658,24 +1668,26 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
             onTouchStart={handleGuidanceTouchStart}
             onTouchEnd={handleGuidanceTouchEnd}
             onWheel={handleGuidanceWheel}
-            className={`rounded-2xl shadow-2xl p-4 flex flex-col gap-2.5 text-white border transition-colors touch-none select-none ${
-              isArrived ? 'bg-emerald-600 border-emerald-500' : 'bg-[#1a73e8] border-blue-500'
+            className={`rounded-2xl shadow-2xl p-4 flex flex-col gap-2.5 text-white border transition-all touch-none select-none backdrop-blur-xl ${
+              isArrived
+                ? 'bg-emerald-900/95 border-emerald-500/50 shadow-emerald-900/40'
+                : 'bg-slate-900/95 border-slate-700/80 shadow-black/40'
             }`}
           >
             {/* Simulation & Real-time Live Status Bar */}
-            <div className="flex items-center justify-between pb-2 border-b border-white/20 text-xs">
+            <div className="flex items-center justify-between pb-2 border-b border-white/10 text-xs">
               {isSimulating ? (
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-100 text-[10px] md:text-[11px] font-black uppercase tracking-wider border border-emerald-400/40">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] md:text-[11px] font-bold uppercase tracking-wider border border-emerald-400/30">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Demo Walk ({simulationSpeed}x)
+                    Simulating Walk ({simulationSpeed}x)
                   </span>
 
                   {/* Play / Pause Toggle */}
                   <button
                     onClick={() => setIsSimulationPaused(!isSimulationPaused)}
-                    className="p-1 hover:bg-white/20 rounded-md transition-colors cursor-pointer"
-                    title={isSimulationPaused ? 'Resume Demo Walk' : 'Pause Demo Walk'}
+                    className="p-1 hover:bg-white/10 rounded-md transition-colors cursor-pointer"
+                    title={isSimulationPaused ? 'Resume Simulation' : 'Pause Simulation'}
                   >
                     {isSimulationPaused ? <Play className="w-3.5 h-3.5 fill-white" /> : <Pause className="w-3.5 h-3.5 fill-white" />}
                   </button>
@@ -1683,31 +1695,31 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   {/* Speed Toggle (1x -> 2x -> 4x) */}
                   <button
                     onClick={() => setSimulationSpeed(simulationSpeed === 1 ? 2 : simulationSpeed === 2 ? 4 : 1)}
-                    className="px-1.5 py-0.5 hover:bg-white/20 rounded text-[11px] font-black transition-colors cursor-pointer bg-white/10"
+                    className="px-1.5 py-0.5 hover:bg-white/10 rounded text-[11px] font-bold transition-colors cursor-pointer bg-white/10"
                     title="Change Walking Speed"
                   >
                     {simulationSpeed}x
                   </button>
 
-                  {/* Restart Demo Walk */}
+                  {/* Restart Simulation */}
                   <button
                     onClick={handleStartSimulation}
-                    className="p-1 hover:bg-white/20 rounded-md transition-colors cursor-pointer"
-                    title="Restart Demo Walk from start"
+                    className="p-1 hover:bg-white/10 rounded-md transition-colors cursor-pointer"
+                    title="Restart simulation from start"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                   </button>
                 </div>
               ) : isLiveTracking ? (
                 <div className="flex items-center gap-1.5">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-100 text-[11px] font-black uppercase tracking-wider border border-emerald-400/40">
-                    <Radio className="w-3 h-3 text-emerald-300 animate-pulse" />
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold uppercase tracking-wider border border-emerald-400/30">
+                    <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
                     Live GPS (±{liveLocationAccuracyMeters || 8}m)
                   </span>
                 </div>
               ) : (
-                <span className="text-[11px] text-white/80 font-bold uppercase tracking-wider">
-                  Step-by-Step Navigation
+                <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+                  Turn-by-Turn Navigation
                 </span>
               )}
 
@@ -1721,7 +1733,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                     setTimeout(() => setLocationToast(null), 2000);
                   }}
                   className={`p-1.5 rounded-md transition-colors cursor-pointer ${
-                    isVoiceGuidance ? 'bg-white/25 text-white' : 'text-white/50 hover:bg-white/10'
+                    isVoiceGuidance ? 'bg-white/20 text-white' : 'text-slate-400 hover:bg-white/10'
                   }`}
                   title={isVoiceGuidance ? 'Mute Voice Directions' : 'Enable Voice Directions'}
                 >
@@ -1731,55 +1743,46 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                 {/* Close Button */}
                 <button
                   onClick={handleStopNavigation}
-                  className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-xs flex items-center justify-center transition-colors shadow cursor-pointer"
-                  title="Stop / Exit Navigation"
+                  className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center justify-center transition-colors shadow cursor-pointer"
+                  title="Exit Navigation"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
-            {/* Swipe / Scroll affordance hint */}
-            {!isArrived && (
-              <div className="flex items-center justify-center gap-2 -mt-0.5 mb-0.5 text-[9px] font-bold uppercase tracking-widest text-white/70">
-                <span className="w-6 h-1 rounded-full bg-white/40" />
-                <span>Swipe or scroll card to change step</span>
-                <span className="w-6 h-1 rounded-full bg-white/40" />
-              </div>
-            )}
-
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center font-bold shadow-inner">
+                <span className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center font-bold shadow-inner flex-shrink-0">
                   {isArrived ? (
-                    <CheckCircle2 className="w-6 h-6 text-white" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                   ) : (
-                    <Footprints className="w-6 h-6 text-white" />
+                    <Footprints className="w-5 h-5 text-blue-400" />
                   )}
                 </span>
                 <div>
-                  <h3 className="font-extrabold text-sm leading-tight">
+                  <h3 className="font-extrabold text-sm md:text-base leading-tight">
                     {currentInstruction}
                   </h3>
-                  <p className="text-[11px] text-blue-100 font-medium mt-0.5">
+                  <p className="text-[11px] text-slate-400 font-medium mt-0.5">
                     {isArrived
-                      ? 'You have reached your target room / building'
+                      ? 'You have reached your target destination'
                       : `Step ${activeNodeIndex + 1} of ${routeResult.steps.length}`}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between border-t border-white/20 pt-2 text-xs font-bold">
+            <div className="flex items-center justify-between border-t border-white/10 pt-2 text-xs font-bold">
               <button
                 onClick={handlePrevStep}
                 disabled={activeNodeIndex === 0}
-                className="px-3.5 py-1.5 bg-white/20 hover:bg-white/30 disabled:opacity-40 rounded-lg transition-colors flex items-center gap-1 cursor-pointer"
+                className="px-3.5 py-1.5 bg-white/10 hover:bg-white/20 disabled:opacity-30 rounded-lg transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" /> Previous
               </button>
 
-              <span className="text-blue-100 font-medium">
+              <span className="text-slate-400 text-xs font-medium">
                 {isArrived
                   ? 'Destination Reached'
                   : `Step ${activeNodeIndex + 1} / ${routeResult.steps.length}`}
@@ -1788,7 +1791,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               <button
                 onClick={handleNextStep}
                 disabled={activeNodeIndex === routeResult.steps.length - 1}
-                className="px-4 py-1.5 bg-white text-blue-700 hover:bg-blue-50 disabled:opacity-40 rounded-lg transition-colors font-extrabold shadow flex items-center gap-1 cursor-pointer"
+                className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-30 rounded-lg transition-colors font-bold shadow flex items-center gap-1 cursor-pointer"
               >
                 Next <ChevronRight className="w-4 h-4" />
               </button>
@@ -1802,10 +1805,30 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         style={{ zIndex: 1000 }}
         className={`absolute right-4 md:right-6 flex flex-col gap-2 pointer-events-auto transition-all duration-300 ease-in-out ${floatingRailPosition}`}
       >
+        {/* Unified Zoom In / Out Controls */}
+        <div className="flex flex-col bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden divide-y divide-gray-100">
+          <button
+            onClick={() => setZoomInTrigger((prev) => prev + 1)}
+            className="w-11 h-10 hover:bg-gray-100 text-gray-700 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
+            title="Zoom In"
+            aria-label="Zoom In"
+          >
+            <Plus className="w-4 h-4 stroke-[2.5]" />
+          </button>
+          <button
+            onClick={() => setZoomOutTrigger((prev) => prev + 1)}
+            className="w-11 h-10 hover:bg-gray-100 text-gray-700 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
+            title="Zoom Out"
+            aria-label="Zoom Out"
+          >
+            <Minus className="w-4 h-4 stroke-[2.5]" />
+          </button>
+        </div>
+
         <button
           onClick={() => setIsAIAssistantOpen(true)}
           className="w-11 h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-xl border border-slate-700/80 flex items-center justify-center transition-all cursor-pointer active:scale-95 group"
-          title="Open AI Assistant"
+          title="Open AI Campus Assistant"
         >
           <Sparkles className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
         </button>

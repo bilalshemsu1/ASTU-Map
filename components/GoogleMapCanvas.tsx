@@ -32,6 +32,8 @@ interface GoogleMapCanvasProps {
   followUser?: boolean;
   onUpdateLiveLocation?: (coords: LatLng) => void;
   recenterTrigger?: number;
+  zoomInTrigger?: number;
+  zoomOutTrigger?: number;
 }
 
 export default function GoogleMapCanvas(props: GoogleMapCanvasProps) {

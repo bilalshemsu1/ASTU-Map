@@ -139,6 +139,8 @@ interface GoogleMapCanvasClientProps {
   isNavigating?: boolean;
   onUpdateLiveLocation?: (coords: LatLng) => void;
   recenterTrigger?: number;
+  zoomInTrigger?: number;
+  zoomOutTrigger?: number;
 }
 
 function MapClickHandler({
@@ -161,15 +163,42 @@ function MapController({
   center,
   zoom,
   recenterTrigger,
+  isNavigating,
+  zoomInTrigger,
+  zoomOutTrigger,
 }: {
   center: [number, number];
   zoom: number;
   recenterTrigger?: number;
+  isNavigating?: boolean;
+  zoomInTrigger?: number;
+  zoomOutTrigger?: number;
 }) {
   const map = useMap();
 
   useEffect(() => {
     if (!map) return;
+    if (zoomInTrigger && zoomInTrigger > 0) {
+      map.zoomIn();
+    }
+  }, [zoomInTrigger, map]);
+
+  useEffect(() => {
+    if (!map) return;
+    if (zoomOutTrigger && zoomOutTrigger > 0) {
+      map.zoomOut();
+    }
+  }, [zoomOutTrigger, map]);
+
+  useEffect(() => {
+    if (!map) return;
+
+    if (isNavigating) {
+      // During active turn-by-turn or simulation walk:
+      // Use smooth panTo with no CSS 3D transform accumulation to prevent SVG route line drift
+      map.panTo(center, { animate: true, duration: 0.25, easeLinearity: 0.8 });
+      return;
+    }
 
     let timer: NodeJS.Timeout;
     map.whenReady(() => {
@@ -189,34 +218,9 @@ function MapController({
     });
 
     return () => clearTimeout(timer);
-  }, [center[0], center[1], zoom, recenterTrigger, map]);
+  }, [center[0], center[1], zoom, recenterTrigger, isNavigating, map]);
 
   return null;
-}
-
-function ZoomControls() {
-  const map = useMap();
-  return (
-    <div
-      style={{ zIndex: 1000 }}
-      className="hidden md:flex absolute bottom-48 right-6 flex-col bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden divide-y divide-gray-200 pointer-events-auto"
-    >
-      <button
-        onClick={() => map.zoomIn()}
-        className="w-10 h-10 hover:bg-gray-100 text-gray-800 font-bold flex items-center justify-center transition-colors select-none cursor-pointer"
-        title="Zoom In"
-      >
-        <Plus className="w-5 h-5 stroke-[2.5]" />
-      </button>
-      <button
-        onClick={() => map.zoomOut()}
-        className="w-10 h-10 hover:bg-gray-100 text-gray-800 font-bold flex items-center justify-center transition-colors select-none cursor-pointer"
-        title="Zoom Out"
-      >
-        <Minus className="w-5 h-5 stroke-[2.5]" />
-      </button>
-    </div>
-  );
 }
 
 export default function GoogleMapCanvasClient({
@@ -234,6 +238,8 @@ export default function GoogleMapCanvasClient({
   isNavigating,
   onUpdateLiveLocation,
   recenterTrigger,
+  zoomInTrigger,
+  zoomOutTrigger,
 }: GoogleMapCanvasClientProps) {
   const { meta, buildings, nodes } = campusData;
 
@@ -288,9 +294,15 @@ export default function GoogleMapCanvasClient({
         preferCanvas={true}
         className="w-full h-full"
       >
-        <MapController center={mapCenter} zoom={mapZoom} recenterTrigger={recenterTrigger} />
+        <MapController
+          center={mapCenter}
+          zoom={mapZoom}
+          recenterTrigger={recenterTrigger}
+          isNavigating={isNavigating}
+          zoomInTrigger={zoomInTrigger}
+          zoomOutTrigger={zoomOutTrigger}
+        />
         <MapClickHandler onMapClick={handleMapClick} />
-        <ZoomControls />
 
         {/* Google Maps High-Resolution Hybrid Satellite Tiles */}
         <TileLayer
