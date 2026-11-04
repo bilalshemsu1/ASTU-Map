@@ -48,6 +48,7 @@ import {
   Minus,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
+import { getFacilityOperatingStatus, formatTime12h, OperatingHoursStatus } from '../lib/utils/operatingHours';
 import { searchCampus, SearchResult } from '../lib/utils/search';
 import { fetchRealWalkingRoute } from '../lib/utils/routing';
 import { calculateHaversineDistance, calculateBearing, formatDistance, formatTime } from '../lib/utils/graph';
@@ -84,11 +85,15 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const [selectedPlace, setSelectedPlace] = useState<Building | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [isPlaceSheetExpanded, setIsPlaceSheetExpanded] = useState<boolean>(false);
+  const [activeFloorFilter, setActiveFloorFilter] = useState<number | 'all'>('all');
+  const [roomSearchQuery, setRoomSearchQuery] = useState<string>('');
 
   // Reset image index & collapse place sheet when selected place changes
   useEffect(() => {
     setActiveImageIndex(0);
     setIsPlaceSheetExpanded(false);
+    setActiveFloorFilter('all');
+    setRoomSearchQuery('');
   }, [selectedPlace]);
 
   // Handle URL Location Deep Linking (?place=building_id)
@@ -787,17 +792,45 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     }
   };
 
+  // Real-time operating hours status for currently selected place
+  const operatingStatus = useMemo(() => {
+    return selectedPlace ? getFacilityOperatingStatus(selectedPlace) : null;
+  }, [selectedPlace]);
+
+  // Unique floors available in selected place
+  const availableFloors = useMemo(() => {
+    if (!selectedPlace) return [];
+    return Array.from(new Set(selectedPlace.rooms.map((r) => r.floor ?? 0))).sort((a, b) => a - b);
+  }, [selectedPlace]);
+
+  // Filtered rooms based on interactive floor selector and room search query
+  const filteredRooms = useMemo(() => {
+    if (!selectedPlace) return [];
+    return selectedPlace.rooms.filter((room) => {
+      const roomFloor = room.floor ?? 0;
+      const matchesFloor = activeFloorFilter === 'all' || roomFloor === activeFloorFilter;
+      const q = roomSearchQuery.trim().toLowerCase();
+      const matchesSearch =
+        !q ||
+        room.name.toLowerCase().includes(q) ||
+        (room.type && room.type.toLowerCase().includes(q)) ||
+        (room.workDescription && room.workDescription.toLowerCase().includes(q)) ||
+        (room.equipment && room.equipment.some((eq) => eq.toLowerCase().includes(q)));
+      return matchesFloor && matchesSearch;
+    });
+  }, [selectedPlace, activeFloorFilter, roomSearchQuery]);
+
   // Group rooms by Floor number
   const roomsByFloor = useMemo(() => {
     if (!selectedPlace) return new Map<number, Room[]>();
     const map = new Map<number, Room[]>();
-    selectedPlace.rooms.forEach((r) => {
+    filteredRooms.forEach((r) => {
       const f = r.floor ?? 0;
       if (!map.has(f)) map.set(f, []);
       map.get(f)!.push(r);
     });
     return map;
-  }, [selectedPlace]);
+  }, [selectedPlace, filteredRooms]);
 
   const isArrived =
     isNavigating && routeResult && activeNodeIndex === routeResult.steps.length - 1;
@@ -1185,13 +1218,32 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                           setRecenterTrigger((prev) => prev + 1);
                         }}
                       >
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 flex-wrap">
                           <h4 className="font-bold text-xs text-gray-900 group-hover:text-blue-600 transition-colors truncate">
                             {building.name}
                           </h4>
                           <span className="text-[10px] font-extrabold px-1.5 py-0.2 bg-gray-100 text-gray-600 rounded">
                             {building.code}
                           </span>
+                          {(() => {
+                            const bStatus = getFacilityOperatingStatus(building);
+                            return (
+                              <span
+                                className={`text-[9px] font-bold px-1.5 py-0.2 rounded-full flex items-center gap-1 ${bStatus.badgeBg} ${bStatus.badgeColor}`}
+                              >
+                                <span
+                                  className={`w-1.5 h-1.5 rounded-full ${
+                                    bStatus.status === 'open' || bStatus.status === 'open_24_7'
+                                      ? 'bg-emerald-500'
+                                      : bStatus.status === 'closing_soon' || bStatus.status === 'lunch_break'
+                                      ? 'bg-amber-500'
+                                      : 'bg-rose-500'
+                                  }`}
+                                />
+                                {bStatus.badgeLabel}
+                              </span>
+                            );
+                          })()}
                         </div>
                         <p className="text-[11px] text-gray-500 truncate mt-0.5">
                           {building.details?.department || building.details?.description || 'ASTU Campus'}
@@ -1265,13 +1317,25 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   />
                 )}
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="text-[10px] font-extrabold uppercase text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
                       {selectedPlace.code}
                     </span>
                     <span className="text-[10px] font-bold text-gray-400 uppercase">
                       {selectedPlace.category}
                     </span>
+                    {operatingStatus && (
+                      <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-full flex items-center gap-1 ${operatingStatus.badgeBg} ${operatingStatus.badgeColor}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${
+                          operatingStatus.status === 'open' || operatingStatus.status === 'open_24_7'
+                            ? 'bg-emerald-500 animate-pulse'
+                            : operatingStatus.status === 'closing_soon' || operatingStatus.status === 'lunch_break'
+                            ? 'bg-amber-500'
+                            : 'bg-rose-500'
+                        }`} />
+                        {operatingStatus.badgeLabel}
+                      </span>
+                    )}
                   </div>
                   <h3 className="font-bold text-xs text-gray-900 truncate mt-0.5">
                     {selectedPlace.name}
@@ -1451,13 +1515,63 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </div>
                 )}
 
-                {/* Operating Hours */}
-                {selectedPlace.details?.hours && (
+                {/* REAL-TIME CAMPUS PULSE: LIVE OPERATING STATUS & SCHEDULE */}
+                {operatingStatus ? (
+                  <div
+                    className={`p-3 rounded-xl border flex flex-col gap-2 ${operatingStatus.badgeBg} ${
+                      operatingStatus.status === 'open' || operatingStatus.status === 'open_24_7'
+                        ? 'border-emerald-200/80'
+                        : operatingStatus.status === 'closing_soon' || operatingStatus.status === 'lunch_break'
+                        ? 'border-amber-200/80'
+                        : 'border-rose-200/70'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Clock className={`w-4 h-4 ${operatingStatus.badgeColor}`} />
+                        <span className={`text-xs font-black uppercase tracking-wider ${operatingStatus.badgeColor}`}>
+                          {operatingStatus.badgeLabel}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-500 bg-white/70 px-2 py-0.5 rounded-full border border-gray-200/50">
+                        Live Facility Pulse
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-gray-700 font-medium">
+                      {operatingStatus.statusDetail}
+                    </p>
+
+                    {/* Meal Schedule breakdown for dining facilities */}
+                    {operatingStatus.schedule?.meals && (
+                      <div className="mt-1 pt-2 border-t border-gray-200/60 grid grid-cols-3 gap-1.5 text-[10px]">
+                        {operatingStatus.schedule.meals.breakfast && (
+                          <div className="bg-white/80 p-1.5 rounded-lg border border-gray-100 text-center">
+                            <span className="block text-gray-400 font-bold uppercase">Breakfast</span>
+                            <span className="font-bold text-gray-800">{operatingStatus.schedule.meals.breakfast}</span>
+                          </div>
+                        )}
+                        {operatingStatus.schedule.meals.lunch && (
+                          <div className="bg-white/80 p-1.5 rounded-lg border border-gray-100 text-center">
+                            <span className="block text-gray-400 font-bold uppercase">Lunch</span>
+                            <span className="font-bold text-gray-800">{operatingStatus.schedule.meals.lunch}</span>
+                          </div>
+                        )}
+                        {operatingStatus.schedule.meals.dinner && (
+                          <div className="bg-white/80 p-1.5 rounded-lg border border-gray-100 text-center">
+                            <span className="block text-gray-400 font-bold uppercase">Dinner</span>
+                            <span className="font-bold text-gray-800">{operatingStatus.schedule.meals.dinner}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ) : selectedPlace.details?.hours ? (
                   <div className="flex items-center gap-2.5 text-xs text-gray-700 bg-emerald-50 text-emerald-800 p-2.5 rounded-xl font-medium border border-emerald-100">
                     <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                     <span>{selectedPlace.details.hours}</span>
                   </div>
-                )}
+                ) : null}
 
                 {/* Features & Equipment Specifications */}
                 {selectedPlace.details?.features && selectedPlace.details.features.length > 0 && (
@@ -1476,89 +1590,175 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </div>
                 )}
 
-                {/* FLOOR-BY-FLOOR ORGANIZED ROOMS & WORK ACTIVITIES */}
-                {roomsByFloor.size > 0 && (
-                  <div>
-                    <div className="flex items-center justify-between mb-2.5 border-b border-gray-100 pb-2">
+                {/* INTERACTIVE MULTI-FLOOR DIRECTORY & IN-BUILDING ROOM WAYFINDING */}
+                {selectedPlace.rooms && selectedPlace.rooms.length > 0 && (
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                       <h4 className="text-xs font-black uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
                         <Layers className="w-4 h-4 text-blue-600" />
-                        <span>Floor-by-Floor Directory</span>
+                        <span>Indoor Directory</span>
                       </h4>
                       <span className="text-[11px] text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-full">
                         {selectedPlace.rooms.length} Rooms Listed
                       </span>
                     </div>
 
-                    <div className="flex flex-col gap-3">
-                      {Array.from(roomsByFloor.entries())
-                        .sort(([fA], [fB]) => fA - fB)
-                        .map(([floorNum, rooms]) => (
-                          <div key={floorNum} className="flex flex-col gap-2">
-                            <div className="flex items-center gap-2">
-                              <span className="px-2 py-0.5 bg-gray-900 text-white rounded text-[10px] font-black uppercase">
-                                {floorNum === 0 ? 'Ground Floor (G)' : `Floor ${floorNum}`}
+                    {/* Interactive Floor Switcher Buttons */}
+                    {availableFloors.length > 1 && (
+                      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                        <button
+                          type="button"
+                          onClick={() => setActiveFloorFilter('all')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+                            activeFloorFilter === 'all'
+                              ? 'bg-blue-600 text-white shadow-sm'
+                              : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                          }`}
+                        >
+                          <span>All Floors</span>
+                          <span
+                            className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                              activeFloorFilter === 'all' ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-700'
+                            }`}
+                          >
+                            {selectedPlace.rooms.length}
+                          </span>
+                        </button>
+                        {availableFloors.map((floor) => {
+                          const count = selectedPlace.rooms.filter((r) => (r.floor ?? 0) === floor).length;
+                          const label = floor === 0 ? 'Ground (G)' : `Floor ${floor}`;
+                          const isActive = activeFloorFilter === floor;
+                          return (
+                            <button
+                              key={floor}
+                              type="button"
+                              onClick={() => setActiveFloorFilter(floor)}
+                              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+                                isActive
+                                  ? 'bg-blue-600 text-white shadow-sm'
+                                  : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                              }`}
+                            >
+                              <span>{label}</span>
+                              <span
+                                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                                  isActive ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-700'
+                                }`}
+                              >
+                                {count}
                               </span>
-                              <span className="text-xs text-gray-400 font-medium">
-                                ({rooms.length} room{rooms.length > 1 ? 's' : ''})
-                              </span>
-                            </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
 
-                            <div className="flex flex-col gap-2 pl-1">
-                              {rooms.map((room) => (
-                                <div
-                                  key={room.id}
-                                  className="p-2.5 bg-gray-50 hover:bg-blue-50/60 rounded-xl border border-gray-200 transition-colors flex flex-col gap-1.5"
-                                >
-                                  <div className="flex items-start justify-between gap-2">
-                                    <div>
-                                      <div className="flex items-center gap-2">
-                                        <DoorOpen className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                        <span className="font-bold text-gray-900 text-xs">{room.name}</span>
-                                      </div>
-                                      {room.type && (
-                                        <span className="text-[10px] font-semibold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded mt-1 inline-block">
-                                          {room.type}
-                                        </span>
-                                      )}
-                                    </div>
-
-                                    <button
-                                      onClick={() => handleOpenDirectionsToPlace(selectedPlace, room)}
-                                      className="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] rounded-md transition-colors shadow flex items-center gap-1 flex-shrink-0 cursor-pointer"
-                                    >
-                                      <Navigation className="w-3 h-3 fill-white" />
-                                      <span>Directions</span>
-                                    </button>
-                                  </div>
-
-                                  {room.workDescription && (
-                                    <p className="text-[11px] text-gray-600 leading-relaxed bg-white p-2 rounded-lg border border-gray-100">
-                                      <strong className="text-gray-800">Work & Activity: </strong>
-                                      {room.workDescription}
-                                    </p>
-                                  )}
-
-                                  {room.equipment && room.equipment.length > 0 && (
-                                    <div className="flex flex-wrap items-center gap-1 mt-0.5">
-                                      <span className="text-[10px] text-gray-400 font-bold flex items-center gap-0.5">
-                                        <Wrench className="w-3 h-3 text-amber-500" /> Equipment:
-                                      </span>
-                                      {room.equipment.map((eq, eqIdx) => (
-                                        <span
-                                          key={eqIdx}
-                                          className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded font-medium"
-                                        >
-                                          {eq}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
+                    {/* In-Building Room Search Bar */}
+                    <div className="relative">
+                      <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder="Search rooms, labs, or services..."
+                        value={roomSearchQuery}
+                        onChange={(e) => setRoomSearchQuery(e.target.value)}
+                        className="w-full pl-8 pr-7 py-1.5 bg-gray-50 hover:bg-gray-100/80 focus:bg-white text-xs rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-400 text-gray-800"
+                      />
+                      {roomSearchQuery && (
+                        <button
+                          type="button"
+                          onClick={() => setRoomSearchQuery('')}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-0.5 cursor-pointer"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      )}
                     </div>
+
+                    {/* Filtered Rooms List */}
+                    {filteredRooms.length === 0 ? (
+                      <div className="p-4 text-center bg-gray-50 rounded-xl border border-dashed border-gray-200 text-gray-500 text-xs">
+                        No rooms match the selected floor or search criteria.
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-3">
+                        {Array.from(roomsByFloor.entries())
+                          .sort(([fA], [fB]) => fA - fB)
+                          .map(([floorNum, rooms]) => (
+                            <div key={floorNum} className="flex flex-col gap-2">
+                              <div className="flex items-center gap-2">
+                                <span className="px-2 py-0.5 bg-gray-900 text-white rounded text-[10px] font-black uppercase">
+                                  {floorNum === 0 ? 'Ground Floor (G)' : `Floor ${floorNum}`}
+                                </span>
+                                <span className="text-xs text-gray-400 font-medium">
+                                  ({rooms.length} room{rooms.length > 1 ? 's' : ''})
+                                </span>
+                              </div>
+
+                              <div className="flex flex-col gap-2 pl-1">
+                                {rooms.map((room) => (
+                                  <div
+                                    key={room.id}
+                                    className="p-2.5 bg-gray-50 hover:bg-blue-50/60 rounded-xl border border-gray-200 transition-colors flex flex-col gap-1.5"
+                                  >
+                                    <div className="flex items-start justify-between gap-2">
+                                      <div className="min-w-0">
+                                        <div className="flex items-center gap-1.5">
+                                          <DoorOpen className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                                          <span className="font-bold text-gray-900 text-xs truncate">{room.name}</span>
+                                        </div>
+                                        <div className="flex flex-wrap items-center gap-1 mt-1">
+                                          {room.type && (
+                                            <span className="text-[10px] font-semibold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded capitalize">
+                                              {room.type.replace('_', ' ')}
+                                            </span>
+                                          )}
+                                          {room.capacity && (
+                                            <span className="text-[10px] text-gray-600 bg-gray-200/70 px-1.5 py-0.5 rounded font-medium flex items-center gap-1">
+                                              <Users className="w-3 h-3 text-gray-500" />
+                                              {room.capacity} seats
+                                            </span>
+                                          )}
+                                        </div>
+                                      </div>
+
+                                      <button
+                                        onClick={() => handleOpenDirectionsToPlace(selectedPlace, room)}
+                                        className="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] rounded-lg transition-colors shadow-sm flex items-center gap-1 flex-shrink-0 cursor-pointer"
+                                      >
+                                        <Navigation className="w-3 h-3 fill-white" />
+                                        <span>Directions</span>
+                                      </button>
+                                    </div>
+
+                                    {room.workDescription && (
+                                      <p className="text-[11px] text-gray-600 leading-relaxed bg-white p-2 rounded-lg border border-gray-100">
+                                        <strong className="text-gray-800">Services: </strong>
+                                        {room.workDescription}
+                                      </p>
+                                    )}
+
+                                    {room.equipment && room.equipment.length > 0 && (
+                                      <div className="flex flex-wrap items-center gap-1 mt-0.5">
+                                        <span className="text-[10px] text-gray-400 font-bold flex items-center gap-0.5">
+                                          <Wrench className="w-3 h-3 text-amber-500" />
+                                        </span>
+                                        {room.equipment.map((eq, eqIdx) => (
+                                          <span
+                                            key={eqIdx}
+                                            className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded font-medium"
+                                          >
+                                            {eq}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
