@@ -39,6 +39,10 @@ import {
   Volume2,
   VolumeX,
   Radio,
+  Coffee,
+  BookOpen,
+  GraduationCap,
+  Accessibility,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { searchCampus, SearchResult } from '../lib/utils/search';
@@ -51,6 +55,15 @@ interface GoogleMapsUIProps {
   campusData: CampusData;
 }
 
+const CAMPUS_CATEGORIES = [
+  { id: 'dining', label: 'Cafeterias', icon: Coffee, color: 'text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300' },
+  { id: 'library', label: 'Libraries', icon: BookOpen, color: 'text-blue-800 bg-blue-50 hover:bg-blue-100 border-blue-300' },
+  { id: 'administrative', label: 'Admin & Services', icon: Building2, color: 'text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border-indigo-300' },
+  { id: 'academic', label: 'Faculties & Labs', icon: GraduationCap, color: 'text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border-emerald-300' },
+  { id: 'dormitory', label: 'Dormitories', icon: DoorOpen, color: 'text-purple-800 bg-purple-50 hover:bg-purple-100 border-purple-300' },
+  { id: 'sports', label: 'Sports', icon: Footprints, color: 'text-orange-800 bg-orange-50 hover:bg-orange-100 border-orange-300' },
+];
+
 export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   // Map Type State (Esri World Imagery Satellite as primary default)
   const [mapType, setMapType] = useState<'roadmap' | 'satellite'>('satellite');
@@ -61,6 +74,8 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const [activeNodeIndex, setActiveNodeIndex] = useState<number>(0);
   const [isStepsExpanded, setIsStepsExpanded] = useState<boolean>(false);
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [isAccessibleMode, setIsAccessibleMode] = useState<boolean>(false);
 
   // Selected Place Inspection State & Collapsible Bottom Sheet Mode
   const [selectedPlace, setSelectedPlace] = useState<Building | null>(null);
@@ -210,7 +225,8 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       destPos,
       startNodeId,
       destBuilding.entranceNodeId,
-      campusData
+      campusData,
+      { wheelchairAccessible: isAccessibleMode }
     ).then((res) => {
       if (isMounted) {
         setRouteResult(res);
@@ -221,7 +237,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     return () => {
       isMounted = false;
     };
-  }, [isDirectionsMode, startCoords, startNodeId, destBuilding, campusData]);
+  }, [isDirectionsMode, startCoords, startNodeId, destBuilding, campusData, isAccessibleMode]);
 
   const stopLiveLocationTracking = (silent = false) => {
     if (locationWatchIdRef.current !== null && typeof navigator !== 'undefined') {
@@ -822,6 +838,21 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     }
   };
 
+  // Venues belonging to the currently selected quick category chip, sorted by distance
+  const categoryPlaces = useMemo(() => {
+    if (!selectedCategory) return [];
+    const list = campusData.buildings.filter((b) => b.category === selectedCategory);
+    if (liveUserLocation) {
+      return list
+        .map((b) => ({
+          building: b,
+          distanceMeters: Math.round(calculateHaversineDistance(liveUserLocation, b.center)),
+        }))
+        .sort((a, b) => a.distanceMeters - b.distanceMeters);
+    }
+    return list.map((b) => ({ building: b, distanceMeters: null }));
+  }, [selectedCategory, campusData, liveUserLocation]);
+
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-slate-100 font-sans text-slate-800">
       {/* Fullscreen Interactive Canvas */}
@@ -910,16 +941,35 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </button>
                 </div>
 
-                <div className="flex items-center justify-around border-b border-gray-100 pb-2 text-[11px] font-medium text-gray-600">
-                  <button className="flex items-center gap-1.5 text-blue-600 border-b-2 border-blue-600 pb-1 font-bold cursor-pointer">
-                    <Footprints className="w-3.5 h-3.5" /> Walk
-                  </button>
-                  <button className="flex items-center gap-1.5 opacity-40 cursor-not-allowed">
-                    <Car className="w-3.5 h-3.5" /> Drive
-                  </button>
-                  <button className="flex items-center gap-1.5 opacity-40 cursor-not-allowed">
-                    <Bike className="w-3.5 h-3.5" /> Bike
-                  </button>
+                <div className="flex items-center justify-between border-b border-gray-100 pb-2 text-[11px] font-medium text-gray-600">
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => setIsAccessibleMode(false)}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                        !isAccessibleMode
+                          ? 'bg-blue-600 text-white shadow-sm'
+                          : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                      }`}
+                    >
+                      <Footprints className="w-3.5 h-3.5" /> Walk
+                    </button>
+
+                    <button
+                      onClick={() => setIsAccessibleMode(true)}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                        isAccessibleMode
+                          ? 'bg-emerald-600 text-white shadow-sm'
+                          : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                      }`}
+                      title="Accessible route avoiding stairs and steep paths"
+                    >
+                      <Accessibility className="w-3.5 h-3.5" /> Accessible
+                    </button>
+                  </div>
+
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">
+                    {isAccessibleMode ? 'Ramps Only' : 'Fastest'}
+                  </span>
                 </div>
 
                 <div className="flex items-center gap-2 relative">
@@ -1044,6 +1094,119 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               </div>
             )}
           </div>
+
+          {/* QUICK CATEGORY CHIPS BAR (GOOGLE MAPS STYLE) */}
+          {!isDirectionsMode && !activeInput && (
+            <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar select-none">
+              {CAMPUS_CATEGORIES.map((cat) => {
+                const IconComp = cat.icon;
+                const isSelected = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(isSelected ? null : cat.id)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shadow-md transition-all cursor-pointer border ${
+                      isSelected
+                        ? 'bg-blue-600 text-white border-blue-600 shadow-blue-500/30 scale-105'
+                        : `${cat.color} bg-white/95 backdrop-blur-md`
+                    }`}
+                  >
+                    <IconComp className="w-3.5 h-3.5" />
+                    <span>{cat.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* FIND NEAREST CAMPUS VENUES DRAWER */}
+          {!isDirectionsMode && selectedCategory && (
+            <div className="mt-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 overflow-hidden max-h-[380px] flex flex-col pointer-events-auto animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="px-3.5 py-2.5 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-gray-700">
+                    {CAMPUS_CATEGORIES.find((c) => c.id === selectedCategory)?.label}
+                  </span>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
+                    {categoryPlaces.length} locations
+                  </span>
+                </div>
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className="text-gray-400 hover:text-gray-700 p-1 rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
+                  title="Close category drawer"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              <div className="overflow-y-auto divide-y divide-gray-100 custom-scrollbar p-1">
+                {categoryPlaces.length === 0 ? (
+                  <div className="p-4 text-center text-xs text-gray-500">
+                    No locations found in this category.
+                  </div>
+                ) : (
+                  categoryPlaces.map(({ building, distanceMeters }) => (
+                    <div
+                      key={building.id}
+                      className="p-2.5 hover:bg-blue-50/70 rounded-xl transition-colors flex items-center justify-between gap-2.5 group"
+                    >
+                      <div
+                        className="flex-1 min-w-0 cursor-pointer"
+                        onClick={() => {
+                          setSelectedPlace(building);
+                          setRecenterTrigger((prev) => prev + 1);
+                        }}
+                      >
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="font-bold text-xs text-gray-900 group-hover:text-blue-600 transition-colors truncate">
+                            {building.name}
+                          </h4>
+                          <span className="text-[10px] font-extrabold px-1.5 py-0.2 bg-gray-100 text-gray-600 rounded">
+                            {building.code}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-gray-500 truncate mt-0.5">
+                          {building.details?.department || building.details?.description || 'ASTU Campus'}
+                        </p>
+                        {distanceMeters !== null && (
+                          <div className="flex items-center gap-1 text-[11px] font-extrabold text-emerald-600 mt-0.5">
+                            <Footprints className="w-3 h-3" />
+                            <span>{formatDistance(distanceMeters)} away</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <button
+                          onClick={() => {
+                            setSelectedPlace(building);
+                            setRecenterTrigger((prev) => prev + 1);
+                          }}
+                          className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-600 hover:text-gray-900 text-xs font-semibold transition-colors cursor-pointer"
+                          title="View on Map"
+                        >
+                          <MapPin className="w-4 h-4 text-gray-600" />
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            setSelectedCategory(null);
+                            handleOpenDirectionsToPlace(building, undefined, liveUserLocation ? 'gps' : 'main_gate');
+                          }}
+                          className="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer"
+                          title="Get walking directions"
+                        >
+                          <Navigation className="w-3 h-3 fill-white" />
+                          <span>Go</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -1398,7 +1561,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   </span>
                 </div>
                 <div className="text-xs text-gray-500 font-medium mt-0.5">
-                  Fastest foot path • ASTU Campus
+                  {isAccessibleMode ? '♿ Accessible ramp path (No stairs)' : 'Fastest foot path • ASTU Campus'}
                 </div>
               </div>
 
