@@ -14,7 +14,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ASTU Campus Navigator | Adama Science & Technology University",
-  description: "Interactive campus navigation map for Adama Science and Technology University (ASTU), Adama, Ethiopia.",
+  description: "Interactive campus navigation map and building directory for Adama Science and Technology University (ASTU), Adama, Ethiopia.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "ASTU Map",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

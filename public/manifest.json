@@ -1,0 +1,19 @@
+{
+  "name": "ASTU Campus Navigator",
+  "short_name": "ASTU Map",
+  "description": "Interactive, high-precision campus navigation and directory for Adama Science and Technology University (ASTU).",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#1a73e8",
+  "scope": "/",
+  "categories": ["navigation", "education"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
