@@ -797,6 +797,12 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     return selectedPlace ? getFacilityOperatingStatus(selectedPlace) : null;
   }, [selectedPlace]);
 
+  // Real-time walking distance from user to selected place (if GPS active)
+  const selectedPlaceDistance = useMemo(() => {
+    if (!selectedPlace || !liveUserLocation) return null;
+    return Math.round(calculateHaversineDistance(liveUserLocation, selectedPlace.center));
+  }, [selectedPlace, liveUserLocation]);
+
   // Unique floors available in selected place
   const availableFloors = useMemo(() => {
     if (!selectedPlace) return [];
@@ -1291,183 +1297,289 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
       {/* RICH PLACE DETAILS SHEET (Z-INDEX z-[1000]) */}
       {selectedPlace && !isNavigating && !isDirectionsMode && (
-        <div className="absolute bottom-0 left-0 right-0 md:top-[92px] md:left-4 md:right-auto md:bottom-auto z-[1000] w-full md:w-[420px] pointer-events-auto transition-all duration-300">
-          <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300">
+        <div className="absolute bottom-0 left-0 right-0 md:top-[88px] md:left-4 md:right-auto md:bottom-auto z-[1000] w-full md:w-[420px] pointer-events-auto transition-all duration-300">
+          <div className="bg-white rounded-t-[28px] md:rounded-2xl shadow-[0_20px_50px_rgba(15,23,42,0.22)] border border-slate-200/90 overflow-hidden flex flex-col transition-all duration-300 max-h-[85vh] md:max-h-[calc(100vh-110px)]">
             
-            {/* Top Drag Handle Bar & Collapsible Header */}
-            <div
-              onClick={() => setIsPlaceSheetExpanded(!isPlaceSheetExpanded)}
-              className="w-full pt-2 pb-1 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100 md:hidden"
-            >
-              <div className="w-12 h-1 bg-gray-300 hover:bg-blue-500 rounded-full mb-1.5 transition-colors" />
-              <div className="flex items-center gap-1 text-[11px] font-bold text-blue-600">
-                <span>{isPlaceSheetExpanded ? 'Tap to Collapse' : 'Tap to Expand Full Details'}</span>
-                {isPlaceSheetExpanded ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
-              </div>
-            </div>
+            {/* MOBILE DRAG PEEK BAR (Shown only on mobile when NOT expanded) */}
+            <div className="md:hidden">
+              {!isPlaceSheetExpanded ? (
+                <div
+                  onClick={() => setIsPlaceSheetExpanded(true)}
+                  className="p-3.5 flex flex-col gap-2 cursor-pointer hover:bg-slate-50 transition-colors"
+                >
+                  <div className="w-10 h-1 bg-slate-300 rounded-full mx-auto" />
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      {placeImages[0] ? (
+                        <img
+                          src={placeImages[0]}
+                          alt={selectedPlace.name}
+                          className="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-slate-200 shadow-2xs"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0 border border-slate-200 text-slate-600">
+                          <Building2 className="w-5 h-5 text-blue-600" />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-extrabold uppercase text-slate-800 bg-slate-100 px-1.5 py-0.2 rounded">
+                            {selectedPlace.code}
+                          </span>
+                          <span className="text-[10px] font-semibold text-slate-400 uppercase">
+                            {selectedPlace.category}
+                          </span>
+                          {operatingStatus && (
+                            <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded-full flex items-center gap-1 ${operatingStatus.badgeBg} ${operatingStatus.badgeColor}`}>
+                              <span className={`w-1.5 h-1.5 rounded-full ${
+                                operatingStatus.status === 'open' || operatingStatus.status === 'open_24_7'
+                                  ? 'bg-emerald-500 animate-pulse'
+                                  : operatingStatus.status === 'closing_soon' || operatingStatus.status === 'lunch_break'
+                                  ? 'bg-amber-500'
+                                  : 'bg-rose-500'
+                              }`} />
+                              {operatingStatus.badgeLabel}
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="font-extrabold text-xs text-slate-900 truncate mt-0.5">
+                          {selectedPlace.name}
+                        </h3>
+                        {selectedPlaceDistance !== null && (
+                          <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-600 mt-0.5">
+                            <Footprints className="w-3 h-3" />
+                            <span>{formatDistance(selectedPlaceDistance)} away</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
 
-            {/* PEEK COMPACT HEADER */}
-            <div className="p-3 flex items-center justify-between border-b border-gray-100">
-              <div className="flex items-center gap-2.5 min-w-0">
-                {placeImages[0] && (
-                  <img
-                    src={placeImages[0]}
-                    alt={selectedPlace.name}
-                    className="w-11 h-11 rounded-lg object-cover flex-shrink-0 border border-gray-200"
-                  />
-                )}
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] font-extrabold uppercase text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
-                      {selectedPlace.code}
-                    </span>
-                    <span className="text-[10px] font-bold text-gray-400 uppercase">
-                      {selectedPlace.category}
-                    </span>
-                    {operatingStatus && (
-                      <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-full flex items-center gap-1 ${operatingStatus.badgeBg} ${operatingStatus.badgeColor}`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${
-                          operatingStatus.status === 'open' || operatingStatus.status === 'open_24_7'
-                            ? 'bg-emerald-500 animate-pulse'
-                            : operatingStatus.status === 'closing_soon' || operatingStatus.status === 'lunch_break'
-                            ? 'bg-amber-500'
-                            : 'bg-rose-500'
-                        }`} />
-                        {operatingStatus.badgeLabel}
-                      </span>
-                    )}
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOpenDirectionsToPlace(selectedPlace);
+                        }}
+                        className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-xs flex items-center gap-1.5 cursor-pointer"
+                      >
+                        <Navigation className="w-3.5 h-3.5 fill-white" />
+                        <span>Go</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedPlace(null);
+                        }}
+                        className="p-2 text-slate-400 hover:text-slate-600 rounded-lg cursor-pointer"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
-                  <h3 className="font-bold text-xs text-gray-900 truncate mt-0.5">
-                    {selectedPlace.name}
-                  </h3>
                 </div>
-              </div>
-
-              <div className="flex items-center gap-1.5 flex-shrink-0 ml-2">
-                <button
-                  onClick={() => handleOpenDirectionsToPlace(selectedPlace)}
-                  className="px-2.5 py-1.5 bg-[#1a73e8] hover:bg-blue-700 text-white font-extrabold text-xs rounded-lg shadow flex items-center gap-1 transition-all cursor-pointer"
+              ) : (
+                /* Mobile Drag Handle to collapse when expanded */
+                <div
+                  onClick={() => setIsPlaceSheetExpanded(false)}
+                  className="w-full pt-2.5 pb-1 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 transition-colors border-b border-slate-100"
                 >
-                  <Navigation className="w-3.5 h-3.5 fill-white" />
-                  <span>Directions</span>
-                </button>
-                <button
-                  onClick={() => handleSharePlace(selectedPlace)}
-                  className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
-                  title="Share Location"
-                >
-                  <Share2 className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setSelectedPlace(null)}
-                  className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg transition-colors cursor-pointer"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
+                  <div className="w-10 h-1 bg-slate-300 rounded-full mb-1" />
+                  <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
+                    <span>Swipe down or tap to collapse</span>
+                    <ChevronDown className="w-3 h-3" />
+                  </span>
+                </div>
+              )}
             </div>
 
-            {/* EXPANDABLE BODY PANEL */}
+            {/* FULL LOCATION DETAILS VIEW (Visible on desktop always; visible on mobile when isPlaceSheetExpanded) */}
             <div
               className={`flex-col overflow-y-auto custom-scrollbar transition-all duration-300 ${
-                isPlaceSheetExpanded
-                  ? 'flex max-h-[70vh] md:max-h-[calc(100vh-180px)]'
-                  : 'hidden md:flex md:max-h-[calc(100vh-180px)]'
+                isPlaceSheetExpanded ? 'flex' : 'hidden md:flex'
               }`}
             >
-              {/* Sliding Image Carousel Header */}
-              {placeImages.length > 0 && (
-                <div className="relative h-48 bg-slate-900 overflow-hidden flex-shrink-0 group">
+              {/* HERO MEDIA HEADER */}
+              {placeImages.length > 0 ? (
+                <div className="relative h-48 bg-slate-950 overflow-hidden flex-shrink-0 group">
                   <img
                     src={placeImages[activeImageIndex]}
                     alt={selectedPlace.name}
-                    className="w-full h-full object-cover transition-all duration-500"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-slate-950/40" />
 
+                  {/* Floating Action Controls on Media */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                    <div className="flex items-center gap-1.5">
+                      <span className="px-2 py-0.5 bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-extrabold uppercase text-white tracking-wider">
+                        {selectedPlace.category}
+                      </span>
+                      {selectedPlace.details?.verified && (
+                        <span className="px-2 py-0.5 bg-emerald-600/90 backdrop-blur-md rounded-md text-[10px] font-bold text-white flex items-center gap-1 shadow-xs">
+                          <CheckCircle2 className="w-3 h-3" /> Verified
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => handleSharePlace(selectedPlace)}
+                        className="w-7 h-7 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-md border border-white/15 flex items-center justify-center transition-colors cursor-pointer"
+                        title="Share Location"
+                      >
+                        <Share2 className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedPlace(null)}
+                        className="w-7 h-7 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-md border border-white/15 flex items-center justify-center transition-colors cursor-pointer"
+                        title="Close Location Details"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Carousel Page Navigation Controls */}
                   {placeImages.length > 1 && (
                     <>
                       <button
+                        type="button"
                         onClick={handlePrevImage}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-colors shadow z-10 cursor-pointer"
+                        className="absolute left-2.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-950/60 hover:bg-slate-950/90 text-white flex items-center justify-center transition-colors shadow z-10 cursor-pointer"
+                        title="Previous Image"
                       >
                         <ChevronLeft className="w-4 h-4" />
                       </button>
                       <button
+                        type="button"
                         onClick={handleNextImage}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-colors shadow z-10 cursor-pointer"
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-950/60 hover:bg-slate-950/90 text-white flex items-center justify-center transition-colors shadow z-10 cursor-pointer"
+                        title="Next Image"
                       >
                         <ChevronRight className="w-4 h-4" />
                       </button>
-
-                      <div className="absolute top-3 left-3 px-2 py-0.5 bg-black/60 backdrop-blur-md rounded-md text-[10px] font-bold text-white z-10">
+                      <div className="absolute bottom-12 right-3 px-2 py-0.5 bg-slate-950/70 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-bold text-white z-10">
                         {activeImageIndex + 1} / {placeImages.length}
                       </div>
                     </>
                   )}
 
+                  {/* Bottom Title Overlay */}
                   <div className="absolute bottom-3 left-4 right-4 text-white z-10">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="px-2.5 py-0.5 bg-blue-600/90 backdrop-blur-md rounded-md text-[10px] font-extrabold uppercase tracking-wider">
-                        {selectedPlace.category}
-                      </span>
-                      {selectedPlace.details?.verified && (
-                        <span className="px-2.5 py-0.5 bg-emerald-500/90 backdrop-blur-md rounded-md text-[10px] font-bold flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3" /> Verified ASTU
-                        </span>
-                      )}
-                    </div>
-                    <h2 className="font-black text-lg leading-tight truncate">
+                    <span className="text-[10px] font-extrabold uppercase text-blue-300 tracking-wider">
+                      Block {selectedPlace.code}
+                    </span>
+                    <h2 className="font-black text-base md:text-lg leading-tight truncate text-white drop-shadow-sm mt-0.5">
                       {selectedPlace.name}
                     </h2>
                   </div>
                 </div>
+              ) : (
+                /* Typographic Header (When no photo available) */
+                <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-wrap mb-1">
+                      <span className="px-2 py-0.5 bg-slate-900 text-white rounded text-[10px] font-extrabold uppercase tracking-wider">
+                        {selectedPlace.code}
+                      </span>
+                      <span className="px-2 py-0.5 bg-slate-200 text-slate-700 rounded text-[10px] font-bold uppercase">
+                        {selectedPlace.category}
+                      </span>
+                      {selectedPlace.details?.verified && (
+                        <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded text-[10px] font-bold flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Verified
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="font-black text-base text-slate-900 leading-tight">
+                      {selectedPlace.name}
+                    </h2>
+                    {selectedPlace.details?.department && (
+                      <p className="text-xs text-slate-500 font-medium mt-0.5 truncate">
+                        {selectedPlace.details.department}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => handleSharePlace(selectedPlace)}
+                      className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+                      title="Share Location"
+                    >
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedPlace(null)}
+                      className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+                      title="Close"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
               )}
 
-              {/* Scrollable Content Body */}
-              <div className="p-4 flex flex-col gap-4">
-                {/* Quick Action Contact Bar */}
-                <div className="flex items-center gap-2 border-b border-gray-100 pb-3">
+              {/* LOCATION BODY CONTENT */}
+              <div className="p-4 flex flex-col gap-3.5">
+                
+                {/* PRIMARY ACTION BAR (AUTHORITATIVE & SINGLE) */}
+                <div className="flex items-center gap-2">
                   <button
+                    type="button"
                     onClick={() => handleOpenDirectionsToPlace(selectedPlace)}
-                    className="flex-1 py-2.5 px-4 bg-[#1a73e8] hover:bg-blue-700 text-white font-extrabold text-xs rounded-lg shadow flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+                    className="flex-1 py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-xs flex items-center justify-center gap-2 transition-all active:scale-98 cursor-pointer"
                   >
                     <Navigation className="w-4 h-4 fill-white" />
                     <span>Directions</span>
+                    {selectedPlaceDistance !== null && (
+                      <span className="text-[11px] font-normal opacity-90">
+                        • {formatDistance(selectedPlaceDistance)}
+                      </span>
+                    )}
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => handleSharePlace(selectedPlace)}
-                    className="py-2.5 px-3 bg-gray-100 hover:bg-blue-50 text-gray-700 hover:text-blue-600 font-bold text-xs rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
-                    title="Share Location Link"
+                    className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors cursor-pointer"
+                    title="Share Location"
                   >
-                    <Share2 className="w-4 h-4 text-blue-600" />
-                    <span>Share</span>
+                    <Share2 className="w-4 h-4" />
                   </button>
+
                   {selectedPlace.details?.phone && (
                     <a
                       href={`tel:${selectedPlace.details.phone}`}
-                      className="p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors cursor-pointer"
+                      className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors cursor-pointer"
                       title="Call Office"
                     >
                       <Phone className="w-4 h-4" />
                     </a>
                   )}
+
                   {selectedPlace.details?.email && (
                     <a
                       href={`mailto:${selectedPlace.details.email}`}
-                      className="p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors cursor-pointer"
+                      className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors cursor-pointer"
                       title="Send Email"
                     >
                       <Mail className="w-4 h-4" />
                     </a>
                   )}
+
                   {selectedPlace.details?.website && (
                     <a
                       href={selectedPlace.details.website}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors cursor-pointer"
+                      className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors cursor-pointer"
                       title="Visit Department Website"
                     >
                       <Globe className="w-4 h-4" />
@@ -1475,50 +1587,10 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   )}
                 </div>
 
-                {/* Code & Capacity Metrics */}
-                <div className="grid grid-cols-2 gap-2 text-xs bg-gray-50 p-3 rounded-xl border border-gray-100">
-                  <div className="flex items-center gap-2">
-                    <Building2 className="w-4 h-4 text-blue-600" />
-                    <div>
-                      <span className="text-gray-400 block text-[10px] font-bold uppercase">Block Code</span>
-                      <strong className="text-gray-900 font-extrabold">{selectedPlace.code}</strong>
-                    </div>
-                  </div>
-
-                  {selectedPlace.details?.totalCapacity && (
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-emerald-600" />
-                      <div>
-                        <span className="text-gray-400 block text-[10px] font-bold uppercase">Capacity</span>
-                        <strong className="text-gray-900 font-extrabold">{selectedPlace.details.totalCapacity} people</strong>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {selectedPlace.details?.headOfDepartment && (
-                  <div className="flex items-center gap-2 text-xs text-gray-700 bg-blue-50/60 p-2.5 rounded-lg border border-blue-100">
-                    <User className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Leadership: <strong className="text-gray-900">{selectedPlace.details.headOfDepartment}</strong></span>
-                  </div>
-                )}
-
-                {/* Long Description */}
-                {selectedPlace.details?.description && (
-                  <div>
-                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">
-                      About this Building
-                    </h4>
-                    <p className="text-xs text-gray-700 leading-relaxed bg-gray-50 p-3 rounded-xl border border-gray-100">
-                      {selectedPlace.details.description}
-                    </p>
-                  </div>
-                )}
-
-                {/* REAL-TIME CAMPUS PULSE: LIVE OPERATING STATUS & SCHEDULE */}
+                {/* REAL-TIME FACILITY PULSE (Operating Schedule) */}
                 {operatingStatus ? (
                   <div
-                    className={`p-3 rounded-xl border flex flex-col gap-2 ${operatingStatus.badgeBg} ${
+                    className={`p-3 rounded-xl border flex flex-col gap-1.5 ${operatingStatus.badgeBg} ${
                       operatingStatus.status === 'open' || operatingStatus.status === 'open_24_7'
                         ? 'border-emerald-200/80'
                         : operatingStatus.status === 'closing_soon' || operatingStatus.status === 'lunch_break'
@@ -1527,79 +1599,100 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Clock className={`w-4 h-4 ${operatingStatus.badgeColor}`} />
+                      <div className="flex items-center gap-1.5">
+                        <Clock className={`w-3.5 h-3.5 ${operatingStatus.badgeColor}`} />
                         <span className={`text-xs font-black uppercase tracking-wider ${operatingStatus.badgeColor}`}>
                           {operatingStatus.badgeLabel}
                         </span>
                       </div>
-                      <span className="text-[10px] font-bold text-gray-500 bg-white/70 px-2 py-0.5 rounded-full border border-gray-200/50">
-                        Live Facility Pulse
+                      <span className="text-[10px] text-slate-500 font-medium">
+                        {operatingStatus.scheduleSummary}
                       </span>
                     </div>
 
-                    <p className="text-xs text-gray-700 font-medium">
+                    <p className="text-xs text-slate-700 font-medium">
                       {operatingStatus.statusDetail}
                     </p>
 
                     {/* Meal Schedule breakdown for dining facilities */}
                     {operatingStatus.schedule?.meals && (
-                      <div className="mt-1 pt-2 border-t border-gray-200/60 grid grid-cols-3 gap-1.5 text-[10px]">
+                      <div className="mt-1 pt-2 border-t border-slate-200/60 grid grid-cols-3 gap-1.5 text-[10px]">
                         {operatingStatus.schedule.meals.breakfast && (
-                          <div className="bg-white/80 p-1.5 rounded-lg border border-gray-100 text-center">
-                            <span className="block text-gray-400 font-bold uppercase">Breakfast</span>
-                            <span className="font-bold text-gray-800">{operatingStatus.schedule.meals.breakfast}</span>
+                          <div className="bg-white/90 p-1.5 rounded-lg border border-slate-200/60 text-center">
+                            <span className="block text-slate-400 font-bold uppercase text-[9px]">Breakfast</span>
+                            <span className="font-bold text-slate-800">{operatingStatus.schedule.meals.breakfast}</span>
                           </div>
                         )}
                         {operatingStatus.schedule.meals.lunch && (
-                          <div className="bg-white/80 p-1.5 rounded-lg border border-gray-100 text-center">
-                            <span className="block text-gray-400 font-bold uppercase">Lunch</span>
-                            <span className="font-bold text-gray-800">{operatingStatus.schedule.meals.lunch}</span>
+                          <div className="bg-white/90 p-1.5 rounded-lg border border-slate-200/60 text-center">
+                            <span className="block text-slate-400 font-bold uppercase text-[9px]">Lunch</span>
+                            <span className="font-bold text-slate-800">{operatingStatus.schedule.meals.lunch}</span>
                           </div>
                         )}
                         {operatingStatus.schedule.meals.dinner && (
-                          <div className="bg-white/80 p-1.5 rounded-lg border border-gray-100 text-center">
-                            <span className="block text-gray-400 font-bold uppercase">Dinner</span>
-                            <span className="font-bold text-gray-800">{operatingStatus.schedule.meals.dinner}</span>
+                          <div className="bg-white/90 p-1.5 rounded-lg border border-slate-200/60 text-center">
+                            <span className="block text-slate-400 font-bold uppercase text-[9px]">Dinner</span>
+                            <span className="font-bold text-slate-800">{operatingStatus.schedule.meals.dinner}</span>
                           </div>
                         )}
                       </div>
                     )}
                   </div>
                 ) : selectedPlace.details?.hours ? (
-                  <div className="flex items-center gap-2.5 text-xs text-gray-700 bg-emerald-50 text-emerald-800 p-2.5 rounded-xl font-medium border border-emerald-100">
+                  <div className="flex items-center gap-2 text-xs text-slate-700 bg-emerald-50 text-emerald-800 p-2.5 rounded-xl font-medium border border-emerald-100">
                     <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                     <span>{selectedPlace.details.hours}</span>
                   </div>
                 ) : null}
 
-                {/* Features & Equipment Specifications */}
-                {selectedPlace.details?.features && selectedPlace.details.features.length > 0 && (
+                {/* KEY BUILDING FACTS STRIP */}
+                <div className="grid grid-cols-3 gap-2 text-xs bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-center">
                   <div>
-                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2">
-                      Building Facilities & Tech Specifications
+                    <span className="text-slate-400 block text-[10px] font-bold uppercase">Block</span>
+                    <strong className="text-slate-900 font-extrabold">{selectedPlace.code}</strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] font-bold uppercase">Floors</span>
+                    <strong className="text-slate-900 font-extrabold">
+                      {availableFloors.length > 0 ? `${availableFloors.length} Floors` : 'Single'}
+                    </strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] font-bold uppercase">Capacity</span>
+                    <strong className="text-slate-900 font-extrabold">
+                      {selectedPlace.details?.totalCapacity ? `${selectedPlace.details.totalCapacity}` : 'Standard'}
+                    </strong>
+                  </div>
+                </div>
+
+                {/* ABOUT THIS FACILITY */}
+                {selectedPlace.details?.description && (
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                      About Facility
                     </h4>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      {selectedPlace.details.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-center gap-1.5 text-gray-700 font-medium bg-gray-50 p-2 rounded-lg border border-gray-100">
-                          <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                          <span className="truncate">{feat}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      {selectedPlace.details.description}
+                    </p>
+                    {selectedPlace.details?.headOfDepartment && (
+                      <p className="text-[11px] text-slate-500 mt-1.5 font-medium flex items-center gap-1">
+                        <User className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                        <span>Leadership: <strong className="text-slate-800">{selectedPlace.details.headOfDepartment}</strong></span>
+                      </p>
+                    )}
                   </div>
                 )}
 
-                {/* INTERACTIVE MULTI-FLOOR DIRECTORY & IN-BUILDING ROOM WAYFINDING */}
+                {/* INTERACTIVE MULTI-FLOOR INDOOR DIRECTORY */}
                 {selectedPlace.rooms && selectedPlace.rooms.length > 0 && (
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                      <h4 className="text-xs font-black uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
+                  <div className="flex flex-col gap-2.5 pt-2 border-t border-slate-100">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
                         <Layers className="w-4 h-4 text-blue-600" />
                         <span>Indoor Directory</span>
                       </h4>
-                      <span className="text-[11px] text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-full">
-                        {selectedPlace.rooms.length} Rooms Listed
+                      <span className="text-[10px] text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+                        {selectedPlace.rooms.length} Rooms
                       </span>
                     </div>
 
@@ -1609,16 +1702,16 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                         <button
                           type="button"
                           onClick={() => setActiveFloorFilter('all')}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+                          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                             activeFloorFilter === 'all'
-                              ? 'bg-blue-600 text-white shadow-sm'
-                              : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                              ? 'bg-slate-900 text-white shadow-xs'
+                              : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
                           }`}
                         >
-                          <span>All Floors</span>
+                          <span>All</span>
                           <span
-                            className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                              activeFloorFilter === 'all' ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-700'
+                            className={`text-[9px] px-1.5 py-0.2 rounded-full ${
+                              activeFloorFilter === 'all' ? 'bg-slate-700 text-white' : 'bg-slate-200 text-slate-700'
                             }`}
                           >
                             {selectedPlace.rooms.length}
@@ -1626,23 +1719,23 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                         </button>
                         {availableFloors.map((floor) => {
                           const count = selectedPlace.rooms.filter((r) => (r.floor ?? 0) === floor).length;
-                          const label = floor === 0 ? 'Ground (G)' : `Floor ${floor}`;
+                          const label = floor === 0 ? 'G (Ground)' : `Floor ${floor}`;
                           const isActive = activeFloorFilter === floor;
                           return (
                             <button
                               key={floor}
                               type="button"
                               onClick={() => setActiveFloorFilter(floor)}
-                              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+                              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                                 isActive
-                                  ? 'bg-blue-600 text-white shadow-sm'
-                                  : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                                  ? 'bg-blue-600 text-white shadow-xs'
+                                  : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
                               }`}
                             >
                               <span>{label}</span>
                               <span
-                                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                                  isActive ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-700'
+                                className={`text-[9px] px-1.5 py-0.2 rounded-full ${
+                                  isActive ? 'bg-blue-800 text-white' : 'bg-slate-200 text-slate-700'
                                 }`}
                               >
                                 {count}
@@ -1655,19 +1748,19 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
                     {/* In-Building Room Search Bar */}
                     <div className="relative">
-                      <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+                      <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
                       <input
                         type="text"
                         placeholder="Search rooms, labs, or services..."
                         value={roomSearchQuery}
                         onChange={(e) => setRoomSearchQuery(e.target.value)}
-                        className="w-full pl-8 pr-7 py-1.5 bg-gray-50 hover:bg-gray-100/80 focus:bg-white text-xs rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-400 text-gray-800"
+                        className="w-full pl-8 pr-7 py-1.5 bg-slate-50 hover:bg-slate-100/80 focus:bg-white text-xs rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-slate-400 text-slate-800"
                       />
                       {roomSearchQuery && (
                         <button
                           type="button"
                           onClick={() => setRoomSearchQuery('')}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-0.5 cursor-pointer"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5 cursor-pointer"
                         >
                           <X className="w-3.5 h-3.5" />
                         </button>
@@ -1676,45 +1769,45 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
                     {/* Filtered Rooms List */}
                     {filteredRooms.length === 0 ? (
-                      <div className="p-4 text-center bg-gray-50 rounded-xl border border-dashed border-gray-200 text-gray-500 text-xs">
+                      <div className="p-3.5 text-center bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-400 text-xs">
                         No rooms match the selected floor or search criteria.
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-2.5 max-h-64 overflow-y-auto custom-scrollbar pr-1">
                         {Array.from(roomsByFloor.entries())
                           .sort(([fA], [fB]) => fA - fB)
                           .map(([floorNum, rooms]) => (
-                            <div key={floorNum} className="flex flex-col gap-2">
-                              <div className="flex items-center gap-2">
-                                <span className="px-2 py-0.5 bg-gray-900 text-white rounded text-[10px] font-black uppercase">
-                                  {floorNum === 0 ? 'Ground Floor (G)' : `Floor ${floorNum}`}
+                            <div key={floorNum} className="flex flex-col gap-1.5">
+                              <div className="flex items-center gap-1.5">
+                                <span className="px-2 py-0.2 bg-slate-800 text-white rounded text-[9px] font-black uppercase">
+                                  {floorNum === 0 ? 'Ground (G)' : `Floor ${floorNum}`}
                                 </span>
-                                <span className="text-xs text-gray-400 font-medium">
-                                  ({rooms.length} room{rooms.length > 1 ? 's' : ''})
+                                <span className="text-[11px] text-slate-400 font-medium">
+                                  ({rooms.length})
                                 </span>
                               </div>
 
-                              <div className="flex flex-col gap-2 pl-1">
+                              <div className="flex flex-col gap-1.5">
                                 {rooms.map((room) => (
                                   <div
                                     key={room.id}
-                                    className="p-2.5 bg-gray-50 hover:bg-blue-50/60 rounded-xl border border-gray-200 transition-colors flex flex-col gap-1.5"
+                                    className="p-2.5 bg-white hover:bg-blue-50/50 rounded-xl border border-slate-200 transition-colors flex flex-col gap-1 shadow-2xs"
                                   >
                                     <div className="flex items-start justify-between gap-2">
                                       <div className="min-w-0">
                                         <div className="flex items-center gap-1.5">
                                           <DoorOpen className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
-                                          <span className="font-bold text-gray-900 text-xs truncate">{room.name}</span>
+                                          <span className="font-bold text-slate-900 text-xs truncate">{room.name}</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1 mt-1">
                                           {room.type && (
-                                            <span className="text-[10px] font-semibold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded capitalize">
+                                            <span className="text-[10px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded capitalize">
                                               {room.type.replace('_', ' ')}
                                             </span>
                                           )}
                                           {room.capacity && (
-                                            <span className="text-[10px] text-gray-600 bg-gray-200/70 px-1.5 py-0.5 rounded font-medium flex items-center gap-1">
-                                              <Users className="w-3 h-3 text-gray-500" />
+                                            <span className="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.2 rounded font-medium flex items-center gap-1">
+                                              <Users className="w-3 h-3 text-slate-400" />
                                               {room.capacity} seats
                                             </span>
                                           )}
@@ -1722,30 +1815,28 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                                       </div>
 
                                       <button
+                                        type="button"
                                         onClick={() => handleOpenDirectionsToPlace(selectedPlace, room)}
-                                        className="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] rounded-lg transition-colors shadow-sm flex items-center gap-1 flex-shrink-0 cursor-pointer"
+                                        className="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] rounded-lg transition-colors shadow-2xs flex items-center gap-1 flex-shrink-0 cursor-pointer"
                                       >
-                                        <Navigation className="w-3 h-3 fill-white" />
+                                        <Navigation className="w-3.5 h-3.5 fill-white" />
                                         <span>Directions</span>
                                       </button>
                                     </div>
 
                                     {room.workDescription && (
-                                      <p className="text-[11px] text-gray-600 leading-relaxed bg-white p-2 rounded-lg border border-gray-100">
-                                        <strong className="text-gray-800">Services: </strong>
+                                      <p className="text-[11px] text-slate-600 leading-snug mt-0.5">
+                                        <strong className="text-slate-700">Services: </strong>
                                         {room.workDescription}
                                       </p>
                                     )}
 
                                     {room.equipment && room.equipment.length > 0 && (
                                       <div className="flex flex-wrap items-center gap-1 mt-0.5">
-                                        <span className="text-[10px] text-gray-400 font-bold flex items-center gap-0.5">
-                                          <Wrench className="w-3 h-3 text-amber-500" />
-                                        </span>
                                         {room.equipment.map((eq, eqIdx) => (
                                           <span
                                             key={eqIdx}
-                                            className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded font-medium"
+                                            className="text-[9px] bg-amber-50 text-amber-800 border border-amber-200/80 px-1.5 py-0.2 rounded font-medium"
                                           >
                                             {eq}
                                           </span>
@@ -1761,11 +1852,32 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                     )}
                   </div>
                 )}
+
+                {/* BUILDING FACILITIES & TECH SPECIFICATIONS CHIPS */}
+                {selectedPlace.details?.features && selectedPlace.details.features.length > 0 && (
+                  <div className="pt-2 border-t border-slate-100">
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                      Building Tech & Facilities
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5 text-xs">
+                      {selectedPlace.details.features.map((feat, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-1 text-slate-700 font-medium bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-[11px]"
+                        >
+                          <Check className="w-3 h-3 text-emerald-600 flex-shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       )}
+
 
       {/* BOTTOM SHEET ROUTE SUMMARY */}
       {!isNavigating && isDirectionsMode && routeResult && (
