@@ -46,6 +46,7 @@ import {
   Compass,
   Plus,
   Minus,
+  QrCode,
 } from 'lucide-react';
 import { CampusData, Building, Room, PathNode, RouteResult, LatLng } from '../lib/types/map';
 import { getFacilityOperatingStatus, formatTime12h, OperatingHoursStatus } from '../lib/utils/operatingHours';
@@ -54,6 +55,7 @@ import { fetchRealWalkingRoute } from '../lib/utils/routing';
 import { calculateHaversineDistance, calculateBearing, formatDistance, formatTime } from '../lib/utils/graph';
 import GoogleMapCanvas from './GoogleMapCanvas';
 import AIAssistantModal from './AIAssistantModal';
+import CampusShareModal from './CampusShareModal';
 
 interface GoogleMapsUIProps {
   campusData: CampusData;
@@ -96,11 +98,21 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     setRoomSearchQuery('');
   }, [selectedPlace]);
 
-  // Handle URL Location Deep Linking (?place=building_id)
+  // Built-in QR Code & Location Sharing Modal State
+  const [shareTarget, setShareTarget] = useState<{
+    building?: Building | null;
+    room?: Room | null;
+    routeResult?: RouteResult | null;
+    startLabel?: string;
+    destLabel?: string;
+  } | null>(null);
+
+  // Handle URL Location Deep Linking (?place=building_id&room=room_id)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const placeId = params.get('place') || params.get('building');
+    const roomId = params.get('room');
     if (placeId) {
       const targetBuilding = campusData.buildings.find(
         (b) =>
@@ -110,32 +122,37 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       if (targetBuilding) {
         setSelectedPlace(targetBuilding);
         setRecenterTrigger((prev) => prev + 1);
+        if (roomId && targetBuilding.rooms) {
+          const targetRoom = targetBuilding.rooms.find(
+            (r) => r.id.toLowerCase() === roomId.toLowerCase()
+          );
+          if (targetRoom) {
+            setActiveFloorFilter(targetRoom.floor ?? 'all');
+            setLocationToast(`Viewing ${targetRoom.name} (${targetBuilding.code})`);
+            setTimeout(() => setLocationToast(null), 4000);
+            return;
+          }
+        }
         setLocationToast(`Loaded shared location: ${targetBuilding.name}`);
         setTimeout(() => setLocationToast(null), 4000);
       }
     }
   }, [campusData]);
 
-  // Share Place Handler via Web Share API or Clipboard Link Copy
-  const handleSharePlace = (building: Building) => {
-    if (typeof window === 'undefined') return;
-    const shareUrl = `${window.location.origin}${window.location.pathname}?place=${building.id}`;
-    const shareData = {
-      title: `${building.name} | ASTU Campus Map`,
-      text: `Check out ${building.name} on the Adama Science & Technology University (ASTU) Campus Map!`,
-      url: shareUrl,
-    };
+  // Share Place Handler opens built-in interactive QR & sharing modal
+  const handleSharePlace = (building: Building, room?: Room) => {
+    setShareTarget({ building, room });
+  };
 
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      navigator.share(shareData).catch(() => {
-        navigator.clipboard?.writeText(shareUrl);
-        setLocationToast('Location link copied to clipboard');
-        setTimeout(() => setLocationToast(null), 3500);
+  // Share Route Handler opens built-in interactive QR modal with active directions
+  const handleShareRoute = () => {
+    if (routeResult) {
+      setShareTarget({
+        building: selectedPlace,
+        routeResult,
+        startLabel,
+        destLabel,
       });
-    } else {
-      navigator.clipboard?.writeText(shareUrl);
-      setLocationToast('Location link copied to clipboard');
-      setTimeout(() => setLocationToast(null), 3500);
     }
   };
 
@@ -1913,6 +1930,16 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
               <div className="flex items-center gap-2">
                 <button
+                  type="button"
+                  onClick={handleShareRoute}
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-xl transition-all active:scale-95 cursor-pointer border border-slate-200"
+                  title="Share route via QR code or link"
+                  aria-label="Share route via QR code or link"
+                >
+                  <QrCode className="w-4 h-4" />
+                </button>
+
+                <button
                   onClick={handleStartSimulation}
                   className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-xl transition-all active:scale-95 cursor-pointer border border-slate-200"
                   title="Simulate route walk (Preview / presentation test mode)"
@@ -2193,6 +2220,17 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         onStartDirections={(building, room, originChoice) => {
           handleOpenDirectionsToPlace(building, room, originChoice);
         }}
+      />
+
+      {/* BUILT-IN QR CODE & LOCATION SHARING MODAL */}
+      <CampusShareModal
+        isOpen={!!shareTarget}
+        onClose={() => setShareTarget(null)}
+        building={shareTarget?.building}
+        room={shareTarget?.room}
+        routeResult={shareTarget?.routeResult}
+        startLabel={shareTarget?.startLabel}
+        destLabel={shareTarget?.destLabel}
       />
     </div>
   );
