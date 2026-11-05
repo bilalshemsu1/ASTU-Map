@@ -89,6 +89,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   const [isPlaceSheetExpanded, setIsPlaceSheetExpanded] = useState<boolean>(false);
   const [activeFloorFilter, setActiveFloorFilter] = useState<number | 'all'>('all');
   const [roomSearchQuery, setRoomSearchQuery] = useState<string>('');
+  const [heroImageError, setHeroImageError] = useState<boolean>(false);
 
   // Reset image index & collapse place sheet when selected place changes
   useEffect(() => {
@@ -96,6 +97,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
     setIsPlaceSheetExpanded(false);
     setActiveFloorFilter('all');
     setRoomSearchQuery('');
+    setHeroImageError(false);
   }, [selectedPlace]);
 
   // Built-in QR Code & Location Sharing Modal State
@@ -1147,6 +1149,9 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                       <img
                         src={res.building.details.images[0]}
                         alt={res.building.name}
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
                         className="w-10 h-10 rounded-lg object-cover flex-shrink-0 border border-gray-200"
                       />
                     ) : (
@@ -1327,10 +1332,11 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
                   <div className="w-10 h-1 bg-slate-300 rounded-full mx-auto" />
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2.5 min-w-0">
-                      {placeImages[0] ? (
+                      {placeImages[0] && !heroImageError ? (
                         <img
                           src={placeImages[0]}
                           alt={selectedPlace.name}
+                          onError={() => setHeroImageError(true)}
                           className="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-slate-200 shadow-2xs"
                         />
                       ) : (
@@ -1418,11 +1424,12 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
               }`}
             >
               {/* HERO MEDIA HEADER */}
-              {placeImages.length > 0 ? (
+              {placeImages.length > 0 && !heroImageError ? (
                 <div className="relative h-48 bg-slate-950 overflow-hidden flex-shrink-0 group">
                   <img
                     src={placeImages[activeImageIndex]}
                     alt={selectedPlace.name}
+                    onError={() => setHeroImageError(true)}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-slate-950/40" />

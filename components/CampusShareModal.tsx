@@ -40,6 +40,7 @@ export default function CampusShareModal({
 }: CampusShareModalProps) {
   const [qrDataUrl, setQrDataUrl] = useState<string>('');
   const [copied, setCopied] = useState<boolean>(false);
+  const [imgError, setImgError] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<'qr' | 'link'>('qr');
   const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -190,10 +191,11 @@ export default function CampusShareModal({
           
           {/* Target Location Snippet */}
           <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center gap-3">
-            {building?.details?.images?.[0] ? (
+            {building?.details?.images?.[0] && !imgError ? (
               <img
                 src={building.details.images[0]}
                 alt={building.name}
+                onError={() => setImgError(true)}
                 className="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-slate-200 shadow-2xs"
               />
             ) : (
