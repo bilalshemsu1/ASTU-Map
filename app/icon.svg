@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#0f265c" />
+    </linearGradient>
+
+    <!-- Pin Subtle Gradient -->
+    <linearGradient id="pinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+
+    <!-- Inner Circle Gradient -->
+    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+
+    <!-- Compass North Gradient -->
+    <linearGradient id="northGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background Squircle -->
+  <rect x="24" y="24" width="464" height="464" rx="110" fill="url(#bgGrad)" />
+  <rect x="24" y="24" width="464" height="464" rx="110" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="4" />
+
+  <!-- Outer Map Pin with Shadow -->
+  <g filter="url(#dropShadow)">
+    <path
+      d="M256 90 C189.7 90 136 143.7 136 210 C136 288 256 395 256 395 C256 395 376 288 376 210 C376 143.7 322.3 90 256 90 Z"
+      fill="url(#pinGrad)"
+    />
+  </g>
+
+  <!-- Pin Inner Circle -->
+  <circle cx="256" cy="210" r="58" fill="url(#innerGrad)" />
+
+  <!-- Navigation Compass Needle -->
+  <!-- North Pointer (Cyan) -->
+  <polygon points="256,168 274,210 256,204 238,210" fill="url(#northGrad)" />
+  <!-- South Pointer (White) -->
+  <polygon points="256,252 274,210 256,216 238,210" fill="#f8fafc" opacity="0.95" />
+
+  <!-- Pivot Dot -->
+  <circle cx="256" cy="210" r="7" fill="#ffffff" />
+
+  <!-- Golden Academic Star / Spark Accent -->
+  <circle cx="256" cy="74" r="14" fill="#fbbf24" />
+</svg>

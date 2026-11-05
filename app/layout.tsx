@@ -16,6 +16,15 @@ export const metadata: Metadata = {
   title: "ASTU Campus Navigator | Adama Science & Technology University",
   description: "Interactive campus navigation map and building directory for Adama Science and Technology University (ASTU), Adama, Ethiopia.",
   manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
