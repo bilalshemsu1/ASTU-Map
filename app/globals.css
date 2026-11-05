@@ -6,10 +6,35 @@
   --foreground: #ededed;
 }
 
+/* Lock outer HTML document to prevent mobile pull/scroll behavior */
+html,
 body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+  -webkit-overflow-scrolling: auto;
+  position: fixed;
+  inset: 0;
+  touch-action: none;
   background: var(--background);
   color: var(--foreground);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+#root,
+#__next,
+main {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  touch-action: none;
 }
 
 .leaflet-container {
@@ -17,6 +42,16 @@ body {
   height: 100%;
   border-radius: 0;
   background-color: #0f172a;
+  touch-action: pan-x pan-y !important;
+}
+
+/* Allow natural vertical touch scrolling only within designated scrollable lists */
+.touch-scroll-container,
+.custom-scrollbar,
+[data-scrollable="true"] {
+  touch-action: pan-y !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Hide Leaflet attribution text overlay */

@@ -891,7 +891,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
       }
       return 'bottom-[210px] md:bottom-8';
     }
-    return 'bottom-8 md:bottom-8';
+    return 'bottom-[max(1.25rem,env(safe-area-inset-bottom))] md:bottom-8';
   }, [isNavigating, selectedPlace, isDirectionsMode, isPlaceSheetExpanded, routeResult, isStepsExpanded]);
 
   // Sliding Carousel Image Navigation
@@ -923,7 +923,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
   }, [selectedCategory, campusData, liveUserLocation]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-slate-100 font-sans text-slate-800">
+    <div className="fixed inset-0 w-full h-full h-[100dvh] overflow-hidden bg-slate-100 font-sans text-slate-800 select-none">
       {/* Fullscreen Interactive Canvas */}
       <GoogleMapCanvas
         campusData={campusData}
@@ -963,7 +963,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
       {/* TOP FLOATING SEARCH BAR & DROPDOWN RESULTS (HIGHEST PRIORITY Z-INDEX z-[1000]) */}
       {!isNavigating && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-[1000] w-[calc(100vw-1.5rem)] max-w-[420px] md:w-[420px] pointer-events-auto">
+        <div className="absolute top-[max(0.75rem,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 md:top-4 md:left-4 md:translate-x-0 z-[1000] w-[calc(100vw-1.5rem)] max-w-[420px] md:w-[420px] pointer-events-auto">
           <div className="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
             {!isDirectionsMode ? (
               <div className="flex items-center px-3.5 py-2 md:px-4 md:py-2.5 gap-2.5">
@@ -2153,7 +2153,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         className={`absolute right-4 md:right-6 flex flex-col gap-2 pointer-events-auto transition-all duration-300 ease-in-out ${floatingRailPosition}`}
       >
         {/* Unified Zoom In / Out Controls */}
-        <div className="flex flex-col bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden divide-y divide-gray-100">
+        <div className="hidden md:flex flex-col bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden divide-y divide-gray-100">
           <button
             onClick={() => setZoomInTrigger((prev) => prev + 1)}
             className="w-11 h-10 hover:bg-gray-100 text-gray-700 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
@@ -2174,7 +2174,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
         <button
           onClick={handleRecenterCampus}
-          className="w-11 h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer active:scale-95"
+          className="w-10 h-10 md:w-11 md:h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer active:scale-95"
           title="Recenter Map on ASTU Campus"
         >
           <Compass className="w-5 h-5 text-gray-700 hover:text-blue-600 transition-colors" />
@@ -2182,7 +2182,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
 
         <button
           onClick={() => setMapType(mapType === 'roadmap' ? 'satellite' : 'roadmap')}
-          className="w-11 h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer"
+          className="w-10 h-10 md:w-11 md:h-11 bg-white hover:bg-gray-100 text-gray-700 rounded-xl shadow-xl border border-gray-200 flex items-center justify-center transition-all cursor-pointer active:scale-95"
           title={`Switch to ${mapType === 'roadmap' ? 'Satellite' : 'Default Map'} View`}
         >
           <Layers className="w-5 h-5 text-blue-600" />
@@ -2191,7 +2191,7 @@ export default function GoogleMapsUI({ campusData }: GoogleMapsUIProps) {
         <button
           onClick={isLiveTracking ? () => stopLiveLocationTracking() : handleUseCurrentLocation}
           disabled={isLocating}
-          className={`w-11 h-11 rounded-xl shadow-xl border flex items-center justify-center transition-all cursor-pointer ${
+          className={`w-10 h-10 md:w-11 md:h-11 rounded-xl shadow-xl border flex items-center justify-center transition-all cursor-pointer active:scale-95 ${
             isLiveTracking
               ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700 ring-4 ring-emerald-400/40'
               : 'bg-white hover:bg-gray-100 text-blue-600 border-gray-200'

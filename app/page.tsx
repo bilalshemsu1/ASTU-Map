@@ -9,7 +9,7 @@ export default function Home() {
   const [campusData] = useState<CampusData>(initialCampusData as CampusData);
 
   return (
-    <main className="w-screen h-screen overflow-hidden">
+    <main className="fixed inset-0 w-full h-full h-[100dvh] overflow-hidden select-none">
       <GoogleMapsUI campusData={campusData} />
     </main>
   );
