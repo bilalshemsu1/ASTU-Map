@@ -37,6 +37,11 @@ An interactive, high-precision campus navigation web application for **Adama Sci
 - **🛠️ Built-in Campus Map Digitizer (`/digitize`)**:
   - Canvas digitizer page for adding new campus nodes, connecting paths, and plotting building coordinates into `campus.json`.
 
+- **📡 Mobile Developer REST API (`/api`)**:
+  - Complete REST API suite with CORS enabled for mobile clients (Flutter, React Native, iOS, Android).
+  - Endpoints for Dijkstra routing, search, nearby amenities, building directories, offline data sync, and Groq LLaMA 3.3 AI guide.
+  - See full documentation in [API_DOCUMENTATION.md](API_DOCUMENTATION.md).
+
 ---
 
 ## 🛠️ Tech Stack
