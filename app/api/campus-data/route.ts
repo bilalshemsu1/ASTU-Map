@@ -1,17 +1,14 @@
-import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { jsonResponse, handleOptions } from '@/lib/utils/cors';
+import campusJson from '@/lib/data/campus.json';
+
+export function OPTIONS() {
+  return handleOptions();
+}
 
 export async function GET() {
-  try {
-    const filePath = path.join(process.cwd(), 'lib', 'data', 'campus.json');
-    const content = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(content);
-    return NextResponse.json(data);
-  } catch (error: any) {
-    return NextResponse.json(
-      { success: false, error: 'Failed to read campus data.' },
-      { status: 500 }
-    );
-  }
+  return jsonResponse(campusJson, {
+    headers: {
+      'Cache-Control': 'public, max-age=300, stale-while-revalidate=86400',
+    },
+  });
 }
