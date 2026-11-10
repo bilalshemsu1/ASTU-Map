@@ -273,7 +273,7 @@ export default function GoogleMapCanvasClient({
 
   const getTileUrl = () => {
     if (mapType === 'roadmap') {
-      return 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+      return 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?api_key=cb1_562k_1_79403e51626391e2bf2534cc';
     }
     // High-resolution Google Maps Pure Satellite tile server (without Google labels)
     return 'https://mt{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
