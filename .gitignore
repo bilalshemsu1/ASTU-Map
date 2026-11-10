@@ -40,3 +40,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ====================
+# Android / Kotlin
+# ====================
+*.iml
+.gradle
+.idea
+/local.properties
+**/local.properties
+**/build/
+build/
+app/build/
+*.apk
+*.aab
+captures/
+.externalNativeBuild
+.cxx
+*.keystore
+!gradle-wrapper.jar
+.kotlin
