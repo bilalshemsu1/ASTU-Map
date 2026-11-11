@@ -12,7 +12,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.util.concurrent.TimeUnit
 
 class AstuApiClient(
-    var baseUrl: String = "http://10.0.2.2:4000"
+    var baseUrl: String = "https://astu-map.vercel.app/"
 ) {
     private val client = OkHttpClient.Builder()
         .connectTimeout(5, TimeUnit.SECONDS)
